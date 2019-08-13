@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.gowlr.allcar;
+package de.gowlr.allcar.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +28,11 @@ public class MainController {
     @RequestMapping("/")
     public String root() {
         return "redirect:/index";
+    }
+
+    @RequestMapping("/home")
+    public String home() {
+        return "home2";
     }
 
     @RequestMapping("/index")
