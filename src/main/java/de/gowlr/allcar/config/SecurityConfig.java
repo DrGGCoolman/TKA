@@ -1,4 +1,4 @@
-package de.gowlr.allcar.service;
+package de.gowlr.allcar.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
