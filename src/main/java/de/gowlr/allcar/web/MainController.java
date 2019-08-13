@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.gowlr.allcar.controller;
+package de.gowlr.allcar.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

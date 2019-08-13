@@ -1,4 +1,4 @@
-package de.gowlr.allcar.controller;
+package de.gowlr.allcar.web;
 
 import de.gowlr.allcar.product.*;
 import org.springframework.stereotype.Controller;
