@@ -1,4 +1,4 @@
-package de.gowlr.allcar;
+package de.gowlr.allcar.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/**", "/index").permitAll().antMatchers("/user/**").hasRole("USER")
+        http.authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll().antMatchers("/user/**").hasRole("USER")
                 .and().formLogin().loginPage("/login").failureUrl("/login-error");
     }
 
