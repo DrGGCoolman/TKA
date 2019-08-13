@@ -1,67 +1,37 @@
 package de.gowlr.allcar.model;
 
-import org.springframework.Column;
-import org.springframework.Entity;
-import org.springframework.GeneratedValue;
-import org.springframework.GenerationType;
-import org.springframework.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 @Entity
-public class Student {
+public class ProductType {
+
+    @Override
+    public String toString(){
+        return this.name;
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
 
-    @NotBlank(message = "Name is mandatory")
     @Column(name = "name")
     private String name;
 
-    @NotBlank(message = "Email is mandatory")
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "phone_no")
-    private long phoneNo;
+    @Column(name = "password")
+    private String password;
 
-    public Student() {
-    }
+    @Column(name = "mobile")
+    private String mobile;
 
-    public Student(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    private transient String confirmPassword;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public long getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(long phoneNo) {
-        this.phoneNo = phoneNo;
-    }
+    // Getters and Setters
 }
