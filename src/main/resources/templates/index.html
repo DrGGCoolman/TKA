@@ -10,7 +10,8 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -26,77 +27,77 @@
     </div>
 
     <body class="bg-dark">
-            <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Clients</a>
-                    <a href="#">Contact</a>
-                  </div>
-                  
-                  
-        <div class="pos-f-t border-bottom border-warning w-100 border-thick container-fluid">
-            <nav class="navbar navbar-dark bg-dark">
+
+        <!-- NAVBAR fängt hier an-->
+        <div class="pos-f-t border-bottom border-inverse w-100 border-thick">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <div class="row w-100">
-                        <div class="col">
-                            <div class="btn navbar-btn" type="button">
-                                Rent
-                            </div>
-                        </div>
-                        <div class="col align-self-center">
-                            <a class="navbar-brand" href="#">EXCLUSIVE CAR RENTAL</a>
-                        </div>
-                        <div class="col-lg-1">
-                            <ul class="nav navbar-nav">
-                                <div class="dropdown">
-                                    <div class="btn navbar-btn dropdown-toggle navbar-right" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Login
-                                    </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <form class="px-7 py-3">
-                                            <div class="form-group">
-                                                <label for="exampleDropdownFormEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleDropdownFormEmail1"
-                                                    placeholder="email@example.com">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleDropdownFormPassword1">Password</label>
-                                                <input type="password" class="form-control"
-                                                    id="exampleDropdownFormPassword1" placeholder="Password">
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                                <label class="form-check-label" for="dropdownCheck">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary navbar-right">Sign in</button>
-                                        </form>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">New around here? Sign up</a>
-                                        <a class="dropdown-item" href="#">Forgot password?</a>
-                                    </div>
-                                </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-1">
-                            <button class="navbar-toggler navbar-right" onclick="openNav()" type="button" data-toggle="collapse"
-                                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
+
+                    <!-- Linke Elemente-->
+                    <ul class="nav navbar-nav">
+
+                        <!--RENT-Block-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Rent</a>
+                        </li>
+                    </ul>
+
+                    <!-- 
+                    ÜBERSCHRIFT
+                    DIV, damit Element zentriert werden kann-->
+                    <div class="nav-item">
+                        <a class="navbar-brand text-center" href="#">EXCLUSIVE CAR RENTAL</a>
                     </div>
+
+                    <!-- Rechte Elemente-->
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <!-- DROPDOWN LOGIN-->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Login
+                            </a>
+                            <div class="dropdown-menu">
+                                <form class="px-4 py-3">
+                                    <div class="form-group">
+                                        <label for="exampleDropdownFormEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1"
+                                            placeholder="email@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleDropdownFormPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                            placeholder="Password">
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                        <label class="form-check-label" for="dropdownCheck">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">New around here? Sign up</a>
+                                <a class="dropdown-item" href="#">Forgot password?</a>
+                            </div>
+                        </li>
+
+                        <!-- TOGGLE MENÜ-->
+                        <button class="navbar-toggler navbar-right" type="button" data-toggle="collapse"
+                            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </ul>
                 </div>
             </nav>
         </div>
 
+        <!-- TEASER-->
         <div class="teaser">
-
-            <div class="container-fluid w-100">
+            <div class="container-fluid w-100 m-0 p-0">
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -141,18 +142,88 @@
                 </div>
             </div>
         </div>
+        <div class="border-bottom">
+        </div>
+        <br>
+        <br> <!-- Muss anders gelöst werden-->
+
+        <!-- Hier beginnt der Container mit der BESCHREIBUNG der Firma-->
+        <div class="description">
+            <div class="container">
+                <h1 class="text-light">Beschreibung der Firma</h1>
+                <br>
+                <p class="text-light text-justify">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                    dolor
+                    in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                    at
+                    vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis
+                    dolore
+                    te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy
+                    nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+                    quis
+                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
+                    autem
+                    vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
+                    feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                    zzril
+                    delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
+                    option
+                    congue nihil imperdiet doming id quod mazim placerat facer possim assum.i hate arsu not
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- SOCIAL MEDIA-Block-->
+        <div class="socialmedia">
+            <div class="container w-100">
+                <div class="row mx-auto">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <span>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-linkedin"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </span>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="container">
+            <div id="map-container-google-1" class="z-depth-1-half map-container w-100">
+                <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+<br>
+<br>
+<div class="container">
+    <h1 class="text-light">Anfahrt</h1>
+    <p class="text-light"> Beschreibung der Anfahrt</p>
+</div>
+<br>
+<br>
+
+        <!-- SKRIPTE-->
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <script>
-                function openNav() {
-                  document.getElementById("mySidenav").style.width = "200px";
-                }
-                
-                function closeNav() {
-                  document.getElementById("mySidenav").style.width = "0";
-                }
-                </script>
     </body>
 
 </html>
