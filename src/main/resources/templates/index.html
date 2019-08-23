@@ -15,85 +15,9 @@
 
 </head>
 
-<body>
-    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
-        Logged in user: <span sec:authentication="name"></span> |
-        Roles: <span sec:authentication="principal.authorities"></span>
-        <div>
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form>
-        </div>
-    </div>
-
     <body class="bg-dark">
 
-        <!-- NAVBAR fängt hier an-->
-        <div class="pos-f-t border-bottom border-inverse w-100 border-thick">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-
-                    <!-- Linke Elemente-->
-                    <ul class="nav navbar-nav">
-
-                        <!--RENT-Block-->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Rent</a>
-                        </li>
-                    </ul>
-
-                    <!-- 
-                    ÜBERSCHRIFT
-                    DIV, damit Element zentriert werden kann-->
-                    <div class="nav-item">
-                        <a class="navbar-brand text-center" href="#">EXCLUSIVE CAR RENTAL</a>
-                    </div>
-
-                    <!-- Rechte Elemente-->
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <!-- DROPDOWN LOGIN-->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Login
-                            </a>
-                            <div class="dropdown-menu">
-                                <form class="px-4 py-3">
-                                    <div class="form-group">
-                                        <label for="exampleDropdownFormEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1"
-                                            placeholder="email@example.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleDropdownFormPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                            placeholder="Password">
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                        <label class="form-check-label" for="dropdownCheck">
-                                            Remember me
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
-                                </form>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">New around here? Sign up</a>
-                                <a class="dropdown-item" href="#">Forgot password?</a>
-                            </div>
-                        </li>
-
-                        <!-- TOGGLE MENÜ-->
-                        <button class="navbar-toggler navbar-right" type="button" data-toggle="collapse"
-                            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        <div th:insert="~{header :: copy}"></div>
 
         <!-- TEASER-->
         <div class="teaser">
@@ -211,14 +135,21 @@
                     frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
-<br>
-<br>
-<div class="container">
-    <h1 class="text-light">Anfahrt</h1>
-    <p class="text-light"> Beschreibung der Anfahrt</p>
-</div>
-<br>
-<br>
+        <br>
+        <br>
+        <div class="container">
+            <h1 class="text-light">Anfahrt</h1>
+            <p class="text-light"> Beschreibung der Anfahrt</p>
+        </div>
+        <br>
+        <br>
+
+        <!-- FOOTER-->
+        <div th:insert="~{footer :: copy}"></div>
+
+
+
+
 
         <!-- SKRIPTE-->
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
