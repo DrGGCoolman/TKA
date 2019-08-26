@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+    <body class="bg-dark">
+
+        <div th:insert="~{admin/header :: copy}"></div>
+
+        <!-- TEASER-->
+        <div class="teaser">
+            <div class="container-fluid w-100 m-0 p-0">
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="height: 750px">
+                                <img th:src="@{../img/porsche.jpg}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>First slide label</h5>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" style="height: 750px">
+                                <img th:src="@{../img/benzer.jpg}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Second slide label</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" style="height: 750px">
+                                <img th:src="@{../img/maserati.jpg}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Third slide label</h5>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-bottom">
+        </div>
+        <br>
+        <br> <!-- Muss anders gelöst werden-->
+
+        <!-- Hier beginnt der Container mit der BESCHREIBUNG der Firma-->
+        <div class="description">
+            <div class="container">
+                <h1 class="text-light">Beschreibung der Firma</h1>
+                <br>
+                <p class="text-light text-justify">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                    dolor
+                    in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                    at
+                    vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis
+                    dolore
+                    te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    nonummy
+                    nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+                    quis
+                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
+                    autem
+                    vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
+                    feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                    zzril
+                    delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
+                    option
+                    congue nihil imperdiet doming id quod mazim placerat facer possim assum.i hate arsu not
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- SOCIAL MEDIA-Block-->
+        <div class="socialmedia">
+            <div class="container w-100">
+                <div class="row mx-auto">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <span>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-linkedin"></a>
+                        </span>
+                        <span>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </span>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="container">
+            <div id="map-container-google-1" class="z-depth-1-half map-container w-100">
+                <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <h1 class="text-light">Anfahrt</h1>
+            <p class="text-light"> Beschreibung der Anfahrt</p>
+        </div>
+        <br>
+        <br>
+
+        <!-- FOOTER-->
+        <div th:insert="~{footer :: copy}"></div>
+
+
+
+        <!-- SKRIPTE-->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+
+</html>

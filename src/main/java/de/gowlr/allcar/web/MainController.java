@@ -30,9 +30,29 @@ public class MainController {
         return "user/index";
     }
 
+    @RequestMapping("/admin/index")
+    public String adminIndex() {
+        return "admin/index";
+    }
+
+    @RequestMapping("/admin/createProduct")
+    public String CreateProduct() {
+        return "admin/createProduct";
+    }
+
     @RequestMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @RequestMapping("/rent")
+    public String rent() {
+        return "rent";
+    }
+
+    @RequestMapping("/admin/rent")
+    public String adminRent() {
+        return "adminRent";
     }
 
     @RequestMapping("/login-error")
