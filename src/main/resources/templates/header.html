@@ -13,7 +13,7 @@
 
                         <!--RENT-Block-->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Rent</a>
+                            <a class="nav-link" th:href="@{/rent}">Rent</a>
                         </li>
                     </ul>
 
@@ -21,7 +21,7 @@
                     ÜBERSCHRIFT
                     DIV, damit Element zentriert werden kann-->
                     <div class="nav-item">
-                        <a class="navbar-brand text-center" href="#">EXCLUSIVE CAR RENTAL</a>
+                        <a class="navbar-brand text-center" th:href="@{/index}">EXCLUSIVE CAR RENTAL</a>
                     </div>
 
                     <!-- Rechte Elemente-->
@@ -33,7 +33,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 Login
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu-right bg-dark text-white">
                                 <form class="px-2 py-1">
                                     <div class="form-group">
                                         <label for="exampleDropdownFormEmail1">Email address</label>
@@ -54,7 +54,7 @@
                                     <button type="submit" class="btn btn-primary">Sign in</button>
                                 </form>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" th:href="@{/register}">New around here? Sign up</a>
+                                <a class="dropdown-item text-white" th:href="@{/login}">New around here? Sign up</a>
                                 <a class="dropdown-item" href="#">Forgot password?</a>
                             </div>
                         </li>
