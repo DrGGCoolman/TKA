@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+
+        <div class="card mb-3 mh-250" th:fragment="copy">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img th:src="@{img/porsche.jpg}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name des Autos</h5>
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="card-text">
+                                        Information 1: XXX PS<br>
+                                        Information 2: XXX Liter<br>
+                                        Information 3: Automatik/ Manuell<br>
+                                        ... <br>
+
+                                    </p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                                <div class="col-4">
+                                    <small>ab</small> 1.000,00 € <small>pro Tag</small>
+                                </div>
+                                
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+  </body>
+  
+</html>
