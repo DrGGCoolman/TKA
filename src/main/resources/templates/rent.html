@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Rent</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+
+<body>
+
+    <div th:insert="~{header :: copy}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 mt-4 border-right border-thick">
+                <h3 class="text-center">Kategorien</h3>
+                <div class="categories">
+                    <ul class="list-group">
+                        <li class="list-group-item">Marke</li>
+                        <li class="list-group-item">Kategorie</li>
+                        <li class="list-group-item">...</li>
+                        <li class="list-group-item">Preis<br>
+                            <form class="range-field">
+                                <input type="range" min="0" max="100" />
+                            </form>
+                        </li>
+                        <li class="list-group-item">Leistung<br>
+                            <form class="range-field">
+                                <input type="range" min="0" max="100" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-10 mt-4">
+
+
+                <div th:insert="~{car-template :: copy}"></div>
+
+                <div th:insert="~{car-template :: copy}"></div>
+
+                <div th:insert="~{car-template :: copy}"></div>
+
+                <div th:insert="~{car-template :: copy}"></div>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+                <p class="m-4"><a href="/index" th:href="@{/index}">Back to home page</a></p>
+            </div>
+        </div>
+        <!-- FOOTER-->
+        <div th:insert="~{footer :: copy}"></div>
+
+</body>
+
+</html>
