@@ -119,7 +119,7 @@ BOOTSTRAP
 /*BACKGROUND AND TEXT */
 
 .bg-main {
-  background-color: #515266;
+  background-image: url("/img/hintergrund.jpg");
 }
 
 .text-main {
