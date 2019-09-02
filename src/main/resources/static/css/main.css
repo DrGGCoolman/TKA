@@ -223,6 +223,7 @@ color: #FFE5AA;
   height: 750px;
 }
 
+/*
 .jumbotron:hover {
   position:relative;
   width:100%;
@@ -230,6 +231,7 @@ color: #FFE5AA;
   display:block;
   z-index:999;
 }
+*/
 
 *,
 *::before,

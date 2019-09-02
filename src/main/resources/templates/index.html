@@ -37,15 +37,15 @@
                 <div class="jumbotron jumbotron-porsche">
                 </div>
             </a>
-            <a href="#" class="col-lg-3">
+            <a href="#" class="col-lg-3" id="jumbo-benzer">
                 <div class="jumbotron jumbotron-benzer">
                 </div>
             </a>
-            <a href="#" class="col-lg-3">
+            <a href="#" class="col-lg-3" id="jumbo-bmw">
                 <div class="jumbotron jumbotron-bmw">
                 </div>
             </a>
-            <a href="#"  class="col-lg-3">
+            <a href="#" class="col-lg-3" id="jumbo-maserati">
                 <div class="jumbotron jumbotron-maserati">
                 </div>
             </a>
@@ -190,6 +190,69 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <script>
+        $(".jumbotron-porsche").mouseover(function () {
+            $('#jumbo-porsche').removeClass('col-lg-3');
+            $('#jumbo-porsche').addClass('col-lg-12');
+            $('#jumbo-benzer').hide();
+            $('#jumbo-bmw').hide();
+            $('#jumbo-maserati').hide();
+        });
+        $(".jumbotron-porsche").mouseout(function () {
+            $('#jumbo-porsche').addClass('col-lg-3');
+            $('#jumbo-porsche').removeClass('col-lg-12');
+            $('#jumbo-benzer').show();
+            $('#jumbo-bmw').show();
+            $('#jumbo-maserati').show();
+        });
+
+        $(".jumbotron-benzer").mouseover(function () {
+            $('#jumbo-benzer').removeClass('col-lg-3');
+            $('#jumbo-benzer').addClass('col-lg-12');
+            $('#jumbo-porsche').hide();
+            $('#jumbo-bmw').hide();
+            $('#jumbo-maserati').hide();
+        });
+        $(".jumbotron-benzer").mouseout(function () {
+            $('#jumbo-benzer').addClass('col-lg-3');
+            $('#jumbo-benzer').removeClass('col-lg-12');
+            $('#jumbo-porsche').show();
+            $('#jumbo-bmw').show();
+            $('#jumbo-maserati').show();
+        });
+
+        $(".jumbotron-bmw").mouseover(function () {
+            $('#jumbo-bmw').removeClass('col-lg-3');
+            $('#jumbo-bmw').addClass('col-lg-12');
+            $('#jumbo-porsche').hide();
+            $('#jumbo-benzer').hide();
+            $('#jumbo-maserati').hide();
+        });
+        $(".jumbotron-bmw").mouseout(function () {
+            $('#jumbo-bmw').addClass('col-lg-3');
+            $('#jumbo-bmw').removeClass('col-lg-12');
+            $('#jumbo-porsche').show();
+            $('#jumbo-benzer').show();
+            $('#jumbo-maserati').show();
+        });
+
+        $(".jumbotron-maserati").mouseover(function () {
+            $('#jumbo-maserati').removeClass('col-lg-3');
+            $('#jumbo-maserati').addClass('col-lg-12');
+            $('#jumbo-bmw').hide();
+            $('#jumbo-porsche').hide();
+            $('#jumbo-benzer').hide();
+        });
+        $(".jumbotron-maserati").mouseout(function () {
+            $('#jumbo-maserati').addClass('col-lg-3');
+            $('#jumbo-maserati').removeClass('col-lg-12');
+            $('#jumbo-bmw').show();
+            $('#jumbo-porsche').show();
+            $('#jumbo-benzer').show();
+
+        });
+    </script>
 
 </body>
 
