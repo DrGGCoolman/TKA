@@ -33,19 +33,19 @@
 
     <div class="container-fluid">
         <div class="row">
-            <a href="#" class="col-lg-3" id="jumbo-porsche">
+            <a href="#" class="col-lg-3 p-0" id="jumbo-porsche">
                 <div class="jumbotron jumbotron-porsche">
                 </div>
             </a>
-            <a href="#" class="col-lg-3" id="jumbo-benzer">
+            <a href="#" class="col-lg-3 p-0" id="jumbo-benzer">
                 <div class="jumbotron jumbotron-benzer">
                 </div>
             </a>
-            <a href="#" class="col-lg-3" id="jumbo-bmw">
+            <a href="#" class="col-lg-3 p-0" id="jumbo-bmw">
                 <div class="jumbotron jumbotron-bmw">
                 </div>
             </a>
-            <a href="#" class="col-lg-3" id="jumbo-maserati">
+            <a href="#" class="col-lg-3 p-0" id="jumbo-maserati">
                 <div class="jumbotron jumbotron-maserati">
                 </div>
             </a>
@@ -198,6 +198,7 @@
             $('#jumbo-benzer').hide();
             $('#jumbo-bmw').hide();
             $('#jumbo-maserati').hide();
+            $('#jumbo-porsche').style.transition = "all 2s";
         });
         $(".jumbotron-porsche").mouseout(function () {
             $('#jumbo-porsche').addClass('col-lg-3');
@@ -205,6 +206,7 @@
             $('#jumbo-benzer').show();
             $('#jumbo-bmw').show();
             $('#jumbo-maserati').show();
+            $('#jumbo-porsche')
         });
 
         $(".jumbotron-benzer").mouseover(function () {
@@ -249,9 +251,18 @@
             $('#jumbo-maserati').removeClass('col-lg-12');
             $('#jumbo-bmw').show();
             $('#jumbo-porsche').show();
-            $('#jumbo-benzer').show();
+            $('#jumbo-benzer').show(); 
+            
+            $(".jumbotron").animate({
+            opacity: "show"
+        },
+        
+        "easein");
 
         });
+
+
+
     </script>
 
 </body>
