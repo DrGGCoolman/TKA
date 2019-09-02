@@ -4,67 +4,77 @@
 
 <body>
 
-    <div class="pos-f-t border-bottom border-inverse w-100 border-thick" th:fragment="copy">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-main border-accent border-accent w-100" th:fragment="copy">
+        <div class="container-fluid">
 
-                <!-- Linke Elemente-->
-                <ul class="nav navbar-nav">
+            <!-- Linke Elemente-->
+            <ul class="nav navbar-nav">
 
-                    <!--RENT-Block-->
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/rent}">Rent</a>
-                    </li>
-                </ul>
+                <li class="nav-item">
+                    <button class="btn">
+                        <i class="fa fa-search p-0" style="color:#CBBEB5; width: 1rem; height: 1rem;"></i>
+                    </button>
+                </li>
 
-                <!-- 
+                <!--RENT-Block-->
+                <li class="nav-item">
+                    <a class="nav-link text-main" th:href="@{/rent}">Rent</a>
+                </li>
+            </ul>
+
+            <!-- 
                     ÜBERSCHRIFT
                     DIV, damit Element zentriert werden kann-->
-                <div class="nav-item">
-                    <a class="navbar-brand text-center" th:href="@{/index}">EXCLUSIVE CAR RENTAL</a>
-                </div>
-
-                <!-- Rechte Elemente-->
-                <ul class="nav navbar-nav">
-
-                    <!-- DROPDOWN LOGIN-->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Login
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right bg-dark text-white">
-                            <form class="px-2 py-1">
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1"
-                                        placeholder="email@example.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                    <label class="form-check-label" for="dropdownCheck">
-                                        Remember me
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                            </form>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-white" th:href="@{/login}">New around here? Sign up</a>
-                            <a class="dropdown-item" href="#">Forgot password?</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a button class="nav-link" th:href="@{/rent}">Menu</a>
-                    </li>
-                </ul>
+            <div class="nav-item">
+                <a class="navbar-brand text-center" th:href="@{/index}">EXCLUSIVE CAR RENTAL</a>
             </div>
-        </nav>
-    </div>
+
+
+            <!-- Rechte Elemente-->
+            <ul class="nav navbar-nav">
+
+                <!-- DROPDOWN LOGIN-->
+                <li class="nav-item dropdown p-2 m-0">
+                    <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right bg-main">
+                        <form class="px-2 py-1">
+                            <div class="form-group">
+                                <label for="exampleDropdownFormEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleDropdownFormEmail1"
+                                    placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleDropdownFormPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                <label class="form-check-label" for="dropdownCheck">
+                                    Remember me
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-white" th:href="@{/login}">New around here? Sign up</a>
+                        <a class="dropdown-item" href="#">Forgot password?</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <button class="btn" style="width: 3rem; height: 3rem;" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa fa-bars p-2" style="color:#CBBEB5"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
 
     <!-- SKRIPTE-->
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
