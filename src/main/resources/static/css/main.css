@@ -120,6 +120,12 @@ BOOTSTRAP
 
 .bg-main {
   background-image: url("/img/hintergrund.jpg");
+  background-attachment: fixed;
+  background-color:#4e555b;
+}
+
+.bg-header {
+  background: rgba(248, 249, 250, 0.20);
 }
 
 .text-main {
