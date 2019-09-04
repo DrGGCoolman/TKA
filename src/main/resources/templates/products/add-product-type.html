@@ -3,35 +3,87 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible"
+        content="ie=edge">
     <title>Add User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
 </head>
 
 <body>
     <div class="container my-5">
-        <h3> Add Student</h3>
+        <h3> Add Car-Type</h3>
         <div class="card">
             <div class="card-body">
                 <div class="col-md-10">
-                    <form action="#" th:action="@{/products/add}" th:object="${ProductType}" method="post">
+                    <form action="#"
+                        th:action="@{/products/add}"
+                        th:object="${productType}"
+                        method="post">
                         <div class="row">
-                            <!-- <div class="form-group col-md-8">
-                                <label for="variant" class="col-form-label">Name</label> <input type="text" th:field="*{variant}" class="form-control" id="variant" placeholder="variant"> <span th:if="${#fields.hasErrors('variant')}" th:errors="*{variant}" class="text-danger"></span>
+                            <div class="form-group col-md-8">
+                                <label for="variant"
+                                    class="col-form-label">Variant</label> <input type="text"
+                                    th:field="*{variant}"
+                                    class="form-control"
+                                    id="variant"
+                                    placeholder="variant"> <span th:if="${#fields.hasErrors('variant')}" th:errors="*{variant}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-8">
-                                <label for="model" class="col-form-label">Email</label> <input type="text" th:field="*{model}" class="form-control" id="model" placeholder="model"> <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></span>
+                                <label for="model" class="col-form-label">Model</label> <input type="text" th:field="*{model}" class="form-control" id="model" placeholder="model"> <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></span>
                             </div>
 
                             <div class="form-group col-md-8">
-                                <label for="brand" class="col-form-label">Phone No</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
-                            </div> -->
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="model" class="col-form-label">model</label> <input type="text" th:field="*{model}" class="form-control" id="model" placeholder="model"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
 
                             <div class="col-md-6">
-                                <input type="submit" class="btn btn-primary" value="Add Student">
+                                <input type="submit" class="btn btn-primary" value="Add Product">
                             </div>
 
                             <div class="form-group col-md-8"></div>
