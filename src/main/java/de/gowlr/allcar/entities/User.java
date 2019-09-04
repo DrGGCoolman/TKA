@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-public class EcUser {
+public class User {
 
   @Id
   @GeneratedValue
