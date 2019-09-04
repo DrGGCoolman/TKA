@@ -5,7 +5,30 @@
 -- Dumped from database version 11.4
 -- Dumped by pg_dump version 11.4
 
--- Started on 2019-08-13 14:22:59
+-- Started on 2019-09-04 18:24:27
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2863 (class 1262 OID 17140)
+-- Name: exclusive cars; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "exclusive cars" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'German_Germany.1252' LC_CTYPE = 'German_Germany.1252';
+
+
+ALTER DATABASE "exclusive cars" OWNER TO postgres;
+
+\connect -reuse-previous=on "dbname='exclusive cars'"
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -28,7 +51,7 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE public.ec_admin (
-    admin_id integer NOT NULL,
+    id integer NOT NULL,
     user_id integer NOT NULL
 );
 
@@ -41,7 +64,7 @@ ALTER TABLE public.ec_admin OWNER TO postgres;
 --
 
 CREATE TABLE public.ec_category (
-    category_id integer NOT NULL,
+    id integer NOT NULL,
     title character varying NOT NULL
 );
 
@@ -72,7 +95,7 @@ ALTER TABLE public.ec_customer OWNER TO postgres;
 --
 
 CREATE TABLE public.ec_pictures (
-    picture_id integer NOT NULL,
+    id integer NOT NULL,
     title character varying NOT NULL,
     file_path character varying NOT NULL,
     product_id integer NOT NULL
@@ -87,11 +110,14 @@ ALTER TABLE public.ec_pictures OWNER TO postgres;
 --
 
 CREATE TABLE public.ec_product_entity (
+	id integer NOT NULL,
     body_color character varying NOT NULL,
     upholstery character varying NOT NULL,
     massage_seats boolean,
     displays_rear boolean,
-    price double precision NOT NULL,
+    price_200 double precision NOT NULL,
+    price_500 double precision NOT NULL,
+    price_1000 double precision NOT NULL,
     availibility_weekdays boolean,
     product_id integer NOT NULL
 );
@@ -105,7 +131,7 @@ ALTER TABLE public.ec_product_entity OWNER TO postgres;
 --
 
 CREATE TABLE public.ec_product_type (
-    product_id integer NOT NULL,
+    id integer NOT NULL,
     category_id integer NOT NULL,
     brand character varying NOT NULL,
     model character varying NOT NULL,
@@ -137,7 +163,7 @@ ALTER TABLE public.ec_product_type OWNER TO postgres;
 --
 
 CREATE TABLE public.ec_user (
-    user_id integer NOT NULL,
+    id integer NOT NULL,
     name character varying NOT NULL,
     firstname character varying NOT NULL,
     gender character(1),
@@ -149,7 +175,7 @@ CREATE TABLE public.ec_user (
 ALTER TABLE public.ec_user OWNER TO postgres;
 
 --
--- TOC entry 2849 (class 0 OID 17141)
+-- TOC entry 2851 (class 0 OID 17141)
 -- Dependencies: 196
 -- Data for Name: ec_admin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -157,29 +183,29 @@ ALTER TABLE public.ec_user OWNER TO postgres;
 
 
 --
--- TOC entry 2850 (class 0 OID 17144)
+-- TOC entry 2852 (class 0 OID 17144)
 -- Dependencies: 197
 -- Data for Name: ec_category; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.ec_category (category_id, title) VALUES (1, 'sport');
-INSERT INTO public.ec_category (category_id, title) VALUES (2, 'sport+');
-INSERT INTO public.ec_category (category_id, title) VALUES (3, 'luxus');
-INSERT INTO public.ec_category (category_id, title) VALUES (4, 'suv');
-INSERT INTO public.ec_category (category_id, title) VALUES (5, 'oldtimer');
-INSERT INTO public.ec_category (category_id, title) VALUES (6, 'offroad');
+INSERT INTO public.ec_category (id, title) VALUES (1, 'sport');
+INSERT INTO public.ec_category (id, title) VALUES (2, 'sport+');
+INSERT INTO public.ec_category (id, title) VALUES (3, 'luxus');
+INSERT INTO public.ec_category (id, title) VALUES (4, 'suv');
+
 
 
 --
--- TOC entry 2851 (class 0 OID 17150)
+-- TOC entry 2853 (class 0 OID 17150)
 -- Dependencies: 198
 -- Data for Name: ec_customer; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.ec_customer (title, birth, user_id, street, house_number, post_code, city) VALUES ('Mr', '1990-11-11', 1, 'Robinson Blv', 3, 90001, 'Santa Babara');
 
 
 --
--- TOC entry 2852 (class 0 OID 17156)
+-- TOC entry 2854 (class 0 OID 17156)
 -- Dependencies: 199
 -- Data for Name: ec_pictures; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -187,7 +213,7 @@ INSERT INTO public.ec_category (category_id, title) VALUES (6, 'offroad');
 
 
 --
--- TOC entry 2853 (class 0 OID 17162)
+-- TOC entry 2855 (class 0 OID 17162)
 -- Dependencies: 200
 -- Data for Name: ec_product_entity; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -195,25 +221,26 @@ INSERT INTO public.ec_category (category_id, title) VALUES (6, 'offroad');
 
 
 --
--- TOC entry 2854 (class 0 OID 17168)
+-- TOC entry 2856 (class 0 OID 17168)
 -- Dependencies: 201
 -- Data for Name: ec_product_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (1, 1, 'Lamborghini', 'Aventador', 'LP 700-4 Roadster', 'automatic', 2016, 1575, 700, 'V12-Motor', 7, 690, 'Allrad', 'Benzin', 2.89999999999999991, 2, 150, 2, 100, true, 23);
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (2, 2, 'Porsche', '918', 'Spyder', '7-Gang-Doppelkupplungsgetriebe', 2013, 1750, 795, 'V8-Saugmotor', 5, 750, 'Allrad', 'Benzin plus', 3, 2, 180, 2, 100, false, 25);
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (3, 3, 'Bentley', 'Continental GTC', 'V8', '8-Gang-Doppelkupplungsgetriebe', 2019, 2414, 635, 'V8-Motor', 6, 900, 'Allrad', 'Super Plus', 3.70000000000000018, 5, 250, 4, 150, true, 23);
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (4, 4, 'Range Rover', 'SVAutobiography', 'Dynamic', '8-Gang-Automatikgetriebe', 2018, 2160, 565, 'V8-Ottomotor', 5, 700, 'Allrad', 'Benzin', 4.5, 5, 400, 4, 200, true, 23);
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (5, 5, 'Ferrari', 'F40', 'Coupe', '5-Gang Getriebe', 1991, 1329, 565, 'V8 Bi-Turbo-Ottomotor', 3, 700, 'Hinterradantrieb', 'Benzin', 4.59999999999999964, 2, 150, 2, 80, false, 25);
-INSERT INTO public.ec_product_type (product_id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (6, 6, 'Mercedes', 'G63 AMG', '6x6', '7-Stufen-Automatik', 2013, 3775, 544, 'V8 Bi-Turbo', 4, 760, 'Allrad', 'Benzin', 4.59999999999999964, 5, 400, 4, 150, true, 23);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (1, 1, 'Lamborghini', 'Aventador', 'LP 700-4 Roadster', 'automatic', 2016, 1575, 700, 'V12-Motor', 7, 690, 'Allrad', 'Benzin', 2.89999999999999991, 2, 150, 2, 100, true, 23);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (2, 2, 'Porsche', '918', 'Spyder', '7-Gang-Doppelkupplungsgetriebe', 2013, 1750, 795, 'V8-Saugmotor', 5, 750, 'Allrad', 'Benzin plus', 3, 2, 180, 2, 100, false, 25);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (3, 3, 'Bentley', 'Continental GTC', 'V8', '8-Gang-Doppelkupplungsgetriebe', 2019, 2414, 635, 'V8-Motor', 6, 900, 'Allrad', 'Super Plus', 3.70000000000000018, 5, 250, 4, 150, true, 23);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (4, 4, 'Range Rover', 'SVAutobiography', 'Dynamic', '8-Gang-Automatikgetriebe', 2018, 2160, 565, 'V8-Ottomotor', 5, 700, 'Allrad', 'Benzin', 4.5, 5, 400, 4, 200, true, 23);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (5, 5, 'Ferrari', 'F40', 'Coupe', '5-Gang Getriebe', 1991, 1329, 565, 'V8 Bi-Turbo-Ottomotor', 3, 700, 'Hinterradantrieb', 'Benzin', 4.59999999999999964, 2, 150, 2, 80, false, 25);
+INSERT INTO public.ec_product_type (id, category_id, brand, model, variant, gearing_type, age, weight, power, engine, cubic_capacity, nm, drive_system, fuel_type, zero_to_hundred, seats, luggage_compartment, doors, miles, add_driver, minimum_age) VALUES (6, 6, 'Mercedes', 'G63 AMG', '6x6', '7-Stufen-Automatik', 2013, 3775, 544, 'V8 Bi-Turbo', 4, 760, 'Allrad', 'Benzin', 4.59999999999999964, 5, 400, 4, 150, true, 23);
 
 
 --
--- TOC entry 2855 (class 0 OID 17174)
+-- TOC entry 2857 (class 0 OID 17174)
 -- Dependencies: 202
 -- Data for Name: ec_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.ec_user (id, name, firstname, gender, e_mail, password) VALUES (1, 'Rodriguez', 'Maria', 'f', 'maria.rod@yahoo.de', 'test1234');
 
 
 --
@@ -222,7 +249,7 @@ INSERT INTO public.ec_product_type (product_id, category_id, brand, model, varia
 --
 
 ALTER TABLE ONLY public.ec_admin
-    ADD CONSTRAINT admin_pkey PRIMARY KEY (admin_id);
+    ADD CONSTRAINT admin_pkey PRIMARY KEY (id);
 
 
 --
@@ -231,7 +258,7 @@ ALTER TABLE ONLY public.ec_admin
 --
 
 ALTER TABLE ONLY public.ec_category
-    ADD CONSTRAINT category_pkey PRIMARY KEY (category_id);
+    ADD CONSTRAINT category_pkey PRIMARY KEY (id);
 
 
 --
@@ -240,73 +267,82 @@ ALTER TABLE ONLY public.ec_category
 --
 
 ALTER TABLE ONLY public.ec_pictures
-    ADD CONSTRAINT ec_pictures_pkey PRIMARY KEY (picture_id);
+    ADD CONSTRAINT ec_pictures_pkey PRIMARY KEY (id);
 
 
 --
--- TOC entry 2720 (class 2606 OID 17187)
+-- TOC entry 2720 (class 2606 OID 17221)
+-- Name: ec_product_entity ec_product_entity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ec_product_entity
+    ADD CONSTRAINT ec_product_entity_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2722 (class 2606 OID 17187)
 -- Name: ec_product_type product_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_product_type
-    ADD CONSTRAINT product_type_pkey PRIMARY KEY (product_id);
+    ADD CONSTRAINT product_type_pkey PRIMARY KEY (id);
 
 
 --
--- TOC entry 2722 (class 2606 OID 17189)
+-- TOC entry 2724 (class 2606 OID 17189)
 -- Name: ec_user usert_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_user
-    ADD CONSTRAINT usert_pkey PRIMARY KEY (user_id);
+    ADD CONSTRAINT usert_pkey PRIMARY KEY (id);
 
 
 --
--- TOC entry 2727 (class 2606 OID 17190)
+-- TOC entry 2729 (class 2606 OID 17190)
 -- Name: ec_product_type product_category_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_product_type
-    ADD CONSTRAINT product_category_fk FOREIGN KEY (category_id) REFERENCES public.ec_category(category_id);
+    ADD CONSTRAINT product_category_fk FOREIGN KEY (category_id) REFERENCES public.ec_category(id);
 
 
 --
--- TOC entry 2725 (class 2606 OID 17195)
+-- TOC entry 2727 (class 2606 OID 17195)
 -- Name: ec_pictures product_pictures_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_pictures
-    ADD CONSTRAINT product_pictures_fk FOREIGN KEY (product_id) REFERENCES public.ec_product_type(product_id);
+    ADD CONSTRAINT product_pictures_fk FOREIGN KEY (product_id) REFERENCES public.ec_product_type(id);
 
 
 --
--- TOC entry 2726 (class 2606 OID 17200)
+-- TOC entry 2728 (class 2606 OID 17215)
 -- Name: ec_product_entity product_type_entity_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_product_entity
-    ADD CONSTRAINT product_type_entity_fk FOREIGN KEY (product_id) REFERENCES public.ec_product_type(product_id);
+    ADD CONSTRAINT product_type_entity_fk FOREIGN KEY (product_id) REFERENCES public.ec_product_type(id);
 
 
 --
--- TOC entry 2723 (class 2606 OID 17205)
+-- TOC entry 2725 (class 2606 OID 17205)
 -- Name: ec_admin user_admin_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_admin
-    ADD CONSTRAINT user_admin_fk FOREIGN KEY (user_id) REFERENCES public.ec_user(user_id);
+    ADD CONSTRAINT user_admin_fk FOREIGN KEY (user_id) REFERENCES public.ec_user(id);
 
 
 --
--- TOC entry 2724 (class 2606 OID 17210)
+-- TOC entry 2726 (class 2606 OID 17210)
 -- Name: ec_customer user_customer_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.ec_customer
-    ADD CONSTRAINT user_customer_fk FOREIGN KEY (user_id) REFERENCES public.ec_user(user_id);
+    ADD CONSTRAINT user_customer_fk FOREIGN KEY (user_id) REFERENCES public.ec_user(id);
 
 
--- Completed on 2019-08-13 14:23:00
+-- Completed on 2019-09-04 18:24:27
 
 --
 -- PostgreSQL database dump complete
