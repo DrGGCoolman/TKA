@@ -2,7 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<body>
+<body class="bg-main">
 
     <nav class="navbar navbar-expand-lg navbar-dark w-100 bg-main pt-3" th:fragment="copy">
         <div class="container-fluid">
@@ -16,10 +16,10 @@
                             aria-controls="nav-collapse3"></i>
                     </button>
                 </li>
-                <li class="collapse nav-item" id="nav-collapse3">
+                <li class="collapse" id="nav-collapse3">
                     <form class="nav-item navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" style="height:30px" placeholder="Fahrzeug suchen" />
+                            <input type="text" class="form-control" placeholder="Fahrzeug suchen" />
                         </div>
                     </form>
                 </li>
@@ -43,10 +43,10 @@
 
                 <!-- DROPDOWN LOGIN-->
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/rent}">Registrierung |</a>
+                    <a class="nav-link text-white" th:href="@{/register}">Registrierung |</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/rent}">Login</a>
+                    <a class="nav-link text-white" th:href="@{/login}">Login</a>
                 </li>
 
                 <!--<li class="nav-item">
