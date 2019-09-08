@@ -3,22 +3,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-    <footer class="bg-main text-white m-0 p-0" th:fragment="copy">
-
-        <div class="p-4 w-100">
-            <h5>
-                Impressum
-            </h5>
-            <p class="text-white small">
-                Exclusive Car Rental GmbH <br>
-                XXXXXX XXXXX XXXXX<br>
-                XXX XXX XXX XXX XXXX
-            </p>
+    <footer class="footer font-small text-white p-3" th:fragment="copy">
+        <div class="footer-copyright text-center text-white" >
+            Impressum | Datenschutz | Nutzungsbedingungen | Exclusive Car Rental © 2018
         </div>
-
-
-
     </footer>
+
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
