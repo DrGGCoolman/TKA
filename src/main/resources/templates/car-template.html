@@ -6,14 +6,14 @@
 
         <div class="cardbox mb-3 mh-250" th:fragment="copy">
                 <div class="row no-gutters">
-                    <div class="col-md-4 p-2">
-                        <img th:src="@{img/mclaren.jpg}" class="card-img" alt="...">
+                    <div class="col-md-3 p-2">
+                        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="cardbox-body">
                             <h5 class="cardbox-title pb-4">McLaren 570s</h5>
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col">
                                     <table class="table-car">
                                         <tbody>
                                           <tr>
@@ -40,14 +40,12 @@
                                         </tbody>
                                       </table>
                                 </p>
+                              </div>
+                              <div class="col">
+                                      <img th:src="@{/img/200km.svg}" class="" alt="..."> 
+                                      <img th:src="@{/img/500km.svg}" class="position-absolute  " alt="..."> 
+                              </div>  
                             </div>
-                                <div class="col-4">
-                                    <small>ab</small> 1.000,00 € <small>pro Tag</small>
-                                </div>
-                                
-                                
-                            </div>
-
                         </div>
                     </div>
                 </div>
