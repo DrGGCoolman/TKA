@@ -1,6 +1,9 @@
 package de.gowlr.allcar.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -9,6 +12,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "ec_product_type")
 public class ProductEntity {
+  @Id
+  @Getter
+  @Setter
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
   @Getter
   @Setter
   private String bodyColor;
