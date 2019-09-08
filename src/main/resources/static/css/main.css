@@ -1,16 +1,9 @@
 /* SOCIAL MEDIA ICONS */
 
 .fa {
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
     color:#ffffff;
     width: 1rem; 
     height: 1rem;
-    padding-left: 0rem;
   }
   
   .fa:hover {
@@ -80,6 +73,9 @@ BOOTSTRAP
 
 }
 
+.searchbar {
+  height: 88.5%;
+}
  :root {
 
   /* MAIN COLORS */
@@ -1717,7 +1713,7 @@ pre code {
 }
 
 .table-car {
-  width: 100%;
+  width: 85%;
   margin-bottom: 1rem;
   color: #fff;
   font-size: 14px;
@@ -4962,6 +4958,14 @@ input[type="button"].btn-block {
   }
 }
 
+.card-img {
+  width: 304px;
+  height: 171px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
 .card-columns .card {
   margin-bottom: 0.75rem;
 }
@@ -5565,7 +5569,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
-  background-color: rgb(81, 82, 102, 0.8);
+  background-color: rgb(81, 82, 102, 0.1);
   color: #fff;
 }
 
