@@ -35,7 +35,7 @@ public class ProductTypeController {
     @GetMapping("list")
     public String showUpdateForm(Model model) {
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "index";
+        return "products/index";
     }
 
     @PostMapping("add")
