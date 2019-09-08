@@ -4,18 +4,18 @@ package de.gowlr.allcar.entities;
 
 public class EcPictures {
 
-  private long pictureId;
+  private long Id;
   private String title;
   private String filePath;
   private long productId;
 
 
   public long getPictureId() {
-    return pictureId;
+    return Id;
   }
 
   public void setPictureId(long pictureId) {
-    this.pictureId = pictureId;
+    this.Id = pictureId;
   }
 
 

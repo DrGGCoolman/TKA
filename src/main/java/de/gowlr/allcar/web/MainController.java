@@ -45,9 +45,9 @@ public class MainController {
         return "login";
     }
 
-    @RequestMapping("/rent")
+    @RequestMapping("/product")
     public String rent() {
-        return "rent";
+        return "product";
     }
 
     @RequestMapping("/admin/rent")
