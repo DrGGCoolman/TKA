@@ -50,6 +50,11 @@ public class MainController {
         return "products/products";
     }
 
+    @RequestMapping("/products/product-detail")
+    public String productDetail() {
+        return "products/product-detail";
+    }
+
     @RequestMapping("/admin/products")
     public String adminProducts() {
         return "adminProducts";
