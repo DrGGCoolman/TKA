@@ -2,6 +2,11 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
+<link rel="stylesheet" th:href="@{/css/main.css}">
+<link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <body class="bg-main">
 
     <nav class="navbar navbar-expand-lg navbar-dark w-100 bg-main pt-3" th:fragment="copy">
@@ -26,7 +31,7 @@
 
                 <!--RENT-Block-->
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/product}">Fahrzeuge</a>
+                    <a class="nav-link text-white" th:href="@{/products}">Fahrzeuge</a>
                 </li>
             </ul>
 
@@ -34,27 +39,20 @@
                     ÜBERSCHRIFT
                     DIV, damit Element zentriert werden kann-->
             <div class="nav-item">
-                <a class="navbar-brand" th:href="@{/index}">EXCLUSIVE CAR RENTAL</a>
+                <a class="navbar-brand-cars" th:href="@{/index}">EXCLUSIVE CAR RENTAL</a>
             </div>
 
 
             <!-- Rechte Elemente-->
             <ul class="nav navbar-nav">
 
-                <!-- DROPDOWN LOGIN-->
+                <!-- LOGIN-->
                 <li class="nav-item">
                     <a class="nav-link text-white" th:href="@{/register}">Registrierung |</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" th:href="@{/login}">Login</a>
                 </li>
-
-                <!--<li class="nav-item">
-                    <button class="btn" style="width: 3rem; height: 3rem;" type="button" data-toggle="collapse"
-                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa fa-bars p-2" style="color:#CBBEB5"></i>
-                    </button>
-                </li>-->
             </ul>
         </div>
 

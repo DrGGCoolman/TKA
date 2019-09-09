@@ -6,14 +6,14 @@
 
         <div class="cardbox mb-3 mh-250" th:fragment="copy">
                 <div class="row no-gutters">
-                    <div class="col-md-4 p-2">
-                        <img th:src="@{img/mclaren.jpg}" class="card-img" alt="...">
+                    <div class="col-md-3 p-2">
+                        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col">
                         <div class="cardbox-body">
-                            <h5 class="cardbox-title pb-4">McLaren 570s</h5>
-                            <div class="row">
-                                <div class="col-8">
+                            <h4 class="cardbox-title pb-3">McLaren 570s</h4>
+                            <div class="row-card">
+                                <div class="col-5 mt-2">
                                     <table class="table-car">
                                         <tbody>
                                           <tr>
@@ -40,14 +40,20 @@
                                         </tbody>
                                       </table>
                                 </p>
+                              </div>
+                              <div class="col-3">
+                                  <div>
+                                      <button type="button" class="btn btn-light">>200km</button>
+                                      <button type="button" class="btn btn-light">>500km</button> 
+                                  </div>
+                                  <div class="col">
+                                      <button type="button" class="btn btn-light ml-4 mt-1">>1000km</button> 
+                                  </div>
+                              </div> 
+                              <div class="col-4 text-center">
+                                  <h3>Ab <strong>1000,- €</strong> pro Tag</h3>
+                              </div> 
                             </div>
-                                <div class="col-4">
-                                    <small>ab</small> 1.000,00 € <small>pro Tag</small>
-                                </div>
-                                
-                                
-                            </div>
-
                         </div>
                     </div>
                 </div>
