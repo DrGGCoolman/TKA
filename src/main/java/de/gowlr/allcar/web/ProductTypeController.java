@@ -28,7 +28,7 @@ public class ProductTypeController {
     }
 
     @GetMapping("signup")
-    public String showSignUpForm(ProductType ProductType) {
+    public String showSignUpForm(EcProductTypeEntity ProductType) {
         return "products/add-product-type";
     }
 
@@ -39,7 +39,7 @@ public class ProductTypeController {
     }
 
     @PostMapping("add")
-    public String addProductType(@Valid ProductType ProductType, BindingResult result, Model model) {
+    public String addProductType(@Valid EcProductTypeEntity ProductType, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-ProductType";
         }
@@ -50,14 +50,14 @@ public class ProductTypeController {
 
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        ProductType ProductType = ProductTypeRepository.findById(id)
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         model.addAttribute("ProductType", ProductType);
         return "update-ProductType";
     }
 
     @PostMapping("update/{id}")
-    public String updateProductType(@PathVariable("id") long id, @Valid ProductType ProductType, BindingResult result,
+    public String updateProductType(@PathVariable("id") Integer id, @Valid EcProductTypeEntity ProductType, BindingResult result,
             Model model) {
         if (result.hasErrors()) {
             ProductType.setId(id);
@@ -71,7 +71,7 @@ public class ProductTypeController {
 
     @GetMapping("delete/{id}")
     public String deleteProductType(@PathVariable("id") long id, Model model) {
-        ProductType ProductType = ProductTypeRepository.findById(id)
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         ProductTypeRepository.delete(ProductType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
