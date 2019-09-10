@@ -23,7 +23,7 @@
     <div class="container my-2">
         <div class="card">
             <div class="card-body">
-                <div th:switch="${productType}"
+                <div th:switch="${ProductTypes}"
                     class="container my-5">
                     <p class="my-5">
                         <a href="/products/signup"
@@ -36,35 +36,23 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            bodyColor
+                                            brand
                                         </th>
                                         <th>
-                                            upholstery
+                                            model
                                         </th>
                                         <th>
-                                            massageSeats
-                                        </th>
-                                        <th>
-                                            displaysRear
-                                        </th>
-                                        <th>
-                                            price
-                                        </th>
-                                        <th>
-                                            availibilityWeekdays
-                                        </th>
-                                        <th>
-                                            productId
+                                            variant
                                         </th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="product : ${productType}">
-                                        <td th:text="${product.name}"></td>
-                                        <td th:text="${product.email}"></td>
-                                        <td th:text="${product.phoneNo}"></td>
+                                    <tr th:each="product : ${ProductTypes}">
+                                        <td th:text="${product.brand}"></td>
+                                        <td th:text="${product.brand}"></td>
+                                        <td th:text="${product.brand}"></td>
                                         <td><a th:href="@{/products/edit/{id}(id=${product.id})}"
                                                 class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/products/delete/{id}(id=${product.id})}"

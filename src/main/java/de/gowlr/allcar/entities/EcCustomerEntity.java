@@ -1,21 +1,29 @@
 package de.gowlr.allcar.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "ec_customer", schema = "public", catalog = "exclusive cars")
 public class EcCustomerEntity {
+    private int id;
     private String title;
     private Date birth;
     private String street;
     private int houseNumber;
     private int postCode;
     private String city;
+
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Basic
     @Column(name = "title")
@@ -79,19 +87,19 @@ public class EcCustomerEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcCustomerEntity that = (EcCustomerEntity) o;
-        return houseNumber == that.houseNumber &&
-                postCode == that.postCode &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(birth, that.birth) &&
-                Objects.equals(street, that.street) &&
-                Objects.equals(city, that.city);
+        return houseNumber == that.houseNumber && postCode == that.postCode && Objects.equals(title, that.title)
+                && Objects.equals(birth, that.birth) && Objects.equals(street, that.street)
+                && Objects.equals(city, that.city);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(title, birth, street, houseNumber, postCode, city);
     }
+
 }
