@@ -4,33 +4,56 @@
 
   <body>
 
-        <div class="card mb-3 mh-250" th:fragment="copy">
+        <div class="cardbox mb-3 mh-250" th:fragment="copy">
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img th:src="@{img/porsche.jpg}" class="card-img" alt="...">
+                    <div class="col-md-3 p-2">
+                        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Name des Autos</h5>
-                            <div class="row">
-                                <div class="col-8">
-                                    <p class="card-text">
-                                        Information 1: XXX PS<br>
-                                        Information 2: XXX Liter<br>
-                                        Information 3: Automatik/ Manuell<br>
-                                        ... <br>
-
-                                    </p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                    <div class="col">
+                        <div class="cardbox-body">
+                            <h4 class="cardbox-title pb-3">McLaren 570s</h4>
+                            <div class="row-card">
+                                <div class="col-5 mt-2">
+                                    <table class="table-car">
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row"></td>
+                                            <td><i class="fa fa-motorcycle"></i></td>
+                                            <td>570 PS</td>
+                                            <td><i class="fa fa-paint-brush"></i></td>
+                                            <td>Orange</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row"></td>
+                                            <td><i class="fa fa-battery-three-quarters"></i></td>
+                                            <td>3,8 Liter V8</td>
+                                            <td><i class="fa fa-flag"></i></td>
+                                            <td>Super +</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row"></td>
+                                            <td><i class="fa fa-tachometer"></i></td>
+                                            <td>Automatik</td>
+                                            <td><i class="fa fa-bolt"></i></td>
+                                            <td>Heckantrieb</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
                                 </p>
+                              </div>
+                              <div class="col-3">
+                                  <div>
+                                      <button type="button" class="btn btn-light">>200km</button>
+                                      <button type="button" class="btn btn-light">>500km</button> 
+                                  </div>
+                                  <div class="col">
+                                      <button type="button" class="btn btn-light ml-4 mt-1">>1000km</button> 
+                                  </div>
+                              </div> 
+                              <div class="col-4 text-center">
+                                  <h3>Ab <strong>1000,- €</strong> pro Tag</h3>
+                              </div> 
                             </div>
-                                <div class="col-4">
-                                    <small>ab</small> 1.000,00 € <small>pro Tag</small>
-                                </div>
-                                
-                                
-                            </div>
-
                         </div>
                     </div>
                 </div>
