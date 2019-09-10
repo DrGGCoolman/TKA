@@ -74,9 +74,6 @@ BOOTSTRAP
 
 }
 
-.searchbar {
-  height: 88.5%;
-}
  :root {
 
   /* MAIN COLORS */
@@ -794,6 +791,13 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.row-card {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .no-gutters {
@@ -1714,7 +1718,7 @@ pre code {
 }
 
 .table-car {
-  width: 85%;
+  width: 100%;
   margin-bottom: 1rem;
   color: #fff;
   font-size: 14px;
@@ -2826,15 +2830,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-light {
-  color: #212529;
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
+  color: rgba(81, 82, 102);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-color:  rgba(255, 255, 255, 0.75);
 }
 
 .btn-light:hover {
-  color: #212529;
-  background-color: #e2e6ea;
-  border-color: #dae0e5;
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
 }
 
 .btn-light:focus, .btn-light.focus {
@@ -5065,17 +5069,17 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  color: rgba(81, 82, 102, 0.9);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.75);
 }
 
 .page-link:hover {
   z-index: 2;
-  color: #0056b3;
+  color: #000000;
   text-decoration: none;
-  background-color: #e9ecef;
-  border-color: #dee2e6;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
 }
 
 .page-link:focus {

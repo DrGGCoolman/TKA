@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2 mt-4">
-                    <div class="categories searchbar border-bottom">
+                    <div class="categories">
                         <ul class="list-group-wb">
                             <a li class="list-group-wb-item" href="#klasse" data-toggle="collapse">Klasse
                                 <i class="fa fa-angle-down"></i>
@@ -113,6 +113,10 @@
 
                     <div th:insert="~{car-template :: copy}"></div>
 
+                    <div th:insert="~{car-template :: copy}"></div>
+
+                    <div th:insert="~{car-template :: copy}"></div>
+
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -122,8 +126,6 @@
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
                     </nav>
-
-                    <p class="m-4"><a href="/index" th:href="@{/index}">Back to home page</a></p>
                 </div>
             </div>
         </div>
