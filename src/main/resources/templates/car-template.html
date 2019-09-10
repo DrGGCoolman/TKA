@@ -2,62 +2,67 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-  <body>
+<body>
 
-        <div class="cardbox mb-3 mh-250" th:fragment="copy">
-                <div class="row no-gutters">
-                    <div class="col-md-3 p-2">
-                        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
-                    </div>
-                    <div class="col">
-                        <div class="cardbox-body">
-                            <h4 class="cardbox-title pb-3">McLaren 570s</h4>
-                            <div class="row-card">
-                                <div class="col-5 mt-2">
-                                    <table class="table-car">
-                                        <tbody>
-                                          <tr>
-                                            <th scope="row"></td>
-                                            <td><i class="fa fa-motorcycle"></i></td>
-                                            <td>570 PS</td>
-                                            <td><i class="fa fa-paint-brush"></i></td>
-                                            <td>Orange</td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row"></td>
-                                            <td><i class="fa fa-battery-three-quarters"></i></td>
-                                            <td>3,8 Liter V8</td>
-                                            <td><i class="fa fa-flag"></i></td>
-                                            <td>Super +</td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row"></td>
-                                            <td><i class="fa fa-tachometer"></i></td>
-                                            <td>Automatik</td>
-                                            <td><i class="fa fa-bolt"></i></td>
-                                            <td>Heckantrieb</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                </p>
-                              </div>
-                              <div class="col-3">
-                                  <div>
-                                      <button type="button" class="btn btn-light">>200km</button>
-                                      <button type="button" class="btn btn-light">>500km</button> 
-                                  </div>
-                                  <div class="col">
-                                      <button type="button" class="btn btn-light ml-4 mt-1">>1000km</button> 
-                                  </div>
-                              </div> 
-                              <div class="col-4 text-center">
-                                  <h3>Ab <strong>1000,- €</strong> pro Tag</h3>
-                              </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="cardbox mb-3 mh-250" th:fragment="copy (product)">
+    <div class="row no-gutters">
+      <div class="col-md-3 p-2">
+        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
+      </div>
+      <div class="col">
+        <div class="cardbox-body">
+          <h4 class="cardbox-title pb-3" th:text="${product.brand} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+          <div class="row-card">
+            <div class="col-5 mt-2">
+              <table class="table-car">
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      </td>
+                    <td><i class="fa fa-motorcycle"></i></td>
+                    <td th:text="${product.power} + ' PS'"></td>
+                    <td><i class="fa fa-paint-brush"></i></td>
+                    <td>TODO: Datenbankumbau</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      </td>
+                    <td><i class="fa fa-battery-three-quarters"></i></td>
+                    <td th:text="${product.engine}"></td>
+                    <td><i class="fa fa-flag"></i></td>
+
+                    <!-- TODO: title in db groß-schreiben -->
+                    <td th:text="${product.ecCategoryByCategoryId.title}"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      </td>
+                    <td><i class="fa fa-tachometer"></i></td>
+                    <td th:text="${product.gearingType}"></td>
+                    <td><i class="fa fa-bolt"></i></td>
+                    <td th:text="${product.driveSystem}"></td>
+                  </tr>
+                </tbody>
+              </table>
+              </p>
             </div>
-  </body>
-  
+            <div class="col-3">
+              <div>
+                <button type="button" class="btn btn-light">>200km</button>
+                <button type="button" class="btn btn-light">>500km</button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-light ml-4 mt-1">>1000km</button>
+              </div>
+            </div>
+            <div class="col-4 text-center">
+              <h3>Ab <strong>1000,- €</strong> pro Tag</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
