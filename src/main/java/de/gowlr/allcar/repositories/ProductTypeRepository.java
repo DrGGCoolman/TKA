@@ -9,5 +9,5 @@ import de.gowlr.allcar.entities.EcProductTypeEntity;;
 
 @Repository
 public interface ProductTypeRepository extends CrudRepository<EcProductTypeEntity, Long> {
-    List<EcProductTypeEntity> findByModel(String mode);
+    List<EcProductTypeEntity> findByModel(String model);
 }

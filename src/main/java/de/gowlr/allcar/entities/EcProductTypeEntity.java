@@ -1,15 +1,25 @@
 package de.gowlr.allcar.entities;
 
-import javax.persistence.*;
 import java.util.Objects;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
+
 
 @Entity
 @Table(name = "ec_product_type", schema = "public", catalog = "exclusive cars")
 public class EcProductTypeEntity {
+
+    // TODO: Validierung anpassen/
     private int id;
+    @NotBlank(message = "Bitte aufüllen!")
     private String brand;
+    @NotBlank(message = "Bitte aufüllen!")
     private String model;
+    @NotBlank(message = "Bitte aufüllen!")
     private String variant;
+
     private String gearingType;
     private int age;
     private double weight;
@@ -26,6 +36,15 @@ public class EcProductTypeEntity {
     private boolean addDriver;
     private int minimumAge;
     private EcCategoryEntity ecCategoryByCategoryId;
+
+    public EcProductTypeEntity() {
+    }
+
+    public EcProductTypeEntity(String brand, String model, String variant) {
+        this.brand = brand;
+        this.model = model;
+        this.variant = variant;
+    }
 
     @Id
     @Column(name = "id")
@@ -219,33 +238,25 @@ public class EcProductTypeEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcProductTypeEntity that = (EcProductTypeEntity) o;
-        return id == that.id &&
-                age == that.age &&
-                Double.compare(that.weight, weight) == 0 &&
-                power == that.power &&
-                cubicCapacity == that.cubicCapacity &&
-                Double.compare(that.nm, nm) == 0 &&
-                Double.compare(that.zeroToHundred, zeroToHundred) == 0 &&
-                seats == that.seats &&
-                luggageCompartment == that.luggageCompartment &&
-                doors == that.doors &&
-                addDriver == that.addDriver &&
-                minimumAge == that.minimumAge &&
-                Objects.equals(brand, that.brand) &&
-                Objects.equals(model, that.model) &&
-                Objects.equals(variant, that.variant) &&
-                Objects.equals(gearingType, that.gearingType) &&
-                Objects.equals(engine, that.engine) &&
-                Objects.equals(driveSystem, that.driveSystem) &&
-                Objects.equals(fuelType, that.fuelType);
+        return id == that.id && age == that.age && Double.compare(that.weight, weight) == 0 && power == that.power
+                && cubicCapacity == that.cubicCapacity && Double.compare(that.nm, nm) == 0
+                && Double.compare(that.zeroToHundred, zeroToHundred) == 0 && seats == that.seats
+                && luggageCompartment == that.luggageCompartment && doors == that.doors && addDriver == that.addDriver
+                && minimumAge == that.minimumAge && Objects.equals(brand, that.brand)
+                && Objects.equals(model, that.model) && Objects.equals(variant, that.variant)
+                && Objects.equals(gearingType, that.gearingType) && Objects.equals(engine, that.engine)
+                && Objects.equals(driveSystem, that.driveSystem) && Objects.equals(fuelType, that.fuelType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, brand, model, variant, gearingType, age, weight, power, engine, cubicCapacity, nm, driveSystem, fuelType, zeroToHundred, seats, luggageCompartment, doors, addDriver, minimumAge);
+        return Objects.hash(id, brand, model, variant, gearingType, age, weight, power, engine, cubicCapacity, nm,
+                driveSystem, fuelType, zeroToHundred, seats, luggageCompartment, doors, addDriver, minimumAge);
     }
 
     @ManyToOne
