@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body class="bg-main">
+
+    <div th:insert="~{header :: copy}"></div>
+
+    <div class="container mt-4">
+
+        <h3 class="text-white">Neues Auto hinzufügen</h3>
+        <br>
+
+        <div class="cardbox p-3">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputEmail4">Marke</label>
+                        <select id="inputState" class="form-control" required="true">
+                            <option selected>Marke wählen</option>
+                            <option>Lamborghini</option>
+                            <option>Lamborghini</option>
+                            <option>Lamborghini</option>
+                            <option>Lamborghini</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputPassword4">Modell</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Modell">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputPassword4">Variante</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Variante">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Beschreibung</label>
+                    <input type="text" class="form-control" id="inputAddress"
+                        placeholder="Geben Sie hier eine Beschreibung für das neue Auto ein">
+                </div>
+                <br>
+                <h5 class="text-white">Technische Daten</h5>
+                <hr class="border-white">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="inputCity">Motor</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Motor">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="inputCity">Antrieb</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Antrieb">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Leistung</label>
+                        <input type="text" class="form-control" id="inputZip" placeholder="in PS">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputCity">Getriebe</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Getriebe wählen ...</option>
+                            <option>Automatik</option>
+                            <option>Manuell</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputCity">0 - 100</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="in Sekunden">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Baujahr</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Drehmoment</label>
+                        <input type="text" class="form-control" id="inputZip" placeholder="in nm">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputCity">Hubraum</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                </div>
+                <br>
+                <h5 class="text-white">Sonstiges</h5>
+                <hr class="border-white">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputCity">Farbe</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Farbe eingeben">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputCity">Innenraumfarbe</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Farbe eingeben">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Gewicht</label>
+                        <input type="text" class="form-control" id="inputZip" placeholder="in kg">
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Sitze</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Anzahl der Sitze wählen</option>
+                            <option>2</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Mindestalter</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Mindestalter wählen</option>
+                            <option>18</option>
+                            <option>21</option>
+                            <option>25</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputCity">Türen</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Anzahl wählen ...</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputCity">Zusatzfahrer</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Ja/ Nein</option>
+                            <option>Ja</option>
+                            <option>Nein</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Kraftstoff</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Wählen ...</option>
+                            <option>Benzin</option>
+                            <option>Diesel</option>
+                            <option>Elektro</option>
+                            <option>Hybrid</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="inputZip">Rückenlehnendisplay</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Ja/ Nein</option>
+                            <option>Ja</option>
+                            <option>Nein</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Massagesitze
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Gepäckraum
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Als Highlight auf Startseite anzeigen
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-danger">Neues Auto erstellen</button>
+                <br>
+            </form>
+        </div>
+
+    </div>
+
+
+    <br>
+    <br>
+
+    <!-- FOOTER-->
+    <div th:insert="~{footer :: copy}"></div>
+
+
+
+    <!-- SKRIPTE-->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
