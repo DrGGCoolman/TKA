@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:postgresql://localhost:5432/exclusive cars</property>
+    <property name="connection.url">jdbc:postgresql://localhost:5432/ec</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
       <mapping class="de.gowlr.allcar.entities.EcAdminEntity"/>
       <mapping class="de.gowlr.allcar.entities.EcCategoryEntity"/>
@@ -13,6 +13,9 @@
       <mapping class="de.gowlr.allcar.entities.EcProductEntityEntity"/>
       <mapping class="de.gowlr.allcar.entities.EcProductTypeEntity"/>
       <mapping class="de.gowlr.allcar.entities.EcUserEntity"/>
+      <mapping class="de.gowlr.allcar.entities.EcBrandEntity"/>
+      <mapping class="de.gowlr.allcar.entities.EcRoleEntity"/>
+      <mapping class="de.gowlr.allcar.entities.EcSearchWordsEntity"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
