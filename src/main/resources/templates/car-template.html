@@ -11,36 +11,60 @@
       </div>
       <div class="col">
         <div class="cardbox-body">
-          <h4 class="cardbox-title pb-3" th:text="${product.brand} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+          <h4 class="cardbox-title pb-3"
+            th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
           <div class="row-card">
             <div class="col-5 mt-2">
               <table class="table-car">
                 <tbody>
                   <tr>
                     <th scope="row">
-                      </td>
-                    <td><i class="fa fa-motorcycle"></i></td>
-                    <td th:text="${product.power} + ' PS'"></td>
-                    <td><i class="fa fa-paint-brush"></i></td>
-                    <td>TODO: Datenbankumbau</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      </td>
-                    <td><i class="fa fa-battery-three-quarters"></i></td>
-                    <td th:text="${product.engine}"></td>
-                    <td><i class="fa fa-flag"></i></td>
 
-                    <!-- TODO: title in db groß-schreiben -->
-                    <td th:text="${product.ecCategoryByCategoryId.title}"></td>
+                    <td>
+                      <i class="fa fa-motorcycle"></i>
+                    </td>
+
+                    <td th:text="${product.powerPs} + ' PS'"></td>
+
+                    <td>
+                      <i class="fa fa-paint-brush"></i>
+                    </td>
+
+                    <td th:text="${product.bodyColor}"></td>
                   </tr>
+
                   <tr>
                     <th scope="row">
                       </td>
-                    <td><i class="fa fa-tachometer"></i></td>
+
+                    <td>
+                      <i class="fa fa-battery-three-quarters"></i>
+                    </td>
+
+                    <td th:text="${product.engine}"></td>
+
+                    <td>
+                      <i class="fa fa-flag"></i>
+                    </td>
+
+                    <td th:text="${product.ecCategoryByCategoryId.title}"></td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">
+
+                    <td>
+                      <i class="fa fa-tachometer"></i>
+                    </td>
+
                     <td th:text="${product.gearingType}"></td>
-                    <td><i class="fa fa-bolt"></i></td>
+
+                    <td>
+                      <i class="fa fa-bolt"></i>
+                    </td>
+
                     <td th:text="${product.driveSystem}"></td>
+
                   </tr>
                 </tbody>
               </table>
