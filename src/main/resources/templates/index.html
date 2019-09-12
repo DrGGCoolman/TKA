@@ -27,18 +27,24 @@
         <div class="row pt-2">
             <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
                 <div class="jumbotron jumbotron-porsche">
+                    <div id="sport" class="text-center">
+                        <h2>Sport</h2>
+                    </div>
                 </div>
             </a>
             <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
                 <div class="jumbotron jumbotron-benzer">
+                    <h2 id="sportplus"></h2>
                 </div>
             </a>
             <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
                 <div class="jumbotron jumbotron-bmw">
+                    <h2 id="suv"></h2>
                 </div>
             </a>
             <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
                 <div class="jumbotron jumbotron-maserati">
+                    <h2 id="luxus"></h2>
                 </div>
             </a>
         </div>
@@ -188,11 +194,11 @@
     <script>
         $(".jumbotron-porsche").mouseover(function () {
             $('#jumbo-porsche').removeClass('col-lg-3');
-            $('#jumbo-porsche').addClass('col-lg-12');
+            $('#jumbo-porsche').addClass('col-lg-12')
             $('#jumbo-benzer').hide();
             $('#jumbo-bmw').hide();
             $('#jumbo-maserati').hide();
-            $('#jumbo-porsche').style.transition = "all 2s";
+            $("#sport").show();
         });
         $(".jumbotron-porsche").mouseout(function () {
             $('#jumbo-porsche').addClass('col-lg-3');
@@ -201,6 +207,7 @@
             $('#jumbo-bmw').show();
             $('#jumbo-maserati').show();
             $('#jumbo-porsche')
+            $("#sport").text("");
         });
 
         $(".jumbotron-benzer").mouseover(function () {
@@ -209,6 +216,7 @@
             $('#jumbo-porsche').hide();
             $('#jumbo-bmw').hide();
             $('#jumbo-maserati').hide();
+            $("#sportplus").text("Sport +");
         });
         $(".jumbotron-benzer").mouseout(function () {
             $('#jumbo-benzer').addClass('col-lg-3');
@@ -216,6 +224,7 @@
             $('#jumbo-porsche').show();
             $('#jumbo-bmw').show();
             $('#jumbo-maserati').show();
+            $("#sportplus").text("");
         });
 
         $(".jumbotron-bmw").mouseover(function () {
@@ -224,6 +233,7 @@
             $('#jumbo-porsche').hide();
             $('#jumbo-benzer').hide();
             $('#jumbo-maserati').hide();
+            $("#suv").text("SUV");
         });
         $(".jumbotron-bmw").mouseout(function () {
             $('#jumbo-bmw').addClass('col-lg-3');
@@ -231,6 +241,7 @@
             $('#jumbo-porsche').show();
             $('#jumbo-benzer').show();
             $('#jumbo-maserati').show();
+            $("#suv").text("");
         });
 
         $(".jumbotron-maserati").mouseover(function () {
@@ -239,6 +250,7 @@
             $('#jumbo-bmw').hide();
             $('#jumbo-porsche').hide();
             $('#jumbo-benzer').hide();
+            $("#luxus").text("Luxus");
         });
         $(".jumbotron-maserati").mouseout(function () {
             $('#jumbo-maserati').addClass('col-lg-3');
@@ -246,13 +258,7 @@
             $('#jumbo-bmw').show();
             $('#jumbo-porsche').show();
             $('#jumbo-benzer').show();
-
-            $(".jumbotron").animate({
-                opacity: "show"
-            },
-
-                "easein");
-
+            $("#luxus").text("");
         });
 
 

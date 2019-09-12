@@ -192,6 +192,28 @@ color: #FFE5AA;
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
+/*
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.jumbotron-maserati:hover .overlay {
+  opacity: 1;
+}
+
+*/
+
 .jumbotron-porsche {
   background-image: url("/img/porsche.jpg");
   background-size: cover;
