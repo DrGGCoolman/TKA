@@ -4,9 +4,10 @@ package de.gowlr.allcar.web;
  * ProductTypeController
  */
 
-import javax.validation.Valid;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
+
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,52 +28,53 @@ public class ProductTypeController {
         this.ProductTypeRepository = ProductTypeRepository;
     }
 
-    @GetMapping("signup")
-    public String showSignUpForm(ProductType ProductType) {
-        return "products/add-product-type";
+    @GetMapping("create")
+    public String showCreateFrom(Model model) {
+       model.addAttribute("productType", new EcProductTypeEntity());
+        return "products/product-create-edit";
     }
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
-        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
+        model.addAttribute("productTypes", ProductTypeRepository.findAll());
         return "products/index";
     }
 
     @PostMapping("add")
-    public String addProductType(@Valid ProductType ProductType, BindingResult result, Model model) {
+    public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-ProductType";
+            return "products/product-create-edit";
         }
 
-        ProductTypeRepository.save(ProductType);
+        ProductTypeRepository.save(productType);
         return "redirect:list";
     }
 
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        ProductType ProductType = ProductTypeRepository.findById(id)
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         model.addAttribute("ProductType", ProductType);
         return "update-ProductType";
     }
 
     @PostMapping("update/{id}")
-    public String updateProductType(@PathVariable("id") long id, @Valid ProductType ProductType, BindingResult result,
-            Model model) {
+    public String updateProductType(@PathVariable("id") Integer id, @Valid EcProductTypeEntity productType,
+            BindingResult result, Model model) {
         if (result.hasErrors()) {
-            ProductType.setId(id);
+            productType.setId(id);
             return "update-ProductType";
         }
 
-        ProductTypeRepository.save(ProductType);
+        ProductTypeRepository.save(productType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";
     }
 
     @GetMapping("delete/{id}")
     public String deleteProductType(@PathVariable("id") long id, Model model) {
-        ProductType ProductType = ProductTypeRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         ProductTypeRepository.delete(ProductType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";

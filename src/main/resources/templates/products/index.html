@@ -1,84 +1,145 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible"
-        content="ie=edge">
-    <title>Users</title>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+    <title>Rent</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="container my-2">
-        <div class="card">
-            <div class="card-body">
-                <div th:switch="${productType}"
-                    class="container my-5">
-                    <p class="my-5">
-                        <a href="/products/signup"
-                            class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Add Product</i></a>
-                    </p>
-                    <div class="col-md-10">
-                        <h2 th:case="null">No Products yet!</h2>
-                        <div th:case="*">
-                            <table class="table table-striped table-responsive-md">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            bodyColor
-                                        </th>
-                                        <th>
-                                            upholstery
-                                        </th>
-                                        <th>
-                                            massageSeats
-                                        </th>
-                                        <th>
-                                            displaysRear
-                                        </th>
-                                        <th>
-                                            price
-                                        </th>
-                                        <th>
-                                            availibilityWeekdays
-                                        </th>
-                                        <th>
-                                            productId
-                                        </th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="product : ${productType}">
-                                        <td th:text="${product.name}"></td>
-                                        <td th:text="${product.email}"></td>
-                                        <td th:text="${product.phoneNo}"></td>
-                                        <td><a th:href="@{/products/edit/{id}(id=${product.id})}"
-                                                class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                        <td><a th:href="@{/products/delete/{id}(id=${product.id})}"
-                                                class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+
+    <div th:insert="~{header :: copy}"></div>
+
+    <div class="rent bg-main">
+
+        <!-- TODO: 
+            Filter auslagern -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 mt-4">
+                    <div class="categories">
+                        <ul class="list-group-wb">
+                            <a li class="list-group-wb-item" href="#klasse" data-toggle="collapse">Klasse
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                                Sport
+                            </a>
+                            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                                Sport +
+                            </a>
+                            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                                SUV
+                            </a>
+                            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                                Luxus
+                            </a>
+
+                            <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+
+                            <a li class="list-group-wb-item" href="#getriebe" data-toggle="collapse">Getriebe
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <a li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
+                                Automatik
+                            </a>
+                            <a li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
+                                Gangschaltung
+                            </a>
+
+                            <li class="list-group-wb-item">Alter<br>
+                                <form class="range-field">
+                                    <input type="range" min="0" max="100" />
+                                </form>
+                            </li>
+                            <li class="list-group-wb-item">Leistung<br>
+                                <form class="range-field">
+                                    <input type="range" min="0" max="100" />
+                                </form>
+                            </li>
+                            <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                                Frontantrieb
+                            </a>
+                            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                                Heckantrieb
+                            </a>
+                            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                                Allrad
+                            </a>
+                            <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                                Benzin
+                            </a>
+                            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                                Diesel
+                            </a>
+                            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                                Elektro
+                            </a>
+                            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                                Hybrid
+                            </a>
+                            <a li class="list-group-wb-item" href="#fahreralter" data-toggle="collapse">Fahreralter
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                                18
+                            </a>
+                            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                                21
+                            </a>
+                            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                                25
+                            </a>
+                        </ul>
 
                     </div>
                 </div>
+                <div class="col-10 mt-4">
+
+                    <div th:switch="${productTypes}">
+                        <div th:case="null">
+                            <span>Keine Produkte gefunden</span>
+                        </div>
+                        <div th:case="*">
+                            <div th:each="product : ${productTypes}">
+                                <div th:insert="~{car-template :: copy(${product})}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- FOOTER-->
+        <div th:insert="~{footer :: copy}"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
 </body>
 
 </html>
