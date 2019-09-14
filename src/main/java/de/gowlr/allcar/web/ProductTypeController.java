@@ -30,7 +30,7 @@ public class ProductTypeController {
 
     @GetMapping("create")
     public String showCreateFrom(Model model) {
-       model.addAttribute("productType", new EcProductTypeEntity());
+        model.addAttribute("productType", new EcProductTypeEntity());
         return "products/product-create-edit";
     }
 
@@ -78,5 +78,11 @@ public class ProductTypeController {
         ProductTypeRepository.delete(ProductType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";
+    }
+
+    @GetMapping("search/{keyWord}")
+    public String searchByKeyword(@PathVariable("keyWord") String keyWord, Model model) {
+        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
+        return "products/index";
     }
 }
