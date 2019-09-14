@@ -66,4 +66,9 @@ public class MainController {
         return "login";
     }
 
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
+    }
+
 }
