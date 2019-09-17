@@ -30,7 +30,7 @@ public class MainController {
         return "user/index";
     }
 
-    @RequestMapping("/admin/index")
+    @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";
     }
