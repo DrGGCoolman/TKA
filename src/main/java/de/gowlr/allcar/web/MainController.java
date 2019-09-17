@@ -45,9 +45,9 @@ public class MainController {
         return "login";
     }
 
-    @RequestMapping("/products/list")
+    @RequestMapping("/products/products")
     public String products() {
-        return "products/index";
+        return "products/products";
     }
 
     @RequestMapping("/products/product-detail")
