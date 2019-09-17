@@ -115,8 +115,23 @@ BOOTSTRAP
 /*BACKGROUND AND TEXT */
 
 .bg-main {
+  position: relative;
+  
+}
+
+.bg-main::after {
   background-image: url("/img/hintergrund.jpg");
-  background-attachment: fixed;
+  background-attachment: fixed; 
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.9;
+  background-position: 50% 0;
 }
 
 .bg-header {
@@ -303,7 +318,7 @@ article, aside, figcaption, figure, header, hgroup, main, nav, section {
 
 footer {
   display: block;
-  background-color: rgba(203, 190, 181, 0.4);
+  background-color: rgba(203, 190, 181, 0.9);
 }
 
 body {
@@ -321,8 +336,8 @@ body {
 
 hr {
   box-sizing: content-box;
-  height: 0;
   overflow: visible;
+  border: 1px solid rgb(255, 255, 255)!important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -669,13 +684,6 @@ h6, .h6 {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
-}
-
-hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 small,
