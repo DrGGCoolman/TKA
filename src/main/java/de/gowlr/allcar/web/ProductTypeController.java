@@ -73,9 +73,7 @@ public class ProductTypeController {
             }
         }
         LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
-        // model.addAttribute("productTypes",
-        // ProductTypeRepository.findByModelContainingIgnoreCaseOrVariantContainingIgnoreCase(modelName,
-        // variant));
+       
 
         model.addAttribute("productTypes", searchResults);
 
