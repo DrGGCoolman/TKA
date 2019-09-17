@@ -2,19 +2,16 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-
 import java.util.Objects;
 
 @Entity
-@Indexed
+
 @Table(name = "ec_product_type", schema = "public", catalog = "ec")
 public class EcProductTypeEntity {
     private Integer id;
-    @Field
+
     private String model;
-    @Field
+
     private String variant;
     private String gearingType;
     private Integer age;
