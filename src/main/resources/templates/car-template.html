@@ -6,10 +6,10 @@
 
   <a href="#" class="cardbox mb-3 mh-250" th:fragment="copy (product)">
     <div class="row no-gutters">
-      <div class="col-md-3 p-2">
+      <div class="col-md-3 col-xs-12 p-2">
         <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
       </div>
-      <div class="col">
+      <div class="col col-xs-12">
         <div class="cardbox-body">
           <h4 class="cardbox-title pb-3 pl-3"
             th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
