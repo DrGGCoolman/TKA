@@ -4833,13 +4833,17 @@ a.cardbox:hover {
 .categories {
   background-color: rgb(81, 82, 102, 0.8);
   background-clip: border-box;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   color: #ffffff;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .cardbox > hr {
   margin-right: 0;
   margin-left: 0;
+  box-sizing: content-box;
+  overflow: visible;
+  border: 1px solid rgb(255, 255, 255)!important;
 }
 
 .cardbox > .list-group:first-child .list-group-item:first-child {
