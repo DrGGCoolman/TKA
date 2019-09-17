@@ -7,8 +7,11 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
+//import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.stereotype.Service;
 
 @Controller
 @RequestMapping("/products/")
@@ -85,4 +90,22 @@ public class ProductTypeController {
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "products/index";
     }
+
+    /*
+    @GetMapping("/q")
+    public List<EcProductTypeEntity> getAllByQuery(
+        @RequestParam(value = "brandTitle", required = false) String brandTitle,
+        @RequestParam(value = "model", required = false) String model,
+        @RequestParam(value = "variant", required = false) String variant) {
+        return service.getByQuery(brandTitle, model, variant);
+    }
+
+    @GetMapping("/filter")
+    public Page<EcProductTypeEntity> getAllByMyFilter(Filter filter) {
+	return service.getAllBySpecification(filter);
 }
+
+*/
+
+}
+
