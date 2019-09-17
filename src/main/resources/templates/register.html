@@ -41,14 +41,10 @@
 
                             <div class="form-label-group">
                                 <input type="password" id="inputPassword" class="form-control"
-                                    placeholder="Passwort wiederholen" required>
+                                    placeholder="Passwort wiederholen" required> 
                                 <label for="inputPassword" class="pt-1">Passwort wiederholen</label>
                             </div>
-
-                            <div class="custom-control custom-checkbox mb-3 pt-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Passwort merken</label>
-                            </div>
+                            <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Registrieren</button>
                             <hr class="my-4">
                         </form>
@@ -57,9 +53,10 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <!-- FOOTER-->
-    <div class="fixed-bottom">
+    <div class="sticky-bottom">
         <div th:insert="~{footer :: copy}"></div>
     </div>
 </body>
