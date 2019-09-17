@@ -7,11 +7,12 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
-//import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,8 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/products/")
@@ -45,12 +45,27 @@ public class ProductTypeController {
         return "products/index";
     }
 
+    @GetMapping("search")
+    public String searchByKeyword(@RequestParam(value = "model", required = false) String modelName,
+            @RequestParam(value = "variant", required = false) String variant, Model model) {
+        List<EcProductTypeEntity> searchResults = Collections.emptyList();
+
+        // model.addAttribute("productTypes",
+        // ProductTypeRepository.findByModelContainingIgnoreCaseOrVariantContainingIgnoreCase(modelName,
+        // variant));
+
+        model.addAttribute("productTypes",
+        ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(
+        "lamborghini"));
+
+        return "products/index";
+    }
+
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "products/product-create-edit";
         }
-
         ProductTypeRepository.save(productType);
         return "redirect:list";
     }
@@ -85,27 +100,4 @@ public class ProductTypeController {
         return "index";
     }
 
-    @GetMapping("search/{keyWord}")
-    public String searchByKeyword(@PathVariable("keyWord") String keyWord, Model model) {
-        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "products/index";
-    }
-
-    /*
-    @GetMapping("/q")
-    public List<EcProductTypeEntity> getAllByQuery(
-        @RequestParam(value = "brandTitle", required = false) String brandTitle,
-        @RequestParam(value = "model", required = false) String model,
-        @RequestParam(value = "variant", required = false) String variant) {
-        return service.getByQuery(brandTitle, model, variant);
-    }
-
-    @GetMapping("/filter")
-    public Page<EcProductTypeEntity> getAllByMyFilter(Filter filter) {
-	return service.getAllBySpecification(filter);
 }
-
-*/
-
-}
-
