@@ -7,11 +7,14 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,17 +49,35 @@ public class ProductTypeController {
     }
 
     @GetMapping("search")
-    public String searchByKeyword(@RequestParam(value = "model", required = false) String modelName,
-            @RequestParam(value = "variant", required = false) String variant, Model model) {
-        List<EcProductTypeEntity> searchResults = Collections.emptyList();
+    public String searchByKeyword(@RequestParam(value = "searchfor", required = false) String searchfor, Model model) {
+        String[] searchWords = null;
+        ArrayList<EcProductTypeEntity> searchResultsWithDupes = new ArrayList<EcProductTypeEntity>();
 
+        if (searchfor != null && !searchfor.isEmpty()) {
+
+            searchWords = searchfor.split(" ");
+
+            // TODO: speichern in DB von searchfor
+
+            for (String word : searchWords) {
+                if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes
+                            .addAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByModelContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByModelContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByVariantContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByVariantContainingIgnoreCase(word));
+                }
+            }
+        }
+        LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
         // model.addAttribute("productTypes",
         // ProductTypeRepository.findByModelContainingIgnoreCaseOrVariantContainingIgnoreCase(modelName,
         // variant));
 
-        model.addAttribute("productTypes",
-        ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(
-        "lamborghini"));
+        model.addAttribute("productTypes", searchResults);
 
         return "products/index";
     }
