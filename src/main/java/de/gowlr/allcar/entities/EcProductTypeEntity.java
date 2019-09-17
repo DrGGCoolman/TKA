@@ -9,9 +9,7 @@ import java.util.Objects;
 @Table(name = "ec_product_type", schema = "public", catalog = "ec")
 public class EcProductTypeEntity {
     private Integer id;
-
     private String model;
-
     private String variant;
     private String gearingType;
     private Integer age;

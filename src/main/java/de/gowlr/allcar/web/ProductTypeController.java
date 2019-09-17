@@ -7,7 +7,15 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
+import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+
 import javax.validation.Valid;
+
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/products/")
@@ -40,12 +49,42 @@ public class ProductTypeController {
         return "products/index";
     }
 
+    @GetMapping("search")
+    public String searchByKeyword(@RequestParam(value = "searchfor", required = false) String searchfor, Model model) {
+        String[] searchWords = null;
+        ArrayList<EcProductTypeEntity> searchResultsWithDupes = new ArrayList<EcProductTypeEntity>();
+
+        if (searchfor != null && !searchfor.isEmpty()) {
+
+            searchWords = searchfor.split(" ");
+
+            // TODO: speichern in DB von searchfor
+
+            for (String word : searchWords) {
+                if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes
+                            .addAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByModelContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByModelContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByVariantContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByVariantContainingIgnoreCase(word));
+                }
+            }
+        }
+        LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
+
+        model.addAttribute("productTypes", searchResults);
+
+        return "products/index";
+    }
+
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "products/product-create-edit";
         }
-
         ProductTypeRepository.save(productType);
         return "redirect:list";
     }
@@ -80,9 +119,4 @@ public class ProductTypeController {
         return "index";
     }
 
-    @GetMapping("search/{keyWord}")
-    public String searchByKeyword(@PathVariable("keyWord") String keyWord, Model model) {
-        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "products/index";
-    }
 }
