@@ -7,6 +7,7 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -73,7 +74,6 @@ public class ProductTypeController {
             }
         }
         LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
-       
 
         model.addAttribute("productTypes", searchResults);
 
