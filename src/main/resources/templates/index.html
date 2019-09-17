@@ -25,7 +25,7 @@
 
     <div class="container col-11">
         <div class="row pt-2">
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
+            <a th:href="@{../products/products.html}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
                 <div class="jumbotron jumbotron-porsche">
                     <div class="overlay">
                         <div class="row">
@@ -135,27 +135,27 @@
                 <li data-target="#demo" data-slide-to="2"></li>
             </ul>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img th:src="@{img/porsche.jpg}" class="d-block w-100">
+                <a href="#" class="carousel-item active">
+                    <img th:src="@{img/porsche.jpg}" class="d-block w-100 carousel-picture">
                     <div class="carousel-caption">
                         <h3>Porsche</h3>
                         <p>We had such a great time in LA!</p>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{img/bmw.jpg}" class="d-block w-100">
+                </a>
+                <a href="#" class="carousel-item">
+                    <img th:src="@{img/bmw.jpg}" class="d-block w-100 carousel-picture">
                     <div class="carousel-caption">
                         <h3>BMW</h3>
                         <p>Thank you, Chicago!</p>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{img/maserati.jpg}" class="d-block w-100">
+                </a>
+                <a href="#" class="carousel-item">
+                    <img th:src="@{img/maserati.jpg}" class="d-block w-100 carousel-picture">
                     <div class="carousel-caption">
                         <h3>Maserati</h3>
                         <p>We love the Big Apple!</p>
                     </div>
-                </div>
+                </a>
             </div>
             <a class="carousel-control-prev" href="#demo" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
