@@ -22,32 +22,29 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Registrieren</h5>
                         <div class="carbox-body text-center p-4">
-                            Willkommen bei Exclusiv Car Rentals. Bitte geben Sie Ihre Mailadresse ein und
+                            Willkommen bei Exclusiv Car Rentals! Bitte geben Sie Ihre Mailadresse ein und
                             wählen Sie ein Passwort, um Ihre Registrierung abzuschließen.
                         </div>
                         <form class="form-signin">
                             <div class="form-label-group">
                                 <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail"
-                                    required autofocus>
-                                <label for="inputEmail">E-Mail</label>
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required autofocus>
+                                <label for="inputEmail" class="pt-1">E-Mail</label>
                             </div>
 
                             <div class="form-label-group">
                                 <input type="password" id="inputPassword" class="form-control" placeholder="Passwort"
-                                    required>
-                                <label for="inputPassword">Passwort</label>
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <label for="inputPassword" class="pt-1">Passwort
+                                    <small>(Mind 8 Zeichen, mind. eine Zahl, ein Groß- und ein Kleinbuchstabe)</small></label>
                             </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Passwort wiederholen"
-                                    required>
-                                <label for="inputPassword">Passwort wiederholen</label>
+                                <input type="password" id="inputPassword" class="form-control"
+                                    placeholder="Passwort wiederholen" required> 
+                                <label for="inputPassword" class="pt-1">Passwort wiederholen</label>
                             </div>
-
-                            <div class="custom-control custom-checkbox mb-3 pt-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Passwort merken</label>
-                            </div>
+                            <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Registrieren</button>
                             <hr class="my-4">
                         </form>
@@ -56,9 +53,10 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <!-- FOOTER-->
-    <div class="fixed-bottom">
+    <div class="sticky-bottom">
         <div th:insert="~{footer :: copy}"></div>
     </div>
 </body>
