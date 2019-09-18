@@ -25,7 +25,7 @@
 
     <div class="container">
         <div class="row pt-2">
-            <a th:href="@{../products/products.html}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
                 <div class="jumbotron jumbotron-porsche">
                     <div class="overlay">
                         <div class="row">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
                 <div class="jumbotron jumbotron-benzer">
                     <div class="overlay">
                         <div class="row">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
                 <div class="jumbotron jumbotron-bmw">
                     <div class="overlay">
                         <div class="row">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
                 <div class="jumbotron jumbotron-maserati">
                     <div class="overlay">
                         <div class="row">
@@ -208,7 +208,7 @@
             <br>
             <h2 class="text-light">Anfahrt</h2>
             <br>
-            <div class="container col-11">
+            <div class="container">
                 <div id="map-container-google-1" class="z-depth-1-half map-container ">
                     <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                         style="border:0" allowfullscreen></iframe>
