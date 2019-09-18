@@ -15,25 +15,27 @@
     <br>
     <br>
 
+
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="cardbox">
                     <div class="card-body">
                         <h5 class="card-title text-center">Login</h5>
-                        <form class="form-signin">
+                        <form class="form-signin" action="/login" method="post">
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail"
-                                    required autofocus>
                                 <label for="inputEmail">E-Mail</label>
+                                <input type="text" id="inputEmail" class="form-control" placeholder="E-Mail"
+                                    required autofocus>
                             </div>
-
+                            
                             <div class="form-label-group">
+                                <label for="inputPassword">Passwort</label>
                                 <input type="password" id="inputPassword" class="form-control" placeholder="Passwort"
                                     required>
-                                <label for="inputPassword">Passwort</label>
                             </div>
-
+                            <br>
+                            <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Einloggen</button>
                             <hr class="my-4">
                         </form>
