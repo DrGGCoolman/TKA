@@ -65,4 +65,10 @@ public class MainController {
     public String adminproductCreateEdit() {
         return "admin/product-create-edit";
     }
+
+    @RequestMapping("/user/add-user")
+    public String userAddUser() {
+        return "user/add-user";
+    }
+
 }
