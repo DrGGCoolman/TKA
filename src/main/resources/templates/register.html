@@ -27,22 +27,23 @@
                         </div>
                         <form class="form-signin">
                             <div class="form-label-group">
+                                <label for="inputEmail" class="pt-1">E-Mail</label>
                                 <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail"
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required autofocus>
-                                <label for="inputEmail" class="pt-1">E-Mail</label>
                             </div>
 
                             <div class="form-label-group">
+                                <label for="inputPassword" class="pt-1">Passwort
+                                    <small>(Mind 8 Zeichen, mind. eine Zahl, ein Groß- und ein
+                                        Kleinbuchstabe)</small></label>
                                 <input type="password" id="inputPassword" class="form-control" placeholder="Passwort"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                                <label for="inputPassword" class="pt-1">Passwort
-                                    <small>(Mind 8 Zeichen, mind. eine Zahl, ein Groß- und ein Kleinbuchstabe)</small></label>
                             </div>
 
                             <div class="form-label-group">
+                                <label for="inputPassword" class="pt-2">Passwort wiederholen</label>
                                 <input type="password" id="inputPassword" class="form-control"
-                                    placeholder="Passwort wiederholen" required> 
-                                <label for="inputPassword" class="pt-1">Passwort wiederholen</label>
+                                    placeholder="Passwort wiederholen" required>
                             </div>
                             <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Registrieren</button>
@@ -53,6 +54,12 @@
             </div>
         </div>
     </div>
+
+    <!-- SKRIPTE-->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
     <br>
     <br>
     <!-- FOOTER-->
