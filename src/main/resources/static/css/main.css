@@ -4824,7 +4824,6 @@ input[type="button"].btn-block {
 }
 
 a.cardbox:hover {
-  background-color: rgba(46, 47, 58, 0.8);
   text-decoration: none;
   color: white;
 }

@@ -35,15 +35,24 @@ public class ProductTypeController {
         this.CarFilter = new CarFilter();
     }
 
+    @GetMapping("{id}")
+    public String showProductDetail(@PathVariable("id") Integer id, Model model) {
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id);
+        model.addAttribute("product", ProductType);
+        return "products/product-detail";
+    }
+
     @GetMapping("create")
     public String showCreateFrom(Model model) {
-        model.addAttribute("productType", new EcProductTypeEntity());
+        model.addAttribute("product", new EcProductTypeEntity());
         return "products/product-create-edit";
     }
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
+    // public String showUpdateForm(CarFilter CarFilter, Model model) {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
+        model.addAttribute("carFilter", CarFilter);
         return "products/index";
     }
 

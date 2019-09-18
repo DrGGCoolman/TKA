@@ -1,5 +1,9 @@
 package de.gowlr.allcar.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import de.gowlr.allcar.repositories.BrandRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,13 +11,13 @@ public class CarFilter {
 
     @Getter
     @Setter
-    private String[] Category;
+    private List<String> Category;
     @Getter
     @Setter
-    private String[] Brand;
+    private List<String> Brand;
     @Getter
     @Setter
-    private String[] Transmission;
+    private List<String> Transmission;
     @Getter
     @Setter
     private int YearFrom;
@@ -25,16 +29,17 @@ public class CarFilter {
     private int PowerMin;
     @Getter
     @Setter
-    private String[] DriveSystem;
+    private List<String> DriveSystem;
     @Getter
     @Setter
-    private String[] Fuel;
+    private List<String> Fuel;
     @Getter
     @Setter
     private int DriverAgeMin;
 
     public CarFilter() {
-
+        this.Category = new ArrayList<String>();
+        this.Category.add("test");
     }
 
 }

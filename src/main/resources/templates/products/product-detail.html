@@ -22,7 +22,7 @@
     <br>
 
     <div class="container">
-        <h3 class="text-white">Porsche 918 Spyder</h3>
+        <h3 class="text-white" th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h3>
         <br>
         <div class="cardbox">
             <div class="cardbox-body">
@@ -41,63 +41,63 @@
                                             <td>
                                                 <b>Farbe</b>
                                             </td>
-                                            <td class="pl-2">Silber</td>
+                                            <td class="pl-2" th:text="${product.bodyColor}">Silber</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Leistung</b></td>
-                                            <td class="pl-2">887 PS</td>
+                                            <td class="pl-2" th:text="${product.powerPs} + ' PS'"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Motor</b></td>
-                                            <td class="pl-2">4,6 Liter v8</td>
+                                            <td class="pl-2" th:text="${product.engine}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Antrieb</b></td>
-                                            <td class="pl-2">Allrad</td>
+                                            <td class="pl-2" th:text="${product.driveSystem}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>0 - 100</b></td>
-                                            <td class="pl-2">2,6 s</td>
+                                            <td class="pl-2" th:text="${product.zeroToHundred}+ ' s'"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Getriebe</b></td>
-                                            <td class="pl-2">Automatik</td>
+                                            <td class="pl-2" th:text="${product.gearingType}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Jahr</b></td>
-                                            <td class="pl-2">2014</td>
+                                            <td class="pl-2" th:text="${product.age}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Sitze</b></td>
-                                            <td class="pl-2">2</td>
+                                            <td class="pl-2" th:text="${product.seats}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
                                             </th>
                                             <td>
                                                 <b>Mindestalter</b></td>
-                                            <td class="pl-2">25</td>
+                                            <td class="pl-2" th:text="${product.minimumAge}"></td>
                                         </tr>
                                     </tbody>
                                 </table>
