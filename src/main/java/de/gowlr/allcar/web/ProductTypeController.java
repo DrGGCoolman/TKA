@@ -43,7 +43,9 @@ public class ProductTypeController {
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
+    // public String showUpdateForm(CarFilter CarFilter, Model model) {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
+        model.addAttribute("carFilter", CarFilter);
         return "products/index";
     }
 
