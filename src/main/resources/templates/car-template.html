@@ -1,134 +1,123 @@
-<!DOCTYPE html>
+<a href="#" class="cardbox mb-3 mh-250" th:fragment="copy (product)">
+  <div class="row no-gutters">
+    <div class="col-md-3 col-xs-12 p-2">
+      <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
+    </div>
+    <div class="col col-xs-12">
+      <div class="cardbox-body">
+        <h4 class="cardbox-title pb-3 pl-3"
+          th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+        <div class="row-card">
+          <div class="col-6" style="padding-left:0px;">
+            <table class="table-car">
+              <tbody>
+                <tr scope="row">
 
-<html xmlns:th="http://www.thymeleaf.org">
+                  <td class="col-1">
+                    <i class="fa fa-motorcycle"></i>
+                  </td>
 
-<body>
+                  <td class="col-1" th:text="${product.powerPs} + ' PS'"></td>
 
-  <a href="#" class="cardbox mb-3 mh-250" th:fragment="copy (product)">
-    <div class="row no-gutters">
-      <div class="col-md-3 col-xs-12 p-2">
-        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
-      </div>
-      <div class="col col-xs-12">
-        <div class="cardbox-body">
-          <h4 class="cardbox-title pb-3 pl-3"
-            th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
-          <div class="row-card">
-            <div class="col-6" style="padding-left:0px;">
-              <table class="table-car">
-                <tbody>
-                  <tr scope="row">
+                  <td class="col-1">
+                    <i class="fa fa-paint-brush"></i>
+                  </td>
 
-                    <td class="col-1">
-                      <i class="fa fa-motorcycle"></i>
-                    </td>
+                  <td class="col-1" th:text="${product.bodyColor}"></td>
+                </tr>
 
-                    <td class="col-1" th:text="${product.powerPs} + ' PS'"></td>
+                <tr scope="row">
 
-                    <td class="col-1">
-                      <i class="fa fa-paint-brush"></i>
-                    </td>
+                  <td class="col-1">
+                    <i class="fa fa-battery-three-quarters"></i>
+                  </td>
 
-                    <td class="col-1" th:text="${product.bodyColor}"></td>
-                  </tr>
+                  <td class="col-5" th:text="${product.engine}"></td>
 
-                  <tr scope="row">
+                  <td class="col-1">
+                    <i class="fa fa-flag"></i>
+                  </td>
 
-                    <td class="col-1">
-                      <i class="fa fa-battery-three-quarters"></i>
-                    </td>
+                  <td class="col-5" th:text="${product.ecCategoryByCategoryId.title}"></td>
+                </tr>
 
-                    <td class="col-5" th:text="${product.engine}"></td>
+                <tr scope="row">
 
-                    <td class="col-1">
-                      <i class="fa fa-flag"></i>
-                    </td>
+                  <td class="col-1">
+                    <i class="fa fa-tachometer"></i>
+                  </td>
 
-                    <td class="col-5" th:text="${product.ecCategoryByCategoryId.title}"></td>
-                  </tr>
+                  <td class="col-5" th:text="${product.gearingType}"></td>
 
-                  <tr scope="row">
+                  <td class="col-1">
+                    <i class="fa fa-bolt"></i>
+                  </td>
 
-                    <td class="col-1">
-                      <i class="fa fa-tachometer"></i>
-                    </td>
+                  <td class="col-5" th:text="${product.driveSystem}"></td>
+                </tr>
+              </tbody>
+            </table>
 
-                    <td class="col-5" th:text="${product.gearingType}"></td>
-
-                    <td class="col-1">
-                      <i class="fa fa-bolt"></i>
-                    </td>
-
-                    <td class="col-5" th:text="${product.driveSystem}"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </div>
-            <div class="col-3">
-              <div>
-                <button type="button" class="btn btn-light preis1" onclick="price1_function()">>200km</button>
-                <script th:inline="javascript">
-                  /*<![CDATA[*/
-                  function price1_function() {
-                    var x = document.getElementById("200km".concat('+ ${product.id}"'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (x.style.display === "none") {
-                      x.style.display = "block";
-                      y.style.display = "none";
-                      z.style.display = "none";
-                    }
-                  };
-
-
-                  function price2_function() {
-                    var x = document.getElementById("200km".concat('[[${product.id}]]'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (y.style.display === "none") {
-                      x.style.display = "none";
-                      y.style.display = "block";
-                      z.style.display = "none";
-                    }
+          </div>
+          <div class="col-3">
+            <div>
+              <button type="button" class="btn btn-light preis1" onclick="price1_function()">>200km</button>
+              <script th:inline="javascript">
+                /*<![CDATA[*/
+                function price1_function() {
+                  var x = document.getElementById("200km".concat('+ ${product.id}"'));
+                  var y = document.getElementById("500km".concat('[[${product.id}]]'));
+                  var z = document.getElementById("1000km".concat('[[${product.id}]]'));
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                    y.style.display = "none";
+                    z.style.display = "none";
                   }
+                };
 
-                  function price3_function() {
-                    var x = document.getElementById("200km".concat('[[${product.id}]]'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (z.style.display === "none") {
-                      x.style.display = "none";
-                      y.style.display = "none";
-                      z.style.display = "block";
-                    }
+
+                function price2_function() {
+                  var x = document.getElementById("200km".concat('[[${product.id}]]'));
+                  var y = document.getElementById("500km".concat('[[${product.id}]]'));
+                  var z = document.getElementById("1000km".concat('[[${product.id}]]'));
+                  if (y.style.display === "none") {
+                    x.style.display = "none";
+                    y.style.display = "block";
+                    z.style.display = "none";
                   }
+                }
+
+                function price3_function() {
+                  var x = document.getElementById("200km".concat('[[${product.id}]]'));
+                  var y = document.getElementById("500km".concat('[[${product.id}]]'));
+                  var z = document.getElementById("1000km".concat('[[${product.id}]]'));
+                  if (z.style.display === "none") {
+                    x.style.display = "none";
+                    y.style.display = "none";
+                    z.style.display = "block";
+                  }
+                }
 /*]]>*/
-                </script>
-                <button type="button" class="btn btn-light" onclick="price2_function()">>500km</button>
-              </div>
-              <div class="col">
-                <button type="button" class="btn btn-light ml-4 mt-1" onclick="price3_function()">>1000km</button>
-              </div>
+              </script>
+              <button type="button" class="btn btn-light" onclick="price2_function()">>500km</button>
             </div>
-            <div class="col-3 text-center">
-              <p id="price">Ab
-                <strong th:id="200km + ${product.id}">1000,- €</strong>
-                <strong id="500km + ${product.id}" style=" display:none">1500,- €</strong>
-                <strong id="1000km + ${product.id}" style=" display:none">2000,- €</strong>
-                pro Tag</p>
+            <div class="col">
+              <button type="button" class="btn btn-light ml-4 mt-1" onclick="price3_function()">>1000km</button>
             </div>
+          </div>
+          <div class="col-3 text-center">
+            <p id="price">Ab
+              <strong th:id="200km + ${product.id}">1000,- €</strong>
+              <strong id="500km + ${product.id}" style=" display:none">1500,- €</strong>
+              <strong id="1000km + ${product.id}" style=" display:none">2000,- €</strong>
+              pro Tag</p>
           </div>
         </div>
       </div>
     </div>
-  </a>
+  </div>
+</a>
 
-  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-
-</body>
-
-</html>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

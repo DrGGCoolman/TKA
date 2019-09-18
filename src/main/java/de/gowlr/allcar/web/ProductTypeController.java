@@ -7,15 +7,11 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductTypeController {
 
     private final ProductTypeRepository ProductTypeRepository;
+    private CarFilter CarFilter = new CarFilter();
 
     @Autowired
     public ProductTypeController(ProductTypeRepository ProductTypeRepository) {
         this.ProductTypeRepository = ProductTypeRepository;
+        this.CarFilter = new CarFilter();
     }
 
     @GetMapping("create")
@@ -119,33 +117,14 @@ public class ProductTypeController {
         return "index";
     }
 
-    @GetMapping("filter")
-    public String filterAllProducts(@RequestParam(value = "filter", required = false) String searchfor, Model model) {
+    @PostMapping("filter")
+    public String filterAllProducts(Model model) {
         String[] searchWords = null;
-        ArrayList<EcProductTypeEntity> searchResultsWithDupes = new ArrayList<EcProductTypeEntity>();
+        ArrayList<EcProductTypeEntity> filteredResultsWithDupes = new ArrayList<EcProductTypeEntity>();
 
-        if (searchfor != null && !searchfor.isEmpty()) {
+        LinkedHashSet<EcProductTypeEntity> filteredResults = new LinkedHashSet<>(filteredResultsWithDupes);
 
-            searchWords = searchfor.split(" ");
-
-            
-
-            for (String word : searchWords) {
-                if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes
-                            .addAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word));
-                }
-                if (ProductTypeRepository.findByModelContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes.addAll(ProductTypeRepository.findByModelContainingIgnoreCase(word));
-                }
-                if (ProductTypeRepository.findByVariantContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes.addAll(ProductTypeRepository.findByVariantContainingIgnoreCase(word));
-                }
-            }
-        }
-        LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
-
-        model.addAttribute("productTypes", searchResults);
+        model.addAttribute("productTypes", filteredResults);
 
         return "products/index";
     }
