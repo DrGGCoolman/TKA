@@ -119,4 +119,35 @@ public class ProductTypeController {
         return "index";
     }
 
+    @GetMapping("filter")
+    public String filterAllProducts(@RequestParam(value = "filter", required = false) String searchfor, Model model) {
+        String[] searchWords = null;
+        ArrayList<EcProductTypeEntity> searchResultsWithDupes = new ArrayList<EcProductTypeEntity>();
+
+        if (searchfor != null && !searchfor.isEmpty()) {
+
+            searchWords = searchfor.split(" ");
+
+            
+
+            for (String word : searchWords) {
+                if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes
+                            .addAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByModelContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByModelContainingIgnoreCase(word));
+                }
+                if (ProductTypeRepository.findByVariantContainingIgnoreCase(word) != null) {
+                    searchResultsWithDupes.addAll(ProductTypeRepository.findByVariantContainingIgnoreCase(word));
+                }
+            }
+        }
+        LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
+
+        model.addAttribute("productTypes", searchResults);
+
+        return "products/index";
+    }
+
 }
