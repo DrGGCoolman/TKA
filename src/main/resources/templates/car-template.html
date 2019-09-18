@@ -1,4 +1,4 @@
-<a href="#" class="cardbox mb-3 mh-250" th:fragment="copy (product)">
+<a th:href="@{${product.id}}" class="cardbox mb-3 mh-250" th:fragment="copy (product)">
   <div class="row no-gutters">
     <div class="col-md-3 col-xs-12 p-2">
       <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
