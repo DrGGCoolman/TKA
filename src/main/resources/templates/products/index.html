@@ -11,7 +11,7 @@
 
 <body>
 
-    <div  th:insert="~{header :: copy}"></div>
+    <div th:insert="~{header :: copy}"></div>
 
     <div class="rent bg-main">
 
@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-2 mt-4" th:insert="~{filter :: copy}"></div>
+                <div class="col-2 mt-4" th:insert="~{filter :: copy(model=${carFilter})}"></div>
 
                 <div class="col-10 mt-4">
                     <div th:switch="${productTypes}">
