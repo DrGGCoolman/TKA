@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="bg-main">
@@ -21,33 +22,32 @@
                 <div class="cardbox">
                     <div class="card-body">
                         <h5 class="card-title text-center">Registrieren</h5>
-                        <div class="carbox-body text-center p-4">
+                        <div class="carbox-body text-center p-2">
                             Willkommen bei Exclusiv Car Rentals! Bitte geben Sie Ihre Mailadresse ein und
                             wählen Sie ein Passwort, um Ihre Registrierung abzuschließen.
                         </div>
                         <form class="form-signin">
                             <div class="form-label-group">
-                                <label for="inputEmail" class="pt-1">E-Mail</label>
+                                <label for="inputEmail">E-Mail</label>
                                 <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail"
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required autofocus>
                             </div>
 
-                            <div class="form-label-group">
-                                <label for="inputPassword" class="pt-1">Passwort
+                            <div class="form-label-group pt-4">
+                                <label for="inputPassword">Passwort
                                     <small>(Mind 8 Zeichen, mind. eine Zahl, ein Groß- und ein
                                         Kleinbuchstabe)</small></label>
                                 <input type="password" id="inputPassword" class="form-control" placeholder="Passwort"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             </div>
 
-                            <div class="form-label-group">
+                            <div class="form-label-group pt-4">
                                 <label for="inputPassword" class="pt-2">Passwort wiederholen</label>
                                 <input type="password" id="inputPassword" class="form-control"
                                     placeholder="Passwort wiederholen" required>
                             </div>
                             <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Registrieren</button>
-                            <hr class="my-4">
                         </form>
                     </div>
                 </div>
@@ -63,9 +63,7 @@
     <br>
     <br>
     <!-- FOOTER-->
-    <div class="sticky-bottom">
-        <div th:insert="~{footer :: copy}"></div>
-    </div>
+    <div th:insert="~{footer :: copy}"></div>
 </body>
 
 </html>
