@@ -15,11 +15,6 @@ public class MainController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/home")
-    public String home() {
-        return "home2";
-    }
-
     @RequestMapping("/index")
     public String index() {
         return "index";
@@ -43,11 +38,6 @@ public class MainController {
     @RequestMapping("/login")
     public String login() {
         return "login";
-    }
-
-    @RequestMapping("/products/products")
-    public String products() {
-        return "products/products";
     }
 
     @RequestMapping("/products/product-detail")

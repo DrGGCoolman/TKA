@@ -7,15 +7,11 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductTypeController {
 
     private final ProductTypeRepository ProductTypeRepository;
+    private CarFilter CarFilter = new CarFilter();
 
     @Autowired
     public ProductTypeController(ProductTypeRepository ProductTypeRepository) {
         this.ProductTypeRepository = ProductTypeRepository;
+        this.CarFilter = new CarFilter();
     }
 
     @GetMapping("create")
@@ -117,6 +115,18 @@ public class ProductTypeController {
         ProductTypeRepository.delete(ProductType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";
+    }
+
+    @PostMapping("filter")
+    public String filterAllProducts(Model model) {
+        String[] searchWords = null;
+        ArrayList<EcProductTypeEntity> filteredResultsWithDupes = new ArrayList<EcProductTypeEntity>();
+
+        LinkedHashSet<EcProductTypeEntity> filteredResults = new LinkedHashSet<>(filteredResultsWithDupes);
+
+        model.addAttribute("productTypes", filteredResults);
+
+        return "products/index";
     }
 
 }
