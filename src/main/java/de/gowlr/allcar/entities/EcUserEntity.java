@@ -1,17 +1,21 @@
 package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
+
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
     private Integer id;
     private String name;
     private String firstname;
     private String gender;
-    private String eMail;
+    private String Email;
     private String password;
     private String title;
     private Date birth;
@@ -63,12 +67,12 @@ public class EcUserEntity {
 
     @Basic
     @Column(name = "e_mail", nullable = false, length = -1)
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return Email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.Email = email;
     }
 
     @Basic
@@ -150,7 +154,7 @@ public class EcUserEntity {
                 Objects.equals(name, that.name) &&
                 Objects.equals(firstname, that.firstname) &&
                 Objects.equals(gender, that.gender) &&
-                Objects.equals(eMail, that.eMail) &&
+                Objects.equals(Email, that.Email) &&
                 Objects.equals(password, that.password) &&
                 Objects.equals(title, that.title) &&
                 Objects.equals(birth, that.birth) &&
@@ -162,7 +166,7 @@ public class EcUserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname, gender, eMail, password, title, birth, street, houseNumber, postCode, city);
+        return Objects.hash(id, name, firstname, gender, Email, password, title, birth, street, houseNumber, postCode, city);
     }
 
     @ManyToOne

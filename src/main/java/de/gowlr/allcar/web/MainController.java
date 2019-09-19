@@ -1,5 +1,8 @@
 package de.gowlr.allcar.web;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +40,9 @@ public class MainController {
 
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
+        //return "login";
     }
 
     @RequestMapping("/products/product-detail")
