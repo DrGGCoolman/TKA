@@ -1,90 +1,171 @@
 <div th:fragment="copy(model)">
     <!-- debug -->
-    <span th:text="${model}"></span>
+    <span th:text="${model.Category[0]}"></span>
     <!-- debug -->
 
-    <div class="categories">
-        <ul class="list-group-wb">
-            <a li class="list-group-wb-item" href="#klasse" data-toggle="collapse">Klasse
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                Sport
-            </a>
-            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                Sport +
-            </a>
-            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                SUV
-            </a>
-            <a li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                Luxsd
-            </a>
+    <div class="cardbox">
+        <div class="container">
+            <div class="categories pt-4 pb-4">
+                <form method="POST" th:action="@{/products/filter}">
+                    <ul class="list-group-wb">
+                        <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="CategorySport" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Sport
+                            </label>
+                        </li>
+                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="CategorySportPlus" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Sport +
+                            </label>
+                        </li>
+                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="CategorySUV" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                SUV
+                            </label>
+                        </li>
+                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="CategoryLuxus" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Luxus
+                            </label>
+                        </li>
 
-            <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
-                <i class="fa fa-angle-down"></i>
-            </a>
+                        <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
+                            <i class="fa fa-angle-down"></i>
+                        </a>
 
-            <a li class="list-group-wb-item" href="#getriebe" data-toggle="collapse">Getriebe
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <a li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                Automatik
-            </a>
-            <a li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                Gangschaltung
-            </a>
+                        <a li class="list-group-wb-item" href="#getriebe" data-toggle="collapse">Getriebe
+                            <i class="fa fa-angle-down"></i>
+                        </a>
 
-            <li class="list-group-wb-item">Alter<br>
-                <form class="range-field">
-                    <input type="range" min="0" max="100" />
+                        <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="TransmissionAutomatik" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Automatik
+                            </label>
+                        </li>
+                        <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="TransmissionManuell" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Manuell
+                            </label>
+                        </li>
+
+                        <li class="list-group-wb-item">Alter<br>
+                            <form class="range-field">
+                                <input type="range" min="0" max="100" />
+                            </form>
+                        </li>
+                        <li class="list-group-wb-item">Leistung<br>
+                            <form class="range-field">
+                                <input type="range" min="0" max="100" />
+                            </form>
+                        </li>
+
+                        <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="DriveSystenFrontantrieb" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Frontantrieb
+                            </label>
+                        </li>
+                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="DriveSystenHeckantrieb" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Heckantrieb
+                            </label>
+                        </li>
+                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="DriveSystenAllrad" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Allrad
+                            </label>
+                        </li>
+
+                        <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Benzin
+                            </label>
+                        </li>
+                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="FuelDiesel" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Diesel
+                            </label>
+                        </li>
+                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="FuelElektro" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Elektro
+                            </label>
+                        </li>
+                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Hybrid
+                            </label>
+                        </li>
+
+                        <a li class="list-group-wb-item" href="#fahreralter" data-toggle="collapse">Fahreralter
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" type="checkbox" name="DriverAgeMin18" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                18
+                            </label>
+                        </li>
+                        <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" type="checkbox" name="DriverAgeMin21" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                21
+                            </label>
+                        </li>
+                        <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
+                            <input class="form-check-input" type="checkbox" name="DriverAgeMin25" value=""
+                                id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                25
+                            </label>
+                        </li>
+                        <br>
+                        <div class="pl-5">
+                            <input class="btn btn-secondary pl-2" type="submit" value="Submit" />
+                        </div>
+                    </ul>
                 </form>
-            </li>
-            <li class="list-group-wb-item">Leistung<br>
-                <form class="range-field">
-                    <input type="range" min="0" max="100" />
-                </form>
-            </li>
-            <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                Frontantrieb
-            </a>
-            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                Heckantrieb
-            </a>
-            <a li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                Allrad
-            </a>
-            <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                Benzin
-            </a>
-            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                Diesel
-            </a>
-            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                Elektro
-            </a>
-            <a li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                Hybrid
-            </a>
-            <a li class="list-group-wb-item" href="#fahreralter" data-toggle="collapse">Fahreralter
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                18
-            </a>
-            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                21
-            </a>
-            <a li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                25
-            </a>
-        </ul>
 
+            </div>
+        </div>
     </div>
 </div>

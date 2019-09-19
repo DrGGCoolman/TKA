@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="bg-main">
@@ -35,9 +36,7 @@
                                     required>
                             </div>
                             <br>
-                            <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Einloggen</button>
-                            <hr class="my-4">
                         </form>
                     </div>
                 </div>
@@ -47,9 +46,15 @@
     <br>
     <br>
     <!-- FOOTER-->
-    <div class="sticky-bottom">
+    <div class="fixed-bottom">
         <div th:insert="~{footer :: copy}"></div>
     </div>
+
+    <!-- SKRIPTE-->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
 </body>
 
 </html>
