@@ -2,8 +2,6 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
-import sun.jvm.hotspot.gc.shared.G1HeapRegionType;
-
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
@@ -159,27 +157,23 @@ public class EcUserEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcUserEntity that = (EcUserEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(role, that.role) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(gender, that.gender) &&
-                Objects.equals(username, that.username) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(birth, that.birth) &&
-                Objects.equals(street, that.street) &&
-                Objects.equals(houseNumber, that.houseNumber) &&
-                Objects.equals(postCode, that.postCode) &&
-                Objects.equals(city, that.city);
+        return Objects.equals(id, that.id) && Objects.equals(role, that.role) && Objects.equals(name, that.name)
+                && Objects.equals(firstname, that.firstname) && Objects.equals(gender, that.gender)
+                && Objects.equals(username, that.username) && Objects.equals(password, that.password)
+                && Objects.equals(title, that.title) && Objects.equals(birth, that.birth)
+                && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber)
+                && Objects.equals(postCode, that.postCode) && Objects.equals(city, that.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber, postCode, city);
+        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber,
+                postCode, city);
     }
 
     @OneToMany(mappedBy = "ecUserByUserId")
