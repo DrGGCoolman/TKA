@@ -1,23 +1,32 @@
 package de.gowlr.allcar.services;
 
-import java.util.Date;
-
-import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
-
-// import org.springframework.security.crypto.password.PasswordEncoder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import de.gowlr.allcar.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
+import de.gowlr.allcar.entities.*;
+import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
+import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 @Transactional
-@RequiredArgsConstructor
-
 public class UserService {
 
     private final UserRepository userRepository;
-    // private final PasswordEncoder passwordEncoder;
+
+    @PostConstruct
+    void init() {
+        // dev user anlegen?
+    }
+
+    private void createUser() {
+        // userRepository.save(new User(name, passwordEncoder.encode(password), role));
+    }
+
+    public List<EcUserEntity> findAll() {
+        return userRepository.findAll();
+    }
 
 }

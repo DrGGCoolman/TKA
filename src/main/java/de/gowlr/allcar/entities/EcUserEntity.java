@@ -1,13 +1,26 @@
 package de.gowlr.allcar.entities;
 
-import javax.persistence.*;
-
-import lombok.AllArgsConstructor;
-
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.*;
+import de.gowlr.allcar.services.*;
+import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @Entity
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
@@ -24,6 +37,14 @@ public class EcUserEntity {
     private Integer postCode;
     private String city;
     private EcRoleEntity ecRoleByRoleId;
+
+    public static EcUserEntity getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserAdapter) {
+            return ((UserAdapter) principal).getUser();
+        }
+        return null;
+    }
 
     @Id
     @Column(name = "id", nullable = false)
@@ -147,26 +168,23 @@ public class EcUserEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcUserEntity that = (EcUserEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(gender, that.gender) &&
-                Objects.equals(Email, that.Email) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(birth, that.birth) &&
-                Objects.equals(street, that.street) &&
-                Objects.equals(houseNumber, that.houseNumber) &&
-                Objects.equals(postCode, that.postCode) &&
-                Objects.equals(city, that.city);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name)
+                && Objects.equals(firstname, that.firstname) && Objects.equals(gender, that.gender)
+                && Objects.equals(Email, that.Email) && Objects.equals(password, that.password)
+                && Objects.equals(title, that.title) && Objects.equals(birth, that.birth)
+                && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber)
+                && Objects.equals(postCode, that.postCode) && Objects.equals(city, that.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname, gender, Email, password, title, birth, street, houseNumber, postCode, city);
+        return Objects.hash(id, name, firstname, gender, Email, password, title, birth, street, houseNumber, postCode,
+                city);
     }
 
     @ManyToOne

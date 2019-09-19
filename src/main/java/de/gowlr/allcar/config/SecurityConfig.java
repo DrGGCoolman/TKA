@@ -13,16 +13,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
-                .antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN").and()
-                .formLogin().loginPage("/login").permitAll().and().logout().permitAll();
+        http.csrf().disable()
+        .authorizeRequests().
+        antMatchers("/css/**", "/index", "/home", "/webjars/**").
+        permitAll()
+                .antMatchers("/user/**")
+                .hasRole("USER")
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
+                .and()
+                .formLogin()
+                .loginPage("/users/login")
+                .permitAll()
+                .and().logout().permitAll();
         // TODO: default errror failureUrl("/login-error").
     }
 
     // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    //     auth.inMemoryAuthentication().withUser("user").password("{noop}password").roles("ROLE_USER");
+    // public void configureGlobal(AuthenticationManagerBuilder auth) throws
+    // Exception {
+    // auth.inMemoryAuthentication().withUser("user").password("{noop}password").roles("ROLE_USER");
     // }
 
- 
 }

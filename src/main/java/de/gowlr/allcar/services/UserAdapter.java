@@ -9,13 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import de.gowlr.allcar.entities.EcUserEntity;
 
-
 public class UserAdapter implements UserDetails {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     private final EcUserEntity user; // adaptiertes Objekt
 
     public UserAdapter(EcUserEntity user) {

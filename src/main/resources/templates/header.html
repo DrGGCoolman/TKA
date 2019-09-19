@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body class="bg-main">
 
@@ -22,7 +22,6 @@
                         <div class="form-group">
                             <input type="text" name="searchfor" class="form-control searchbox"
                                 placeholder="Fahrzeug suchen" />
-
                         </div>
                     </form>
                 </li>
@@ -47,13 +46,17 @@
 
                 <!-- DROPDOWN LOGIN-->
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/register}">Registrierung</a>
+                    <a class="nav-link text-white" th:href="@{/users/register}">Registrierung</a>
                 </li>
                 <li class="nav-item text-white mt-2">
                     |
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/login}">Login</a>
+                    <a class="nav-link text-white" sec:authorize="anonymous" th:href="@{/users/login}">Login</a>
+                    <a class="nav-link text-white" sec:authorize="hasRole('ADMIN')" th:href="@{/users/logout}">
+                        <span th:text="${#httpServletRequest.remoteUser}"></span>
+                        Logout</a>
+
                 </li>
 
                 <!--<li class="nav-item">
