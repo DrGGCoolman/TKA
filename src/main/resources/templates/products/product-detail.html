@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-6 p-4">
+                            <div class="col-7 p-4">
                                 <table class="table-car">
                                     <tbody>
                                         <tr>
@@ -43,7 +43,7 @@
                                             <td>
                                                 <b>Farbe</b>
                                             </td>
-                                            <td class="pl-2" th:text="${product.bodyColor}">Silber</td>
+                                            <td class="pl-2" th:text="${product.bodyColor}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
@@ -104,7 +104,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-6 p-4">
+                            <div class="col-5 p-4">
                                 <div class="row">
                                     <div class="span12">
                                         <table class="table-condensed table-bordered table-striped">
@@ -184,18 +184,42 @@
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>200km</button>
+                                <button type="button" th:id="200button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>500km</button>
+                                <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>1000km</button>
+                                <button type="button" th:id="1000button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
                             </div>
-                            <div class="col-4">
-                                1.199,- pro Tag
+                            <div class="col-3 text-center">
+                                    <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${product.price200} + ' €' + ' pro Tag'"></strong>
+                                    <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price500} + ' €' + ' pro Tag'"></strong>
+                                    <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price1000} + ' €' + ' pro Tag'"></strong>
                             </div>
-
+                            <!-- TODO: Auslagern  -->
+                            <script>
+               
+                                    function price_function(e, id) {
+                                      debugger;
+                                      var x = document.getElementById("200km".concat(id));
+                                      var y = document.getElementById("500km".concat(id));
+                                      var z = document.getElementById("1000km".concat(id));
+                                      if (e.id === "200button".concat(id)) {
+                                        x.style.display = "block";
+                                        y.style.display = "none";
+                                        z.style.display = "none";
+                                      } else if (e.id === "500button".concat(id)) {
+                                        x.style.display = "none";
+                                        y.style.display = "block";
+                                        z.style.display = "none";
+                                      } else if (e.id === "1000button".concat(id)) {
+                                        x.style.display = "none";
+                                        y.style.display = "none";
+                                        z.style.display = "block";
+                                      }
+                                    };
+                            </script>
                         </div>
 
                     </div>
@@ -218,55 +242,86 @@
             </div>
             <div class="cardbox-body collapse" id="collapseExample">
                 <div class="row">
-                    <div class="col-2">
-                        <b>Gewicht in kg</b><br>
-                        <p th:text="${product.weightKg}"></p>
+                    <div class="col-1">
+
                     </div>
                     <div class="col-2">
-                        <b>Hubraum in cm3</b><br>
-                        <p th:text="${product.cubicCapacityCm3}"></p>
+                        <p>
+                            <b>Gewicht</b>
+                            <br th:text="${product.weightKg} + ' Kg'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Hubraum</b>
+                            <br th:text="${product.cubicCapacityCm3} + ' Liter'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Drehmoment</b>
+                            <br th:text="${product.nm} + ' nm'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Massagesitze</b>
+                            <br th:text="${product.massageSeats}">
+                            <!-- <script th:inline="javascript">
+                                    if('[[${product.massageSeats}]]' === true) {
+                                        document.write("ja");
+                                    } else if ('[[${product.massageSeats}]]' === false){
+                                        document.write("nein");
+                                    };
+                            </script> -->
+                        </p>
                     </div>
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-3">
+                        <p>
+                            <b>Innenraumfarbe</b>
+                            <br th:text="${product.bodyColor}">
+                        </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-1">
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Türen</b>
+                            <br th:text="${product.doors}">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Kraftstoff</b>
+                            <br th:text="${product.fuelType}">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Zusatzfahrer</b>
+                            <br th:text="${product.addDriver}">
+                            <!-- <script th:inline="javascript">
+                                    if('[[${product.addDriver}]]' === true) {
+                                        document.write("ja");
+                                    } else if ('[[${product.addDriver}]]' === false){
+                                        document.write("nein");
+                                    };
+                            </script> -->  
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Polstermaterial</b>
+                            <br th:text="${product.upholstery}">
+                        </p>
                     </div>
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-3">
+                        <p>
+                            <b>Rückenlehnendisplay</b>
+                            <br th:text="${product.displaysRear}">
+                        </p>
                     </div>
                 </div>
             </div>
