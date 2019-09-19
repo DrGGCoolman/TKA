@@ -10,9 +10,7 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body class="bg-main">
@@ -34,7 +32,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-6 p-4">
+                            <div class="col-7 p-4">
                                 <table class="table-car">
                                     <tbody>
                                         <tr>
@@ -43,7 +41,7 @@
                                             <td>
                                                 <b>Farbe</b>
                                             </td>
-                                            <td class="pl-2" th:text="${product.bodyColor}">Silber</td>
+                                            <td class="pl-2" th:text="${product.bodyColor}"></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
@@ -104,79 +102,474 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-6 p-4">
+                            <div class="col-5 p-4">
                                 <div class="row">
                                     <div class="span12">
-                                        <table class="table-condensed table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="7">
-                                                        <span class="btn-group">
-                                                            <a class="btn"><i class="icon-chevron-left"></i></a>
-                                                            <a class="btn active"><b>Februar 2019</b></a>
-                                                            <hr class="border-white">
-                                                            <a class="btn"><i class="icon-chevron-right"></i></a>
-                                                        </span>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Su</th>
-                                                    <th>Mo</th>
-                                                    <th>Tu</th>
-                                                    <th>We</th>
-                                                    <th>Th</th>
-                                                    <th>Fr</th>
-                                                    <th>Sa</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="muted">29</td>
-                                                    <td class="muted">30</td>
-                                                    <td class="muted">31</td>
-                                                    <td>1</td>
-                                                    <td>2</td>
-                                                    <td>3</td>
-                                                    <td>4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>6</td>
-                                                    <td>7</td>
-                                                    <td>8</td>
-                                                    <td>9</td>
-                                                    <td>10</td>
-                                                    <td>11</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>12</td>
-                                                    <td>13</td>
-                                                    <td>14</td>
-                                                    <td>15</td>
-                                                    <td>16</td>
-                                                    <td>17</td>
-                                                    <td>18</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>19</td>
-                                                    <td class="btn-danger"><strong>20</strong></td>
-                                                    <td>21</td>
-                                                    <td>22</td>
-                                                    <td>23</td>
-                                                    <td>24</td>
-                                                    <td>25</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>26</td>
-                                                    <td>27</td>
-                                                    <td>28</td>
-                                                    <td>29</td>
-                                                    <td class="muted">1</td>
-                                                    <td class="muted">2</td>
-                                                    <td class="muted">3</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <script>/**
+                                                * Ist ein Datum g�ltig
+                                                * @param y: Jahr
+                                                * @param m: Monat
+                                                * @param d: Tag
+                                                * @return true = g�ltig, false = ung�ltig
+                                                */
+                                                function isValidDate(y,m,d)
+                                                {
+                                                    //--Gibt Datum des letzten Tag des Monats aus--
+                                                    var thisDate = new Date(y,m,1);
+                                                    //einen Tag weiter schalten
+                                                    thisDate.setMonth(thisDate.getMonth()+1);
+                                                    //vom ersten Tag des n�chsten monats
+                                                    //ein Tag abziehen
+                                                    thisDate.setTime(thisDate.getTime() - 12*3600*1000);
+                                                    
+                                                    if (d>thisDate.getDate())
+                                                        {return false;}
+                                                    else
+                                                        {return true;}
+                                                }
+                                                /**
+                                                * ermittelt den letzten Tag des aktuellen Monats
+                                                * @return: gibt letzten Tag zur�ck
+                                                */
+                                                function getLastDayOfMonth()
+                                                {
+                                                    var d = getDateFromMemory();
+                                                    //einen Tag weiter schalten
+                                                    d.setMonth(d.getMonth()+1);
+                                                    //den ersten des Monats setzen
+                                                    d.setDate(1);
+                                                    //vom ersten Tag des n�chsten monats
+                                                    //ein Tag abziehen
+                                                    d.setTime(d.getTime() - 12*3600*1000);
+                                                    return d.getDate();
+                                                }
+                                                /**
+                                                * �bernimmt das angeklickte Datum in das Ausgabeelement
+                                                * @param n: Kalendertag zum Kombinieren mit Monat und Jahr
+                                                */
+                                                function putDate(n)
+                                                {
+                                                    var d = getDateFromMemory();
+                                                    d.setDate(n);
+                                                    
+                                                    
+                                                    var returnValue;
+                                                    if (returnModus==0) //Datum zur�ckgeben
+                                                        {returnValue = d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();}
+                                                    else{
+                                                        returnValue = getEventtext( d.getFullYear(), d.getMonth(), d.getDate());
+                                                        if (!returnValue)
+                                                            {returnValue = 'kein Event!';}
+                                                    }
+                                                    
+                                                    document.forms['myform'].elements['datum'].value = returnValue;
+                                                }
+                                                /**
+                                                * setzt das �bergebene Datum in die Speicherzelle
+                                                * @param d: datum zum schreiben in die Speicherzelle
+                                                */
+                                                function setDateToMemory(d)
+                                                {
+                                                    document.all.date_memory.innerHTML = d.getFullYear()+','+(d.getMonth()+1)+','+d.getDate();
+                                                }
+                                                /**
+                                                * Gibt das Datum aus der Speicherzelle zur�ck
+                                                * @return: datum in Date format
+                                                */
+                                                function getDateFromMemory()
+                                                {
+                                                    var s = document.all.date_memory.innerHTML;
+                                                    var z = s.split(',');
+                                                    return new Date(z[0],z[1]-1,z[2]);
+                                                }
+                                                /**
+                                                * schaltet einen Monat Weiter
+                                                */
+                                                function nextMonth()
+                                                {
+                                                    debugger;
+                                                    var d = getDateFromMemory();
+                                                    var m = d.getMonth()+1;
+                                                    var y = d.getFullYear();
+                                                    //Falls Jahres wechsel
+                                                    if ((m+1)>12)
+                                                    {
+                                                        m = 0;
+                                                        y = y + 1;
+                                                    }
+                                                    d = new Date(y,m,01);
+                                                    setDateToMemory(d);
+                                                    loadcalendar();
+                                                }
+                                                /**
+                                                * schaltet einen Monat zur�ck
+                                                */
+                                                function prevMonth()
+                                                {
+                                                    var d = getDateFromMemory();
+                                                    var m = d.getMonth()+1;
+                                                    var y = d.getFullYear();
+                                                    
+                                                    //Falls Jahres1wechsel
+                                                    if ((m-1)<1)
+                                                    {
+                                                        m = 11;
+                                                        y = y - 1;
+                                                    }
+                                                    else
+                                                    {
+                                                        m = m - 2;
+                                                    }
+                                                    d = new Date(y,m,01);
+                                                    setDateToMemory(d);
+                                                    
+                                                    loadcalendar();
+                                                }
+                                                /**
+                                                * zum erstmaligen aufrufen des Kalenders
+                                                */
+                                                function iniCalendar()
+                                                {
+                                                    //heutiges Datum setzen
+                                                    var d = new Date();
+                                                    //aktuelles Datum speichern
+                                                    setDateToMemory(d);
+                                                    //Calender laden
+                                                    loadcalendar();
+                                                }
+                                                /**
+                                                *	L�d die Tabelle mit dem �bergebenen Datum (Monat)
+                                                */
+                                                function loadcalendar() 
+                                                {
+                                                    //aktuelles Datum holen (1. des Monats)
+                                                    var d = getDateFromMemory();
+                                                    //Monat ermitteln aus this_date (z�hlen beginnt bei 0, daher +1)
+                                                    var m = d.getMonth(); 
+                                                    //Jahr ermitteln aus this_date (YYYY)
+                                                    var y = d.getFullYear();
+                                                    //Monat und Jahr eintragen
+                                                    document.all.calendar_month.innerHTML = getMonthname(m+1) + ' ' + y;
+                                                    //ersten Tag des Monats festlegen
+                                                    var firstD = d;
+                                                    firstD.setDate(1);
+                                                    //Wochentag ermitteln vom 1. des �bergebenen Monats (Wochentag aus firstD)
+                                                    var dateDay = firstD.getDay(); //So = 0, Mo = 1 ... Sa = 6
+                                                    //Sonntag soll den Wert 7 darstellen -> Mo = 1 ... So = 7
+                                                    dateDay = (dateDay == 0) ? 7: dateDay;
+                                                    //Speicher f�r aktuelle Zelle
+                                                    var entry = '';
+                                                    //Speicher f�r aktuellen Tag
+                                                    var zahl = '';
+                                                    //heutiges Datum ermitteln
+                                                    var hD = new Date();
+                                                    //ist event 
+                                                    //falls event, dann darf der Rahmen
+                                                    //nicht vom isHolyday �berschrieben werden
+                                                    var bEvent = false;
+                                                    
+                                                    //Alle Kalender Spalten durchz�hlen
+                                                    for (var i = 1; i <= 42; i++)
+                                                    {
+                                                        bEvent = false;
+                                                        //holen der aktuellen Zelle
+                                                        entry = document.getElementById('calendar_entry_'+i);
+                                                        //errechnen der Tages Zahl
+                                                        zahl = (i+1)-dateDay;
+                                                        //datum zusammenschreiben
+                                                        var dx = new Date(y,m,zahl);
+                                                
+                                                        //Eintragen der Daten ab ersten Tag im Monat und wenn es ein g�ltiges Datum ist
+                                                        if (i >= dateDay && isValidDate(y,m,zahl))		
+                                                        {
+                                                            entry.innerHTML = '<a class=calendar_link href=javascript:putDate('+zahl+')>'+zahl+'</a>';
+                                                            entry.hidden = false;
+                                                            entry.style.visibility='visible';
+                                                            entry.style.border = 'solid 1px';
+                                                            //wenn Event ist
+                                                            if (!getEventtext(y,m,zahl))
+                                                                {entry.style.color='000000';}
+                                                            else{
+                                                                entry.style.color='00FF00';
+                                                                //Eventtext wird als Tooltip angezeigt
+                                                                entry.title = getEventtext(y,m,zahl);
+                                                                bEvent = true;
+                                                            }
+                                                            //Wenn Tag ein Feiertag ist
+                                                            if (isHoliday(m,zahl))
+                                                                {entry.style.color='FF0000';}
+                                                            else{
+                                                                if (!bEvent)
+                                                                    entry.style.color='000000';
+                                                            }
+                                                                        
+                                                            //heutiges Datum hervorheben			
+                                                            if (hD.getDate() == dx.getDate() && 
+                                                                hD.getMonth() == dx.getMonth() && 
+                                                                hD.getYear() == dx.getYear())
+                                                            {
+                                                                entry.style.fontWeight = 'bold';
+                                                                entry.style.backgroundColor = 'FFFF33';
+                                                            }
+                                                            
+                                                                
+                                                        }
+                                                        else
+                                                        {
+                                                            entry.innerHTML = '';
+                                                        
+                                                            if (i>= dateDay)
+                                                            {//Wenn Kalenderende
+                                                                //Zelle = hidden
+                                                                entry.hidden = true;
+                                                                entry.style.border = '0px';
+                                                            }
+                                                            else
+                                                            {//Wenn Kalenderanfang
+                                                                //Border-width = 0px
+                                                                entry.style.border = '0px';
+                                                            }
+                                                        } 				  				
+                                                    }		
+                                                }
+                                                
+                                                /**
+                                                 * Pr�ft ob an einem bestimmten Tag ein Event stattfindet
+                                                 * und gibt dieses als Text zur�ck.
+                                                 * @param int y: Jahr
+                                                 * @param int m: Monat
+                                                 * @param int d: tag
+                                                 * @return Veranstaltungstext, 
+                                                 * 		wenn keine veranstaltung = false
+                                                 */
+                                                function getEventtext(y,m,d)
+                                                {
+                                                    //convertieren in int-Zahlen
+                                                    y = parseInt(y);
+                                                    m = parseInt(m);
+                                                    d = parseInt(d);
+                                                    
+                                                    //Monate fangen bei 0 an zuz�hlen
+                                                    m++;
+                                                    //definieren der Events
+                                                    var h = new Array(7);
+                                                    
+                                                    //exemplarisch nehme ich eine
+                                                    //Liste an Festivals her
+                                                    h[0] = "22.9.2019|Rap Mayhem Festival, M�nchen";
+                                                    h[1] = "1.2.2014|Spirit Of Goa, Hamburg";
+                                                    h[2] = "16.2.2014|Emergenza Acoustic Festival, Berlin";
+                                                    h[3] = "2.3.2014|Skarneval Koblenz, Wehdem";
+                                                    h[4] = "12.4.2014|Balinger Rockfestival, Dillingen";
+                                                    h[5] = "5.7.2014|HipHop Open, Stuttgart";
+                                                    h[6] = "19.7.2014|Feeling Fine Festival, Espelkamp";
+                                                    h[7] = "26.7.2014|Beach Party, Duisburg";
+                                                    
+                                                    var dH;
+                                                    var eH;
+                                                    for ( var i = 0; i < h.length; i++) {
+                                                        //Datum eH[0] von Event eH[1] trennen
+                                                        eH = h[i].split("|");
+                                                        //Datum trennen > Tag dH[0], Monat dH[1], Jahr dH[2]
+                                                        dH = eH[0].split(".");
+                                                        
+                                                        if (parseInt(dH[0]) == d && parseInt(dH[1]) == m && parseInt(dH[2]) == y) {
+                                                            return eH[1];
+                                                        }
+                                                    }
+                                                    return false;
+                                                }
+                                                
+                                                /**
+                                                * Ist das Angegebene Datum ein Feiertag?
+                                                * @param m : Monat
+                                                * @param d : Tag
+                                                */
+                                                function isHoliday(m,d)
+                                                {	
+                                                    //Monate fangen bei 0 an zuz�hlen
+                                                    m++;
+                                                    //festlegen der Feiertage
+                                                    var h = new Array(7);
+                                                    h[0] = "1.1";
+                                                    h[1] = "6.1";
+                                                    h[2] = "1.5";
+                                                    h[3] = "3.10";
+                                                    h[4] = "1.11";
+                                                    h[5] = "25.12";
+                                                    h[6] = "26.12";
+                                                    h[7] = "31.12";
+                                                    var iD;
+                                                    //Alle Daten Testen
+                                                    for ( var i = 0; i < h.length; i++) {
+                                                        iH = h[i].split(".");
+                                                                
+                                                        if (iH[0] == d && iH[1] == m) {
+                                                            return true;
+                                                        }
+                                                    }
+                                                    //Wenn kein Feiertag gefunden
+                                                    return false;
+                                                    
+                                                }
+                                                
+                                                /**
+                                                 * regelt welche R�ckgabe erfolgt.
+                                                 * 0 = geklicktes Datum wird zur�ckgegeben.
+                                                 * 1 = Veranstaltungstext aus getEventtext() 
+                                                 * 		wird zur�ckgegeben.
+                                                 */
+                                                var returnModus = 0;
+                                                
+                                                /**
+                                                 * Setzt die Art der R�ckgabe bei, Datums-klick
+                                                 * @param returnIndex:
+                                                 * 		0 = geklicktes Datum zur�ckgeben
+                                                 * 		1 = event aus getEventtext()
+                                                 */
+                                                function setReturnModus(returnIndex)
+                                                    {returnModus = returnIndex;}
+                                                
+                                                /**
+                                                * Gibt den Monatsnamen anhand der Monatsnummer zur�ck
+                                                *@param monthnumber: Monatsnummer (1-12)
+                                                */
+                                                function getMonthname(monthnumber)
+                                                {
+                                                    switch(monthnumber)
+                                                    {
+                                                        case 1:
+                                                          return 'Januar';
+                                                          break;
+                                                        case 2:
+                                                          return 'Februar';
+                                                          break;
+                                                        case 3:
+                                                          return 'März';
+                                                          break;
+                                                        case 4:
+                                                          return 'April';
+                                                          break;
+                                                        case 5:
+                                                          return 'Mai';
+                                                          break;
+                                                        case 6:
+                                                          return 'Juni';
+                                                          break;
+                                                        case 7:
+                                                          return 'Juli';
+                                                          break;
+                                                        case 8:
+                                                          return 'August';
+                                                          break;
+                                                        case 9:
+                                                          return 'September';
+                                                          break;
+                                                        case 10:
+                                                          return 'Oktober';
+                                                          break;
+                                                        case 11:
+                                                          return 'November';
+                                                          break;
+                                                        case 12:
+                                                          return 'Dezember';
+                                                          break;
+                                                        default:
+                                                          return '---';
+                                                    }
+                                                }</script>
+                                            <div class="calendar">
+                                            <table id='calendar' >
+                                                    <tr style='visibility:collapse;' hidden>
+                                                        <td colspan=7 id='date_memory'>---</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_head'><a class='calendar_link'
+                                                            href='javascript:prevMonth()'> &laquo;</a></td>
+                                                        <td colspan=5 class='calendar_head_month' id='calendar_month'>
+                                                            ---</td>
+                                                        <td class='calendar_head'><a class='calendar_link'
+                                                            href='javascript:nextMonth()'> &raquo;</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_day'>Mo</td>
+                                                        <td class='calendar_day'>Di</td>
+                                                        <td class='calendar_day'>Mi</td>
+                                                        <td class='calendar_day'>Do</td>
+                                                        <td class='calendar_day'>Fr</td>
+                                                        <td class='calendar_day'>Sa</td>
+                                                        <td class='calendar_day'>So</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_1'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_2'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_3'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_4'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_5'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_6'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_7'>-x-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_8'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_9'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_10'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_11'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_12'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_13'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_14'>-x-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_15'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_16'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_17'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_18'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_19'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_20'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_21'>-x-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_22'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_23'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_24'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_25'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_26'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_27'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_28'>-x-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_29'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_30'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_31'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_32'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_33'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_34'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_35'>-x-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='calendar_entry' id='calendar_entry_36'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_37'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_38'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_39'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_40'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_41'>-x-</td>
+                                                        <td class='calendar_entry' id='calendar_entry_42'>-x-</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                                <script type='text/javascript'>
+                                                    iniCalendar();
+                                                    
+                                                    /0 = wie bisher, Datum wird in die Box geschrieben/
+                                                    // setReturnModus(1);
+                                                    /*1 = neu, Eventtext wird in die Box geschrieben
+                                                    Das event muss in der calendar.js in der Function
+                                                    getEventtext definiert werden.*/
+                                                    //setReturnModus(1);
+                                                </script>
+                                            
+                                            
+                                                <br />
+                                                <br />
                                     </div>
                                 </div>
                             </div>
@@ -184,18 +577,42 @@
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>200km</button>
+                                <button type="button" th:id="200button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>500km</button>
+                                <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>1000km</button>
+                                <button type="button" th:id="1000button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
                             </div>
-                            <div class="col-4">
-                                1.199,- pro Tag
+                            <div class="col-3 text-center">
+                                    <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${product.price200} + ' €' + ' pro Tag'"></strong>
+                                    <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price500} + ' €' + ' pro Tag'"></strong>
+                                    <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price1000} + ' €' + ' pro Tag'"></strong>
                             </div>
-
+                            <!-- TODO: Auslagern  -->
+                            <script>
+               
+                                    function price_function(e, id) {
+                                      debugger;
+                                      var x = document.getElementById("200km".concat(id));
+                                      var y = document.getElementById("500km".concat(id));
+                                      var z = document.getElementById("1000km".concat(id));
+                                      if (e.id === "200button".concat(id)) {
+                                        x.style.display = "block";
+                                        y.style.display = "none";
+                                        z.style.display = "none";
+                                      } else if (e.id === "500button".concat(id)) {
+                                        x.style.display = "none";
+                                        y.style.display = "block";
+                                        z.style.display = "none";
+                                      } else if (e.id === "1000button".concat(id)) {
+                                        x.style.display = "none";
+                                        y.style.display = "none";
+                                        z.style.display = "block";
+                                      }
+                                    };
+                            </script>
                         </div>
 
                     </div>
@@ -218,55 +635,86 @@
             </div>
             <div class="cardbox-body collapse" id="collapseExample">
                 <div class="row">
-                    <div class="col-2">
-                        <b>Gewicht in kg</b><br>
-                        <p th:text="${product.weightKg}"></p>
+                    <div class="col-1">
+
                     </div>
                     <div class="col-2">
-                        <b>Hubraum in cm3</b><br>
-                        <p th:text="${product.cubicCapacityCm3}"></p>
+                        <p>
+                            <b>Gewicht</b>
+                            <br th:text="${product.weightKg} + ' Kg'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Hubraum</b>
+                            <br th:text="${product.cubicCapacityCm3} + ' Liter'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Drehmoment</b>
+                            <br th:text="${product.nm} + ' nm'">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Massagesitze</b>
+                            <br th:text="${product.massageSeats}">
+                            <!-- <script th:inline="javascript">
+                                    if('[[${product.massageSeats}]]' === true) {
+                                        document.write("ja");
+                                    } else if ('[[${product.massageSeats}]]' === false){
+                                        document.write("nein");
+                                    };
+                            </script> -->
+                        </p>
                     </div>
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-3">
+                        <p>
+                            <b>Innenraumfarbe</b>
+                            <br th:text="${product.bodyColor}">
+                        </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-1">
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Türen</b>
+                            <br th:text="${product.doors}">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Kraftstoff</b>
+                            <br th:text="${product.fuelType}">
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Zusatzfahrer</b>
+                            <br th:text="${product.addDriver}">
+                            <!-- <script th:inline="javascript">
+                                    if('[[${product.addDriver}]]' === true) {
+                                        document.write("ja");
+                                    } else if ('[[${product.addDriver}]]' === false){
+                                        document.write("nein");
+                                    };
+                            </script> -->  
+                        </p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <p>
+                            <b>Polstermaterial</b>
+                            <br th:text="${product.upholstery}">
+                        </p>
                     </div>
-                    <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                    <div class="col-3">
+                        <p>
+                            <b>Rückenlehnendisplay</b>
+                            <br th:text="${product.displaysRear}">
+                        </p>
                     </div>
                 </div>
             </div>
