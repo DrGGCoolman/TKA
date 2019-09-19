@@ -52,7 +52,7 @@ public class MainController {
 
     @RequestMapping("/admin/products")
     public String adminProducts() {
-        return "adminProducts";
+        return "admin/Products";
     }
 
     @RequestMapping("/login-error")
@@ -64,6 +64,16 @@ public class MainController {
     @RequestMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @RequestMapping("/admin/product-create-edit")
+    public String adminproductCreateEdit() {
+        return "admin/product-create-edit";
+    }
+
+    @RequestMapping("/user/add-user")
+    public String userAddUser() {
+        return "user/add-user";
     }
 
 }

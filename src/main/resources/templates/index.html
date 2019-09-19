@@ -25,7 +25,7 @@
 
     <div class="container">
         <div class="row pt-2">
-            <a th:href="@{../products/products.html}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
                 <div class="jumbotron jumbotron-porsche">
                     <div class="overlay">
                         <div class="row">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
                 <div class="jumbotron jumbotron-benzer">
                     <div class="overlay">
                         <div class="row">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
                 <div class="jumbotron jumbotron-bmw">
                     <div class="overlay">
                         <div class="row">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
+            <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
                 <div class="jumbotron jumbotron-maserati">
                     <div class="overlay">
                         <div class="row">
@@ -121,107 +121,74 @@
     </div>
 
     <br>
-    
-    <div class="container pt-2">
-        <h2 class="text-light">Unsere Highlights</h2>
-        <hr>
-    </div>
+    <br>
 
-    <div class="container mt-4">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            <div class="carousel-inner">
-                <a href="#" class="carousel-item active">
-                    <img th:src="@{img/porsche.jpg}" class="d-block w-100 carousel-picture">
-                    <div class="carousel-caption">
-                        <h3>Porsche</h3>
-                        <p>We had such a great time in LA!</p>
+    <div class="container">
+        <div class="cardbox p-5">
+            <div class="container">
+                <h2 class="text-light">Unsere Highlights</h2>
+                <br>
+                <p>
+                    Unsere Spezialisten wählen regelmäßig ihre Favoriten aus unserer luxuriösen Auswahl aus. Überzeugen
+                    Sie
+                    sich selber
+                    und werfen Sie einen Blick auf die Highlights:
+                </p>
+                <br>
+                <div class="container">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                        <div class="carousel-inner">
+                            <a href="#" class="carousel-item active">
+                                <img th:src="@{img/porsche.jpg}" class="d-block mw-100 carousel-picture">
+                                <div class="carousel-caption">
+                                    <h3>Porsche</h3>
+                                    <p>We had such a great time in LA!</p>
+                                </div>
+                            </a>
+                            <a href="#" class="carousel-item">
+                                <img th:src="@{img/bmw.jpg}" class="d-block mw-100 carousel-picture">
+                                <div class="carousel-caption">
+                                    <h3>BMW</h3>
+                                    <p>Thank you, Chicago!</p>
+                                </div>
+                            </a>
+                            <a href="#" class="carousel-item">
+                                <img th:src="@{img/maserati.jpg}" class="d-block mw-100 carousel-picture">
+                                <div class="carousel-caption">
+                                    <h3>Maserati</h3>
+                                    <p>We love the Big Apple!</p>
+                                </div>
+                            </a>
+                        </div>
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
                     </div>
-                </a>
-                <a href="#" class="carousel-item">
-                    <img th:src="@{img/bmw.jpg}" class="d-block w-100 carousel-picture">
-                    <div class="carousel-caption">
-                        <h3>BMW</h3>
-                        <p>Thank you, Chicago!</p>
-                    </div>
-                </a>
-                <a href="#" class="carousel-item">
-                    <img th:src="@{img/maserati.jpg}" class="d-block w-100 carousel-picture">
-                    <div class="carousel-caption">
-                        <h3>Maserati</h3>
-                        <p>We love the Big Apple!</p>
-                    </div>
-                </a>
+                </div>
+                <br>
             </div>
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
         </div>
     </div>
     </div>
+    <br>
     <br>
 
     <div class="container">
         <!-- <h2 class="text-light"></h2>
         <hr> -->
-        <div class="cardbox mt-4 p-4">
-            <h2 class="text-light">Über uns</h2>
-            <hr>
-            <br>
-            <p class="text-light text-center">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-                dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                at
-                vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis
-                dolore
-                te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+        <div class="cardbox p-5">
+            <div class="container">
+                <h2 class="text-light">Über uns</h2>
                 <br>
-                <br>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-                dolor
-                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                nonummy
-                nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
-                autem
-                vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
-                feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum
-                zzril
-                delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
-                option
-                congue nihil imperdiet doming id quod mazim placerat facer possim assum.i hate arsu not
-            </p>
-            <hr>
-            <br>
-            <h2 class="text-light">Anfahrt</h2>
-            <br>
-            <div class="container col-11">
-                <div id="map-container-google-1" class="z-depth-1-half map-container ">
-                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                        style="border:0" allowfullscreen></iframe>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div>
-                
-                <h2 class="text-light"> Beschreibung der Anfahrt</h2>
-                <hr>
-                <br>
-                <p class="text-light text-center">
+                <p class="text-light">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                     ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
@@ -249,31 +216,64 @@
                     delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend
                     option
                     congue nihil imperdiet doming id quod mazim placerat facer possim assum.i hate arsu not
+                    <br>
+                    <br>
+                    Folgen Sie uns auch auf unseren Social Media Accounts!
                 </p>
                 <hr>
-                <div>
-                    <!-- SOCIAL MEDIA-Block -->
-                    <div class="container socialmedia text-center">
-                            <span>
-                                <a href="#" class="fa fa-instagram"></a>
-                            </span>
-                            <span>
-                                <a href="#" class="fa fa-facebook"></a>
-                            </span>
-                            <span>
-                                <a href="#" class="fa fa-linkedin"></a>
-                            </span>
-                            <span>
-                                <a href="#" class="fa fa-twitter"></a>
-                            </span>
-                        </div>
+                <!-- SOCIAL MEDIA-Block -->
+                <div class="container socialmedia text-center">
+                    <span>
+                        <a href="#" class="fa fa-instagram"></a>
+                    </span>
+                    <span>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </span>
+                    <span>
+                        <a href="#" class="fa fa-linkedin"></a>
+                    </span>
+                    <span>
+                        <a href="#" class="fa fa-twitter"></a>
+                    </span>
                 </div>
             </div>
         </div>
+        <br>
+        <br>
+        <div class="cardbox p-5">
+            <h2 class="text-light">Anfahrt</h2>
+            <br>
+            <div class="container">
+                <div id="map-container-google-1" class="z-depth-1-half map-container ">
+                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+
+                <h2 class="text-light">Wo finde ich Exclusive Car Rental?</h2>
+                <br>
+                <p class="text-light">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+                    dolor
+                    in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                    at
+                    vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis
+                    dolore
+                    te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                    <br>
+                </p>
+                <br>
+            </div>
+        </div>
     </div>
- 
+
     <br>
-    <br> 
+    <br>
 
     <!-- FOOTER-->
     <br></br>
