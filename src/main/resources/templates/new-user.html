@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -28,7 +27,7 @@
                 weiteren Registrierung fortfahren.
             </div>
             <br>
-            <form>
+            <form th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
                 <div class="form-row">
                     <div class="form-group col-4">
                         <label for="inputEmail4">Anrede*</label>
@@ -117,9 +116,7 @@
 
             </form>
         </div>
-
     </div>
-
 
     <br>
     <br>

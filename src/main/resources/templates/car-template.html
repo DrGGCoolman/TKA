@@ -64,11 +64,11 @@
 
           <div class="col-3 preis-buttons">
             <div>
-              <button type="button" class="btn btn-light" th:id="200button + ${product.id}" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
-              <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+              <button type="button" class="btn btn-sm btn-light" th:id="200button + ${product.id}" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+              <button type="button" th:id="500button + ${product.id}" class="btn btn-sm btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
             </div>
             <div class="col">
-              <button type="button" th:id="1000button + ${product.id}"class="btn btn-light ml-4 mt-1" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+              <button type="button" th:id="1000button + ${product.id}"class="btn btn-sm btn-light ml-4 mt-1" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
             </div>
           </div>
 
