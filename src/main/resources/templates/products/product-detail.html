@@ -22,9 +22,11 @@
     <br>
 
     <div class="container">
-        <h3 class="text-white" th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h3>
-        <br>
-        <div class="cardbox">
+        <div class="cardbox p-4">
+            <h3 class="text-white"
+                th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}">
+            </h3>
+            <br>
             <div class="cardbox-body">
                 <div class="row">
                     <div class="col-lg-6">
