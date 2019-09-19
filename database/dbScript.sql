@@ -5,7 +5,7 @@
 -- Dumped from database version 11.4
 -- Dumped by pg_dump version 11.4
 
--- Started on 2019-09-16 14:23:06
+-- Started on 2019-09-17 19:08:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 196 (class 1259 OID 17721)
+-- TOC entry 196 (class 1259 OID 34201)
 -- Name: ec_brand; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -36,7 +36,7 @@ CREATE TABLE public.ec_brand (
 ALTER TABLE public.ec_brand OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 17804)
+-- TOC entry 197 (class 1259 OID 34207)
 -- Name: ec_brand_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -51,7 +51,7 @@ ALTER TABLE public.ec_brand ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 197 (class 1259 OID 17727)
+-- TOC entry 198 (class 1259 OID 34209)
 -- Name: ec_category; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -64,7 +64,7 @@ CREATE TABLE public.ec_category (
 ALTER TABLE public.ec_category OWNER TO postgres;
 
 --
--- TOC entry 203 (class 1259 OID 17802)
+-- TOC entry 199 (class 1259 OID 34215)
 -- Name: ec_category_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -79,7 +79,7 @@ ALTER TABLE public.ec_category ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY 
 
 
 --
--- TOC entry 198 (class 1259 OID 17733)
+-- TOC entry 200 (class 1259 OID 34217)
 -- Name: ec_pictures; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -94,7 +94,7 @@ CREATE TABLE public.ec_pictures (
 ALTER TABLE public.ec_pictures OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 17806)
+-- TOC entry 201 (class 1259 OID 34223)
 -- Name: ec_pictures_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -109,7 +109,7 @@ ALTER TABLE public.ec_pictures ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY 
 
 
 --
--- TOC entry 199 (class 1259 OID 17739)
+-- TOC entry 202 (class 1259 OID 34225)
 -- Name: ec_product_type; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -148,7 +148,7 @@ CREATE TABLE public.ec_product_type (
 ALTER TABLE public.ec_product_type OWNER TO postgres;
 
 --
--- TOC entry 206 (class 1259 OID 17808)
+-- TOC entry 203 (class 1259 OID 34231)
 -- Name: ec_product_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -163,7 +163,7 @@ ALTER TABLE public.ec_product_type ALTER COLUMN id ADD GENERATED ALWAYS AS IDENT
 
 
 --
--- TOC entry 200 (class 1259 OID 17745)
+-- TOC entry 204 (class 1259 OID 34233)
 -- Name: ec_role; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -176,7 +176,7 @@ CREATE TABLE public.ec_role (
 ALTER TABLE public.ec_role OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 17810)
+-- TOC entry 205 (class 1259 OID 34239)
 -- Name: ec_role_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -191,7 +191,7 @@ ALTER TABLE public.ec_role ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 201 (class 1259 OID 17751)
+-- TOC entry 206 (class 1259 OID 34241)
 -- Name: ec_search_words; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -205,7 +205,7 @@ CREATE TABLE public.ec_search_words (
 ALTER TABLE public.ec_search_words OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 17812)
+-- TOC entry 207 (class 1259 OID 34247)
 -- Name: ec_search_words_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -220,7 +220,7 @@ ALTER TABLE public.ec_search_words ALTER COLUMN id ADD GENERATED ALWAYS AS IDENT
 
 
 --
--- TOC entry 202 (class 1259 OID 17757)
+-- TOC entry 208 (class 1259 OID 34249)
 -- Name: ec_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -244,7 +244,7 @@ CREATE TABLE public.ec_user (
 ALTER TABLE public.ec_user OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 17814)
+-- TOC entry 209 (class 1259 OID 34255)
 -- Name: ec_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -259,7 +259,7 @@ ALTER TABLE public.ec_user ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 2868 (class 0 OID 17721)
+-- TOC entry 2868 (class 0 OID 34201)
 -- Dependencies: 196
 -- Data for Name: ec_brand; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -283,8 +283,8 @@ INSERT INTO public.ec_brand (id, brand_title) OVERRIDING SYSTEM VALUE VALUES (16
 
 
 --
--- TOC entry 2869 (class 0 OID 17727)
--- Dependencies: 197
+-- TOC entry 2870 (class 0 OID 34209)
+-- Dependencies: 198
 -- Data for Name: ec_category; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -295,8 +295,8 @@ INSERT INTO public.ec_category (id, title) OVERRIDING SYSTEM VALUE VALUES (4, 'S
 
 
 --
--- TOC entry 2870 (class 0 OID 17733)
--- Dependencies: 198
+-- TOC entry 2872 (class 0 OID 34217)
+-- Dependencies: 200
 -- Data for Name: ec_pictures; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -374,8 +374,8 @@ INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYS
 
 
 --
--- TOC entry 2871 (class 0 OID 17739)
--- Dependencies: 199
+-- TOC entry 2874 (class 0 OID 34225)
+-- Dependencies: 202
 -- Data for Name: ec_product_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -438,32 +438,35 @@ INSERT INTO public.ec_product_type (id, category_id, brand_id, model, variant, g
 
 
 --
--- TOC entry 2872 (class 0 OID 17745)
--- Dependencies: 200
+-- TOC entry 2876 (class 0 OID 34233)
+-- Dependencies: 204
 -- Data for Name: ec_role; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.ec_role (id, role_title) OVERRIDING SYSTEM VALUE VALUES (1, 'USER');
+INSERT INTO public.ec_role (id, role_title) OVERRIDING SYSTEM VALUE VALUES (2, 'ADMIN');
 
 
 --
--- TOC entry 2873 (class 0 OID 17751)
--- Dependencies: 201
+-- TOC entry 2878 (class 0 OID 34241)
+-- Dependencies: 206
 -- Data for Name: ec_search_words; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2874 (class 0 OID 17757)
--- Dependencies: 202
+-- TOC entry 2880 (class 0 OID 34249)
+-- Dependencies: 208
 -- Data for Name: ec_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.ec_user (id, role_id, name, firstname, gender, e_mail, password, title, birth, street, house_number, post_code, city) OVERRIDING SYSTEM VALUE VALUES (1, 1, 'Muller', 'Penis', 'm', 'test@gmx.de', '1234', 'Mr', '1990-11-11','Robinson Blv', 3, 90001, 'Santa Babara');
 
 
 --
 -- TOC entry 2887 (class 0 OID 0)
--- Dependencies: 204
+-- Dependencies: 197
 -- Name: ec_brand_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -472,7 +475,7 @@ SELECT pg_catalog.setval('public.ec_brand_id_seq', 1, false);
 
 --
 -- TOC entry 2888 (class 0 OID 0)
--- Dependencies: 203
+-- Dependencies: 199
 -- Name: ec_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -481,7 +484,7 @@ SELECT pg_catalog.setval('public.ec_category_id_seq', 1, false);
 
 --
 -- TOC entry 2889 (class 0 OID 0)
--- Dependencies: 205
+-- Dependencies: 201
 -- Name: ec_pictures_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -490,7 +493,7 @@ SELECT pg_catalog.setval('public.ec_pictures_id_seq', 71, true);
 
 --
 -- TOC entry 2890 (class 0 OID 0)
--- Dependencies: 206
+-- Dependencies: 203
 -- Name: ec_product_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -499,16 +502,16 @@ SELECT pg_catalog.setval('public.ec_product_type_id_seq', 1, false);
 
 --
 -- TOC entry 2891 (class 0 OID 0)
--- Dependencies: 207
+-- Dependencies: 205
 -- Name: ec_role_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_role_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ec_role_id_seq', 3, true);
 
 
 --
 -- TOC entry 2892 (class 0 OID 0)
--- Dependencies: 208
+-- Dependencies: 207
 -- Name: ec_search_words_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -525,7 +528,7 @@ SELECT pg_catalog.setval('public.ec_user_id_seq', 1, false);
 
 
 --
--- TOC entry 2731 (class 2606 OID 17764)
+-- TOC entry 2731 (class 2606 OID 34258)
 -- Name: ec_category category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -534,7 +537,7 @@ ALTER TABLE ONLY public.ec_category
 
 
 --
--- TOC entry 2729 (class 2606 OID 17766)
+-- TOC entry 2729 (class 2606 OID 34260)
 -- Name: ec_brand ec_brand_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -543,7 +546,7 @@ ALTER TABLE ONLY public.ec_brand
 
 
 --
--- TOC entry 2733 (class 2606 OID 17768)
+-- TOC entry 2733 (class 2606 OID 34262)
 -- Name: ec_pictures ec_pictures_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -552,7 +555,7 @@ ALTER TABLE ONLY public.ec_pictures
 
 
 --
--- TOC entry 2735 (class 2606 OID 17770)
+-- TOC entry 2735 (class 2606 OID 34264)
 -- Name: ec_product_type product_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -561,7 +564,7 @@ ALTER TABLE ONLY public.ec_product_type
 
 
 --
--- TOC entry 2737 (class 2606 OID 17772)
+-- TOC entry 2737 (class 2606 OID 34266)
 -- Name: ec_role role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -570,7 +573,7 @@ ALTER TABLE ONLY public.ec_role
 
 
 --
--- TOC entry 2739 (class 2606 OID 17774)
+-- TOC entry 2739 (class 2606 OID 34268)
 -- Name: ec_search_words search_words_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -579,7 +582,7 @@ ALTER TABLE ONLY public.ec_search_words
 
 
 --
--- TOC entry 2741 (class 2606 OID 17776)
+-- TOC entry 2741 (class 2606 OID 34270)
 -- Name: ec_user usert_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -588,7 +591,7 @@ ALTER TABLE ONLY public.ec_user
 
 
 --
--- TOC entry 2743 (class 2606 OID 17777)
+-- TOC entry 2743 (class 2606 OID 34271)
 -- Name: ec_product_type product_brand_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -597,7 +600,7 @@ ALTER TABLE ONLY public.ec_product_type
 
 
 --
--- TOC entry 2744 (class 2606 OID 17782)
+-- TOC entry 2744 (class 2606 OID 34276)
 -- Name: ec_product_type product_category_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -606,7 +609,7 @@ ALTER TABLE ONLY public.ec_product_type
 
 
 --
--- TOC entry 2742 (class 2606 OID 17787)
+-- TOC entry 2742 (class 2606 OID 34281)
 -- Name: ec_pictures product_pictures_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -615,7 +618,7 @@ ALTER TABLE ONLY public.ec_pictures
 
 
 --
--- TOC entry 2745 (class 2606 OID 17792)
+-- TOC entry 2745 (class 2606 OID 34286)
 -- Name: ec_search_words search_user_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -624,7 +627,7 @@ ALTER TABLE ONLY public.ec_search_words
 
 
 --
--- TOC entry 2746 (class 2606 OID 17797)
+-- TOC entry 2746 (class 2606 OID 34291)
 -- Name: ec_user user_role_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -632,7 +635,7 @@ ALTER TABLE ONLY public.ec_user
     ADD CONSTRAINT user_role_fk FOREIGN KEY (role_id) REFERENCES public.ec_role(id);
 
 
--- Completed on 2019-09-16 14:23:07
+-- Completed on 2019-09-17 19:08:59
 
 --
 -- PostgreSQL database dump complete
