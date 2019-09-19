@@ -40,9 +40,9 @@ public class MainController {
 
     @RequestMapping("/login")
     public String login() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
-        //return "login";
+        // return "login";
     }
 
     @RequestMapping("/products/product-detail")
@@ -64,6 +64,11 @@ public class MainController {
     @RequestMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @RequestMapping("/new-user")
+    public String newUser() {
+        return "new-user";
     }
 
     @RequestMapping("/admin/product-create-edit")
