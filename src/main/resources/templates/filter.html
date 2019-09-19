@@ -7,10 +7,19 @@
         <div class="container">
             <div class="categories pt-4 pb-4">
                 <form method="POST" th:action="@{/products/filter}">
+
                     <ul class="list-group-wb">
+
                         <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
                             <i class="fa fa-angle-down"></i>
                         </a>
+
+                        <li th:each="categorie : ${category_id}">
+                            <input type="checkbox" th:field="*{categories}" th:value="${ecCategoryByCategoryId}" />
+                            <label th:for="${#ids.prev('features')}" 
+                            th:text="${ecCategoryByCategoryId}">Sport</label>
+                        </li>
+Í
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="CategorySport" type="checkbox" value=""
                                 id="defaultCheck1">

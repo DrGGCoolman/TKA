@@ -114,6 +114,7 @@ BOOTSTRAP
   position: relative;
   background-image: url("/img/hintergrund.jpg");
   background-attachment: fixed;
+  background-size: cover;
 }
 
 /*
