@@ -184,13 +184,13 @@
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-light">>200km</button>
+                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>200km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light">>500km</button>
+                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>500km</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-light">>1000km</button>
+                                <button type="button" class="btn btn-light" th:onclick="|price_function('${product.id}')|">>1000km</button>
                             </div>
                             <div class="col-4">
                                 1.199,- pro Tag
@@ -206,7 +206,7 @@
         <br>
 
         <div class="cardbox">
-            <div class="cardbox-body text-center">
+            <div class="cardbox-body text-center pt-4">
                 <h5>
                     <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
                         aria-controls="collapseExample">
@@ -219,12 +219,12 @@
             <div class="cardbox-body collapse" id="collapseExample">
                 <div class="row">
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <b>Gewicht in kg</b><br>
+                        <p th:text="${product.weightKg}"></p>
                     </div>
                     <div class="col-2">
-                        <p><b>Leistung</b><br>
-                            887 PS</p>
+                        <b>Hubraum in cm3</b><br>
+                        <p th:text="${product.cubicCapacityCm3}"></p>
                     </div>
                     <div class="col-2">
                         <p><b>Leistung</b><br>
