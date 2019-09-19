@@ -16,8 +16,7 @@
 
     <div class="rent bg-main">
 
-        <!-- TODO: 
-            Filter auslagern -->
+        <!-- TODO: Filter auslagern -->
         <div class="container-fluid">
             <div class="row">
 
@@ -51,11 +50,33 @@
                         </div>
                         <div th:case="*">
                             <div th:each="product : ${productTypes}">
+                                <div th:text="${product.id}"></div>
                                 <div th:insert="~{car-template :: copy(${product})}"></div>
                             </div>
                         </div>
                     </div>
-
+                    <script>
+               
+                            function price_function(e, id) {
+                              debugger;
+                              var x = document.getElementById("200km".concat(id));
+                              var y = document.getElementById("500km".concat(id));
+                              var z = document.getElementById("1000km".concat(id));
+                              if (e.id === "200button".concat(id)) {
+                                x.style.display = "block";
+                                y.style.display = "none";
+                                z.style.display = "none";
+                              } else if (e.id === "500button".concat(id)) {
+                                x.style.display = "none";
+                                y.style.display = "block";
+                                z.style.display = "none";
+                              } else if (e.id === "1000button".concat(id)) {
+                                x.style.display = "none";
+                                y.style.display = "none";
+                                z.style.display = "block";
+                              }
+                            };
+                    </script>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
