@@ -28,7 +28,7 @@ public class EcUserEntity {
     private String name;
     private String firstname;
     private String gender;
-    private String Email;
+    private String username;
     private String password;
     private String title;
     private Date birth;
@@ -88,12 +88,12 @@ public class EcUserEntity {
 
     @Basic
     @Column(name = "e_mail", nullable = false, length = -1)
-    public String getEmail() {
-        return Email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.Email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -175,7 +175,7 @@ public class EcUserEntity {
         EcUserEntity that = (EcUserEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name)
                 && Objects.equals(firstname, that.firstname) && Objects.equals(gender, that.gender)
-                && Objects.equals(Email, that.Email) && Objects.equals(password, that.password)
+                && Objects.equals(username, that.username) && Objects.equals(password, that.password)
                 && Objects.equals(title, that.title) && Objects.equals(birth, that.birth)
                 && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber)
                 && Objects.equals(postCode, that.postCode) && Objects.equals(city, that.city);
@@ -183,7 +183,7 @@ public class EcUserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname, gender, Email, password, title, birth, street, houseNumber, postCode,
+        return Objects.hash(id, name, firstname, gender, username, password, title, birth, street, houseNumber, postCode,
                 city);
     }
 

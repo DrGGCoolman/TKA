@@ -2,6 +2,7 @@ package de.gowlr.allcar.services;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,8 +22,9 @@ public class UserAdapter implements UserDetails {
         return user;
     }
 
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getEcRoleByRoleId().getRoleTitle()));
+        return Set.of(new SimpleGrantedAuthority(user.getEcRoleByRoleId().getRoleTitle()));
     }
 
     public String getPassword() {
@@ -30,7 +32,7 @@ public class UserAdapter implements UserDetails {
     }
 
     public String getUsername() {
-        return user.getEmail();
+        return user.getUsername();
     }
 
     public boolean isAccountNonExpired() {
