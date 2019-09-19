@@ -9,6 +9,7 @@ public class EcPicturesEntity {
     private Integer id;
     private String title;
     private String filePath;
+    private EcProductTypeEntity ecProductTypeByProductId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -53,5 +54,15 @@ public class EcPicturesEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, title, filePath);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
+    public EcProductTypeEntity getEcProductTypeByProductId() {
+        return ecProductTypeByProductId;
+    }
+
+    public void setEcProductTypeByProductId(EcProductTypeEntity ecProductTypeByProductId) {
+        this.ecProductTypeByProductId = ecProductTypeByProductId;
     }
 }

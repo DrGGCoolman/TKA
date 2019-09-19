@@ -2,20 +2,21 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
+import sun.jvm.hotspot.gc.shared.G1HeapRegionType;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@AllArgsConstructor
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
     private Integer id;
+    private String role;
     private String name;
     private String firstname;
     private String gender;
-    private String Email;
+    private String username;
     private String password;
     private String title;
     private Date birth;
@@ -23,9 +24,10 @@ public class EcUserEntity {
     private Integer houseNumber;
     private Integer postCode;
     private String city;
-    private EcRoleEntity ecRoleByRoleId;
+    private Collection<EcSearchWordsEntity> ecSearchWordsById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -36,7 +38,17 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = -1)
+    @Column(name = "role", nullable = true, length = -1)
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Basic
+    @Column(name = "name", nullable = true, length = -1)
     public String getName() {
         return name;
     }
@@ -46,7 +58,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "firstname", nullable = false, length = -1)
+    @Column(name = "firstname", nullable = true, length = -1)
     public String getFirstname() {
         return firstname;
     }
@@ -67,12 +79,12 @@ public class EcUserEntity {
 
     @Basic
     @Column(name = "e_mail", nullable = false, length = -1)
-    public String getEmail() {
-        return Email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.Email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -96,7 +108,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "birth", nullable = false)
+    @Column(name = "birth", nullable = true)
     public Date getBirth() {
         return birth;
     }
@@ -106,7 +118,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "street", nullable = false, length = -1)
+    @Column(name = "street", nullable = true, length = -1)
     public String getStreet() {
         return street;
     }
@@ -116,7 +128,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "house_number", nullable = false)
+    @Column(name = "house_number", nullable = true)
     public Integer getHouseNumber() {
         return houseNumber;
     }
@@ -126,7 +138,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "post_code", nullable = false)
+    @Column(name = "post_code", nullable = true)
     public Integer getPostCode() {
         return postCode;
     }
@@ -136,7 +148,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "city", nullable = false, length = -1)
+    @Column(name = "city", nullable = true, length = -1)
     public String getCity() {
         return city;
     }
@@ -151,10 +163,11 @@ public class EcUserEntity {
         if (o == null || getClass() != o.getClass()) return false;
         EcUserEntity that = (EcUserEntity) o;
         return Objects.equals(id, that.id) &&
+                Objects.equals(role, that.role) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(firstname, that.firstname) &&
                 Objects.equals(gender, that.gender) &&
-                Objects.equals(Email, that.Email) &&
+                Objects.equals(username, that.username) &&
                 Objects.equals(password, that.password) &&
                 Objects.equals(title, that.title) &&
                 Objects.equals(birth, that.birth) &&
@@ -166,16 +179,15 @@ public class EcUserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname, gender, Email, password, title, birth, street, houseNumber, postCode, city);
+        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber, postCode, city);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
-    public EcRoleEntity getEcRoleByRoleId() {
-        return ecRoleByRoleId;
+    @OneToMany(mappedBy = "ecUserByUserId")
+    public Collection<EcSearchWordsEntity> getEcSearchWordsById() {
+        return ecSearchWordsById;
     }
 
-    public void setEcRoleByRoleId(EcRoleEntity ecRoleByRoleId) {
-        this.ecRoleByRoleId = ecRoleByRoleId;
+    public void setEcSearchWordsById(Collection<EcSearchWordsEntity> ecSearchWordsById) {
+        this.ecSearchWordsById = ecSearchWordsById;
     }
 }

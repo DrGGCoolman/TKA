@@ -1,6 +1,7 @@
 package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -8,6 +9,7 @@ import java.util.Objects;
 public class EcBrandEntity {
     private Integer id;
     private String brandTitle;
+    private Collection<EcProductTypeEntity> ecProductTypesById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -41,5 +43,14 @@ public class EcBrandEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, brandTitle);
+    }
+
+    @OneToMany(mappedBy = "ecBrandByBrandId")
+    public Collection<EcProductTypeEntity> getEcProductTypesById() {
+        return ecProductTypesById;
+    }
+
+    public void setEcProductTypesById(Collection<EcProductTypeEntity> ecProductTypesById) {
+        this.ecProductTypesById = ecProductTypesById;
     }
 }

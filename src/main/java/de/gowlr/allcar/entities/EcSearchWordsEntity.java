@@ -8,6 +8,7 @@ import java.util.Objects;
 public class EcSearchWordsEntity {
     private Integer id;
     private String searchWords;
+    private EcUserEntity ecUserByUserId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -41,5 +42,15 @@ public class EcSearchWordsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, searchWords);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    public EcUserEntity getEcUserByUserId() {
+        return ecUserByUserId;
+    }
+
+    public void setEcUserByUserId(EcUserEntity ecUserByUserId) {
+        this.ecUserByUserId = ecUserByUserId;
     }
 }
