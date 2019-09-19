@@ -2,17 +2,20 @@ package de.gowlr.allcar.repositories;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import de.gowlr.allcar.entities.EcUserEntity;
 
 @Repository
-public interface UserRepository extends CrudRepository<EcUserEntity, Long> {
+public interface UserRepository extends JpaRepository<EcUserEntity, Long> {
 
-    EcUserEntity findByEmail(String email);
-    List<EcUserEntity> findByEmailIgnoreCase(String email);
+    List<EcUserEntity> findAll();
 
-    List<EcUserEntity> findByEcRoleByRoleIdRoleTitleIgnoreCase(String roleTitle);
+    EcUserEntity findByUsername(String username);
+
+    EcUserEntity findByUsernameIgnoreCase(String username);
+
+    List<EcUserEntity> findByRole(String role);
 
 }

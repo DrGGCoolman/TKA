@@ -2,7 +2,7 @@
   <div class="row no-gutters">
     <div class="col-3">
       <a th:href="@{${product.id}}">
-        <img th:src="@{/img/mclaren.jpg}" class="card-img" alt="...">
+        <img th:src="@{${product.ecPicturesById[0].filePath}}" class="card-img" alt="...">
       </a>
     </div>
 
@@ -64,11 +64,14 @@
 
           <div class="col-3 preis-buttons">
             <div>
-              <button type="button" class="btn btn-light" th:id="200button + ${product.id}" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
-              <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+              <button type="button" class="btn btn-light" th:id="200button + ${product.id}"
+                th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+              <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
+                th:onclick="|price_function(this, '${product.id}')|">>500km</button>
             </div>
             <div class="col">
-              <button type="button" th:id="1000button + ${product.id}"class="btn btn-light ml-4 mt-1" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+              <button type="button" th:id="1000button + ${product.id}" class="btn btn-light ml-4 mt-1"
+                th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
             </div>
           </div>
 
@@ -82,7 +85,7 @@
     </div>
   </div>
 </div>
-              <!-- <script th:inline="javascript">
+<!-- <script th:inline="javascript">
                   /*<![CDATA[*/
                   function price1_function() {
                     var x = document.getElementById("200km".concat('+ ${product.id}"'));

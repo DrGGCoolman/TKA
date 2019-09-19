@@ -21,10 +21,10 @@ public class UserAdapterService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        EcUserEntity user = UserRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        EcUserEntity user = UserRepository.findByUsernameIgnoreCase(username);
         if (user == null) {
-            throw new UsernameNotFoundException(email);
+            throw new UsernameNotFoundException(username);
         }
         return new UserAdapter(user);
     }
