@@ -641,7 +641,7 @@
                     <div class="col-2">
                         <p>
                             <b>Gewicht</b>
-                            <br th:text="${product.weightKg} + ' Kg'">
+                            <br th:text="${#numbers.formatDecimal(product.weightKg,3,0)} + ' Kg'">
                         </p>
                     </div>
                     <div class="col-2">
@@ -653,20 +653,17 @@
                     <div class="col-2">
                         <p>
                             <b>Drehmoment</b>
-                            <br th:text="${product.nm} + ' nm'">
+                            <br th:text="${#numbers.formatDecimal(product.nm,3,0)} + ' nm'">
                         </p>
                     </div>
                     <div class="col-2">
                         <p>
                             <b>Massagesitze</b>
-                            <br th:text="${product.massageSeats}">
-                            <!-- <script th:inline="javascript">
-                                    if('[[${product.massageSeats}]]' === true) {
-                                        document.write("ja");
-                                    } else if ('[[${product.massageSeats}]]' === false){
-                                        document.write("nein");
-                                    };
-                            </script> -->
+                            <td th:switch="${product.massageSeats}">
+                                <br th:case="true" th:text="Ja">
+                                <br th:case="false" th:text="Nein">  
+                            </td>
+                            
                         </p>
                     </div>
                     <div class="col-3">
@@ -694,14 +691,10 @@
                     <div class="col-2">
                         <p>
                             <b>Zusatzfahrer</b>
-                            <br th:text="${product.addDriver}">
-                            <!-- <script th:inline="javascript">
-                                    if('[[${product.addDriver}]]' === true) {
-                                        document.write("ja");
-                                    } else if ('[[${product.addDriver}]]' === false){
-                                        document.write("nein");
-                                    };
-                            </script> -->  
+                            <td th:switch="${product.addDriver}">
+                                    <br th:case="true" th:text="Ja">
+                                    <br th:case="false" th:text="Nein">  
+                            </td>
                         </p>
                     </div>
                     <div class="col-2">
@@ -713,7 +706,10 @@
                     <div class="col-3">
                         <p>
                             <b>Rückenlehnendisplay</b>
-                            <br th:text="${product.displaysRear}">
+                            <td th:switch="${product.displaysRear}">
+                                    <br th:case="true" th:text="Ja">
+                                    <br th:case="false" th:text="Nein">  
+                            </td>
                         </p>
                     </div>
                 </div>
