@@ -16,6 +16,12 @@
   transition: width 0.4s ease-in-out;
 }
 
+.main-ecr {
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.3em;
+  font-weight: bold;
+}
+
 /* When the input field gets focus, change its width to 100% */
 .searchbox[type=text]:focus {
   width: 600px;
@@ -225,8 +231,9 @@ color: #FFE5AA;
 
 .category {
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
+  border-radius: 4px;
   border: 0px;
+  max-width: 200px;
 }
 
 .jumbotron-porsche:hover .overlay {
