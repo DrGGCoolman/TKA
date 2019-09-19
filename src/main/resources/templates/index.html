@@ -30,7 +30,7 @@
                     <div class="jumbotron jumbotron-porsche">
                         <div class="overlay">
                             <div class="row">
-                                <div class="col-8 text category p-4">
+                                <div class="col-8 text category p-4" id="text-sport">
                                     <h1 class="main-ecr text-uppercase">Sport</h1>
                                     <br>
                                     <p class="text-white">
@@ -55,7 +55,7 @@
                     <div class="jumbotron jumbotron-benzer">
                         <div class="overlay">
                             <div class="row">
-                                <div class="col-8 text category p-4">
+                                <div class="col-8 text category p-4" id="text-sportplus">
                                     <h1 class="main-ecr text-uppercase">Sport +</h1>
                                     <br>
                                     <p class="text-white">
@@ -77,7 +77,7 @@
                     <div class="jumbotron jumbotron-bmw">
                         <div class="overlay">
                             <div class="row">
-                                <div class="col-8 text category p-4">
+                                <div class="col-8 text category p-4" id="text-suv">
                                     <h1 class="main-ecr text-uppercase">SUV</h1>
                                     <br>
                                     <p class="text-white">
@@ -100,7 +100,7 @@
                     <div class="jumbotron jumbotron-maserati">
                         <div class="overlay">
                             <div class="row">
-                                <div class="col-8 text category p-4">
+                                <div class="col-8 text category p-4" id="text-luxus">
                                     <h1 class="main-ecr text-uppercase">Luxus</h1>
                                     <br>
                                     <p class="text-white">
@@ -322,6 +322,7 @@
             $('#jumbo-bmw').hide();
             $('#jumbo-maserati').hide();
             $("#sport").show();
+            $("#text-sport").show();
         });
         $(".jumbotron-porsche").mouseout(function () {
             $('#jumbo-porsche').addClass('col-lg-3');
@@ -330,6 +331,7 @@
             $('#jumbo-bmw').show();
             $('#jumbo-maserati').show();
             $("#sport").hide();
+            $("#text-sport").hide();
         });
 
         $(".jumbotron-benzer").mouseover(function () {
@@ -338,6 +340,7 @@
             $('#jumbo-porsche').hide();
             $('#jumbo-bmw').hide();
             $('#jumbo-maserati').hide();
+            $("#text-sportplus").show();
         });
         $(".jumbotron-benzer").mouseout(function () {
             $('#jumbo-benzer').addClass('col-lg-3');
@@ -345,6 +348,7 @@
             $('#jumbo-porsche').show();
             $('#jumbo-bmw').show();
             $('#jumbo-maserati').show();
+            $("#text-sportplus").hide();
         });
 
         $(".jumbotron-bmw").mouseover(function () {
@@ -353,6 +357,7 @@
             $('#jumbo-porsche').hide();
             $('#jumbo-benzer').hide();
             $('#jumbo-maserati').hide();
+            $("#text-suv").show();
         });
         $(".jumbotron-bmw").mouseout(function () {
             $('#jumbo-bmw').addClass('col-lg-3');
@@ -360,6 +365,7 @@
             $('#jumbo-porsche').show();
             $('#jumbo-benzer').show();
             $('#jumbo-maserati').show();
+            $("#text-suv").hide();
         });
 
         $(".jumbotron-maserati").mouseover(function () {
@@ -368,6 +374,7 @@
             $('#jumbo-bmw').hide();
             $('#jumbo-porsche').hide();
             $('#jumbo-benzer').hide();
+            $("#text-luxus").show();
         });
         $(".jumbotron-maserati").mouseout(function () {
             $('#jumbo-maserati').addClass('col-lg-3');
@@ -375,6 +382,7 @@
             $('#jumbo-bmw').show();
             $('#jumbo-porsche').show();
             $('#jumbo-benzer').show();
+            $("#text-luxus").hide();
         });
 
 

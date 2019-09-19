@@ -3362,7 +3362,7 @@ input[type="button"].btn-block {
   margin-left: 0;
 }
 
-.dropdown-search {
+.dropdownsearch {
   margin-left: 10px;
   background-color: rgb(81, 82, 102, 0.5);
 }
@@ -5017,6 +5017,7 @@ a.cardbox:hover {
     margin-right: -15px;
     margin-left: -15px;
   }
+
   .cardbox-deck .cardbox {
     display: -ms-flexbox;
     display: flex;
