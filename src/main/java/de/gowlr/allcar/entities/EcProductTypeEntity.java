@@ -2,10 +2,10 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-
 @Table(name = "ec_product_type", schema = "public", catalog = "ec")
 public class EcProductTypeEntity {
     private Integer id;
@@ -36,6 +36,9 @@ public class EcProductTypeEntity {
     private Boolean highlighted;
     private EcCategoryEntity ecCategoryByCategoryId;
     private EcBrandEntity ecBrandByBrandId;
+    private Integer categoryId;
+    private Integer brandId;
+    private Collection<EcPicturesEntity> ecPicturesById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -344,5 +347,34 @@ public class EcProductTypeEntity {
 
     public void setEcBrandByBrandId(EcBrandEntity ecBrandByBrandId) {
         this.ecBrandByBrandId = ecBrandByBrandId;
+    }
+
+    @Basic
+    @Column(name = "category_id", nullable = false)
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Basic
+    @Column(name = "brand_id", nullable = false)
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    @OneToMany(mappedBy = "ecProductTypeByProductId")
+    public Collection<EcPicturesEntity> getEcPicturesById() {
+        return ecPicturesById;
+    }
+
+    public void setEcPicturesById(Collection<EcPicturesEntity> ecPicturesById) {
+        this.ecPicturesById = ecPicturesById;
     }
 }

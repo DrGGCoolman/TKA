@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RequestMapping("/users/")
-@RestController
+@Controller
 public class UserController {
 
     private final UserRepository UserRepository;
@@ -54,18 +54,20 @@ public class UserController {
     }
 
     @GetMapping("register")
-    public String showSignUpForm(EcUserEntity user) {
-        return "add-user";
+    public String showSignUpForm(Model model) {
+        EcUserEntity user = new EcUserEntity();
+        model.addAttribute("user", user);
+        return "register";
     }
 
     @PostMapping("add")
     public String addEcUserEntity(@Valid EcUserEntity user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-user";
+            return "register";
         }
 
         UserRepository.save(user);
-        return "redirect:list";
+        return "redirect:/";
     }
 
 }

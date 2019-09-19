@@ -24,7 +24,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Set.of(new SimpleGrantedAuthority(user.getEcRoleByRoleId().getRoleTitle()));
+        return Set.of(new SimpleGrantedAuthority(user.getRole()));
     }
 
     public String getPassword() {

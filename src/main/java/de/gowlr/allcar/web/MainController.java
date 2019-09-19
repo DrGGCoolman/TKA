@@ -1,12 +1,8 @@
 package de.gowlr.allcar.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author Joe Grandja
- */
 @Controller
 public class MainController {
 
@@ -20,11 +16,6 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/user/index")
-    public String userIndex() {
-        return "user/index";
-    }
-
     @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";
@@ -34,8 +25,6 @@ public class MainController {
     public String CreateProduct() {
         return "admin/createProduct";
     }
-
-
 
     @RequestMapping("/products/product-detail")
     public String productDetail() {
@@ -47,25 +36,9 @@ public class MainController {
         return "admin/Products";
     }
 
-    @RequestMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login";
-    }
-
-    @RequestMapping("/register")
-    public String register() {
-        return "register";
-    }
-
     @RequestMapping("/admin/product-create-edit")
     public String adminproductCreateEdit() {
         return "admin/product-create-edit";
-    }
-
-    @RequestMapping("/user/add-user")
-    public String userAddUser() {
-        return "user/add-user";
     }
 
 }

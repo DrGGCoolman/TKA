@@ -1,30 +1,21 @@
 package de.gowlr.allcar.entities;
 
-import java.util.Date;
-import java.util.Objects;
-
 import javax.persistence.*;
-import de.gowlr.allcar.services.*;
-import lombok.AllArgsConstructor;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import de.gowlr.allcar.services.UserAdapter;
+import lombok.AllArgsConstructor;
+
+import java.sql.Date;
+import java.util.Objects;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
     private Integer id;
+    private String role;
     private String name;
     private String firstname;
     private String gender;
@@ -36,7 +27,6 @@ public class EcUserEntity {
     private Integer houseNumber;
     private Integer postCode;
     private String city;
-    private EcRoleEntity ecRoleByRoleId;
 
     public static EcUserEntity getCurrentUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -47,6 +37,7 @@ public class EcUserEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -57,7 +48,17 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = -1)
+    @Column(name = "role", nullable = true, length = -1)
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Basic
+    @Column(name = "name", nullable = true, length = -1)
     public String getName() {
         return name;
     }
@@ -67,7 +68,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "firstname", nullable = false, length = -1)
+    @Column(name = "firstname", nullable = true, length = -1)
     public String getFirstname() {
         return firstname;
     }
@@ -117,7 +118,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "birth", nullable = false)
+    @Column(name = "birth", nullable = true)
     public Date getBirth() {
         return birth;
     }
@@ -127,7 +128,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "street", nullable = false, length = -1)
+    @Column(name = "street", nullable = true, length = -1)
     public String getStreet() {
         return street;
     }
@@ -137,7 +138,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "house_number", nullable = false)
+    @Column(name = "house_number", nullable = true)
     public Integer getHouseNumber() {
         return houseNumber;
     }
@@ -147,7 +148,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "post_code", nullable = false)
+    @Column(name = "post_code", nullable = true)
     public Integer getPostCode() {
         return postCode;
     }
@@ -157,7 +158,7 @@ public class EcUserEntity {
     }
 
     @Basic
-    @Column(name = "city", nullable = false, length = -1)
+    @Column(name = "city", nullable = true, length = -1)
     public String getCity() {
         return city;
     }
@@ -173,7 +174,7 @@ public class EcUserEntity {
         if (o == null || getClass() != o.getClass())
             return false;
         EcUserEntity that = (EcUserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name)
+        return Objects.equals(id, that.id) && Objects.equals(role, that.role) && Objects.equals(name, that.name)
                 && Objects.equals(firstname, that.firstname) && Objects.equals(gender, that.gender)
                 && Objects.equals(username, that.username) && Objects.equals(password, that.password)
                 && Objects.equals(title, that.title) && Objects.equals(birth, that.birth)
@@ -183,17 +184,15 @@ public class EcUserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname, gender, username, password, title, birth, street, houseNumber, postCode,
-                city);
+        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber,
+                postCode, city);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
-    public EcRoleEntity getEcRoleByRoleId() {
-        return ecRoleByRoleId;
+    public EcUserEntity() {
     }
 
-    public void setEcRoleByRoleId(EcRoleEntity ecRoleByRoleId) {
-        this.ecRoleByRoleId = ecRoleByRoleId;
+    public EcUserEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }

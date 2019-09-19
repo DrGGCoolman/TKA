@@ -9,6 +9,7 @@ public class EcPicturesEntity {
     private Integer id;
     private String title;
     private String filePath;
+    private EcProductTypeEntity ecProductTypeByProductId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -42,16 +43,27 @@ public class EcPicturesEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcPicturesEntity that = (EcPicturesEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(filePath, that.filePath);
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title)
+                && Objects.equals(filePath, that.filePath);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, title, filePath);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
+    public EcProductTypeEntity getEcProductTypeByProductId() {
+        return ecProductTypeByProductId;
+    }
+
+    public void setEcProductTypeByProductId(EcProductTypeEntity ecProductTypeByProductId) {
+        this.ecProductTypeByProductId = ecProductTypeByProductId;
     }
 }

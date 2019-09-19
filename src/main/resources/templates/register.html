@@ -40,28 +40,8 @@
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             </div>
 
-                            <!--TODO: vorlage löschen-->
-                            <form action="#" th:action="@{/users/update/{id}(id=${student.id})}"
-                                th:object="${student}" method="post">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="name" class="col-form-label">Name</label> <input type="text"
-                                            th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span
-                                            th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
-        </div>
-        <div class="form-group col-md-8">
-            <label for="email" class="col-form-label">Email</label> <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"> <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-        </div>
-        <div class="form-group col-md-8">
-            <label for="phoneNo" class="col-form-label">Phone No</label> <input type="text" th:field="*{phoneNo}" class="form-control" id="phoneNo" placeholder="phoneNo"> <span th:if="${#fields.hasErrors('phoneNo')}" th:errors="phoneNo" class="text-danger"></span>
-        </div>
 
-        <div class="form-group col-md-8">
-            <input type="submit" class="btn btn-primary" value="Update Student">
-        </div>
-    </div>
-</form>
-<!--TODO: vorlage löschen-->
+
 
 
                             <div class="form-label-group pt-4">
@@ -72,6 +52,34 @@
                             <br>
                             <button class="btn btn-lg btn-secondary btn-block" type="submit">Registrieren</button>
                         </form>
+
+                        <!--TODO: vorlage löschen-->
+                        <form action="#" th:action="@{/users/add}" th:object="${user}" method="post">
+                            <div class="row">
+
+                                <div class="form-group col-md-8">
+                                    <label for="username" class="col-form-label">E-Mail</label>
+                                    <input type="text" th:field="*{username}" class="form-control" id="username"
+                                        placeholder="username">
+                                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                             </div>
+
+                           <div class="form-group col-md-8">
+                               <label for="password" class="col-form-label">Password</label>
+                               <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="password"> <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
+                           </div>
+                       
+                       
+                           <div class="col-md-6">
+                               <input type="submit" class="btn btn-primary" value="Registrieren">
+                           </div>
+                       
+                           <div class="form-group col-md-8"></div>
+                       
+                       </div>
+                   </form>
+    <!--TODO: vorlage löschen-->
+
                     </div>
                 </div>
             </div>

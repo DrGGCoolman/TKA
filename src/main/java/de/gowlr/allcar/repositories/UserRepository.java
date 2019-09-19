@@ -16,6 +16,6 @@ public interface UserRepository extends JpaRepository<EcUserEntity, Long> {
 
     EcUserEntity findByUsernameIgnoreCase(String username);
 
-    List<EcUserEntity> findByEcRoleByRoleIdRoleTitleIgnoreCase(String roleTitle);
+    List<EcUserEntity> findByRole(String role);
 
 }
