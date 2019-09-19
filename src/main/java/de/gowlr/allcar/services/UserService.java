@@ -1,6 +1,8 @@
 package de.gowlr.allcar.services;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import de.gowlr.allcar.repositories.UserRepository;
@@ -15,15 +17,19 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
 
     @PostConstruct
     void init() {
-        // dev user anlegen?
+        // createUser("Anne", "123456", 1);
+        // createUser("Benedikt", "987654", User.USER_ROLE);
     }
 
-    private void createUser() {
-        // userRepository.save(new User(name, passwordEncoder.encode(password), role));
+    private void createUser(String name, String password, String role) {
+        // userRepository.save(new EcUserEntity(name, passwordEncoder.encode(password), role));
     }
+
 
     public List<EcUserEntity> findAll() {
         return userRepository.findAll();
