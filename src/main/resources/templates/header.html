@@ -16,17 +16,15 @@
                             id="dropdownMenuOffset" data-offset="10,20" aria-controls="nav-collapse3">
                             <i class="fa fa-search p-0"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-search p-2" aria-labelledby="dropdownMenuOffset">
+                        <div class="dropdown-menu dropdownsearch p-2" style="  background-color: rgb(81, 82, 102, 0.5);" aria-labelledby="dropdownMenuOffset">
                             <form id="search-form" role="search" th:action="@{/products/search}" method="get">
                                 <div class="form-group">
-                                    <input type="text" name="searchfor" class="form-control searchbox m-2"
-                                        placeholder="Fahrzeug suchen" />
+                                    <input type="text" name="searchfor" class="form-control searchbox m-2" placeholder="Fahrzeug suchen" />
                                 </div>
                             </form>
                         </div>
                     </li>
                 </div>
-
 
                 <!--RENT-Block-->
                 <li class="nav-item">
