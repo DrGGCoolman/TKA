@@ -10,22 +10,25 @@
 
             <!-- Linke Elemente-->
             <ul class="nav navbar-nav mr-auto">
-
-                <li class="nav-item">
-                    <button class="btn">
-                        <i class="fa fa-search p-0" data-toggle="collapse" href="#nav-collapse3" aria-expanded="false"
-                            aria-controls="nav-collapse3"></i>
-                    </button>
-                </li>
-                <li class="collapse" id="nav-collapse3">
-                    <form id="search-form" class="nav-item navbar-right" role="search" th:action="@{/products/search}"
-                        method="get">
-                        <div class="form-group">
-                            <input type="text" name="searchfor" class="form-control searchbox"
-                                placeholder="Fahrzeug suchen" />
+                <div class="dropdown mr-1">
+                    <li class="nav-item">
+                        <button class="btn" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false"
+                            id="dropdownMenuOffset" data-offset="10,20" aria-controls="nav-collapse3">
+                            <i class="fa fa-search p-0"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-search p-2" aria-labelledby="dropdownMenuOffset">
+                            <form id="search-form" role="search" th:action="@{/products/search}" method="get">
+                                <div class="form-group">
+                                    <input type="text" name="searchfor" class="form-control searchbox m-2"
+                                        placeholder="Fahrzeug suchen" />
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </li>
+                    </li>
+
+
+                </div>
+
 
                 <!--RENT-Block-->
                 <li class="nav-item">
