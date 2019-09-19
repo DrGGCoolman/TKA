@@ -50,13 +50,13 @@
                         </div>
                         <div th:case="*">
                             <div th:each="product : ${productTypes}">
-                                <div th:text="${product.id}"></div>
                                 <div th:insert="~{car-template :: copy(${product})}"></div>
                             </div>
                         </div>
                     </div>
+                    <!-- TODO: Auslagern  -->
                     <script>
-               
+                        
                             function price_function(e, id) {
                               debugger;
                               var x = document.getElementById("200km".concat(id));
