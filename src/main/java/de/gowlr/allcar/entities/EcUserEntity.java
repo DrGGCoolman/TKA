@@ -2,16 +2,13 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import de.gowlr.allcar.services.UserAdapter;
-import lombok.AllArgsConstructor;
+import sun.jvm.hotspot.gc.shared.G1HeapRegionType;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@AllArgsConstructor
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
     private Integer id;
@@ -27,14 +24,7 @@ public class EcUserEntity {
     private Integer houseNumber;
     private Integer postCode;
     private String city;
-
-    public static EcUserEntity getCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserAdapter) {
-            return ((UserAdapter) principal).getUser();
-        }
-        return null;
-    }
+    private Collection<EcSearchWordsEntity> ecSearchWordsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -169,30 +159,35 @@ public class EcUserEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         EcUserEntity that = (EcUserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(role, that.role) && Objects.equals(name, that.name)
-                && Objects.equals(firstname, that.firstname) && Objects.equals(gender, that.gender)
-                && Objects.equals(username, that.username) && Objects.equals(password, that.password)
-                && Objects.equals(title, that.title) && Objects.equals(birth, that.birth)
-                && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber)
-                && Objects.equals(postCode, that.postCode) && Objects.equals(city, that.city);
+        return Objects.equals(id, that.id) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(firstname, that.firstname) &&
+                Objects.equals(gender, that.gender) &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(birth, that.birth) &&
+                Objects.equals(street, that.street) &&
+                Objects.equals(houseNumber, that.houseNumber) &&
+                Objects.equals(postCode, that.postCode) &&
+                Objects.equals(city, that.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber,
-                postCode, city);
+        return Objects.hash(id, role, name, firstname, gender, username, password, title, birth, street, houseNumber, postCode, city);
     }
 
-    public EcUserEntity() {
+    @OneToMany(mappedBy = "ecUserByUserId")
+    public Collection<EcSearchWordsEntity> getEcSearchWordsById() {
+        return ecSearchWordsById;
     }
 
-    public EcUserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public void setEcSearchWordsById(Collection<EcSearchWordsEntity> ecSearchWordsById) {
+        this.ecSearchWordsById = ecSearchWordsById;
     }
 }

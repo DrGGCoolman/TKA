@@ -2,7 +2,7 @@
   <div class="row no-gutters">
     <div class="col-3">
       <a th:href="@{${product.id}}">
-        <img th:src="@{/uploads + ${product}}" class="card-img" alt="...">
+        <img th:src="@{${product.ecPicturesById[0].filePath}}" class="card-img" alt="...">
       </a>
     </div>
 
@@ -64,17 +64,20 @@
 
           <div class="col-4 preis-buttons">
             <div>
-              <button type="button" class="btn btn-light" th:id="200button + ${product.id}" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
-              <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+              <button type="button" class="btn btn-light" th:id="200button + ${product.id}"
+                th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+              <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
+                th:onclick="|price_function(this, '${product.id}')|">>500km</button>
             </div>
             <div class="col">
-              <button type="button" th:id="1000button + ${product.id}"class="btn btn-light ml-4 mt-1" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+              <button type="button" th:id="1000button + ${product.id}" class="btn btn-light ml-4 mt-1"
+                th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
             </div>
           </div>
 
           <div class="col-2 preis text-center">
             <p>Ab
-              <strong th:id="200km + ${product.id}" >1000,- €</strong>
+              <strong th:id="200km + ${product.id}">1000,- €</strong>
               <strong th:id="500km + ${product.id}" style=" display:none">1500,- €</strong>
               <strong th:id="1000km + ${product.id}" style=" display:none">2000,- €</strong>
               pro Tag</p>
@@ -84,7 +87,7 @@
     </div>
   </div>
 </div>
-              <!-- <script th:inline="javascript">
+<!-- <script th:inline="javascript">
                   /*<![CDATA[*/
                   function price1_function() {
                     var x = document.getElementById("200km".concat('+ ${product.id}"'));
