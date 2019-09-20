@@ -7,7 +7,7 @@ import de.gowlr.allcar.services.*;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +24,8 @@ public class UserController {
 
     private final UserRepository UserRepository;
     private final UserService UserService;
+    @Autowired
+    private PasswordEncoder Encoder;
 
     @Autowired
     public UserController(UserRepository userRepository, UserService userService) {
@@ -62,7 +64,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "register";
         }
-
+        user.setPassword(Encoder.encode(user.getPassword()));
         UserRepository.save(user);
         return "redirect:/";
     }
