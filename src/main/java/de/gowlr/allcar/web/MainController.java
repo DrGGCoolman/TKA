@@ -1,18 +1,26 @@
 package de.gowlr.allcar.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import de.gowlr.allcar.repositories.ProductTypeRepository;
 
 @Controller
 public class MainController {
 
+    @Autowired
+    private ProductTypeRepository productTypeRepository;
+    
     @RequestMapping("/")
     public String root() {
         return "redirect:/index";
     }
 
     @RequestMapping("/index")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("highlights", productTypeRepository.getAllByHighlightedTrue());
         return "index";
     }
 

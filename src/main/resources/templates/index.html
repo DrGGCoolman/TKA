@@ -10,7 +10,6 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -26,7 +25,7 @@
     <div class="container">
         <div class="container">
             <div class="row pt-2">
-                <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
                     <div class="jumbotron jumbotron-porsche">
                         <div class="overlay">
                             <div class="row">
@@ -51,7 +50,7 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
                     <div class="jumbotron jumbotron-benzer">
                         <div class="overlay">
                             <div class="row">
@@ -73,7 +72,7 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
                     <div class="jumbotron jumbotron-bmw">
                         <div class="overlay">
                             <div class="row">
@@ -96,7 +95,7 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/index/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
                     <div class="jumbotron jumbotron-maserati">
                         <div class="overlay">
                             <div class="row">
@@ -146,14 +145,13 @@
                             <li data-target="#demo" data-slide-to="2"></li>
                         </ul>
                         <div class="carousel-inner">
-                            <a href="#" class="carousel-item active">
+                            <a href="#" class="carousel-item active" th:each="highlight : ${highlights}">
                                 <img th:src="@{img/porsche.jpg}" class="d-block mw-100 carousel-picture">
                                 <div class="carousel-caption">
-                                    <h3>Porsche</h3>
-                                    <p>We had such a great time in LA!</p>
+                                    <h3 th:text="${highlight.variant}"></h3>
                                 </div>
                             </a>
-                            <a href="#" class="carousel-item">
+                            <!-- <a href="#" class="carousel-item">
                                 <img th:src="@{img/bmw.jpg}" class="d-block mw-100 carousel-picture">
                                 <div class="carousel-caption">
                                     <h3>BMW</h3>
@@ -166,7 +164,7 @@
                                     <h3>Maserati</h3>
                                     <p>We love the Big Apple!</p>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
