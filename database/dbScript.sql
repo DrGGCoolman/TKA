@@ -5,7 +5,7 @@
 -- Dumped from database version 11.4
 -- Dumped by pg_dump version 11.4
 
--- Started on 2019-09-20 15:01:48
+-- Started on 2019-09-20 17:17:13
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -231,7 +231,7 @@ ALTER TABLE public.ec_user ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 2858 (class 0 OID 34427)
+-- TOC entry 2860 (class 0 OID 34427)
 -- Dependencies: 196
 -- Data for Name: ec_brand; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -255,7 +255,7 @@ INSERT INTO public.ec_brand (id, brand_title) OVERRIDING SYSTEM VALUE VALUES (16
 
 
 --
--- TOC entry 2860 (class 0 OID 34435)
+-- TOC entry 2862 (class 0 OID 34435)
 -- Dependencies: 198
 -- Data for Name: ec_category; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -267,7 +267,7 @@ INSERT INTO public.ec_category (id, title) OVERRIDING SYSTEM VALUE VALUES (4, 'S
 
 
 --
--- TOC entry 2862 (class 0 OID 34443)
+-- TOC entry 2864 (class 0 OID 34443)
 -- Dependencies: 200
 -- Data for Name: ec_pictures; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -346,7 +346,7 @@ INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYS
 
 
 --
--- TOC entry 2864 (class 0 OID 34451)
+-- TOC entry 2866 (class 0 OID 34451)
 -- Dependencies: 202
 -- Data for Name: ec_product_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -410,7 +410,7 @@ INSERT INTO public.ec_product_type (id, category_id, brand_id, model, variant, g
 
 
 --
--- TOC entry 2866 (class 0 OID 34459)
+-- TOC entry 2868 (class 0 OID 34459)
 -- Dependencies: 204
 -- Data for Name: ec_search_words; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -418,16 +418,15 @@ INSERT INTO public.ec_product_type (id, category_id, brand_id, model, variant, g
 
 
 --
--- TOC entry 2868 (class 0 OID 34467)
+-- TOC entry 2870 (class 0 OID 34467)
 -- Dependencies: 206
 -- Data for Name: ec_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.ec_user (id, role, name, firstname, gender, e_mail, password, title, birth, street, house_number, post_code, city) OVERRIDING SYSTEM VALUE VALUES (1, 'USER', 'Muller', 'Penis', 'm', 'test@gmx.de', '1234', 'Mr', '1990-11-11', 'Robinson Blv', 3, 90001, 'Santa Babara');
 
 
 --
--- TOC entry 2875 (class 0 OID 0)
+-- TOC entry 2877 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: ec_brand_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -436,7 +435,7 @@ SELECT pg_catalog.setval('public.ec_brand_id_seq', 1, false);
 
 
 --
--- TOC entry 2876 (class 0 OID 0)
+-- TOC entry 2878 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: ec_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -445,7 +444,7 @@ SELECT pg_catalog.setval('public.ec_category_id_seq', 1, false);
 
 
 --
--- TOC entry 2877 (class 0 OID 0)
+-- TOC entry 2879 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: ec_pictures_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -454,7 +453,7 @@ SELECT pg_catalog.setval('public.ec_pictures_id_seq', 71, true);
 
 
 --
--- TOC entry 2878 (class 0 OID 0)
+-- TOC entry 2880 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: ec_product_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -463,7 +462,7 @@ SELECT pg_catalog.setval('public.ec_product_type_id_seq', 1, false);
 
 
 --
--- TOC entry 2879 (class 0 OID 0)
+-- TOC entry 2881 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: ec_search_words_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -472,12 +471,12 @@ SELECT pg_catalog.setval('public.ec_search_words_id_seq', 1, false);
 
 
 --
--- TOC entry 2880 (class 0 OID 0)
+-- TOC entry 2882 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: ec_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ec_user_id_seq', 10, true);
 
 
 --
@@ -508,6 +507,15 @@ ALTER TABLE ONLY public.ec_pictures
 
 
 --
+-- TOC entry 2732 (class 2606 OID 34510)
+-- Name: ec_user email_uk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ec_user
+    ADD CONSTRAINT email_uk UNIQUE (e_mail);
+
+
+--
 -- TOC entry 2728 (class 2606 OID 34482)
 -- Name: ec_product_type product_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
@@ -526,7 +534,7 @@ ALTER TABLE ONLY public.ec_search_words
 
 
 --
--- TOC entry 2732 (class 2606 OID 34486)
+-- TOC entry 2734 (class 2606 OID 34486)
 -- Name: ec_user usert_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -535,7 +543,7 @@ ALTER TABLE ONLY public.ec_user
 
 
 --
--- TOC entry 2734 (class 2606 OID 34487)
+-- TOC entry 2736 (class 2606 OID 34487)
 -- Name: ec_product_type product_brand_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -544,7 +552,7 @@ ALTER TABLE ONLY public.ec_product_type
 
 
 --
--- TOC entry 2735 (class 2606 OID 34492)
+-- TOC entry 2737 (class 2606 OID 34492)
 -- Name: ec_product_type product_category_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -553,7 +561,7 @@ ALTER TABLE ONLY public.ec_product_type
 
 
 --
--- TOC entry 2733 (class 2606 OID 34497)
+-- TOC entry 2735 (class 2606 OID 34497)
 -- Name: ec_pictures product_pictures_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -562,7 +570,7 @@ ALTER TABLE ONLY public.ec_pictures
 
 
 --
--- TOC entry 2736 (class 2606 OID 34502)
+-- TOC entry 2738 (class 2606 OID 34502)
 -- Name: ec_search_words search_user_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -570,7 +578,7 @@ ALTER TABLE ONLY public.ec_search_words
     ADD CONSTRAINT search_user_fk FOREIGN KEY (user_id) REFERENCES public.ec_user(id);
 
 
--- Completed on 2019-09-20 15:01:48
+-- Completed on 2019-09-20 17:17:14
 
 --
 -- PostgreSQL database dump complete
