@@ -6,43 +6,42 @@
     <div class="cardbox">
         <div class="container">
             <div class="categories pt-4 pb-4">
-                <form method="POST" th:action="@{/products/filter}">
+                <form method="" th:action="@{/filter}" th:object="${CarFilter}" >
 
                     <ul class="list-group-wb">
 
                         <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
                             <i class="fa fa-angle-down"></i>
                         </a>
-
-                        <li th:each="categorie : ${category_id}">
-                            <input type="checkbox" th:field="*{categories}" th:value="${ecCategoryByCategoryId}" />
+                        <!-- TODO: -->
+                        <!-- <li th:each="categorie : ${category_id}">
+                            <input type="checkbox" th:field="*{Category}" th:value="${ecCategoryByCategoryId}" />
                             <label th:for="${#ids.prev('features')}" 
                             th:text="${ecCategoryByCategoryId}">Sport</label>
-                        </li>
-Í
+                        </li> -->
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySport" type="checkbox" value=""
+                            <input class="form-check-input" name="CategorySport" th:field="*{Category}"     type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 Sport
                             </label>
                         </li>
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySportPlus" type="checkbox" value=""
+                            <input class="form-check-input" name="CategorySportPlus" th:field="*{Category}"  type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 Sport +
                             </label>
                         </li>
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySUV" type="checkbox" value=""
+                            <input class="form-check-input" name="CategorySUV" th:field="*{Category}"  type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 SUV
                             </label>
                         </li>
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategoryLuxus" type="checkbox" value=""
+                            <input class="form-check-input" name="CategoryLuxus" th:field="*{Category}"   type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 Luxus
@@ -58,14 +57,14 @@
                         </a>
 
                         <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="TransmissionAutomatik" type="checkbox" value=""
+                            <input class="form-check-input" name="TransmissionAutomatik" th:field="*{Transmission}"  type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 Automatik
                             </label>
                         </li>
                         <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="TransmissionManuell" type="checkbox" value=""
+                            <input class="form-check-input" name="TransmissionManuell" th:field="*{Transmission}" type="checkbox" value=""
                                 id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                                 Manuell
@@ -73,11 +72,14 @@
                         </li>
 
                         <li class="list-group-wb-item">
-                                    <input type="number" class="form-control" placeholder="Baujahr">
+                                    <label class="form-check-label" for="defaultCheck1">Baujahr</label>
+                                    <input type="number" class="form-control" th:field="*{YearFrom}" placeholder="Ab">
+                                    <input type="number" class="form-control" th:field="*{YearTo}" placeholder="Bis">
                         </li>
 
                         <li class="list-group-wb-item">
-                                    <input type="text" class="form-control" placeholder="Leistung">
+                                <label class="form-check-label" for="defaultCheck1">Leistung</label>
+                                <input type="number" class="form-control col-12" th:field="*{PowerMin}" placeholder="Ab">
                         </li>
 
                         <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
