@@ -18,6 +18,6 @@ public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity
 
         List<EcProductTypeEntity> findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(String brandTitle);
 
-        List<EcProductTypeEntity> getAllByHighlightedTrue();
+        List<EcProductTypeEntity> findByHighlighted(Boolean highlighted);;
 
 }

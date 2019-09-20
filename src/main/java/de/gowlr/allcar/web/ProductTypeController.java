@@ -27,12 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductTypeController {
 
     private final ProductTypeRepository ProductTypeRepository;
-    private CarFilter CarFilter = new CarFilter();
+    private CarFilterModel CarFilter;
 
     @Autowired
-    public ProductTypeController(ProductTypeRepository ProductTypeRepository) {
+    public ProductTypeController(ProductTypeRepository ProductTypeRepository, CarFilterModel carFilterModel) {
         this.ProductTypeRepository = ProductTypeRepository;
-        this.CarFilter = new CarFilter();
+        this.CarFilter = carFilterModel;
     }
 
     @GetMapping("{id}")
@@ -50,7 +50,7 @@ public class ProductTypeController {
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
-    // public String showUpdateForm(CarFilter CarFilter, Model model) {
+        // public String showUpdateForm(CarFilter CarFilter, Model model) {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
         model.addAttribute("carFilter", CarFilter);
         return "products/index";

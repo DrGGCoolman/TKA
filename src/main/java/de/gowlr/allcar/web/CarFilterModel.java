@@ -3,21 +3,25 @@ package de.gowlr.allcar.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import de.gowlr.allcar.entities.EcBrandEntity;
 import de.gowlr.allcar.repositories.BrandRepository;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class CarFilter {
+public class CarFilterModel {
 
     @Getter
     @Setter
-    private List<String> Category;
+    private List<String> Categorys;
     @Getter
     @Setter
-    private List<String> Brand;
+    private Iterable<EcBrandEntity> Brands;
     @Getter
     @Setter
-    private List<String> Transmission;
+    private List<String> Transmissions;
     @Getter
     @Setter
     private int YearFrom;
@@ -29,17 +33,15 @@ public class CarFilter {
     private int PowerMin;
     @Getter
     @Setter
-    private List<String> DriveSystem;
+    private List<String> DriveSystems;
     @Getter
     @Setter
-    private List<String> Fuel;
+    private List<String> Fuels;
     @Getter
     @Setter
     private int DriverAgeMin;
 
-    public CarFilter() {
-        this.Category = new ArrayList<String>();
-        this.Category.add("test");
-    }
+    @Autowired
+    private BrandRepository brandRepository;
 
 }
