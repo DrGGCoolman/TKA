@@ -8,8 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
+
+import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 
 @Configuration
@@ -20,13 +21,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()
-                .loginPage("/users/login").permitAll().and().logout().permitAll();
+                .failureUrl("/login-error").loginPage("/users/login").permitAll().and().logout().permitAll();
         // TODO: default errror failureUrl("/login-error").
     }
 
+    @Autowired
+    UserAdapterService userDetailsService;
+
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+        // Setting Service to find User in the database.
+        // And Setting PassswordEncoder
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+
     }
 
     // TODO: auslagern in eine Globale Config
@@ -35,10 +49,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CarFilterModel();
     }
 
-    // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth) throws
-    // Exception {
-    // auth.inMemoryAuthentication().withUser("user").password("{noop}password").roles("ROLE_USER");
-    // }
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
 }

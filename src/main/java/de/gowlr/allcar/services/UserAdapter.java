@@ -1,7 +1,6 @@
 package de.gowlr.allcar.services;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +23,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Set.of(new SimpleGrantedAuthority(user.getRole()));
+        return Set.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
     }
 
     public String getPassword() {
