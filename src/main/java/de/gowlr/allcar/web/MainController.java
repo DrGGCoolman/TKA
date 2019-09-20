@@ -1,36 +1,30 @@
 package de.gowlr.allcar.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author Joe Grandja
- */
+import de.gowlr.allcar.repositories.ProductTypeRepository;
+
 @Controller
 public class MainController {
+
+    @Autowired
+    private ProductTypeRepository productTypeRepository;
 
     @RequestMapping("/")
     public String root() {
         return "redirect:/index";
     }
 
-    @RequestMapping("/home")
-    public String home() {
-        return "home2";
-    }
-
     @RequestMapping("/index")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("highlights", productTypeRepository.findByHighlighted(true));
         return "index";
     }
 
-    @RequestMapping("/user/index")
-    public String userIndex() {
-        return "user/index";
-    }
-
-    @RequestMapping("/admin/index")
+    @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";
     }
@@ -40,16 +34,6 @@ public class MainController {
         return "admin/createProduct";
     }
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @RequestMapping("/products/products")
-    public String products() {
-        return "products/products";
-    }
-
     @RequestMapping("/products/product-detail")
     public String productDetail() {
         return "products/product-detail";
@@ -57,13 +41,12 @@ public class MainController {
 
     @RequestMapping("/admin/products")
     public String adminProducts() {
-        return "adminProducts";
+        return "admin/Products";
     }
 
-    @RequestMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login";
+    @RequestMapping("/admin/product-create-edit")
+    public String adminproductCreateEdit() {
+        return "admin/product-create-edit";
     }
 
 }
