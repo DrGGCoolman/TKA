@@ -12,7 +12,7 @@ public class MainController {
 
     @Autowired
     private ProductTypeRepository productTypeRepository;
-    
+
     @RequestMapping("/")
     public String root() {
         return "redirect:/index";
@@ -20,7 +20,7 @@ public class MainController {
 
     @RequestMapping("/index")
     public String index(Model model) {
-        model.addAttribute("highlights", productTypeRepository.getAllByHighlightedTrue());
+        model.addAttribute("highlights", productTypeRepository.findByHighlighted(true));
         return "index";
     }
 

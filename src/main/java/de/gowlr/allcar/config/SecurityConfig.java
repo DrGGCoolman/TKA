@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import de.gowlr.allcar.web.CarFilterModel;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,6 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    // TODO: auslagern in eine Globale Config
+    @Bean
+    public CarFilterModel carFilterModel() {
+        return new CarFilterModel();
+    }
+
     // @Autowired
     // public void configureGlobal(AuthenticationManagerBuilder auth) throws
     // Exception {
