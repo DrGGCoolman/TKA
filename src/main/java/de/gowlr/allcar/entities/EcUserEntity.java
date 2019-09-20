@@ -2,6 +2,10 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import de.gowlr.allcar.services.UserAdapter;
+
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
@@ -181,7 +185,21 @@ public class EcUserEntity {
         return ecSearchWordsById;
     }
 
+    public static EcUserEntity getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserAdapter) {
+            return ((UserAdapter) principal).getUser();
+        }
+        return null;
+    }
+
     public void setEcSearchWordsById(Collection<EcSearchWordsEntity> ecSearchWordsById) {
         this.ecSearchWordsById = ecSearchWordsById;
+    }
+
+    public EcUserEntity(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 }

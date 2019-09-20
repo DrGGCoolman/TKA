@@ -10,11 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    UserAdapterService userAdapterService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,10 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CarFilterModel();
     }
 
-    // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth) throws
-    // Exception {
-    // auth.inMemoryAuthentication().withUser("user").password("{noop}password").roles("ROLE_USER");
-    // }
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userAdapterService).passwordEncoder(passwordEncoder());
+    }
 
 }
