@@ -76,9 +76,9 @@
           </div>
 
           <div class="col-3 preis text-center">
-              <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${product.price200} + ' €' + ' pro Tag'"></strong>
-              <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price500} + ' €' + ' pro Tag'"></strong>
-              <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price1000} + ' €' + ' pro Tag'"></strong>
+              <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
+              <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price500,3,0)} + ',x- €' + ' pro Tag'"></strong>
+              <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price1000,3,0)} + ',- €' + ' pro Tag'"></strong>
           </div>
         </div>
       </div>
