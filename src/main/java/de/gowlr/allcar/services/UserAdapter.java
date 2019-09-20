@@ -1,7 +1,6 @@
 package de.gowlr.allcar.services;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
