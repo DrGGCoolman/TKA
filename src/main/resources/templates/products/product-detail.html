@@ -586,9 +586,9 @@
                                 <button type="button" th:id="1000button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
                             </div>
                             <div class="col-3 text-center">
-                                    <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${product.price200} + ' €' + ' pro Tag'"></strong>
-                                    <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price500} + ' €' + ' pro Tag'"></strong>
-                                    <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${product.price1000} + ' €' + ' pro Tag'"></strong>
+                                    <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
+                                    <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price500,3,0)} + ',- €' + ' pro Tag'"></strong>
+                                    <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price1000,3,0)} + ',- €' + ' pro Tag'"></strong>
                             </div>
                             <!-- TODO: Auslagern  -->
                             <script>
