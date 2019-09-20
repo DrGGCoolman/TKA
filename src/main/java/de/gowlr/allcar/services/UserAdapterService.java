@@ -2,6 +2,7 @@ package de.gowlr.allcar.services;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,7 @@ public class UserAdapterService implements UserDetailsService {
 
     private final UserRepository UserRepository;
 
+    @Autowired
     public UserAdapterService(UserRepository userRepository) {
         this.UserRepository = userRepository;
     }
@@ -29,4 +31,3 @@ public class UserAdapterService implements UserDetailsService {
         return new UserAdapter(user);
     }
 }
- 

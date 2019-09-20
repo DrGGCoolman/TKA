@@ -202,4 +202,7 @@ public class EcUserEntity {
         this.password = password;
         this.role = role;
     }
+
+    public EcUserEntity() {
+    }
 }

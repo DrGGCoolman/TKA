@@ -1,6 +1,5 @@
 package de.gowlr.allcar.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import de.gowlr.allcar.entities.EcBrandEntity;
 import de.gowlr.allcar.repositories.BrandRepository;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 public class CarFilterModel {
