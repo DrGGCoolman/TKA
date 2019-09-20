@@ -3,6 +3,7 @@ package de.gowlr.allcar.web;
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 import de.gowlr.allcar.services.*;
+import lombok.NoArgsConstructor;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
+
 
 @RequestMapping("/users/")
 @Controller
@@ -43,7 +45,7 @@ public class UserController {
     public String login() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/index";
+        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:";
     }
 
     @PostMapping("/lergin")

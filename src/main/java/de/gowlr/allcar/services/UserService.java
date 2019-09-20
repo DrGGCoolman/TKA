@@ -21,15 +21,18 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public static String USER_ROLE = "USER";
+    public static String ADMIN_ROLE = "ADMIN";
+
 
     @PostConstruct
     void init() {
-        // createUser("Anne", "123456", 1);
+        createUser("Anne", "1234", USER_ROLE);
         // createUser("Benedikt", "987654", User.USER_ROLE);
     }
 
-    private void createUser(String name, String password, String role) {
-        // userRepository.save(new EcUserEntity(name, passwordEncoder.encode(password), role));
+    private void createUser(String username, String password, String role) {
+        userRepository.save(new EcUserEntity(username, passwordEncoder.encode(password), role));
     }
 
 
