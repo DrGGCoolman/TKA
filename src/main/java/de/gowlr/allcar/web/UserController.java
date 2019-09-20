@@ -43,9 +43,8 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:";
+        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
     }
 
     @PostMapping("/lergin")
@@ -67,6 +66,7 @@ public class UserController {
             return "register";
         }
         user.setPassword(Encoder.encode(user.getPassword()));
+        user.setRole("USER");
         UserRepository.save(user);
         return "redirect:/";
     }
