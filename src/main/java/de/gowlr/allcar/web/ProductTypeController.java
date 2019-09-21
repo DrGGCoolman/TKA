@@ -26,14 +26,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/products/")
 public class ProductTypeController {
 
-    private final ProductTypeRepository ProductTypeRepository;
-    private CarFilterModel CarFilter;
-
     @Autowired
-    public ProductTypeController(ProductTypeRepository ProductTypeRepository, CarFilterModel carFilterModel) {
-        this.ProductTypeRepository = ProductTypeRepository;
-        this.CarFilter = carFilterModel;
-    }
+    private ProductTypeRepository ProductTypeRepository;
+    
+    @Autowired
+    private CarFilterModel CarFilter;
 
     @GetMapping("{id}")
     public String showProductDetail(@PathVariable("id") Integer id, Model model) {
@@ -127,7 +124,7 @@ public class ProductTypeController {
     }
 
     @PostMapping("filter")
-    public String filterAllProducts(Model model) {
+    public String filterAllProducts(CarFilterModel carFilterModel, Model model) {
         String[] searchWords = null;
         ArrayList<EcProductTypeEntity> filteredResultsWithDupes = new ArrayList<EcProductTypeEntity>();
 
