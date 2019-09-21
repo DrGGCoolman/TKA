@@ -65,7 +65,7 @@
           <div class="col-3 preis-buttons">
             <div>
               <button type="button" class="btn btn-sm btn-light" th:id="200button + ${product.id}"
-                th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+                th:onclick="|price_function(this, '${product.id}')|" style="background-color: white">>200km</button>
               <button type="button" th:id="500button + ${product.id}" class="btn btn-sm btn-light"
                 th:onclick="|price_function(this, '${product.id}')|">>500km</button>
             </div>
@@ -77,7 +77,7 @@
 
           <div class="col-3 preis text-center">
               <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
-              <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price500,3,0)} + ',x- €' + ' pro Tag'"></strong>
+              <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price500,3,0)} + ',- €' + ' pro Tag'"></strong>
               <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price1000,3,0)} + ',- €' + ' pro Tag'"></strong>
           </div>
         </div>
@@ -85,43 +85,7 @@
     </div>
   </div>
 </div>
-<!-- <script th:inline="javascript">
-                  /*<![CDATA[*/
-                  function price1_function() {
-                    var x = document.getElementById("200km".concat('+ ${product.id}"'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (x.style.display === "none") {
-                      x.style.display = "block";
-                      y.style.display = "none";
-                      z.style.display = "none";
-                    }
-                  };
-  
-  
-                  function price2_function() {
-                    var x = document.getElementById("200km".concat('[[${product.id}]]'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (y.style.display === "none") {
-                      x.style.display = "none";
-                      y.style.display = "block";
-                      z.style.display = "none";
-                    }
-                  }
-  
-                  function price3_function() {
-                    var x = document.getElementById("200km".concat('[[${product.id}]]'));
-                    var y = document.getElementById("500km".concat('[[${product.id}]]'));
-                    var z = document.getElementById("1000km".concat('[[${product.id}]]'));
-                    if (z.style.display === "none") {
-                      x.style.display = "none";
-                      y.style.display = "none";
-                      z.style.display = "block";
-                    }
-                  }
-  /*]]>*/
-                </script> -->
+
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

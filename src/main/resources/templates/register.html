@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>Login page</title>
+    <title>Registrieren</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
@@ -21,7 +21,7 @@
                 <div class="cardbox p-4">
                     <div class="card-body">
                         <h5 class="card-title text-center">Registrierung</h5>
-                        <div class="carbox-body text-center p-2">
+                        <div class="carbox-body text-center p-2 pb-4">
                             Willkommen bei Exclusiv Car Rentals! Bitte geben Sie Ihre Mailadresse ein und
                             wählen Sie ein Passwort, um Ihre Registrierung abzuschließen.
                         </div>
@@ -29,7 +29,7 @@
                             method="post">
                             <div class="form-label-group">
                                 <label for="inputEmail">E-Mail</label>
-                                <input type="email" th:field="*{username}" id="inputEmail" class="form-control"
+                                <input type="email" th:field="*{username}" id="inputEmail" class="form-control w-100"
                                     placeholder="E-Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
                                     autofocus>
                                 <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
@@ -39,13 +39,13 @@
                                 <label for="inputPassword">Passwort
                                     <small>(Mind 8 Zeichen, mind. eine Zahl, ein Groß- und ein
                                         Kleinbuchstabe)</small></label>
-                                <input type="password" th:field="*{password}" id="inputPassword" class="form-control" placeholder="Passwort"
+                                <input type="password" th:field="*{password}" id="inputPassword" class="form-control w-100" placeholder="Passwort"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                                     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
                             </div>
                             <div class="form-label-group pt-4">
                                 <label for="inputPassword" class="pt-2">Passwort wiederholen</label>
-                                <input type="password" id="inputPassword" class="form-control"
+                                <input type="password" id="inputPassword" class="form-control w-100"
                                     placeholder="Passwort wiederholen" required>
                             </div>
                             <br>

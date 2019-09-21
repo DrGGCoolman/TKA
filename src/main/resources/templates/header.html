@@ -44,32 +44,29 @@
             </div>
 
             <!-- Rechte Elemente-->
-            <ul class="nav navbar-nav col-4">
+            <div class="col-4">
+                <ul class="nav navbar-nav" sec:authorize="anonymous">
 
-                <!-- DROPDOWN LOGIN-->
-                <li class="nav-item ml-auto">
-                    <a class="nav-link text-white" th:href="@{/users/register}">Registrierung</a>
-                </li>
-                <li class="nav-item text-white mt-2">
-                    |
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" sec:authorize="anonymous" th:href="@{/users/login}">Login</a>
-                    <!--<a class="nav-link text-white" sec:authorize="hasRole('ADMIN')" th:href="@{/users/logout}">
+                    <!-- DROPDOWN LOGIN-->
 
-
-                        <span th:text="${#httpServletRequest.remoteUser}"></span>
-                        Logout</a>
-                        -->
-                </li>
-
-                <!--<li class="nav-item">
-                    <button class="btn" style="width: 3rem; height: 3rem;" type="button" data-toggle="collapse"
-                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa fa-bars p-2" style="color:#CBBEB5"></i>
-                    </button>
-                </li>-->
-            </ul>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link text-white" th:href="@{/users/register}">Registrierung</a>
+                    </li>
+                    <li class="nav-item text-white mt-2">
+                        |
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/users/login}">Login</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav" sec:authorize="authenticated">
+                    <li class="nav-item ml-auto">
+                        <span class="d-inline-block nav-link text-white" th:text="${#httpServletRequest.remoteUser}"></span>
+                        <span class="d-inline-block nav-link text-white">|</span>
+                        <a class="d-inline-block nav-link text-white" th:href="@{/logout}">Logout</a>     
+                    </li>                             
+                </ul>
+            </div>
         </div>
 
     </nav>
