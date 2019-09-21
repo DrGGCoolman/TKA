@@ -137,39 +137,41 @@
                     und werfen Sie einen Blick auf die Highlights:
                 </p>
                 <br>
-                <div class="container">     
+                <div class="container">
                     <ol class="carousel-indicators">
 
-                        <th:block th:each="product, iterstat : ${highlights}"> 
-                         <li  data-target="#jsaAboutCarousel" th:attr="data-slide-to=${iterstat.index}" th:class="${iterstat.index}== 0  ? 'active':''"></li>
-                   
-                         </th:block>
-                       </ol>
-                   
-                       <!-- Wrapper for slides -->
-                   
-                   
-                   
-                       <div class="carousel-inner">
-                            <div th:each="product, iterstat : ${highlights}" th:class="${iterstat.index}== 0  ? 'item':'item active'">
-                                <!-- Hier bitte Foto-Variable einfügen -->
-                                <img th:src="@{${product.ecPicturesById[0].filePath}"  class="img-responsive" />
-                            </div>
+                        <th:block th:each="product, iterstat : ${highlights}">
+                            <li data-target="#jsaAboutCarousel" th:attr="data-slide-to=${iterstat.index}"
+                                th:class="${iterstat.index}== 0  ? 'active':''"></li>
+
+                        </th:block>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+
+
+
+                    <div class="carousel-inner">
+                        <div th:each="product, iterstat : ${highlights}"
+                            th:class="${iterstat.index}== 0  ? 'item':'item active'">
+                            <!-- Hier bitte Foto-Variable einfügen -->
+                            <img th:src="@{${product.ecPicturesById[0].filePath}}" class="img-responsive" />
                         </div>
-                   
-                   
-                       <!-- Left and right controls -->
-                       <a class="left carousel-control" href="#jsaAboutCarousel" data-slide="prev">
-                         <span class="glyphicon glyphicon-chevron-left"></span>
-                         <span class="sr-only">Previous</span>
-                       </a>
-                       <a class="right carousel-control" href="#jsaAboutCarousel" data-slide="next">
-                         <span class="glyphicon glyphicon-chevron-right"></span>
-                         <span class="sr-only">Next</span>
-                       </a>
-                   
-                   </div>
-                    
+                    </div>
+
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#jsaAboutCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#jsaAboutCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+
             </div>
         </div>
     </div>
