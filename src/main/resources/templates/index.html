@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Exclusive Car Rental | Home</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -231,24 +231,7 @@
                         Buchen Sie noch heute Ihr Auto und erleben Sie hautnah unseren Premium-Service.
                     </p>
                     <br>
-                    <br>
-                    Folgen Sie uns auch auf unseren Social Media Accounts!
                 </p>
-                <!-- SOCIAL MEDIA-Block -->
-                <div class="container socialmedia text-center">
-                    <span>
-                        <a href="#" class="fa fa-instagram"></a>
-                    </span>
-                    <span>
-                        <a href="#" class="fa fa-facebook"></a>
-                    </span>
-                    <span>
-                        <a href="#" class="fa fa-linkedin"></a>
-                    </span>
-                    <span>
-                        <a href="#" class="fa fa-twitter"></a>
-                    </span>
-                </div>
             </div>
         </div>
         <br>
@@ -302,7 +285,8 @@
     <br>
 
     <!-- FOOTER-->
-    <br></br>
+    <br>
+    </br>
     <div th:insert="~{footer :: copy}"></div>
 
 
@@ -311,81 +295,7 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-    <script>
-        $(".jumbotron-porsche").mouseover(function () {
-            $('#jumbo-porsche').removeClass('col-lg-3');
-            $('#jumbo-porsche').addClass('col-lg-12')
-            $('#jumbo-benzer').hide();
-            $('#jumbo-bmw').hide();
-            $('#jumbo-maserati').hide();
-            $("#sport").show();
-            $("#text-sport").show();
-        });
-        $(".jumbotron-porsche").mouseout(function () {
-            $('#jumbo-porsche').addClass('col-lg-3');
-            $('#jumbo-porsche').removeClass('col-lg-12');
-            $('#jumbo-benzer').show();
-            $('#jumbo-bmw').show();
-            $('#jumbo-maserati').show();
-            $("#sport").hide();
-            $("#text-sport").hide();
-        });
-
-        $(".jumbotron-benzer").mouseover(function () {
-            $('#jumbo-benzer').removeClass('col-lg-3');
-            $('#jumbo-benzer').addClass('col-lg-12');
-            $('#jumbo-porsche').hide();
-            $('#jumbo-bmw').hide();
-            $('#jumbo-maserati').hide();
-            $("#text-sportplus").show();
-        });
-        $(".jumbotron-benzer").mouseout(function () {
-            $('#jumbo-benzer').addClass('col-lg-3');
-            $('#jumbo-benzer').removeClass('col-lg-12');
-            $('#jumbo-porsche').show();
-            $('#jumbo-bmw').show();
-            $('#jumbo-maserati').show();
-            $("#text-sportplus").hide();
-        });
-
-        $(".jumbotron-bmw").mouseover(function () {
-            $('#jumbo-bmw').removeClass('col-lg-3');
-            $('#jumbo-bmw').addClass('col-lg-12');
-            $('#jumbo-porsche').hide();
-            $('#jumbo-benzer').hide();
-            $('#jumbo-maserati').hide();
-            $("#text-suv").show();
-        });
-        $(".jumbotron-bmw").mouseout(function () {
-            $('#jumbo-bmw').addClass('col-lg-3');
-            $('#jumbo-bmw').removeClass('col-lg-12');
-            $('#jumbo-porsche').show();
-            $('#jumbo-benzer').show();
-            $('#jumbo-maserati').show();
-            $("#text-suv").hide();
-        });
-
-        $(".jumbotron-maserati").mouseover(function () {
-            $('#jumbo-maserati').removeClass('col-lg-3');
-            $('#jumbo-maserati').addClass('col-lg-12');
-            $('#jumbo-bmw').hide();
-            $('#jumbo-porsche').hide();
-            $('#jumbo-benzer').hide();
-            $("#text-luxus").show();
-        });
-        $(".jumbotron-maserati").mouseout(function () {
-            $('#jumbo-maserati').addClass('col-lg-3');
-            $('#jumbo-maserati').removeClass('col-lg-12');
-            $('#jumbo-bmw').show();
-            $('#jumbo-porsche').show();
-            $('#jumbo-benzer').show();
-            $("#text-luxus").hide();
-        });
-
-
-
-    </script>
+    <script th:src="@{../scripts/script.js}"></script>
 
 </body>
 
