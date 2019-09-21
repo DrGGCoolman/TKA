@@ -6,7 +6,7 @@
     <div class="cardbox">
         <div class="container">
             <div class="categories pt-4 pb-4">
-                <form method="post" th:action="@{/filter}" th:object="${carFilter}">
+                <form method="post" th:action="@{/products/filter}" th:object="${carFilter}">
 
                     <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
                         <i class="fa fa-angle-down"></i>
@@ -14,7 +14,7 @@
                     <ul class="list-group-wb">
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5"
                             th:each=" cat: ${model.Categories}">
-                            <input class="form-check-input" name="${cat.title}" type="checkbox" value="X"
+                            <input class="form-check-input" th:name="${cat.title}" type="checkbox" value="X"
                                 th:id="${cat.title}">
                             <label class="form-check-label" th:for="${cat.title}" th:text="${cat.title}">
                             </label>
@@ -27,7 +27,7 @@
                     <ul class="list-group-wb">
                         <li href="#" id="marke" class="collapse list-group-wb-item pl-5"
                             th:each=" brand: ${model.Brands}">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value="X"
+                            <input class="form-check-input" th:name="${brand.brandTitle}" type="checkbox" value="X"
                                 th:id="${brand.brandTitle}">
                             <label class="form-check-label" th:for="${brand.brandTitle}" th:text="${brand.brandTitle}">
 
@@ -84,8 +84,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5"
                             th:each=" antrieb: ${model.DriveSystems}">
-                            <input class="form-check-input" th:name="${getriebe}" type="checkbox" value="X"
-                                th:id="${getriebe}">
+                            <input class="form-check-input" th:name="${antrieb}" type="checkbox" value="X"
+                                th:id="${antrieb}">
                             <label class="form-check-label" th:for="${antrieb}" th:text="${antrieb}">
                             </label>
                         </li>
