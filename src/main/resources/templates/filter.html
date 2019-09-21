@@ -6,18 +6,18 @@
     <div class="cardbox">
         <div class="container">
             <div class="categories pt-4 pb-4">
-                <form method="" th:action="@{/filter}" th:object="${CarFilter}">
+                <form method="post" th:action="@{/list/}" th:object="${CarFilter}">
+
+                    <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+
 
                     <ul class="list-group-wb">
-
-                        <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <!-- TODO: -->
-                        <!-- <li th:each="categorie : ${category_id}">
-                            <input type="checkbox" th:field="*{Category}" th:value="${ecCategoryByCategoryId}" />
-                            <label th:for="${#ids.prev('features')}" 
-                            th:text="${ecCategoryByCategoryId}">Sport</label>
+                        <!-- TODO:
+                        <li th:each="fuel: ${Fuels}">
+                            <input type="checkbox" th:field="*{fuelType}" th:value="${fuel.fuelType}" />
+                            <label th:text="${fuel.fuelType}"></label>
                         </li> -->
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="CategorySport" type="checkbox" value=""
@@ -47,7 +47,9 @@
                                 Luxus
                             </label>
                         </li>
+                    </ul>
 
+                    <ul class="list-group-wb">
                         <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -171,11 +173,13 @@
                                 Jaguar
                             </label>
                         </li>
+                    </ul>
 
-                        <a li class="list-group-wb-item" href="#getriebe" data-toggle="collapse">Getriebe
-                            <i class="fa fa-angle-down"></i>
-                        </a>
+                    <a li class="list-group-wb-item" href="#getriebe" data-toggle="collapse">Getriebe
+                        <i class="fa fa-angle-down"></i>
+                    </a>
 
+                    <ul class="list-group-wb">
                         <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="TransmissionAutomatik" type="checkbox" value=""
                                 id="defaultCheck1">
@@ -183,6 +187,7 @@
                                 Automatik
                             </label>
                         </li>
+
                         <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="TransmissionManuell" type="checkbox" value=""
                                 id="defaultCheck1">
@@ -190,24 +195,35 @@
                                 Manuell
                             </label>
                         </li>
+                    </ul>
 
-                        <li class="list-group-wb-item">
-                            <label class="form-check-label" for="defaultCheck1">Baujahr</label>
+                    <a li class="list-group-wb-item" href="#baujahr" data-toggle="collapse">Baujahr
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="list-group-wb">
+                        <li href="#" id="baujahr" class="collapse list-group-wb-item pl-5">
                             <div class="row">
-                                <input type="number" class="form-control col-6" placeholder="Ab">
-                                <input type="number" class="form-control col-6" placeholder="Bis">
+                                <input type="number" class="form-control-sm col-lg-6 col-sm-12" placeholder="Ab">
+                                <input type="number" class="form-control-sm col-lg-6 col-sm-12" placeholder="Bis">
                             </div>
                         </li>
+                    </ul>
 
-                        <li class="list-group-wb-item">
-                            <label class="form-check-label" for="defaultCheck1">Leistung</label>
-                            <input type="number" class="form-control col-12" placeholder="Ab">
+                    <a li class="list-group-wb-item" href="#leistung" data-toggle="collapse">Leistung
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="list-group-wb">
+                        <li href="#" id="leistung" class="collapse list-group-wb-item pl-5">
+                            <div class="row">
+                                <input type="text" class="form-control-sm col-12" placeholder="Leistung in PS">
+                            </div>
                         </li>
+                    </ul>
 
-                        <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-
+                    <a li class="list-group-wb-item" href="#antrieb" data-toggle="collapse">Antrieb
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="list-group-wb">
                         <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="DriveSystenFrontantrieb" type="checkbox" value=""
                                 id="defaultCheck1">
@@ -229,11 +245,12 @@
                                 Allrad
                             </label>
                         </li>
+                    </ul>
 
-                        <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-
+                    <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="list-group-wb">
                         <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
                                 id="defaultCheck1">
@@ -262,11 +279,12 @@
                                 Hybrid
                             </label>
                         </li>
+                    </ul>
 
-                        <a li class="list-group-wb-item" href="#fahreralter" data-toggle="collapse">Fahreralter
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-
+                    <a li class="list-group-wb-item" href="#fahreralter" data-toggle="collapse">Fahreralter
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="list-group-wb">
                         <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
                             <input class="form-check-input" type="checkbox" name="DriverAgeMin18" value=""
                                 id="defaultCheck1">
@@ -288,11 +306,11 @@
                                 25
                             </label>
                         </li>
-                        <br>
-                        <div class="mx-auto">
-                            <input class="btn btn-secondary pl-2" type="submit" value="Submit" />
-                        </div>
                     </ul>
+                    <br>
+
+                    </ul>
+                    <input class="btn btn-secondary w-100" type="submit" value="Submit" />
                 </form>
 
             </div>
