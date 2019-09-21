@@ -577,7 +577,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" th:id="200button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+                                <button type="button" th:id="200button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|" style="background-color: white">>200km</button>
                             </div>
                             <div class="col">
                                 <button type="button" th:id="500button + ${product.id}" class="btn btn-light" th:onclick="|price_function(this, '${product.id}')|">>500km</button>
@@ -598,18 +598,30 @@
                                       var x = document.getElementById("200km".concat(id));
                                       var y = document.getElementById("500km".concat(id));
                                       var z = document.getElementById("1000km".concat(id));
+                                      var x1 = document.getElementById("200button".concat(id));
+                                      var y1 = document.getElementById("500button".concat(id));
+                                      var z1 = document.getElementById("1000button".concat(id));
                                       if (e.id === "200button".concat(id)) {
                                         x.style.display = "block";
                                         y.style.display = "none";
                                         z.style.display = "none";
+                                        x1.style.backgroundColor = "white";
+                                        y1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
+                                        z1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
                                       } else if (e.id === "500button".concat(id)) {
                                         x.style.display = "none";
                                         y.style.display = "block";
                                         z.style.display = "none";
+                                        x1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
+                                        y1.style.backgroundColor = "white";
+                                        z1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
                                       } else if (e.id === "1000button".concat(id)) {
                                         x.style.display = "none";
                                         y.style.display = "none";
                                         z.style.display = "block";
+                                        x1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
+                                        y1.style.backgroundColor = "rgb(255, 255, 255, 0.75)";
+                                        z1.style.backgroundColor = "white";
                                       }
                                     };
                             </script>

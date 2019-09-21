@@ -65,7 +65,7 @@
           <div class="col-3 preis-buttons">
             <div>
               <button type="button" class="btn btn-sm btn-light" th:id="200button + ${product.id}"
-                th:onclick="|price_function(this, '${product.id}')|">>200km</button>
+                th:onclick="|price_function(this, '${product.id}')|" style="background-color: white">>200km</button>
               <button type="button" th:id="500button + ${product.id}" class="btn btn-sm btn-light"
                 th:onclick="|price_function(this, '${product.id}')|">>500km</button>
             </div>
