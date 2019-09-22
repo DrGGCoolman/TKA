@@ -6,11 +6,13 @@ package de.gowlr.allcar.web;
 
 import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
+import de.gowlr.allcar.services.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/products/")
@@ -29,9 +34,17 @@ public class ProductTypeController {
 
     @Autowired
     private ProductTypeRepository ProductTypeRepository;
-
+    @Autowired
+    private FilterService FilterService;
     @Autowired
     private CarFilterModel CarFilter;
+    @Autowired
+    private SearchService SearchService;
+
+    @ModelAttribute
+    public void setDefaultAttributes(Model model) {
+        model.addAttribute("carFilter", CarFilter);
+    }
 
     @GetMapping("{id}")
     public String showProductDetail(@PathVariable("id") Integer id, Model model) {
@@ -44,15 +57,6 @@ public class ProductTypeController {
     public String showCreateFrom(Model model) {
         model.addAttribute("product", new EcProductTypeEntity());
         return "products/product-create-edit";
-    }
-
-    @GetMapping("list")
-    public String showUpdateForm(Model model) {
-        // public String showUpdateForm(CarFilter CarFilter, Model model) {
-        model.addAttribute("productTypes", ProductTypeRepository.findAll());
-
-        model.addAttribute("carFilter", CarFilter);
-        return "products/index";
     }
 
     @PostMapping("add")
@@ -96,78 +100,31 @@ public class ProductTypeController {
 
     @GetMapping("search")
     public String searchByKeyword(@RequestParam(value = "searchfor", required = false) String searchfor, Model model) {
-        String[] searchWords = null;
-        ArrayList<EcProductTypeEntity> searchResultsWithDupes = new ArrayList<EcProductTypeEntity>();
 
-        if (searchfor != null && !searchfor.isEmpty()) {
+        model.addAttribute("carFilter", CarFilter);
+        model.addAttribute("productTypes", SearchService.search(searchfor));
 
-            searchWords = searchfor.split(" ");
+        return "products/index";
+    }
 
-            // TODO: speichern in DB von searchfor
-
-            for (String word : searchWords) {
-                if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes
-                            .addAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word));
-                }
-                if (ProductTypeRepository.findByModelContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes.addAll(ProductTypeRepository.findByModelContainingIgnoreCase(word));
-                }
-                if (ProductTypeRepository.findByVariantContainingIgnoreCase(word) != null) {
-                    searchResultsWithDupes.addAll(ProductTypeRepository.findByVariantContainingIgnoreCase(word));
-                }
-            }
-        }
-        LinkedHashSet<EcProductTypeEntity> searchResults = new LinkedHashSet<>(searchResultsWithDupes);
-
-        model.addAttribute("productTypes", searchResults);
+    @GetMapping("showFilter")
+    public String showFilteredProducts(Model model) {
 
         return "products/index";
     }
 
     @PostMapping("filter")
-    public String filterAllProducts(@Valid CarFilterModel carFilter, BindingResult result, Model model) {
-        // hier filtern und hashmap rausgeben
+    public String loginValidate(CarFilterModel carFilter, BindingResult result, Model model, RedirectAttributes red) {
 
-        List<EcProductTypeEntity> filteredResults = ProductTypeRepository.findAll();
+        red.addFlashAttribute("productTypes", FilterService.filter(carFilter));
+        red.addFlashAttribute("carFilter", CarFilter);
 
-        if (!carFilter.SelectedCategories.isEmpty())
-            filteredResults
-                    .retainAll(ProductTypeRepository.findByEcCategoryByCategoryIdTitleIn(carFilter.SelectedCategories));
-
-        if (!carFilter.SelectedBrands.isEmpty())
-            filteredResults
-                    .retainAll(ProductTypeRepository.findByEcBrandByBrandIdBrandTitleIn(carFilter.SelectedBrands));
-
-        if (!carFilter.SelectedTransmissions.isEmpty())
-            filteredResults.retainAll(ProductTypeRepository.findByGearingTypeIn(carFilter.SelectedTransmissions));
-
-        if (!carFilter.SelectedDriveSystems.isEmpty())
-            filteredResults.retainAll(ProductTypeRepository.findByDriveSystemIn(carFilter.SelectedDriveSystems));
-
-        if (!carFilter.SelectedFuels.isEmpty())
-            filteredResults.retainAll(ProductTypeRepository.findByFuelTypeIn(carFilter.SelectedFuels));
-
-        if (carFilter.SelectedYearFrom != 0 || carFilter.SelectedYearTo != 0) {
-            carFilter.SelectedYearFrom = (carFilter.SelectedYearFrom == 0) ? ProductTypeRepository.findMinYear()
-                    : carFilter.SelectedYearFrom;
-            carFilter.SelectedYearTo = (carFilter.SelectedYearTo == 0) ? ProductTypeRepository.findMaxYear()
-                    : carFilter.SelectedYearTo;
-            filteredResults.retainAll(
-                    ProductTypeRepository.findByAgeBetween(carFilter.SelectedYearFrom, carFilter.SelectedYearTo));
-
-        }
-        if (carFilter.SelectedPowerMin != 0)
-            filteredResults.retainAll(ProductTypeRepository.findByPowerPsGreaterThanEqual(carFilter.SelectedPowerMin));
-
-        if (carFilter.SelectedDriverAge != 0)
-            filteredResults
-                    .retainAll(ProductTypeRepository.findByMinimumAgeGreaterThanEqual(carFilter.SelectedDriverAge));
-        // variable = (condition) ? expressionTrue : expressionFalse;
-        model.addAttribute("productTypes", filteredResults);
-        model.addAttribute("carFilter", CarFilter);
-
-        return "products/index";
+        return "redirect:showFilter";
     }
 
+    @GetMapping("list")
+    public String showAllProducts(Model model) {
+        model.addAttribute("productTypes", ProductTypeRepository.findAll());
+        return "products/index";
+    }
 }
