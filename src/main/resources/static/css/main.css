@@ -5074,7 +5074,8 @@ a.cardbox:hover {
   }
 }
 
-.card-img {
+.card-img_own {
+  margin-top: 10px;
   width: 250px;
   height: 150px;
 }
