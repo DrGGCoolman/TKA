@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 
-
 @RequestMapping("/users/")
 @Controller
 public class UserController {
@@ -45,12 +44,6 @@ public class UserController {
     public String login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
-    }
-
-    @PostMapping("/lergin")
-    public String loginPost(@RequestParam(value = "username", required = true) String username) {
-        EcUserEntity user = UserRepository.findByUsername(username);
-        return user.toString();
     }
 
     @GetMapping("register")
