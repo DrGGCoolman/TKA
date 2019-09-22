@@ -24,6 +24,11 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/impressum")
+    public String Impressum() {
+        return "impressum";
+    }
+
     @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";
