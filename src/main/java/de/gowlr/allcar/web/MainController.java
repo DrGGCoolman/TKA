@@ -39,6 +39,11 @@ public class MainController {
         return "admin/createProduct";
     }
 
+    @RequestMapping("/admin/index")
+    public String adminIndexx() {
+        return "admin/index";
+    }
+
     @RequestMapping("/products/product-detail")
     public String productDetail() {
         return "products/product-detail";

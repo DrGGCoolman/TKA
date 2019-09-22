@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-main">
@@ -22,7 +23,9 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="cardbox p-4">
                     <div class="card-body">
+
                         <h5 class="card-title text-center">Login</h5>
+
                         <form class="form-signin" action="/users/login" method="post">
                             <div class="form-label-group">
                                 <label for="inputEmail w-100 pb-2">E-Mail</label>
@@ -36,7 +39,7 @@
                                     placeholder="Passwort" required>
                             </div>
                             <br>
-                            <button class="btn btn-lg btn-secondary btn-block" type="submit">Einloggen</button>
+                            <button class="btn btn-lg btn-secondary btn-block pure-button pure-button-primary" type="submit">Einloggen</button>
                         </form>
 
                         <!-- 
