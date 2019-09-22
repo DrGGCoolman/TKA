@@ -26,8 +26,8 @@
     <div class="container">
         <div class="container">
             <div class="row pt-2">
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
-                    <div class="jumbotron jumbotron-porsche">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sport">
+                    <div class="jumbotron jumbotron-sport">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-sport">
@@ -51,8 +51,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
-                    <div class="jumbotron jumbotron-benzer">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sportplus">
+                    <div class="jumbotron jumbotron-sportplus">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-sportplus">
@@ -73,8 +73,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
-                    <div class="jumbotron jumbotron-bmw">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-suv">
+                    <div class="jumbotron jumbotron-suv">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-suv">
@@ -96,8 +96,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
-                    <div class="jumbotron jumbotron-maserati">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-luxus">
+                    <div class="jumbotron jumbotron-luxus">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-luxus">
@@ -108,7 +108,7 @@
                                         Fahrt
                                         auf der offenen Straße und den Straßen der Stadt. Wir bieten schöne Modelle wie
                                         den
-                                        Cadillac, die BMW 7er Reihe und vieles mehr.
+                                        Cadillac, die suv 7er Reihe und vieles mehr.
                                     </p>
                                     <br>
                                     <button class="btn btn-secondary">
@@ -138,31 +138,34 @@
                     und werfen Sie einen Blick auf die Highlights:
                 </p>
                 <br>
-                
+
                 <div class="container">
-                        <div id="demo" class="carousel slide" data-ride="carousel">
-                                <ul class="carousel-indicators">
-                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                    <li data-target="#demo" data-slide-to="1"></li>
-                                    <li data-target="#demo" data-slide-to="2"></li>
-                                </ul>
-                                <div class="carousel-inner" >
-                                        <a href="#" class="carousel-item active" th:each="highlight : ${highlights}">
-                                            <img th:src="@{${highlight.ecPicturesById[0].filePath}}" class="d-block mw-100 carousel-picture">
-                                            <div class="carousel-caption">
-                                                <h3 th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}"></h3>
-                                            </div>
-                                        </a>
-                                    </div>
-                                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </a>
-                                <a class="carousel-control-next" href="#demo" data-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </a>
-                            </div>
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                        <div class="carousel-inner">
+                            <a href="#" class="carousel-item active" th:each="highlight : ${highlights}">
+                                <img th:src="@{${highlight.ecPicturesById[0].filePath}}"
+                                    class="d-block mw-100 carousel-picture">
+                                <div class="carousel-caption">
+                                    <h3
+                                        th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
+                                    </h3>
+                                </div>
+                            </a>
                         </div>
-                        <!-- <div id="demo" class="carousel slide" data-ride="carousel">
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div id="demo" class="carousel slide" data-ride="carousel">
 
                                 <ul class="carousel-indicators">
                                     <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -180,12 +183,12 @@
                                     <span class="carousel-control-next-icon"></span>
                                 </a>
                             </div> -->
-                        </div>
-
-                </div>
-
             </div>
+
         </div>
+
+    </div>
+    </div>
     </div>
     </div>
     <br>
@@ -203,7 +206,7 @@
                     <p class="text-justify">
                         Von exotischen Sportwagen bis hin zu Luxuslimousinen und SUVs - die Exclusive Car Rental bietet
                         eine sehr hohe Auswahl an exotischen und Nobel-Luxusfahrzeugen von größten Autoherstellern der
-                        Welt, darunter Ferrari, Maserati, Porsche, Bentley, McLaren, Range Rover und mehr. Seit der
+                        Welt, darunter Ferrari, luxus, Porsche, Bentley, McLaren, Range Rover und mehr. Seit der
                         Gründung haben wir es geschafft, uns als Marktführer in der Premium-Autovermietung in den
                         Metropolstädten Deutschlands zu etablieren.
 
