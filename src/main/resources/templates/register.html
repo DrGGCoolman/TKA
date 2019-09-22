@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-label-group pt-4">
                                 <label for="inputPassword" class="pt-2">Passwort wiederholen</label>
-                                <input type="password" id="inputPassword" class="form-control w-100"
+                                <input type="password" id="confirm_password" class="form-control w-100"
                                     placeholder="Passwort wiederholen" required>
                             </div>
                             <br>
@@ -86,6 +86,21 @@ TODO: vorlage löschen-->
     </div>
 
     <!-- SKRIPTE-->
+    <script>
+        var password = document.getElementById("inputPassword")
+            , confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwörter stimmen nicht überein");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

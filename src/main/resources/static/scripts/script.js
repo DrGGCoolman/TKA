@@ -67,4 +67,3 @@ $(".jumbotron-maserati").mouseout(function () {
     $('#jumbo-benzer').show();
     $("#text-luxus").hide();
 });
-
