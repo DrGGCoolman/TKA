@@ -21,6 +21,29 @@ public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity
 
         List<EcProductTypeEntity> findByHighlighted(Boolean highlighted);
 
+        // _
+        List<EcProductTypeEntity> findByEcCategoryByCategoryIdTitleIn(List<String> titles);
+
+        List<EcProductTypeEntity> findByEcBrandByBrandIdBrandTitleIn(List<String> brandTitle);
+
+        List<EcProductTypeEntity> findByGearingTypeIn(List<String> gearingTypes);
+
+        List<EcProductTypeEntity> findByAgeBetween(Integer min, Integer max);
+
+        List<EcProductTypeEntity> findByAgeGreaterThanEqual(Integer min);
+
+        List<EcProductTypeEntity> findByAgeLessThanEqual(Integer max);
+
+        List<EcProductTypeEntity> findByMinimumAgeGreaterThanEqual(Integer minAge);
+
+        List<EcProductTypeEntity> findByPowerPsGreaterThanEqual(Integer power);
+
+        List<EcProductTypeEntity> findByFuelTypeIn(List<String> fuelTypes);
+
+        List<EcProductTypeEntity> findByDriveSystemIn(List<String> driveSystem);
+
+        // _
+
         @Query("SELECT DISTINCT fuelType FROM EcProductTypeEntity")
         List<String> findDistinctFuels();
 
