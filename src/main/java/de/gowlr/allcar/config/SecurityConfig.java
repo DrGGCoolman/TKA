@@ -9,7 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
+import de.gowlr.allcar.services.FilterService;
+import de.gowlr.allcar.services.SearchService;
 import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 
@@ -47,6 +48,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CarFilterModel carFilterModel() {
         return new CarFilterModel();
+    }
+    
+    @Bean
+    public SearchService searchService() {
+        return new SearchService();
+    }
+
+    @Bean
+    public FilterService filterService() {
+        return new FilterService();
     }
 
     @Override
