@@ -9,13 +9,10 @@
     <title>Admin: Exclusive Car Rental | Neu </title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -27,25 +24,22 @@
         <div class="cardbox p-5">
             <h3 class="text-white">Neues Auto hinzufügen</h3>
             <br>
-
-
             <form>
                 <div class="form-row">
-                    <div class="form-group col">
-                        <label for="inputEmail4">Marke</label>
-                        <select id="inputState" class="form-control" required="true">
+                    
+                    <div class="form-group col-4">
+                        <label th:for="${brand.brandTitle}" th:text="${brand.brandTitle}" for="inputBrand">Marke</label>
+                        <select th:field="*{SelectedBrands}" id="inputBrand" class="form-control" required="true">
                             <option selected>Marke wählen</option>
-                            <option>Lamborghini</option>
-                            <option>Lamborghini</option>
-                            <option>Lamborghini</option>
-                            <option>Lamborghini</option>
+                            <option th:each="brand: ${model.Brands}"  th:id="${brand.brandTitle}" ></option>
                         </select>
                     </div>
-                    <div class="form-group col">
+
+                    <div class="form-group col-4">
                         <label for="inputPassword4">Modell</label>
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Modell">
                     </div>
-                    <div class="form-group col">
+                    <div class="form-group col-4">
                         <label for="inputPassword4">Variante</label>
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Variante">
                     </div>
@@ -54,7 +48,7 @@
                 <h5 class="text-white">Technische Daten</h5>
                 <hr class="border-white">
                 <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-5">
                         <label for="inputCity">Motor</label>
                         <input type="text" class="form-control" id="inputCity" placeholder="Motor">
                     </div>
