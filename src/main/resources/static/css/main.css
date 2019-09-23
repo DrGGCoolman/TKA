@@ -4888,6 +4888,7 @@ a.cardbox:hover {
 
 .cardbox-title {
   margin-bottom: 0.75rem;
+  display: inline-block;
 }
 
 .cardbox-subtitle {
