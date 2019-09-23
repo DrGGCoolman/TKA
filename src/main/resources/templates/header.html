@@ -34,7 +34,7 @@
                     <a class="nav-link text-white" th:href="@{/products/list}">Fahrzeuge</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link text-white">|</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
@@ -44,7 +44,7 @@
             <!-- 
                     ÜBERSCHRIFT
                     DIV, damit Element zentriert werden kann-->
-            <div class="nav-item mx-auto pt-2">
+            <div class="nav-item pt-2 mx-auto ">
                 <a class="navbar-brand mx-auto" th:href="@{/index}">
                     <h2 class="main-ecr">EXCLUSIVE CAR RENTAL</h2>
                 </a>
