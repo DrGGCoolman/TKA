@@ -154,7 +154,7 @@
                             <div th:each="highlight, iter : ${highlights}">
                                 <a class="carousel-item active" th:if="${iter.index} == 0">
                                     <img th:src="@{${highlight.ecPicturesById[0].filePath}}"
-                                        class="d-block mw-100 carousel-picture">
+                                        class="d-block carousel-picture" style="width:950px;">
                                     <div class="carousel-caption">
                                         <h3
                                             th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
