@@ -2,6 +2,7 @@
 package de.gowlr.allcar.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.EcProductTypeEntity;;
 
 @Repository
-public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity, Long> {
+public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity, Integer> {
 
-        EcProductTypeEntity findById(Integer id);
+        Optional<EcProductTypeEntity> findById(Integer id);
 
         List<EcProductTypeEntity> findByModelContainingIgnoreCase(String model);
 

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.EcCategoryEntity;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<EcCategoryEntity, Long> {
+public interface CategoryRepository extends JpaRepository<EcCategoryEntity, Integer> {
     List<EcCategoryEntity> findAll();
 }

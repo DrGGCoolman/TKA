@@ -40,6 +40,12 @@ public class ProductTypeController {
     private CarFilterModel CarFilter;
     @Autowired
     private SearchService SearchService;
+    @Autowired
+    private PictureRepository PicRepository;
+    @Autowired
+    private BrandRepository BrandRepository;
+    @Autowired
+    private CategoryRepository CatRepository;
 
     @ModelAttribute
     public void setDefaultAttributes(Model model) {
@@ -48,31 +54,37 @@ public class ProductTypeController {
 
     @GetMapping("{id}")
     public String showProductDetail(@PathVariable("id") Integer id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id);
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         model.addAttribute("product", ProductType);
         return "products/product-detail";
     }
 
     @GetMapping("create")
     public String showCreateFrom(Model model) {
-        model.addAttribute("product", new EcProductTypeEntity());
-        return "products/product-create-edit";
+        model.addAttribute("cats", CatRepository.findAll());
+        model.addAttribute("brands", BrandRepository.findAll());
+        model.addAttribute("productType", new EcProductTypeEntity());
+        return "admin/createProduct";
     }
 
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "products/product-create-edit";
+            return "admin/createProduct";
         }
+     
+      
         ProductTypeRepository.save(productType);
+
         return "redirect:list";
     }
 
     @GetMapping("edit/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+        EcProductTypeEntity productType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
-        model.addAttribute("ProductType", ProductType);
+        model.addAttribute("productType", productType);
         return "update-ProductType";
     }
 
@@ -85,15 +97,15 @@ public class ProductTypeController {
         }
 
         ProductTypeRepository.save(productType);
-        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "index";
+
+        return "redirect:list";
     }
 
     @GetMapping("delete/{id}")
-    public String deleteProductType(@PathVariable("id") long id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+    public String deleteProductType(@PathVariable("id") int id, Model model) {
+        EcProductTypeEntity productType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
-        ProductTypeRepository.delete(ProductType);
+        ProductTypeRepository.delete(productType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";
     }
