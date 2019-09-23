@@ -41,6 +41,8 @@ public class ProductTypeController {
     @Autowired
     private SearchService SearchService;
     @Autowired
+    private PictureRepository PicRepository;
+    @Autowired
     private BrandRepository BrandRepository;
     @Autowired
     private CategoryRepository CatRepository;
@@ -52,7 +54,8 @@ public class ProductTypeController {
 
     @GetMapping("{id}")
     public String showProductDetail(@PathVariable("id") Integer id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id);
+        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         model.addAttribute("product", ProductType);
         return "products/product-detail";
     }
@@ -70,7 +73,8 @@ public class ProductTypeController {
         if (result.hasErrors()) {
             return "admin/createProduct";
         }
-
+     
+      
         ProductTypeRepository.save(productType);
 
         return "redirect:list";

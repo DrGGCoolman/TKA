@@ -12,7 +12,7 @@ import de.gowlr.allcar.entities.EcProductTypeEntity;;
 @Repository
 public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity, Integer> {
 
-        EcProductTypeEntity findOneById(Integer id);
+        Optional<EcProductTypeEntity> findById(Integer id);
 
         List<EcProductTypeEntity> findByModelContainingIgnoreCase(String model);
 
