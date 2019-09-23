@@ -24,14 +24,19 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/impressum")
+    public String Impressum() {
+        return "impressum";
+    }
+
     @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";
     }
 
-    @RequestMapping("/admin/createProduct")
-    public String CreateProduct() {
-        return "admin/createProduct";
+    @RequestMapping("/admin/index")
+    public String adminIndexx() {
+        return "admin/index";
     }
 
     @RequestMapping("/products/product-detail")

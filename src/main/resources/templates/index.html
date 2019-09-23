@@ -9,8 +9,9 @@
 
     <title>Exclusive Car Rental | Home</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
 </head>
 
@@ -25,8 +26,8 @@
     <div class="container">
         <div class="container">
             <div class="row pt-2">
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-porsche">
-                    <div class="jumbotron jumbotron-porsche">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sport">
+                    <div class="jumbotron jumbotron-sport">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-sport">
@@ -50,8 +51,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-benzer">
-                    <div class="jumbotron jumbotron-benzer">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sportplus">
+                    <div class="jumbotron jumbotron-sportplus">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-sportplus">
@@ -72,8 +73,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-bmw">
-                    <div class="jumbotron jumbotron-bmw">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-suv">
+                    <div class="jumbotron jumbotron-suv">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-suv">
@@ -95,8 +96,8 @@
                         </div>
                     </div>
                 </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-maserati">
-                    <div class="jumbotron jumbotron-maserati">
+                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-luxus">
+                    <div class="jumbotron jumbotron-luxus">
                         <div class="overlay">
                             <div class="row">
                                 <div class="col-8 text category p-4" id="text-luxus">
@@ -107,7 +108,7 @@
                                         Fahrt
                                         auf der offenen Straße und den Straßen der Stadt. Wir bieten schöne Modelle wie
                                         den
-                                        Cadillac, die BMW 7er Reihe und vieles mehr.
+                                        Cadillac, die suv 7er Reihe und vieles mehr.
                                     </p>
                                     <br>
                                     <button class="btn btn-secondary">
@@ -137,41 +138,62 @@
                     und werfen Sie einen Blick auf die Highlights:
                 </p>
                 <br>
-                <div class="container">     
-                    <ol class="carousel-indicators">
 
-                        <th:block th:each="product, iterstat : ${highlights}"> 
-                         <li  data-target="#jsaAboutCarousel" th:attr="data-slide-to=${iterstat.index}" th:class="${iterstat.index}== 0  ? 'active':''"></li>
-                   
-                         </th:block>
-                       </ol>
-                   
-                       <!-- Wrapper for slides -->
-                   
-                   
-                   
-                       <div class="carousel-inner">
-                            <div th:each="product, iterstat : ${highlights}" th:class="${iterstat.index}== 0  ? 'item':'item active'">
-                                <!-- Hier bitte Foto-Variable einfügen -->
-                                <img th:src="@{${product.ecPicturesById[0].filePath}"  class="img-responsive" />
+                <div class="container">
+                    <div id="pictureCarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+
+                            <th:block th:each="highlight, iter : ${highlights}">
+                                <li data-target="#jsaAboutCarousel" th:attr="data-slide-to=${iter.index}"
+                                    th:class="${iter.index}== 0  ? 'active':''"></li>
+
+                            </th:block>
+                        </ol>
+                        <div class="carousel-inner">
+
+                            <div th:each="highlight, iter : ${highlights}">
+                                <a class="carousel-item active" th:if="${iter.index} == 0">
+                                    <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                                        class="d-block carousel-picture" style="width:950px;">
+                                    <div class="carousel-caption">
+                                        <h3
+                                            th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
+                                        </h3>
+                                    </div>
+                                </a>
+                                <a class="carousel-item " th:if="${iter.index} > 0">
+                                    <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                                        class="d-block mw-100 carousel-picture">
+                                    <div class="carousel-caption">
+                                        <h3
+                                            th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
+                                        </h3>
+                                    </div>
+                                </a>
                             </div>
+
                         </div>
-                   
-                   
-                       <!-- Left and right controls -->
-                       <a class="left carousel-control" href="#jsaAboutCarousel" data-slide="prev">
-                         <span class="glyphicon glyphicon-chevron-left"></span>
-                         <span class="sr-only">Previous</span>
-                       </a>
-                       <a class="right carousel-control" href="#jsaAboutCarousel" data-slide="next">
-                         <span class="glyphicon glyphicon-chevron-right"></span>
-                         <span class="sr-only">Next</span>
-                       </a>
-                   
-                   </div>
-                    
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    </div>
     </div>
     </div>
     <br>
@@ -189,7 +211,7 @@
                     <p class="text-justify">
                         Von exotischen Sportwagen bis hin zu Luxuslimousinen und SUVs - die Exclusive Car Rental bietet
                         eine sehr hohe Auswahl an exotischen und Nobel-Luxusfahrzeugen von größten Autoherstellern der
-                        Welt, darunter Ferrari, Maserati, Porsche, Bentley, McLaren, Range Rover und mehr. Seit der
+                        Welt, darunter Ferrari, luxus, Porsche, Bentley, McLaren, Range Rover und mehr. Seit der
                         Gründung haben wir es geschafft, uns als Marktführer in der Premium-Autovermietung in den
                         Metropolstädten Deutschlands zu etablieren.
 
@@ -293,45 +315,7 @@
     <script th:src="@{../scripts/script.js}"></script>
 
 </body>
-<!-- <div id="demo" class="carousel slide" data-ride="carousel">
-
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-
-
-        <div class="carousel-inner" th:each="highlight : ${highlights}">
-            <a href="#" class="carousel-item active">
-                <img th:src="@{${highlight.ecPicturesById[0].filePath}" class="d-block mw-100 carousel-picture">
-                <div class="carousel-caption">
-                    <h3 th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}"></h3>
-                </div>
-            </a>
-            <a href="#" class="carousel-item">
-                <img th:src="@{img/bmw.jpg}" class="d-block mw-100 carousel-picture">
-                <div class="carousel-caption">
-                    <h3>BMW</h3>
-                    <p>Thank you, Chicago!</p>
-                </div>
-            </a>
-            <a href="#" class="carousel-item">
-                <img th:src="@{img/maserati.jpg}" class="d-block mw-100 carousel-picture">
-                <div class="carousel-caption">
-                    <h3>Maserati</h3>
-                    <p>We love the Big Apple!</p>
-                </div>
-            </a>
-        </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</div>
+<!-- 
 <br> -->
 
 </html>

@@ -6,171 +6,31 @@
     <div class="cardbox">
         <div class="container">
             <div class="categories pt-4 pb-4">
-                <form method="post" th:action="@{/list/}" th:object="${CarFilter}">
+                <form method="post" th:action="@{/products/filter}" th:object="${carFilter}">
 
                     <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
                         <i class="fa fa-angle-down"></i>
                     </a>
-
-
                     <ul class="list-group-wb">
-                        <!-- TODO:
-                        <li th:each="fuel: ${Fuels}">
-                            <input type="checkbox" th:field="*{fuelType}" th:value="${fuel.fuelType}" />
-                            <label th:text="${fuel.fuelType}"></label>
-                        </li> -->
-                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySport" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Sport
-                            </label>
-                        </li>
-                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySportPlus" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Sport +
-                            </label>
-                        </li>
-                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategorySUV" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                SUV
-                            </label>
-                        </li>
-                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="CategoryLuxus" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Luxus
+                        <li href="#" id="klasse" class="collapse list-group-wb-item pl-5"
+                            th:each=" cat: ${model.Categories}">
+                            <input class="form-check-input" th:field="*{SelectedCategories}" type="checkbox"
+                                th:value="${cat.title}" th:id="${cat.title}">
+                            <label class="form-check-label" th:for="${cat.title}" th:text="${cat.title}">
                             </label>
                         </li>
                     </ul>
 
+                    <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
+                        <i class="fa fa-angle-down"></i>
+                    </a>
                     <ul class="list-group-wb">
-                        <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
-                            <i class="fa fa-angle-down"></i>
-                        </a>
+                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5"
+                            th:each=" brand: ${model.Brands}">
+                            <input class="form-check-input" th:field="*{SelectedBrands}" type="checkbox"
+                                th:value="${brand.brandTitle}" th:id="${brand.brandTitle}">
+                            <label class="form-check-label" th:for="${brand.brandTitle}" th:text="${brand.brandTitle}">
 
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Range Rover
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelDiesel" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Lamborghini
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelElektro" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Honda
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Cadillac
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Nissan
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Maserati
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Chevrolet
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Aston Martin
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Bentley
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Rolly Royce
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                BMW
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Cadillac
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Porsche
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Mercedes
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Audi
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Ferrari
-                            </label>
-                        </li>
-                        <li href="#" id="marke" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Jaguar
                             </label>
                         </li>
                     </ul>
@@ -180,19 +40,12 @@
                     </a>
 
                     <ul class="list-group-wb">
-                        <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="TransmissionAutomatik" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Automatik
-                            </label>
-                        </li>
+                        <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5"
+                            th:each=" getriebe: ${model.Transmissions}">
+                            <input class="form-check-input" th:field="*{SelectedTransmissions}" type="checkbox"
+                                th:value="${getriebe}" th:id="${getriebe}">
+                            <label class="form-check-label" th:for="${getriebe}" th:text="${getriebe}">
 
-                        <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="TransmissionManuell" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Manuell
                             </label>
                         </li>
                     </ul>
@@ -203,19 +56,22 @@
                     <ul class="list-group-wb">
                         <li href="#" id="baujahr" class="collapse list-group-wb-item pl-5">
                             <div class="row">
-                                <input type="number" class="form-control-sm col-lg-6 col-sm-12" placeholder="Ab">
-                                <input type="number" class="form-control-sm col-lg-6 col-sm-12" placeholder="Bis">
+                                <input type="number" th:field="*{SelectedYearFrom}"
+                                    class="form-control-sm col-lg-6 col-sm-12" th:value="${model.YearFrom}">
+                                <input type="number" th:field="*{SelectedYearTo}"
+                                    class="form-control-sm col-lg-6 col-sm-12" th:value="${model.YearTo}">
                             </div>
                         </li>
                     </ul>
 
-                    <a li class="list-group-wb-item" href="#leistung" data-toggle="collapse">Leistung
+                    <a li class="list-group-wb-item" href="#leistung" data-toggle="collapse">Mindestleistung
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="list-group-wb">
                         <li href="#" id="leistung" class="collapse list-group-wb-item pl-5">
                             <div class="row">
-                                <input type="text" class="form-control-sm col-12" placeholder="Leistung in PS">
+                                <input type="number" th:field="*{SelectedPowerMin}" class="form-control-sm col-12"
+                                    th:value="0">
                             </div>
                         </li>
                     </ul>
@@ -224,59 +80,26 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="list-group-wb">
-                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="DriveSystenFrontantrieb" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Frontantrieb
-                            </label>
-                        </li>
-                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="DriveSystenHeckantrieb" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Heckantrieb
-                            </label>
-                        </li>
-                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="DriveSystenAllrad" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Allrad
+                        <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5"
+                            th:each=" antrieb: ${model.DriveSystems}">
+                            <input class="form-check-input" th:field="*{SelectedDriveSystems}" th:name="${antrieb}"
+                                type="checkbox" th:value="${antrieb}" th:id="${antrieb}">
+                            <label class="form-check-label" th:for="${antrieb}" th:text="${antrieb}">
                             </label>
                         </li>
                     </ul>
+
+
 
                     <a li class="list-group-wb-item" href="#kraftstoff" data-toggle="collapse">Kraftstoff
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="list-group-wb">
-                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Benzin
-                            </label>
-                        </li>
-                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelDiesel" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Diesel
-                            </label>
-                        </li>
-                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelElektro" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Elektro
-                            </label>
-                        </li>
-                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" name="FuelBenzin" type="checkbox" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Hybrid
+                        <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5"
+                            th:each=" fuel: ${model.Fuels}">
+                            <input class="form-check-input" th:field="*{SelectedFuels}" th:name="${fuel}"
+                                type="checkbox" th:value="${fuel}" th:id="${fuel}">
+                            <label class="form-check-label" th:for="${fuel}" th:text="${fuel}">
                             </label>
                         </li>
                     </ul>
@@ -286,26 +109,11 @@
                     </a>
                     <ul class="list-group-wb">
                         <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" type="checkbox" name="DriverAgeMin18" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                18
-                            </label>
+                            <select th:field="*{SelectedDriverAge}" id="DriverAgeMin">
+                                <option th:value="${age}" th:text="${age}" th:each="age : ${#lists.sort(model.DriverAges)}"></option>
+                            </select>
                         </li>
-                        <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" type="checkbox" name="DriverAgeMin21" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                21
-                            </label>
-                        </li>
-                        <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                            <input class="form-check-input" type="checkbox" name="DriverAgeMin25" value=""
-                                id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                25
-                            </label>
-                        </li>
+
                     </ul>
                     <br>
 

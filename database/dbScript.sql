@@ -431,7 +431,7 @@ INSERT INTO public.ec_product_type (id, category_id, brand_id, model, variant, g
 -- Name: ec_brand_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_brand_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ec_brand_id_seq', 16, true);
 
 
 --
@@ -440,7 +440,7 @@ SELECT pg_catalog.setval('public.ec_brand_id_seq', 1, false);
 -- Name: ec_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_category_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ec_category_id_seq', 5, false);
 
 
 --
@@ -458,7 +458,7 @@ SELECT pg_catalog.setval('public.ec_pictures_id_seq', 71, true);
 -- Name: ec_product_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_product_type_id_seq', 1, false);
+SELECT pg_catalog.setval('public.ec_product_type_id_seq', 57, false);
 
 
 --
@@ -476,7 +476,7 @@ SELECT pg_catalog.setval('public.ec_search_words_id_seq', 1, false);
 -- Name: ec_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ec_user_id_seq', 10, true);
+SELECT pg_catalog.setval('public.ec_user_id_seq', 1, false);
 
 
 --

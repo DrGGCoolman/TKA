@@ -12,6 +12,7 @@ public class EcPicturesEntity {
     private EcProductTypeEntity ecProductTypeByProductId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -43,12 +44,13 @@ public class EcPicturesEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcPicturesEntity that = (EcPicturesEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(filePath, that.filePath);
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title)
+                && Objects.equals(filePath, that.filePath);
     }
 
     @Override
@@ -56,7 +58,7 @@ public class EcPicturesEntity {
         return Objects.hash(id, title, filePath);
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     public EcProductTypeEntity getEcProductTypeByProductId() {
         return ecProductTypeByProductId;

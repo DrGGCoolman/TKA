@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.EcUserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<EcUserEntity, Long> {
+public interface UserRepository extends JpaRepository<EcUserEntity, Integer> {
 
     List<EcUserEntity> findAll();
 

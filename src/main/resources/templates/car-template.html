@@ -2,7 +2,9 @@
   <div class="row no-gutters">
     <div class="col-3">
       <a th:href="@{${product.id}}">
-        <img th:src="@{${product.ecPicturesById[0].filePath}}" class="card-img" alt="...">
+        <img
+          th:src="@{${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+          class="card-img_own">
       </a>
     </div>
 
@@ -10,6 +12,14 @@
       <div class="cardbox-body">
         <h4 class="cardbox-title pb-2 pl-4"
           th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+          <span sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">|</span>
+        <a th:href="@{'/products/edit/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
+            Bearbeiten
+        </a>
+        <span sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">|</span>
+        <a th:href="@{'/products/delete/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
+          Löschen
+      </a>
         <div class="row-card">
           <div class="col-6 pl-4 tabelle">
             <table class="table-car">
@@ -76,7 +86,7 @@
           </div>
 
           <div class="col-3 preis text-center">
-              <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
+            <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
               <strong th:id="500km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price500,3,0)} + ',- €' + ' pro Tag'"></strong>
               <strong th:id="1000km + ${product.id}" style=" display:none" th:text="'Ab ' + ${#numbers.formatDecimal(product.price1000,3,0)} + ',- €' + ' pro Tag'"></strong>
           </div>
