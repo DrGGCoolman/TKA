@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.EcBrandEntity;
 
 @Repository
-public interface BrandRepository extends JpaRepository<EcBrandEntity, Long> {
+public interface BrandRepository extends JpaRepository<EcBrandEntity, Integer> {
 
 }

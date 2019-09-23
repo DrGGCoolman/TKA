@@ -62,23 +62,25 @@ public class ProductTypeController {
         model.addAttribute("cats", CatRepository.findAll());
         model.addAttribute("brands", BrandRepository.findAll());
         model.addAttribute("productType", new EcProductTypeEntity());
-        return "products/product-create-edit";
+        return "admin/createProduct";
     }
 
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "products/product-create-edit";
+            return "admin/createProduct";
         }
+
         ProductTypeRepository.save(productType);
+
         return "redirect:list";
     }
 
     @GetMapping("edit/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+        EcProductTypeEntity productType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
-        model.addAttribute("ProductType", ProductType);
+        model.addAttribute("productType", productType);
         return "update-ProductType";
     }
 
@@ -91,15 +93,15 @@ public class ProductTypeController {
         }
 
         ProductTypeRepository.save(productType);
-        model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "index";
+
+        return "redirect:list";
     }
 
     @GetMapping("delete/{id}")
-    public String deleteProductType(@PathVariable("id") long id, Model model) {
-        EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
+    public String deleteProductType(@PathVariable("id") int id, Model model) {
+        EcProductTypeEntity productType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
-        ProductTypeRepository.delete(ProductType);
+        ProductTypeRepository.delete(productType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
         return "index";
     }

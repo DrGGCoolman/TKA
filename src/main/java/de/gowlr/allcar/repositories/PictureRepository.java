@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.*;
 
 @Repository
-public interface PictureRepository extends JpaRepository<EcPicturesEntity, Long> {
+public interface PictureRepository extends JpaRepository<EcPicturesEntity, Integer> {
 
     List<EcPicturesEntity> findAll();
     List<EcPicturesEntity> findBy();
