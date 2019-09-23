@@ -74,7 +74,7 @@
                 </ul>
                 <ul class="nav navbar-nav" sec:authorize="authenticated">
                     <li class="nav-item ml-auto">
-                        <span class="d-inline-block nav-link text-white" th:text="${#httpServletRequest.remoteUser}"></span>
+                        <a th:href="@{/users/edit}" class="d-inline-block nav-link text-white" th:text="${#httpServletRequest.remoteUser}"></a>
                             <span class="d-inline-block nav-link text-white">|</span>
                             <a class="d-inline-block nav-link text-white" th:href="@{/logout}">Logout</a>
                         </li>
