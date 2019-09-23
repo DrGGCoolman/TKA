@@ -29,6 +29,11 @@ public class MainController {
         return "impressum";
     }
 
+    @RequestMapping("/datenschutz")
+    public String Datenschutz() {
+        return "datenschutz";
+    }
+
     @RequestMapping("/admin/")
     public String adminIndex() {
         return "admin/index";

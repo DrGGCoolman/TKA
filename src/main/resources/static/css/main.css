@@ -391,6 +391,12 @@ a {
   background-color: transparent;
 }
 
+.links {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 a:hover {
   color: #95999c;
   text-decoration: underline;
