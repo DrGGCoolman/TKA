@@ -7,48 +7,54 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <nav class="navbar navbar-expand-lg navbar-dark w-100 bg-main pt-4 pb-2" th:fragment="copy">
-        <div class="container-fluid row">
+        <div class="container-fluid row flex-container">
+            <div>
+                <!-- Linke Elemente-->
+                <ul class="nav navbar-nav mr-auto pl-2">
 
-            <!-- Linke Elemente-->
-            <ul class="nav navbar-nav mr-auto pl-2">
-                <div class="dropdown mr-1">
+                    <div class="dropdown mr-1">
+                        <li class="nav-item">
+                            <button class="btn" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false"
+                                id="dropdownMenuOffset" data-offset="10,20" aria-controls="nav-collapse3">
+                                <i class="fa fa-search p-0"></i>
+                            </button>
+                            <div class="dropdown-menu dropdownsearch p-2"
+                                style="background-color: rgb(81, 82, 102, 0.5);" aria-labelledby="dropdownMenuOffset">
+                                <form id="search-form" role="search" th:action="@{/products/search}" method="get">
+                                    <div class="form-group">
+                                        <input type="text" name="searchfor" class="form-control searchbox m-2"
+                                            placeholder="Fahrzeug suchen" />
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    </div>
+
+                    <!--RENT-Block-->
                     <li class="nav-item">
-                        <button class="btn" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false"
-                            id="dropdownMenuOffset" data-offset="10,20" aria-controls="nav-collapse3">
-                            <i class="fa fa-search p-0"></i>
-                        </button>
-                        <div class="dropdown-menu dropdownsearch p-2" style="background-color: rgb(81, 82, 102, 0.5);"
-                            aria-labelledby="dropdownMenuOffset">
-                            <form id="search-form" role="search" th:action="@{/products/search}" method="get">
-                                <div class="form-group">
-                                    <input type="text" name="searchfor" class="form-control searchbox m-2"
-                                        placeholder="Fahrzeug suchen" />
-                                </div>
-                            </form>
-                        </div>
+                        <a class="nav-link text-white" th:href="@{/products/list}">Fahrzeuge</a>
                     </li>
-                </div>
 
-                <!--RENT-Block-->
-                <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/products/list}">Fahrzeuge</a>
-                </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link text-white">|</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link text-white" th:href="@{/admin/createProduct}">Fahrzeug hinzufügen</a>
+                    </li>
+                </ul>
+            </div>
 
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link text-white">|</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link text-white" th:href="@{/admin/createProduct}">Fahrzeug hinzufügen</a>
-                </li>
-            </ul>
-            <!-- 
+            <div>
+                <!-- 
                     ÜBERSCHRIFT
                     DIV, damit Element zentriert werden kann-->
-            <div class="nav-item pt-2 mx-auto ">
-                <a class="navbar-brand mx-auto" th:href="@{/index}">
-                    <h2 class="main-ecr">EXCLUSIVE CAR RENTAL</h2>
-                </a>
+                <div class="nav-item pt-2 mx-auto ">
+                    <a class="navbar-brand mx-auto" th:href="@{/index}">
+                        <h2 class="main-ecr">EXCLUSIVE CAR RENTAL</h2>
+                    </a>
+                </div>
             </div>
+
 
             <!-- Rechte Elemente-->
             <div>
