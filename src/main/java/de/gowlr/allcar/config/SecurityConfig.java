@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()
-                .failureUrl("/login-error").loginPage("/users/login").permitAll().and().logout().permitAll();
+                .failureUrl("/users/login?error=true").loginPage("/users/login").permitAll().and().logout().permitAll();
         // TODO: default errror failureUrl("/login-error").
     }
 
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public CarFilterModel carFilterModel() {
         return new CarFilterModel();
     }
-    
+
     @Bean
     public SearchService searchService() {
         return new SearchService();
