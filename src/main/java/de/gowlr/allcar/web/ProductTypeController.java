@@ -65,13 +65,13 @@ public class ProductTypeController {
         model.addAttribute("cats", CatRepository.findAll());
         model.addAttribute("brands", BrandRepository.findAll());
         model.addAttribute("productType", new EcProductTypeEntity());
-        return "admin/createProduct";
+        return "admin/create-product";
     }
 
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "admin/createProduct";
+            return "admin/create-product";
         }
      
       
