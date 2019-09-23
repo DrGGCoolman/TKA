@@ -73,10 +73,7 @@ public class ProductTypeController {
         if (result.hasErrors()) {
             return "admin/create-product";
         }
-     
-      
         ProductTypeRepository.save(productType);
-
         return "redirect:list";
     }
 
@@ -84,8 +81,11 @@ public class ProductTypeController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         EcProductTypeEntity productType = ProductTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
+        model.addAttribute("isUpdate", true);
+        model.addAttribute("cats", CatRepository.findAll());
+        model.addAttribute("brands", BrandRepository.findAll());
         model.addAttribute("productType", productType);
-        return "update-ProductType";
+        return "admin/edit-product";
     }
 
     @PostMapping("update/{id}")
@@ -93,12 +93,12 @@ public class ProductTypeController {
             BindingResult result, Model model) {
         if (result.hasErrors()) {
             productType.setId(id);
-            return "update-ProductType";
+            return "redirect:" + id.toString();
         }
 
         ProductTypeRepository.save(productType);
 
-        return "redirect:list";
+        return "redirect:/products/list";
     }
 
     @GetMapping("delete/{id}")
