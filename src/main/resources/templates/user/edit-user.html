@@ -27,7 +27,7 @@
                 weiteren Registrierung fortfahren.
             </div>
             <br>
-            <form action="#" th:action="@{${'/users/update/' + id}}" th:object="${user}" method="post">
+            <form action="#" th:action="@{/users/update}" th:object="${user}" method="post">
                 <div class="form-row justify-content-md-center">
                     <div class="form-group col-3">
                         <label for="inputEmail4">Anrede*</label>
@@ -56,18 +56,21 @@
                     </div>
                     <div class="form-group col-3">
                         <label for="inputVorname">Vorname*</label>
-                        <input type="text" class="form-control" th:field="*{firstname}" id="inputVorname" placeholder="Vorname">
+                        <input type="text" class="form-control" th:field="*{firstname}" id="inputVorname"
+                            placeholder="Vorname">
                     </div>
                 </div>
                 <br>
                 <div class="form-row justify-content-md-center">
                     <div class="form-group col-5">
                         <label for="inputStraße">Straße*</label>
-                        <input type="text" class="form-control" th:field="*{street}" id="inputStraße" placeholder="Straße">
+                        <input type="text" class="form-control" th:field="*{street}" id="inputStraße"
+                            placeholder="Straße">
                     </div>
                     <div class="form-group col-1">
                         <label for="inputNr">Nr*</label>
-                        <input type="text" class="form-control" th:field="*{houseNumber}" id="inputNr" placeholder="Nr.">
+                        <input type="text" class="form-control" th:field="*{houseNumber}" id="inputNr"
+                            placeholder="Nr.">
                     </div>
                 </div>
                 <br>
@@ -75,7 +78,8 @@
                 <div class="form-row justify-content-md-center">
                     <div class="form-group col-2">
                         <label for="inputPLZ">Postleitzahl*</label>
-                        <input type="text" class="form-control" th:field="*{postCode}" id="inputPLZ" placeholder="Postleitzahl">
+                        <input type="text" class="form-control" th:field="*{postCode}" id="inputPLZ"
+                            placeholder="Postleitzahl">
                     </div>
                     <div class="form-group col-4">
                         <label for="inputStadt">Stadt*</label>
@@ -92,9 +96,9 @@
                     </div>
                 </div> -->
 
-                <input type="hidden" th:field="*{username}"/>
-                <input type="hidden" th:field="*{password}"/>
-                <input type="hidden" th:field="*{role}"/>
+                <input type="hidden" th:field="*{username}" />
+                <input type="hidden" th:field="*{password}" />
+                <input type="hidden" th:field="*{role}" />
 
                 <br>
                 <br>
