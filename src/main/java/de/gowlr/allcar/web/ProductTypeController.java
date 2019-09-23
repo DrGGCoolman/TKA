@@ -40,6 +40,10 @@ public class ProductTypeController {
     private CarFilterModel CarFilter;
     @Autowired
     private SearchService SearchService;
+    @Autowired
+    private BrandRepository BrandRepository;
+    @Autowired
+    private CategoryRepository CatRepository;
 
     @ModelAttribute
     public void setDefaultAttributes(Model model) {
@@ -55,7 +59,9 @@ public class ProductTypeController {
 
     @GetMapping("create")
     public String showCreateFrom(Model model) {
-        model.addAttribute("product", new EcProductTypeEntity());
+        model.addAttribute("cats", CatRepository.findAll());
+        model.addAttribute("brands", BrandRepository.findAll());
+        model.addAttribute("productType", new EcProductTypeEntity());
         return "products/product-create-edit";
     }
 
