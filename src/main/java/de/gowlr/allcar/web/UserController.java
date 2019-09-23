@@ -42,19 +42,16 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) boolean error, Model model) {
+    public String login(@RequestParam(required = false) boolean error, Model model,
+            @RequestParam(required = false) Integer id) {
         String msg = error ? "Bitte Passwort und Nutzernamen prüfen!" : "";
         model.addAttribute("err", error);
         model.addAttribute("msg", msg);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
 
-    }
-
-    @GetMapping("/login-register")
-    public String loginRegister(@RequestParam("id") Integer id) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/users/edit/" + id.toString();
     }
 
     @GetMapping("register")
@@ -72,12 +69,17 @@ public class UserController {
         user.setPassword(Encoder.encode(user.getPassword()));
         user.setRole("USER");
         UserRepository.save(user);
-        Integer userId = UserRepository.findByUsername(user.getUsername()).getId();
-        return "redirect:/users/login-register/?id=" + userId.toString();
+        return "redirect:/users/login";
     }
 
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+
+        EcUserEntity currUser = EcUserEntity.getCurrentUser();
+
+        if (currUser.getId() != id)
+            return "error";
+
         EcUserEntity user = UserRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
