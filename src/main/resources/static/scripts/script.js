@@ -1,69 +1,69 @@
-$(".jumbotron-porsche").mouseover(function () {
-    $('#jumbo-porsche').removeClass('col-lg-3');
-    $('#jumbo-porsche').addClass('col-lg-12')
-    $('#jumbo-benzer').hide();
-    $('#jumbo-bmw').hide();
-    $('#jumbo-maserati').hide();
+$(".jumbotron-sport").mouseover(function () {
+    $('#jumbo-sport').removeClass('col-lg-3');
+    $('#jumbo-sport').addClass('col-lg-12')
+    $('#jumbo-sportplus').hide();
+    $('#jumbo-suv').hide();
+    $('#jumbo-luxus').hide();
     $("#sport").show();
     $("#text-sport").show();
 });
-$(".jumbotron-porsche").mouseout(function () {
-    $('#jumbo-porsche').addClass('col-lg-3');
-    $('#jumbo-porsche').removeClass('col-lg-12');
-    $('#jumbo-benzer').show();
-    $('#jumbo-bmw').show();
-    $('#jumbo-maserati').show();
+$(".jumbotron-sport").mouseout(function () {
+    $('#jumbo-sport').addClass('col-lg-3');
+    $('#jumbo-sport').removeClass('col-lg-12');
+    $('#jumbo-sportplus').show();
+    $('#jumbo-suv').show();
+    $('#jumbo-luxus').show();
     $("#sport").hide();
     $("#text-sport").hide();
 });
 
-$(".jumbotron-benzer").mouseover(function () {
-    $('#jumbo-benzer').removeClass('col-lg-3');
-    $('#jumbo-benzer').addClass('col-lg-12');
-    $('#jumbo-porsche').hide();
-    $('#jumbo-bmw').hide();
-    $('#jumbo-maserati').hide();
+$(".jumbotron-sportplus").mouseover(function () {
+    $('#jumbo-sportplus').removeClass('col-lg-3');
+    $('#jumbo-sportplus').addClass('col-lg-12');
+    $('#jumbo-sport').hide();
+    $('#jumbo-suv').hide();
+    $('#jumbo-luxus').hide();
     $("#text-sportplus").show();
 });
-$(".jumbotron-benzer").mouseout(function () {
-    $('#jumbo-benzer').addClass('col-lg-3');
-    $('#jumbo-benzer').removeClass('col-lg-12');
-    $('#jumbo-porsche').show();
-    $('#jumbo-bmw').show();
-    $('#jumbo-maserati').show();
+$(".jumbotron-sportplus").mouseout(function () {
+    $('#jumbo-sportplus').addClass('col-lg-3');
+    $('#jumbo-sportplus').removeClass('col-lg-12');
+    $('#jumbo-sport').show();
+    $('#jumbo-suv').show();
+    $('#jumbo-luxus').show();
     $("#text-sportplus").hide();
 });
 
-$(".jumbotron-bmw").mouseover(function () {
-    $('#jumbo-bmw').removeClass('col-lg-3');
-    $('#jumbo-bmw').addClass('col-lg-12');
-    $('#jumbo-porsche').hide();
-    $('#jumbo-benzer').hide();
-    $('#jumbo-maserati').hide();
+$(".jumbotron-suv").mouseover(function () {
+    $('#jumbo-suv').removeClass('col-lg-3');
+    $('#jumbo-suv').addClass('col-lg-12');
+    $('#jumbo-sport').hide();
+    $('#jumbo-sportplus').hide();
+    $('#jumbo-luxus').hide();
     $("#text-suv").show();
 });
-$(".jumbotron-bmw").mouseout(function () {
-    $('#jumbo-bmw').addClass('col-lg-3');
-    $('#jumbo-bmw').removeClass('col-lg-12');
-    $('#jumbo-porsche').show();
-    $('#jumbo-benzer').show();
-    $('#jumbo-maserati').show();
+$(".jumbotron-suv").mouseout(function () {
+    $('#jumbo-suv').addClass('col-lg-3');
+    $('#jumbo-suv').removeClass('col-lg-12');
+    $('#jumbo-sport').show();
+    $('#jumbo-sportplus').show();
+    $('#jumbo-luxus').show();
     $("#text-suv").hide();
 });
 
-$(".jumbotron-maserati").mouseover(function () {
-    $('#jumbo-maserati').removeClass('col-lg-3');
-    $('#jumbo-maserati').addClass('col-lg-12');
-    $('#jumbo-bmw').hide();
-    $('#jumbo-porsche').hide();
-    $('#jumbo-benzer').hide();
+$(".jumbotron-luxus").mouseover(function () {
+    $('#jumbo-luxus').removeClass('col-lg-3');
+    $('#jumbo-luxus').addClass('col-lg-12');
+    $('#jumbo-suv').hide();
+    $('#jumbo-sport').hide();
+    $('#jumbo-sportplus').hide();
     $("#text-luxus").show();
 });
-$(".jumbotron-maserati").mouseout(function () {
-    $('#jumbo-maserati').addClass('col-lg-3');
-    $('#jumbo-maserati').removeClass('col-lg-12');
-    $('#jumbo-bmw').show();
-    $('#jumbo-porsche').show();
-    $('#jumbo-benzer').show();
+$(".jumbotron-luxus").mouseout(function () {
+    $('#jumbo-luxus').addClass('col-lg-3');
+    $('#jumbo-luxus').removeClass('col-lg-12');
+    $('#jumbo-suv').show();
+    $('#jumbo-sport').show();
+    $('#jumbo-sportplus').show();
     $("#text-luxus").hide();
 });
