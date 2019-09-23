@@ -12,6 +12,14 @@
       <div class="cardbox-body">
         <h4 class="cardbox-title pb-2 pl-4"
           th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+          <span sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">|</span>
+        <a th:href="@{'/products/edit/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
+            Bearbeiten
+        </a>
+        <span sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">|</span>
+        <a th:href="@{'/products/delete/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
+          Löschen
+      </a>
         <div class="row-card">
           <div class="col-6 pl-4 tabelle">
             <table class="table-car">
