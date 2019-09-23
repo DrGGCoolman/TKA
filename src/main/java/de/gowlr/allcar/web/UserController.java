@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,12 @@ public class UserController {
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
     }
 
+    @GetMapping("/login-register")
+    public String loginRegister() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
+    }
+
     @GetMapping("register")
     public String showSignUpForm(Model model) {
         EcUserEntity user = new EcUserEntity();
@@ -61,6 +68,28 @@ public class UserController {
         user.setPassword(Encoder.encode(user.getPassword()));
         user.setRole("USER");
         UserRepository.save(user);
+        Integer userId = UserRepository.findByUsername(user.getUsername()).getId();
+        return "redirect:/users/edit/" + userId.toString();
+    }
+
+    @GetMapping("edit/{id}")
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+        EcUserEntity user = UserRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("user", user);
+        return "user/edit-user";
+    }
+
+    @PostMapping("update/{id}")
+    public String updateUser(@PathVariable("id") Integer id, @Valid EcUserEntity user, BindingResult result,
+            Model model) {
+        if (result.hasErrors()) {
+            user.setId(id);
+            return "redirect:/users/edit/" + id.toString();
+        }
+
+        UserRepository.save(user);
+
         return "redirect:/";
     }
 
