@@ -72,26 +72,24 @@ public class UserController {
         return "redirect:/users/login";
     }
 
-    @GetMapping("edit/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+    @GetMapping("edit")
+    public String showUpdateForm(Model model) {
 
         EcUserEntity currUser = EcUserEntity.getCurrentUser();
 
-        if (currUser.getId() != id)
-            return "error";
-
-        EcUserEntity user = UserRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        EcUserEntity user = UserRepository.findById(currUser.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
         model.addAttribute("user", user);
+
         return "user/edit-user";
     }
 
-    @PostMapping("update/{id}")
-    public String updateUser(@PathVariable("id") Integer id, @Valid EcUserEntity user, BindingResult result,
-            Model model) {
+    @PostMapping("update")
+    public String updateUser(@Valid EcUserEntity user, BindingResult result, Model model) {
+        EcUserEntity currUser = EcUserEntity.getCurrentUser();
+        user.setId(currUser.getId());
         if (result.hasErrors()) {
-            user.setId(id);
-            return "redirect:/users/edit/" + id.toString();
+            return "redirect:/users/edit";
         }
 
         UserRepository.save(user);
