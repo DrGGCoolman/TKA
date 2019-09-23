@@ -42,15 +42,19 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(@RequestParam(required = false) boolean error, Model model) {
+        String msg = error ? "Bitte Passwort und Nutzernamen prüfen!" : "";
+        model.addAttribute("err", error);
+        model.addAttribute("msg", msg);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
+
     }
 
     @GetMapping("/login-register")
-    public String loginRegister() {
+    public String loginRegister(@RequestParam("id") Integer id) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
+        return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/users/edit/" + id.toString();
     }
 
     @GetMapping("register")
@@ -69,7 +73,7 @@ public class UserController {
         user.setRole("USER");
         UserRepository.save(user);
         Integer userId = UserRepository.findByUsername(user.getUsername()).getId();
-        return "redirect:/users/edit/" + userId.toString();
+        return "redirect:/users/login-register/?id=" + userId.toString();
     }
 
     @GetMapping("edit/{id}")
