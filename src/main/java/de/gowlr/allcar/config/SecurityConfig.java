@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import de.gowlr.allcar.services.FilterService;
 import de.gowlr.allcar.services.SearchService;
@@ -18,11 +19,17 @@ import de.gowlr.allcar.web.CarFilterModel;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Bean
+    public AuthenticationSuccessHandler authSuccHandler() {
+        return new AuthSuccHandler();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()
-                .failureUrl("/users/login?error=true").loginPage("/users/login").permitAll().and().logout().permitAll();
+                .failureUrl("/users/login?error=true").loginPage("/users/login").successHandler(authSuccHandler())
+                .permitAll().and().logout().permitAll();
         // TODO: default errror failureUrl("/login-error").
     }
 
