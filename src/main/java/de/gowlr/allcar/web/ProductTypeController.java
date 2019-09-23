@@ -107,7 +107,7 @@ public class ProductTypeController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid ProductType Id:" + id));
         ProductTypeRepository.delete(productType);
         model.addAttribute("ProductTypes", ProductTypeRepository.findAll());
-        return "index";
+        return "redirect:/products/list";
     }
 
     @GetMapping("search")
