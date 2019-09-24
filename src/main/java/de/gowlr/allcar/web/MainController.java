@@ -34,9 +34,9 @@ public class MainController {
         return "admin/index";
     }
 
-    @RequestMapping("/admin/createProduct")
-    public String CreateProduct() {
-        return "admin/createProduct";
+    @RequestMapping("/admin/index")
+    public String adminIndexx() {
+        return "admin/index";
     }
 
     @RequestMapping("/products/product-detail")

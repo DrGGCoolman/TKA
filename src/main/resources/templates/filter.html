@@ -14,8 +14,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5"
                             th:each=" cat: ${model.Categories}">
-                            <input class="form-check-input" th:name="${cat.title}" type="checkbox" value="X"
-                                th:id="${cat.title}">
+                            <input class="form-check-input" th:field="*{SelectedCategories}" type="checkbox"
+                                th:value="${cat.title}" th:id="${cat.title}">
                             <label class="form-check-label" th:for="${cat.title}" th:text="${cat.title}">
                             </label>
                         </li>
@@ -27,8 +27,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="marke" class="collapse list-group-wb-item pl-5"
                             th:each=" brand: ${model.Brands}">
-                            <input class="form-check-input" th:name="${brand.brandTitle}" type="checkbox" value="X"
-                                th:id="${brand.brandTitle}">
+                            <input class="form-check-input" th:field="*{SelectedBrands}" type="checkbox"
+                                th:value="${brand.brandTitle}" th:id="${brand.brandTitle}">
                             <label class="form-check-label" th:for="${brand.brandTitle}" th:text="${brand.brandTitle}">
 
                             </label>
@@ -42,8 +42,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="getriebe" class="collapse list-group-wb-item pl-5"
                             th:each=" getriebe: ${model.Transmissions}">
-                            <input class="form-check-input" th:name="${getriebe}" type="checkbox" value="X"
-                                th:id="${getriebe}">
+                            <input class="form-check-input" th:field="*{SelectedTransmissions}" type="checkbox"
+                                th:value="${getriebe}" th:id="${getriebe}">
                             <label class="form-check-label" th:for="${getriebe}" th:text="${getriebe}">
 
                             </label>
@@ -56,12 +56,10 @@
                     <ul class="list-group-wb">
                         <li href="#" id="baujahr" class="collapse list-group-wb-item pl-5">
                             <div class="row">
-                                <input type="number" th:min="${model.YearFrom}" th:max="${model.YearTo}"
-                                    class="form-control-sm col-lg-6 col-sm-12" th:placeholder="${model.YearFrom}"
-                                    name="YearFrom">
-                                <input type="number" th:min="${model.YearFrom}" th:max="${model.YearTo}"
-                                    class="form-control-sm col-lg-6 col-sm-12" th:placeholder="${model.YearTo}"
-                                    name="YearTo">
+                                <input type="number" th:field="*{SelectedYearFrom}"
+                                    class="form-control-sm col-lg-6 col-sm-12" th:value="${model.YearFrom}">
+                                <input type="number" th:field="*{SelectedYearTo}"
+                                    class="form-control-sm col-lg-6 col-sm-12" th:value="${model.YearTo}">
                             </div>
                         </li>
                     </ul>
@@ -72,8 +70,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="leistung" class="collapse list-group-wb-item pl-5">
                             <div class="row">
-                                <input type="number" class="form-control-sm col-12" placeholder="Leistung in PS"
-                                    name="PowerMin">
+                                <input type="number" th:field="*{SelectedPowerMin}" class="form-control-sm col-12"
+                                    th:value="0">
                             </div>
                         </li>
                     </ul>
@@ -84,8 +82,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="antrieb" class="collapse list-group-wb-item pl-5"
                             th:each=" antrieb: ${model.DriveSystems}">
-                            <input class="form-check-input" th:name="${antrieb}" type="checkbox" value="X"
-                                th:id="${antrieb}">
+                            <input class="form-check-input" th:field="*{SelectedDriveSystems}" th:name="${antrieb}"
+                                type="checkbox" th:value="${antrieb}" th:id="${antrieb}">
                             <label class="form-check-label" th:for="${antrieb}" th:text="${antrieb}">
                             </label>
                         </li>
@@ -99,7 +97,8 @@
                     <ul class="list-group-wb">
                         <li href="#" id="kraftstoff" class="collapse list-group-wb-item pl-5"
                             th:each=" fuel: ${model.Fuels}">
-                            <input class="form-check-input" th:name="${fuel}" type="checkbox" value="X" th:id="${fuel}">
+                            <input class="form-check-input" th:field="*{SelectedFuels}" th:name="${fuel}"
+                                type="checkbox" th:value="${fuel}" th:id="${fuel}">
                             <label class="form-check-label" th:for="${fuel}" th:text="${fuel}">
                             </label>
                         </li>
@@ -110,8 +109,8 @@
                     </a>
                     <ul class="list-group-wb">
                         <li href="#" id="fahreralter" class="collapse list-group-wb-item pl-5">
-                            <select name="fahreralter" id="DriverAgeMin">
-                                <option th:value="${age}" th:text="${age}" th:each="age : ${model.DriverAges}"></option>
+                            <select th:field="*{SelectedDriverAge}" id="DriverAgeMin">
+                                <option th:value="${age}" th:text="${age}" th:each="age : ${#lists.sort(model.DriverAges)}"></option>
                             </select>
                         </li>
 
