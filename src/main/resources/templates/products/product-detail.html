@@ -560,11 +560,11 @@
                             </div>
                             <div class="col">
                                 <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|" style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
                             </div>
                             <div class="col">
                                 <button type="button" th:id="1000button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
                             </div>
                             <div class="col-3 text-center">
                                 <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>

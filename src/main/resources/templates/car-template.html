@@ -77,11 +77,11 @@
               <button type="button" class="btn btn-sm btn-light" th:id="200button + ${product.id}"
                 th:onclick="|price_function(this, '${product.id}')|" style="background-color: white">>200km</button>
               <button type="button" th:id="500button + ${product.id}" class="btn btn-sm btn-light"
-                th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+                th:onclick="|price_function(this, '${product.id}')|" style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
             </div>
             <div class="col">
               <button type="button" th:id="1000button + ${product.id}" class="btn btn-sm btn-light ml-4 mt-1"
-                th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+                th:onclick="|price_function(this, '${product.id}')|" style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
             </div>
           </div>
 
