@@ -148,7 +148,7 @@
                             </th:block>
                         </ol>
                         <div class="carousel-inner">
-                                <a th:each="highlight, iter : ${highlights}" th:class="${iter.index}== 0  ? ' active carousel-item':'carousel-item'">
+                                <a th:each="highlight, iter : ${highlights}" th:href="@{'/products/' + ${highlight .id}}" th:class="${iter.index}== 0  ? ' active carousel-item':'carousel-item'">
                                     <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
                                         class="d-block carousel-picture" style="width:950px;">
                                     <div class="carousel-caption col-8 text category p-2">
