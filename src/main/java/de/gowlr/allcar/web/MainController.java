@@ -29,6 +29,11 @@ public class MainController {
         return "impressum";
     }
 
+    @RequestMapping("/new-user")
+    public String newUser() {
+        return "new-user";
+    }
+
     @RequestMapping("/datenschutz")
     public String Datenschutz() {
         return "datenschutz";
