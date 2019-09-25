@@ -139,4 +139,5 @@ public class ProductTypeController {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
         return "products/index";
     }
+    
 }
