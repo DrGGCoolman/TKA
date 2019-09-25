@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,9 +42,16 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(@RequestParam(required = false) boolean error, Model model,
+            @RequestParam(required = false) Integer id) {
+        String msg = error ? "Bitte Passwort und Nutzernamen prüfen!" : "";
+        model.addAttribute("err", error);
+        model.addAttribute("msg", msg);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         return auth instanceof AnonymousAuthenticationToken ? "login" : "redirect:/";
+
     }
 
     @GetMapping("register")
@@ -61,6 +69,31 @@ public class UserController {
         user.setPassword(Encoder.encode(user.getPassword()));
         user.setRole("USER");
         UserRepository.save(user);
+        return "redirect:/users/login";
+    }
+
+    @GetMapping("edit")
+    public String showUpdateForm(Model model) {
+
+        EcUserEntity currUser = EcUserEntity.getCurrentUser();
+
+        EcUserEntity user = UserRepository.findById(currUser.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user"));
+        model.addAttribute("user", user);
+
+        return "user/edit-user";
+    }
+
+    @PostMapping("update")
+    public String updateUser(@Valid EcUserEntity user, BindingResult result, Model model) {
+        EcUserEntity currUser = EcUserEntity.getCurrentUser();
+        user.setId(currUser.getId());
+        if (result.hasErrors()) {
+            return "redirect:/users/edit";
+        }
+
+        UserRepository.save(user);
+
         return "redirect:/";
     }
 

@@ -29,7 +29,8 @@
             <div class="cardbox-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img th:src="@{${product.ecPicturesById[0].filePath}}" class="w-100" alt="...">
+                        <img th:src="@{${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                            class="w-100" alt="...">
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
@@ -107,12 +108,21 @@
                                 <div class="row">
                                     <div class="span12">
                                         <script>/**
+<<<<<<< HEAD
     * Ist ein Datum g�ltig
     * @param y: Jahr
     * @param m: Monat
     * @param d: Tag
     * @return true = g�ltig, false = ung�ltig
     */
+=======
+                                * Ist ein Datum g�ltig
+                                * @param y: Jahr
+                                * @param m: Monat
+                                * @param d: Tag
+                                * @return true = g�ltig, false = ung�ltig
+                                */
+>>>>>>> 29ecb79e863de6cb88869ec927c4d9311fd439ec
                                             function isValidDate(y, m, d) {
                                                 //--Gibt Datum des letzten Tag des Monats aus--
                                                 var thisDate = new Date(y, m, 1);
@@ -560,11 +570,11 @@
                             </div>
                             <div class="col">
                                 <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|" style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
                             </div>
                             <div class="col">
                                 <button type="button" th:id="1000button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
                             </div>
                             <div class="col-3 text-center">
                                 <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>

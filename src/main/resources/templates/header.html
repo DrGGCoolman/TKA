@@ -39,7 +39,7 @@
                         <a class="nav-link text-white">|</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                        <a class="nav-link text-white" th:href="@{/admin/createProduct}">Fahrzeug hinzufügen</a>
+                        <a class="nav-link text-white" th:href="@{/products/create}">Fahrzeug hinzufügen</a>
                     </li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                 </ul>
                 <ul class="nav navbar-nav" sec:authorize="authenticated">
                     <li class="nav-item ml-auto">
-                        <span class="d-inline-block nav-link text-white" th:text="${#httpServletRequest.remoteUser}"></span>
+                        <a th:href="@{/users/edit}" class="d-inline-block nav-link text-white" th:text="${#httpServletRequest.remoteUser}"></a>
                             <span class="d-inline-block nav-link text-white">|</span>
                             <a class="d-inline-block nav-link text-white" th:href="@{/logout}">Logout</a>
                         </li>
