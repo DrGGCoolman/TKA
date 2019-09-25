@@ -217,14 +217,20 @@
                 </div>
                 <br>
                 <div class="row">
+
                     <div class="col">
-                        <button type="submit" class="btn btn-secondary">Bild hochladen</button>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-secondary float-right">Speichern</button>
+                        <button type="submit" class="btn btn-secondary float-right">Daten Speichern</button>
                     </div>
                 </div>
+                <h5 class="text-white">Bilder</h5>
+                <div class="row">
+                </div>
                 <br>
+            </form>
+
+            <form method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
+                <input type="file" name="file"> <br /><br />
+                <button type="submit">Submit</button>
             </form>
         </div>
 
