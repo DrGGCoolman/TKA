@@ -31,10 +31,11 @@
 
                     <div class="form-group col-4">
                         <label for="inputPassword4">Marke</label>
-                        <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required="true">
+                        <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required autofocus>
                             <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
                             </option>
                         </select>
+                        <span th:if="${#fields.hasErrors('ecBrandByBrandId')}" th:errors="*{ecBrandByBrandId}" class="text-danger"></span>
                     </div>
 
 
@@ -213,17 +214,17 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 200</label>
+                        <label for="inputPassword4">Preis 200 km</label>
                         <input type="text" class="form-control" th:field="*{price200}" id="inputPassword4"
                             placeholder="799">
                     </div>
                     <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 500</label>
+                        <label for="inputPassword4">Preis 500 km</label>
                         <input type="text" class="form-control" th:field="*{price500}" id="inputPassword4"
                             placeholder="899">
                     </div>
                     <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 1000</label>
+                        <label for="inputPassword4">Preis 1000 km</label>
                         <input type="text" class="form-control" th:field="*{price1000}" id="inputPassword4"
                             placeholder="999">
                     </div>
@@ -231,14 +232,7 @@
                 <br>
                 <div class="row">
                     <div class="col">
-<<<<<<< HEAD:src/main/resources/templates/admin/createProduct.html
-                        <input type="file" accept="image/png, image/jpeg" class="btn btn-secondary"></input>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-secondary float-right">Neues Auto ertsellen</button>
-=======
                         <button type="submit" class="btn btn-secondary float-right">Neues Auto erstellen</button>
->>>>>>> 29ecb79e863de6cb88869ec927c4d9311fd439ec:src/main/resources/templates/admin/create-product.html
                     </div>
 
                 </div>
