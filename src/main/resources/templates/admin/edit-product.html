@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Admin: Exclusive Car Rental | Neu </title>
+    <title>Admin: Exclusive Car Rental | Bearbeiten </title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -27,86 +27,83 @@
             <br>
 
             <form action="#" th:action="@{${'/products/update/' + id}}" th:object="${productType}" method="post">
-
                 <div class="form-row">
 
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Marke</label>
-                        <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control">
-                            <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
-                            </option>
-                        </select>
-                        <span th:if="${#fields.hasErrors('ecBrandByBrandId')}" th:errors="*{ecBrandByBrandId}" class="text-danger"></span>
-                    </div>
-
-
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Kategorie</label>
-                        <select th:field="*{ecCategoryByCategoryId}" id="inputBrand" class="form-control"
-                            required="true">
-                            <option th:each="cat: ${cats}" th:value="${cat.id}" th:text="${cat.title}"></option>
-                        </select>
-                    </div>
-
+                        <div class="form-group col-4">
+                            <label for="inputBrand">Marke*</label>
+                            <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required autofocus>
+                                <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
+                                </option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('ecBrandByBrandId')}" th:errors="*{ecBrandByBrandId}" class="text-danger"></span>
+                        </div>
+    
+    
+                        <div class="form-group col-4">
+                            <label for="inputCategory">Kategorie*</label>
+                            <select th:field="*{ecCategoryByCategoryId}" id="inputCategory" class="form-control"
+                                required>
+                                <option th:each="cat: ${cats}" th:value="${cat.id}" th:text="${cat.title}"></option>
+                            </select>
+                        </div>
                 </div>
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Modell</label>
-                        <input type="text" class="form-control" th:field="*{model}" id="inputPassword4"
-                            placeholder="Modell">
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="inputModel">Modell*</label>
+                            <input type="text" class="form-control" th:field="*{model}" id="inputModel"
+                                placeholder="Modell" required>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="inputVariant">Variante*</label>
+                            <input type="text" class="form-control" th:field="*{variant}" id="inputVariant"
+                                placeholder="Variante" required>
+                        </div>
                     </div>
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Variante</label>
-                        <input type="text" class="form-control" th:field="*{variant}" id="inputPassword4"
-                            placeholder="Variante">
-                    </div>
-                </div>
                 <br>
                 <h5 class="text-white">Technische Daten</h5>
                 <hr class="border-white">
                 <div class="form-row">
                     <div class="form-group col-5">
-                        <label for="inputCity">Motor</label>
-                        <input type="text" class="form-control" th:field="*{engine}" id="inputCity" placeholder="Motor">
+                        <label for="inputEngine">Motor*</label>
+                        <input type="text" class="form-control" th:field="*{engine}" id="inputEngine" placeholder="Motor" required>
                     </div>
                     <div class="form-group col-md-5">
-                        <label for="inputCity">Antrieb</label>
-                        <input type="text" class="form-control" th:field="*{driveSystem}" id="inputCity"
-                            placeholder="Antrieb">
-                    </div>
+                            <label for="inputDriveSystem">Antrieb*</label>
+                            <select id="inputDriveSystem" class="form-control" th:field="*{driveSystem}" required>
+                                <option th:value="Allrad">Allrad</option>
+                                <option th:value="Frontantrieb">Frontantrieb</option>
+                                <option th:value="Heckantrieb">Heckantrieb</option>
+                            </select>
+                        </div>
                     <div class="form-group col-md-2">
-                        <label for="inputZip">Leistung</label>
-                        <input type="text" class="form-control" th:field="*{powerPs}" id="inputZip" placeholder="in PS">
+                        <label for="inputPowerPs">Leistung*</label>
+                        <input type="text" class="form-control" th:field="*{powerPs}" id="inputPowerPs" placeholder="in PS" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="inputCity">Getriebe</label>
-                        <select id="inputState" class="form-control" th:field="*{gearingType}">
+                        <label for="inputGearingType">Getriebe*</label>
+                        <select id="inputGearingType" class="form-control" th:field="*{gearingType}" required>
                             <option value="Automatik">Automatik</option>
                             <option value="Manuell">Manuell</option>
                         </select>
                     </div>
                     <div class="form-group col">
-                        <label for="inputCity">0 - 100</label>
-                        <input type="text" class="form-control" th:field="*{zeroToHundred}" id="inputCity"
-                            placeholder="in Sekunden">
+                        <label for="inputZeroHundred">0 - 100*</label>
+                        <input type="text" class="form-control" th:field="*{zeroToHundred}" id="inputZeroHundred"
+                            placeholder="in Sekunden" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Baujahr</label>
-                        <input type="text" class="form-control" th:field="*{age}" id="inputZip">
+                        <label for="inputAge">Baujahr*</label>
+                        <input type="text" class="form-control" th:field="*{age}" id="inputAge" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Drehmoment</label>
-                        <input type="text" class="form-control" th:field="*{nm}" id="inputZip" placeholder="in nm">
+                        <label for="inputNm">Drehmoment*</label>
+                        <input type="text" class="form-control" th:field="*{nm}" id="inputNm" placeholder="in nm" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputCity">Hubraum</label>
-                        <input type="text" class="form-control" th:field="*{cubicCapacityCm3}" id="inputCity">
+                        <label for="inputCm3">Hubraum*</label>
+                        <input type="text" class="form-control" th:field="*{cubicCapacityCm3}" id="inputCm3" required>
                     </div>
                 </div>
                 <br>
@@ -114,19 +111,18 @@
                 <hr class="border-white">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="inputCity">Farbe</label>
-                        <input type="text" class="form-control" th:field="*{bodyColor}" id="inputCity"
-                            placeholder="Farbe eingeben">
+                        <label for="inputColor">Farbe*</label>
+                        <input type="text" class="form-control" th:field="*{bodyColor}" id="inputColor"
+                            placeholder="Farbe eingeben" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Gewicht</label>
-                        <input type="text" class="form-control" th:field="*{weightKg}" id="inputZip"
-                            placeholder="in kg">
+                        <label for="inputWeight">Gewicht*</label>
+                        <input type="text" class="form-control" th:field="*{weightKg}" id="inputWeight"
+                            placeholder="in kg" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Sitze</label>
-                        <select id="inputState" class="form-control" th:field="*{seats}">
-                            <option value="" selected>Anzahl der Sitze wählen</option>
+                        <label for="inputSeats">Sitze*</label>
+                        <select id="inputSeats" class="form-control" th:field="*{seats}" required>
                             <option th:value="2">2</option>
                             <option th:value="4">4</option>
                             <option th:value="5">5</option>
@@ -135,9 +131,8 @@
                         </select>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Mindestalter</label>
-                        <select id="inputState" class="form-control" th:field="*{minimumAge}">
-                            <option value="" selected>Mindestalter wählen</option>
+                        <label for="inputMinimumAge">Mindestalter*</label>
+                        <select id="inputMinimumAge" class="form-control" th:field="*{minimumAge}" required>
                             <option th:value="18">18</option>
                             <option th:value="21">21</option>
                             <option th:value="25">25</option>
@@ -146,9 +141,8 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="inputCity">Türen</label>
-                        <select id="inputState" class="form-control" th:field="*{doors}">
-                            <option value="" selected>Anzahl wählen ...</option>
+                        <label for="inputDoors">Türen*</label>
+                        <select id="inputDoors" class="form-control" th:field="*{doors}" required>
                             <option th:value="2">2</option>
                             <option th:value="3">3</option>
                             <option th:value="4">4</option>
@@ -156,14 +150,13 @@
                         </select>
                     </div>
                     <div class="form-group col">
-                        <label for="inputCity">Innenraumfarbe</label>
-                        <input type="text" class="form-control" th:field="*{upholstery}" id="inputCity"
-                            placeholder="Farbe eingeben">
+                        <label for="inputUpholstery">Innenraumfarbe*</label>
+                        <input type="text" class="form-control" th:field="*{upholstery}" id="inputUpholstery"
+                            placeholder="Farbe eingeben" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Kraftstoff</label>
-                        <select id="inputState" class="form-control" th:field="*{fuelType}">
-                            <option value="" selected>Wählen ...</option>
+                        <label for="inputFuelType">Kraftstoff*</label>
+                        <select id="inputFuelType" class="form-control" th:field="*{fuelType}" required>
                             <option th:value="Benzin">Benzin</option>
                             <option th:value="Diesel">Diesel</option>
                             <option th:value="Elektro">Elektro</option>
@@ -172,6 +165,26 @@
                     </div>
                 </div>
                 <br>
+                <h5 class="text-white">Preise</h5>
+                <hr class="border-white">
+                <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="inputPrice200">Preis 200*</label>
+                            <input type="text" class="form-control" th:field="*{price200}" id="inputPrice200"
+                                placeholder="€" required>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="inputPrice500">Preis 500*</label>
+                            <input type="text" class="form-control" th:field="*{price500}" id="inputPrice500"
+                                placeholder="€" required>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="inputPrice1000">Preis 1000*</label>
+                            <input type="text" class="form-control" th:field="*{price1000}" id="inputPrice1000"
+                                placeholder="€" required>
+                        </div>
+                    </div>
+                <br>    
                 <div class="form-group">
                     <div class="form-check">
                         <input class="form-check-input" th:field="*{massageSeats}" type="checkbox" id="gridCheck">
@@ -197,23 +210,6 @@
                         <label class="form-check-label" for="gridCheck3">
                             Als Highlight auf Startseite anzeigen
                         </label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 200</label>
-                        <input type="text" class="form-control" th:field="*{price200}" id="inputPassword4"
-                            placeholder="€">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 500</label>
-                        <input type="text" class="form-control" th:field="*{price500}" id="inputPassword4"
-                            placeholder="€">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 1000</label>
-                        <input type="text" class="form-control" th:field="*{price1000}" id="inputPassword4"
-                            placeholder="€">
                     </div>
                 </div>
                 <br>

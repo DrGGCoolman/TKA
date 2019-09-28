@@ -168,7 +168,7 @@
                                 <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById.get(highlight.ecPicturesById.size() - 1).filePath : '/uploads/no_image.jpg'}}"
                                     class="d-block carousel-picture">
                                 <div class="carousel-caption col-8 text category p-2">
-                                    <h3
+                                    <h3 class="main-ecr text-uppercase"
                                         th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
                                     </h3>
                                 </div>

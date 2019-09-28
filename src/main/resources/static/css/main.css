@@ -181,6 +181,8 @@ position:absolute;
   opacity: 1;
 }
 
+/* KLEINE ANPASSUNGEN */
+
 .text {
   color: white;
   font-family: sans-serif;
@@ -190,10 +192,24 @@ position:absolute;
 footer {
   display: block;
   background-color: rgb(81, 82, 102, 0.5);
+  color: white;
+  text-decoration: none;
+  margin-top: 50px;
 }
 
-a{
+
+.links {
   color: white;
+  text-decoration: none;
+}
+
+.links {
+  color: white;
+  text-decoration: none;
+}
+
+.links:hover {
+  color: lightgray;
   text-decoration: none;
 }
 
@@ -203,6 +219,7 @@ a{
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
+
 
 /* KALENDER */
 
