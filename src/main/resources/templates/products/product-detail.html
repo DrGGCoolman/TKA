@@ -29,7 +29,7 @@
             <div class="cardbox-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img th:src="@{${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                        <img th:src="${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById.get(product.ecPicturesById.size() - 1).filePath : '/uploads/no_image.jpg'}"
                             class="w-100" alt="...">
                     </div>
                     <div class="col-lg-6">
@@ -180,7 +180,7 @@
                                             * schaltet einen Monat Weiter
                                             */
                                             function nextMonth() {
-                                                debugger;
+                                                // debugger;
                                                 var d = getDateFromMemory();
                                                 var m = d.getMonth() + 1;
                                                 var y = d.getFullYear();
@@ -267,7 +267,7 @@
 
                                                     //Eintragen der Daten ab ersten Tag im Monat und wenn es ein g�ltiges Datum ist
                                                     if (i >= dateDay && isValidDate(y, m, zahl)) {
-                                                        debugger;
+                                                        // debugger;
                                                         entry.innerHTML = '<div class=calendar_link href=javascript:putDate(' + zahl + ')>' + zahl + '</div>';
                                                         entry.hidden = false;
                                                         entry.style.visibility = 'visible';
@@ -578,7 +578,7 @@
                             <script>
 
                                 function price_function(e, id) {
-                                    debugger;
+                                    // debugger;
                                     var x = document.getElementById("200km".concat(id));
                                     var y = document.getElementById("500km".concat(id));
                                     var z = document.getElementById("1000km".concat(id));

@@ -3,7 +3,7 @@
     <div class="col-3">
       <a th:href="@{${product.id}}">
         <img
-          th:src="@{${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+        th:src="${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById.get(product.ecPicturesById.size() - 1).filePath : '/uploads/no_image.jpg'}"
           class="card-img_own">
       </a>
     </div>

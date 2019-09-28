@@ -78,8 +78,8 @@ public class ProductTypeController {
         if (result.hasErrors()) {
             return "admin/create-product";
         }
-        ProductTypeRepository.save(productType);
-        return "redirect:list";
+        EcProductTypeEntity savedProduct = ProductTypeRepository.save(productType);
+        return "redirect:edit/" + savedProduct.getId().toString();
     }
 
     @GetMapping("edit/{id}")
@@ -103,7 +103,7 @@ public class ProductTypeController {
 
         ProductTypeRepository.save(productType);
 
-        return "redirect:/products/list";
+        return "redirect:/products/" + id.toString();
     }
 
     @GetMapping("delete/{id}")
