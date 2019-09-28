@@ -32,6 +32,7 @@
                     <div class="form-group col-4">
                         <label for="inputPassword4">Marke</label>
                         <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required autofocus>
+                            <option value="" selected>Marke wählen..</option>
                             <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
                             </option>
                         </select>
@@ -43,6 +44,7 @@
                         <label for="inputPassword4">Kategorie</label>
                         <select th:field="*{ecCategoryByCategoryId}" id="inputBrand" class="form-control"
                             required="true">
+                            <option value="" selected>Kategorie wählen..</option>
                             <option th:each="cat: ${cats}" th:value="${cat.id}" th:text="${cat.title}"></option>
                         </select>
                     </div>
@@ -51,28 +53,12 @@
 
 
                 <div class="form-row">
-
-
-                    <div class="form-group col">
-                        <label for="inputPassword4">Marke</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Marke eingeben">
-                    </div>
-                    <div class="form-group col">
-                        <label for="inputPassword4">Kategorie</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Kategorie wählen ...</option>
-                            <option>Sport</option>
-                            <option>Sport +</option>
-                            <option>SUV</option>
-                            <option>Luxus</option>
-                        </select>
-                    </div>
-                    <div class="form-group col">
+                    <div class="form-group col-4">
                         <label for="inputPassword4">Modell</label>
                         <input type="text" class="form-control" th:field="*{model}" id="inputPassword4"
                             placeholder="Modell">
                     </div>
-                    <div class="form-group col">
+                    <div class="form-group col-4">
                         <label for="inputPassword4">Variante</label>
                         <input type="text" class="form-control" th:field="*{variant}" id="inputPassword4"
                             placeholder="Variante">
@@ -88,8 +74,12 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="inputCity">Antrieb</label>
-                        <input type="text" class="form-control" th:field="*{driveSystem}" id="inputCity"
-                            placeholder="Antrieb">
+                        <select id="inputState" class="form-control" th:field="*{driveSystem}">
+                            <option value="" selected>Antrieb wählen..</option>
+                            <option th:value="Allrad">Allrad</option>
+                            <option th:value="Frontantrieb">Frontantrieb</option>
+                            <option th:value="Heckantrieb">Heckantrieb</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputZip">Leistung</label>
@@ -100,6 +90,7 @@
                     <div class="form-group col">
                         <label for="inputCity">Getriebe</label>
                         <select id="inputState" class="form-control" th:field="*{gearingType}">
+                            <option value="" selected>Getriebe wählen..</option>
                             <option value="Automatik">Automatik</option>
                             <option value="Manuell">Manuell</option>
                         </select>
@@ -139,7 +130,7 @@
                     <div class="form-group col">
                         <label for="inputZip">Sitze</label>
                         <select id="inputState" class="form-control" th:field="*{seats}">
-                            <option value="" selected>Anzahl der Sitze wählen</option>
+                            <option value="" selected>Anzahl wählen..</option>
                             <option th:value="2">2</option>
                             <option th:value="4">4</option>
                             <option th:value="5">5</option>
@@ -150,7 +141,7 @@
                     <div class="form-group col">
                         <label for="inputZip">Mindestalter</label>
                         <select id="inputState" class="form-control" th:field="*{minimumAge}">
-                            <option value="" selected>Mindestalter wählen</option>
+                            <option value="" selected>Mindestalter wählen..</option>
                             <option th:value="18">18</option>
                             <option th:value="21">21</option>
                             <option th:value="25">25</option>
@@ -161,7 +152,7 @@
                     <div class="form-group col">
                         <label for="inputCity">Türen</label>
                         <select id="inputState" class="form-control" th:field="*{doors}">
-                            <option value="" selected>Anzahl wählen ...</option>
+                            <option value="" selected>Anzahl wählen..</option>
                             <option th:value="2">2</option>
                             <option th:value="3">3</option>
                             <option th:value="4">4</option>
@@ -176,7 +167,7 @@
                     <div class="form-group col">
                         <label for="inputZip">Kraftstoff</label>
                         <select id="inputState" class="form-control" th:field="*{fuelType}">
-                            <option value="" selected>Wählen ...</option>
+                            <option value="" selected>Kraftstoff wählen..</option>
                             <option th:value="Benzin">Benzin</option>
                             <option th:value="Diesel">Diesel</option>
                             <option th:value="Elektro">Elektro</option>
@@ -185,6 +176,26 @@
                     </div>
                 </div>
                 <br>
+                <h5 class="text-white">Preise</h5>
+                <hr class="border-white">
+                <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="inputPassword4">Preis 200 km</label>
+                            <input type="text" class="form-control" th:field="*{price200}" id="inputPassword4"
+                                placeholder="799">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="inputPassword4">Preis 500 km</label>
+                            <input type="text" class="form-control" th:field="*{price500}" id="inputPassword4"
+                                placeholder="899">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="inputPassword4">Preis 1000 km</label>
+                            <input type="text" class="form-control" th:field="*{price1000}" id="inputPassword4"
+                                placeholder="999">
+                        </div>
+                    </div>
+                <br>    
                 <div class="form-group">
                     <div class="form-check">
                         <input class="form-check-input" th:field="*{massageSeats}" type="checkbox" id="gridCheck">
@@ -210,23 +221,6 @@
                         <label class="form-check-label" for="gridCheck3">
                             Als Highlight auf Startseite anzeigen
                         </label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 200 km</label>
-                        <input type="text" class="form-control" th:field="*{price200}" id="inputPassword4"
-                            placeholder="799">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 500 km</label>
-                        <input type="text" class="form-control" th:field="*{price500}" id="inputPassword4"
-                            placeholder="899">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="inputPassword4">Preis 1000 km</label>
-                        <input type="text" class="form-control" th:field="*{price1000}" id="inputPassword4"
-                            placeholder="999">
                     </div>
                 </div>
                 <br>
