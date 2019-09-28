@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()
                 .failureUrl("/users/login?error=true").loginPage("/users/login").successHandler(authSuccHandler())
                 .permitAll().and().logout().permitAll();
-        // TODO: default errror failureUrl("/login-error").
+
     }
 
     @Autowired

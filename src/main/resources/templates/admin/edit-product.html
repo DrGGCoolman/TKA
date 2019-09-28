@@ -229,9 +229,9 @@
                 <br>
             </form>
 
-            <form method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
+            <form method="POST" enctype="multipart/form-data" th:action="@{${'/upload-file/' + id.toString()}}">
                 <input type="file" name="file"> <br /><br />
-                <button type="submit">Submit</button>
+                <button type="submit">Bild speichern</button>
             </form>
         </div>
 
