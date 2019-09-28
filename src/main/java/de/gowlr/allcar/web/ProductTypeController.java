@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +45,8 @@ public class ProductTypeController {
     private SearchService SearchService;
     @Autowired
     private PictureRepository PicRepository;
+    @Autowired
+    private SearchwordRepository SearchwordRepository;
     @Autowired
     private BrandRepository BrandRepository;
     @Autowired
@@ -73,8 +78,8 @@ public class ProductTypeController {
         if (result.hasErrors()) {
             return "admin/create-product";
         }
-        ProductTypeRepository.save(productType);
-        return "redirect:list";
+        EcProductTypeEntity savedProduct = ProductTypeRepository.save(productType);
+        return "redirect:edit/" + savedProduct.getId().toString();
     }
 
     @GetMapping("edit/{id}")
@@ -98,7 +103,7 @@ public class ProductTypeController {
 
         ProductTypeRepository.save(productType);
 
-        return "redirect:/products/list";
+        return "redirect:/products/" + id.toString();
     }
 
     @GetMapping("delete/{id}")
@@ -112,7 +117,16 @@ public class ProductTypeController {
 
     @GetMapping("search")
     public String searchByKeyword(@RequestParam(value = "searchfor", required = false) String searchfor, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            EcUserEntity currUser = EcUserEntity.getCurrentUser();
+
+            EcSearchWordsEntity searchWordToStore = new EcSearchWordsEntity();
+            searchWordToStore.setEcUserByUserId(currUser);
+            searchWordToStore.setSearchWords(searchfor);
+            SearchwordRepository.save(searchWordToStore);
+        }
         model.addAttribute("carFilter", CarFilter);
         model.addAttribute("productTypes", SearchService.search(searchfor));
 
@@ -139,4 +153,5 @@ public class ProductTypeController {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
         return "products/index";
     }
+
 }

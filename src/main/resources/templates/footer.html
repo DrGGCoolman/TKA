@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
 <body>
-    <div class="fixed-bottom">
-        <footer class="footer font-small text-white p-3" th:fragment="copy">
-            <div class="footer-copyright text-center text-white">
-               <a th:href="@{/impressum}">Impressum</a> | Datenschutz | Nutzungsbedingungen | Exclusive Car Rental © 2018
-            </div>
-        </footer>
-    </div>
-
+    <footer class="footer font-small text-white p-3" th:fragment="copy">
+        <div class="footer-copyright text-center text-white">
+            <a class="links" th:href="@{/impressum}">Impressum</a> | <a class="links" th:href="@{/datenschutz}">Datenschutz</a> | Nutzungsbedingungen | Exclusive Car Rental © 2018
+        </div>
+    </footer>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

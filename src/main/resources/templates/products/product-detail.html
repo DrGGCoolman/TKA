@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-main">
@@ -28,7 +29,7 @@
             <div class="cardbox-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img th:src="@{${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                        <img th:src="${(!product.ecPicturesById.isEmpty()) ? product.ecPicturesById.get(product.ecPicturesById.size() - 1).filePath : '/uploads/no_image.jpg'}"
                             class="w-100" alt="...">
                     </div>
                     <div class="col-lg-6">
@@ -107,12 +108,12 @@
                                 <div class="row">
                                     <div class="span12">
                                         <script>/**
-                                * Ist ein Datum g�ltig
-                                * @param y: Jahr
-                                * @param m: Monat
-                                * @param d: Tag
-                                * @return true = g�ltig, false = ung�ltig
-                                */
+                        * Ist ein Datum g�ltig
+                        * @param y: Jahr
+                        * @param m: Monat
+                        * @param d: Tag
+                        * @return true = g�ltig, false = ung�ltig
+                        */
                                             function isValidDate(y, m, d) {
                                                 //--Gibt Datum des letzten Tag des Monats aus--
                                                 var thisDate = new Date(y, m, 1);
@@ -179,7 +180,7 @@
                                             * schaltet einen Monat Weiter
                                             */
                                             function nextMonth() {
-                                                debugger;
+                                                // debugger;
                                                 var d = getDateFromMemory();
                                                 var m = d.getMonth() + 1;
                                                 var y = d.getFullYear();
@@ -266,7 +267,7 @@
 
                                                     //Eintragen der Daten ab ersten Tag im Monat und wenn es ein g�ltiges Datum ist
                                                     if (i >= dateDay && isValidDate(y, m, zahl)) {
-                                                        debugger;
+                                                        // debugger;
                                                         entry.innerHTML = '<div class=calendar_link href=javascript:putDate(' + zahl + ')>' + zahl + '</div>';
                                                         entry.hidden = false;
                                                         entry.style.visibility = 'visible';
@@ -560,11 +561,13 @@
                             </div>
                             <div class="col">
                                 <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>500km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"
+                                    style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
                             </div>
                             <div class="col">
                                 <button type="button" th:id="1000button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|">>1000km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"
+                                    style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
                             </div>
                             <div class="col-3 text-center">
                                 <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
@@ -575,7 +578,7 @@
                             <script>
 
                                 function price_function(e, id) {
-                                    debugger;
+                                    // debugger;
                                     var x = document.getElementById("200km".concat(id));
                                     var y = document.getElementById("500km".concat(id));
                                     var z = document.getElementById("1000km".concat(id));
@@ -618,38 +621,36 @@
         <div class="cardbox">
             <div class="cardbox-body text-center pt-4">
                 <h5>
-                    <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
-                        aria-controls="collapseExample" id="showDetails" onclick="moveFooter()">
+                    <a data-toggle="collapse" data-target="#collapseExample" id="footerbutton" aria-expanded="false"
+                        aria-controls="collapseExample">
                         <h5>
-                            <i class="fa fa-angle-down"></i> Details <i class="fa fa-angle-down"></i>
+                            <i class="fa fa-angle-down" id="detailsbutton"></i> Details <i class="fa fa-angle-down"></i>
                         </h5>
                     </a>
                 </h5>
             </div>
-            <div class="cardbox-body collapse" id="collapseExample">
-                <div class="row">
-                    <div class="col-1">
 
-                    </div>
-                    <div class="col-2">
+            <div class="cardbox-body collapse m-4" id="collapseExample">
+                <div class="row">
+                    <div class="col">
                         <p>
                             <b>Gewicht</b>
                             <br th:text="${#numbers.formatDecimal(product.weightKg,3,0)} + ' Kg'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Hubraum</b>
                             <br th:text="${product.cubicCapacityCm3} + ' Liter'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Drehmoment</b>
                             <br th:text="${#numbers.formatDecimal(product.nm,3,0)} + ' nm'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Massagesitze</b>
                             <td th:switch="${product.massageSeats}">
@@ -659,7 +660,7 @@
                             
                         </p>
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <p>
                             <b>Innenraumfarbe</b>
                             <br th:text="${product.bodyColor}">
@@ -667,21 +668,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-1">
-                    </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Türen</b>
                             <br th:text="${product.doors}">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Kraftstoff</b>
                             <br th:text="${product.fuelType}">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Zusatzfahrer</b>
                             <td th:switch="${product.addDriver}">
@@ -690,13 +689,13 @@
                             </td>
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Polstermaterial</b>
                             <br th:text="${product.upholstery}">
                         </p>
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <p>
                             <b>Rückenlehnendisplay</b>
                             <td th:switch="${product.displaysRear}">
@@ -714,13 +713,13 @@
     <!-- FOOTER-->
     <br>
     <br>
-    <div id="footer1" style="position: fixed;">
+    <div class="fixed-bottom" id="footer1">
         <div th:insert="~{footer :: copy}"></div>
     </div>
 
 
     <!-- SKRIPTE-->
-    <script th:src="@{/../scripts/script.js}"></script>
+
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
