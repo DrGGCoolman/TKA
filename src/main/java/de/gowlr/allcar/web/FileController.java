@@ -36,30 +36,6 @@ public class FileController {
         this.storageService = storageService;
     }
 
-    // @GetMapping("/")
-    // public String listAllFiles(Model model) {
-
-    // model.addAttribute("files",
-    // storageService.loadAll().map(path ->
-    // ServletUriComponentsBuilder.fromCurrentContextPath()
-    // .path("/download/").path(path.getFileName().toString()).toUriString())
-    // .collect(Collectors.toList()));
-
-    // return "index";
-    // }
-
-    // @GetMapping("/download/{filename:.+}")
-    // @ResponseBody
-    // public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
-
-    // Resource resource = storageService.loadAsResource(filename);
-
-    // return ResponseEntity.ok()
-    // .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
-    // resource.getFilename() + "\"")
-    // .body(resource);
-    // }
-
     @PostMapping("/upload-file/{id}")
     public String uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Integer id) {
         EcProductTypeEntity productToUpdate = productTypeRepository.findById(id)
@@ -79,19 +55,10 @@ public class FileController {
         productToUpdate.setEcPicturesById(picturesToStore);
 
         productTypeRepository.save(productToUpdate);
-        // String uri =
-        // ServletUriComponentsBuilder.fromCurrentContextPath().path("/download/").path(name).toUriString();
 
-        // return new FileResponse(name, uri, file.getContentType(), file.getSize());
-        return "redirect:/products/" + id.toString();
+        return "redirect:/products/edit/" + id.toString();
 
     }
 
-    // @PostMapping("/upload-multiple-files")
-    // @ResponseBody
-    // public List<FileResponse> uploadMultipleFiles(@RequestParam("files")
-    // MultipartFile[] files) {
-    // return Arrays.stream(files).map(file ->
-    // uploadFile(file)).collect(Collectors.toList());
-    // }
+
 }

@@ -103,7 +103,7 @@ public class ProductTypeController {
 
         ProductTypeRepository.save(productType);
 
-        return "redirect:/products/list";
+        return "redirect:/products/" + id.toString();
     }
 
     @GetMapping("delete/{id}")
