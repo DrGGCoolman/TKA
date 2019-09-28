@@ -108,12 +108,12 @@
                                 <div class="row">
                                     <div class="span12">
                                         <script>/**
-                                * Ist ein Datum g�ltig
-                                * @param y: Jahr
-                                * @param m: Monat
-                                * @param d: Tag
-                                * @return true = g�ltig, false = ung�ltig
-                                */
+                        * Ist ein Datum g�ltig
+                        * @param y: Jahr
+                        * @param m: Monat
+                        * @param d: Tag
+                        * @return true = g�ltig, false = ung�ltig
+                        */
                                             function isValidDate(y, m, d) {
                                                 //--Gibt Datum des letzten Tag des Monats aus--
                                                 var thisDate = new Date(y, m, 1);
@@ -561,11 +561,13 @@
                             </div>
                             <div class="col">
                                 <button type="button" th:id="500button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|" style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"
+                                    style="background-color: rgb(255, 255, 255, 0.75)">>500km</button>
                             </div>
                             <div class="col">
                                 <button type="button" th:id="1000button + ${product.id}" class="btn btn-light"
-                                    th:onclick="|price_function(this, '${product.id}')|"style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
+                                    th:onclick="|price_function(this, '${product.id}')|"
+                                    style="background-color: rgb(255, 255, 255, 0.75)">>1000km</button>
                             </div>
                             <div class="col-3 text-center">
                                 <strong th:id="200km + ${product.id}" th:text="'Ab ' + ${#numbers.formatDecimal(product.price200,3,0)} + ',- €' + ' pro Tag'"></strong>
@@ -619,7 +621,7 @@
         <div class="cardbox">
             <div class="cardbox-body text-center pt-4">
                 <h5>
-                    <a data-toggle="collapse" data-target="#collapseExample" id="footerbutton" onclick="removeClass();" aria-expanded="false"
+                    <a data-toggle="collapse" data-target="#collapseExample" id="footerbutton" aria-expanded="false"
                         aria-controls="collapseExample">
                         <h5>
                             <i class="fa fa-angle-down" id="detailsbutton"></i> Details <i class="fa fa-angle-down"></i>
@@ -628,33 +630,27 @@
                 </h5>
             </div>
 
-            <script>
-                $("#footerbutton").click(function () {
-                    $('#footer1').removeClass('fixed-bottom');
-                });
-            </script>
-
-            <div class="cardbox-body collapse" id="collapseExample">
+            <div class="cardbox-body collapse m-4" id="collapseExample">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Gewicht</b>
                             <br th:text="${#numbers.formatDecimal(product.weightKg,3,0)} + ' Kg'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Hubraum</b>
                             <br th:text="${product.cubicCapacityCm3} + ' Liter'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Drehmoment</b>
                             <br th:text="${#numbers.formatDecimal(product.nm,3,0)} + ' nm'">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Massagesitze</b>
                             <td th:switch="${product.massageSeats}">
@@ -664,7 +660,7 @@
                             
                         </p>
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <p>
                             <b>Innenraumfarbe</b>
                             <br th:text="${product.bodyColor}">
@@ -672,21 +668,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-1">
-                    </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Türen</b>
                             <br th:text="${product.doors}">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Kraftstoff</b>
                             <br th:text="${product.fuelType}">
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Zusatzfahrer</b>
                             <td th:switch="${product.addDriver}">
@@ -695,13 +689,13 @@
                             </td>
                         </p>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <p>
                             <b>Polstermaterial</b>
                             <br th:text="${product.upholstery}">
                         </p>
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <p>
                             <b>Rückenlehnendisplay</b>
                             <td th:switch="${product.displaysRear}">
