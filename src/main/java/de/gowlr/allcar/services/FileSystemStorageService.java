@@ -50,7 +50,7 @@ public class FileSystemStorageService implements StorageService {
         Path subFolder = Path.of(rootLocation.toString(), id.toString());
         //Sicherstellen, dass solch ein Ordner nicht doppelt angelegt wir
         try {
-            deleteDirectory(subFolder.toFile());
+            // deleteDirectory(subFolder.toFile());
             Files.createDirectories(subFolder);
         } catch (IOException e) {
             throw new StorageException("Storage konnte nicht initialisiert werden: ", e);

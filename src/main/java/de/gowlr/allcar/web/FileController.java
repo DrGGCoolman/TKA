@@ -74,9 +74,9 @@ public class FileController {
 
         picturesToStore.add(pictureToStore);
 
-        productToUpdate.setEcPicturesById(picturesToStore);
-
         pictureRepository.save(pictureToStore);
+
+        productToUpdate.setEcPicturesById(picturesToStore);
 
         productTypeRepository.save(productToUpdate);
         // String uri =

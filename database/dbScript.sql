@@ -277,7 +277,7 @@ INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYS
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (3, 'Lamborghini Aventador SV', '/uploads/3/Lamborghini_Aventador_sv.jpg', 3);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (4, 'Lamborghini Aventador SV', '/uploads/3/Lamborghini_Aventador_sv2.jpg', 3);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (5, 'Lamborghini Huracán Performante Spyder', '/uploads/4/Lamborghini_Huracán_Performante_Spyder.jpg', 4);
-INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (6, 'Lamborghini Huracán Performante Spyder', '/uploads/4/Lamborghini_Huracán_Performante_Spyder.jpg2', 4);
+INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (6, 'Lamborghini Huracán Performante Spyder', '/uploads/4/Lamborghini_Huracán_Performante_Spyder2.jpg', 4);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (7, 'Lamborghini Huracán', '/uploads/5/Lamborghini_Huracan.jpg', 5);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (8, 'Lamborghini Huracán', '/uploads/5/Lamborghini_Huracan2.jpg', 5);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (9, 'Ferrari 458', '/uploads/6/Ferrari_458_Italia.jpg', 6);
@@ -314,7 +314,7 @@ INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYS
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (40, 'Mercedes S600 Maybach', '/uploads/30/Mercedes_S600_Maybach2.jpg', 30);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (41, 'Mercedes S600 Maybach', '/uploads/30/Mercedes_S600_Maybach3.jpg', 30);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (42, 'Rolls-Royce Phantom', '/uploads/31/Rolls_Royce_Phantom.jpg', 31);
-INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (43, 'Rolls-Royce Phantom', '/uploads/31/Rolls_Royce_Phantom.jpg2', 31);
+INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (43, 'Rolls-Royce Phantom', '/uploads/31/Rolls_Royce_Phantom2.jpeg', 31);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (44, 'Rolls-Royce Wraith', '/uploads/32/Rolls_Royce_Wraith.jpg', 32);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (45, 'Porsche Panamera Turbo', '/uploads/33/Porsche_Panamera_Sport_Turismo.jpg', 33);
 INSERT INTO public.ec_pictures (id, title, file_path, product_id) OVERRIDING SYSTEM VALUE VALUES (46, 'Bentley Flying Spur', '/uploads/34/Bentley_Flying_Spur.jpg', 34);
