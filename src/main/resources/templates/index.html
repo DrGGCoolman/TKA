@@ -25,101 +25,114 @@
 
     <div class="container">
         <div class="container">
-            <div class="row pt-2">
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sport">
-                    <div class="jumbotron jumbotron-sport">
-                        <div class="overlay">
-                            <div class="row">
-                                <div class="col-8 text category p-4" id="text-sport">
-                                    <h1 class="main-ecr text-uppercase">Sport</h1>
-                                    <br>
-                                    <p class="text-white">
-                                        Für ein außergewöhnliches Fahrerlebnis benötigen Sie unseren einen
-                                        leistungsstarken
-                                        und speziellen Wagen. Sportliche Motoren und eine hochwertige Ausstattung sorgen
-                                        für
-                                        ein unvergleichliches Fahrerlebnis. Mit etwas weniger Gepäckraum passen bis zu
-                                        zwei
-                                        mittelgroße Koffer und sind perfekt für zwei Personen.
-                                    </p>
-                                    <br>
-                                    <button class="btn btn-secondary">
-                                        Kategorie anzeigen
-                                    </button>
+            <form method="post" th:action="@{/products/filter}" th:object="${carFilter}">
+                <div class="row pt-2">
+                        <a th:href="@{../products/showFilter}" class="col-lg-3 col-md-6 p-0" id="jumbo-sport">
+                            <div class="jumbotron jumbotron-sport">
+                                <div class="overlay">
+                                    <div class="row">
+                                        <div class="col-8 text category p-4" id="text-sport">
+                                            <h1 class="main-ecr text-uppercase">Sport</h1>
+                                            <br>
+                                            <p class="text-white">
+                                                Für ein außergewöhnliches Fahrerlebnis benötigen Sie unseren einen
+                                                leistungsstarken
+                                                und speziellen Wagen. Sportliche Motoren und eine hochwertige
+                                                Ausstattung
+                                                sorgen
+                                                für
+                                                ein unvergleichliches Fahrerlebnis. Mit etwas weniger Gepäckraum passen
+                                                bis
+                                                zu
+                                                zwei
+                                                mittelgroße Koffer und sind perfekt für zwei Personen.
+                                            </p>
+                                            <br>
+                                            <button class="btn btn-secondary">
+                                                Kategorie anzeigen
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sportplus">
-                    <div class="jumbotron jumbotron-sportplus">
-                        <div class="overlay">
-                            <div class="row">
-                                <div class="col-8 text category p-4" id="text-sportplus">
-                                    <h1 class="main-ecr text-uppercase">Sport +</h1>
-                                    <br>
-                                    <p class="text-white">
-                                        Wenn Sie ein Fan von leistungsstarken und schnellen Autos sind, wird eins
-                                        unserer
-                                        aufregenden Sportwagen, darunter: Audi R8, Lamborghini Huracan, Mercedes AMG GT
-                                        Roadster und mehr Ihre Wünsche voll erfüllen.
-                                    </p>
-                                    <br>
-                                    <button class="btn btn-secondary">
-                                        Kategorie anzeigen
-                                    </button>
+                        </a>
+                        <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-sportplus">
+                            <div class="jumbotron jumbotron-sportplus">
+                                <div class="overlay">
+                                    <div class="row">
+                                        <div class="col-8 text category p-4" id="text-sportplus">
+                                            <h1 class="main-ecr text-uppercase">Sport +</h1>
+                                            <br>
+                                            <p class="text-white">
+                                                Wenn Sie ein Fan von leistungsstarken und schnellen Autos sind, wird
+                                                eins
+                                                unserer
+                                                aufregenden Sportwagen, darunter: Audi R8, Lamborghini Huracan, Mercedes
+                                                AMG
+                                                GT
+                                                Roadster und mehr Ihre Wünsche voll erfüllen.
+                                            </p>
+                                            <br>
+                                            <button class="btn btn-secondary">
+                                                Kategorie anzeigen
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-suv">
-                    <div class="jumbotron jumbotron-suv">
-                        <div class="overlay">
-                            <div class="row">
-                                <div class="col-8 text category p-4" id="text-suv">
-                                    <h1 class="main-ecr text-uppercase">SUV</h1>
-                                    <br>
-                                    <p class="text-white">
-                                        Fahren Sie in einem luxuriösen SUV in Luxus und Komfort mit viel
-                                        Bewegungsfreiheit
-                                        für die ganze Familie. Unsere Flotte umfasst Vermietungen von Top-Marken wie
-                                        Range
-                                        Rover, Porsche oder Mercedes-Benz G-Klasse.
-                                    </p>
-                                    <br>
-                                    <button class="btn btn-secondary">
-                                        Kategorie anzeigen
-                                    </button>
+                        </a>
+                        <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-suv">
+                            <div class="jumbotron jumbotron-suv">
+                                <div class="overlay">
+                                    <div class="row">
+                                        <div class="col-8 text category p-4" id="text-suv">
+                                            <h1 class="main-ecr text-uppercase">SUV</h1>
+                                            <br>
+                                            <p class="text-white">
+                                                Fahren Sie in einem luxuriösen SUV in Luxus und Komfort mit viel
+                                                Bewegungsfreiheit
+                                                für die ganze Familie. Unsere Flotte umfasst Vermietungen von Top-Marken
+                                                wie
+                                                Range
+                                                Rover, Porsche oder Mercedes-Benz G-Klasse.
+                                            </p>
+                                            <br>
+                                            <button class="btn btn-secondary">
+                                                Kategorie anzeigen
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </a>
-                <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-luxus">
-                    <div class="jumbotron jumbotron-luxus">
-                        <div class="overlay">
-                            <div class="row">
-                                <div class="col-8 text category p-4" id="text-luxus">
-                                    <h1 class="main-ecr text-uppercase">Luxus</h1>
-                                    <br>
-                                    <p class="text-white">
-                                        Unsere stilvollen Limousinen bieten Stil und Raum und versprechen eine sanfte
-                                        Fahrt
-                                        auf der offenen Straße und den Straßen der Stadt. Wir bieten schöne Modelle wie
-                                        den
-                                        Cadillac, die suv 7er Reihe und vieles mehr.
-                                    </p>
-                                    <br>
-                                    <button class="btn btn-secondary">
-                                        Kategorie anzeigen
-                                    </button>
+                        </a>
+                        <a th:href="@{../products/list}" class="col-lg-3 col-md-6 p-0" id="jumbo-luxus">
+                            <div class="jumbotron jumbotron-luxus">
+                                <div class="overlay">
+                                    <div class="row">
+                                        <div class="col-8 text category p-4" id="text-luxus">
+                                            <h1 class="main-ecr text-uppercase">Luxus</h1>
+                                            <br>
+                                            <p class="text-white">
+                                                Unsere stilvollen Limousinen bieten Stil und Raum und versprechen eine
+                                                sanfte
+                                                Fahrt
+                                                auf der offenen Straße und den Straßen der Stadt. Wir bieten schöne
+                                                Modelle
+                                                wie
+                                                den
+                                                Cadillac, die suv 7er Reihe und vieles mehr.
+                                            </p>
+                                            <br>
+                                            <button class="btn btn-secondary">
+                                                Kategorie anzeigen
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                        </a>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -142,44 +155,28 @@
                 <div class="container">
                     <div id="pictureCarousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-
                             <th:block th:each="highlight, iter : ${highlights}">
-                                <li data-target="#jsaAboutCarousel" th:attr="data-slide-to=${iter.index}"
+                                <li data-target="#pictureCarousel" th:attr="data-slide-to=${iter.index}"
                                     th:class="${iter.index}== 0  ? 'active':''"></li>
-
                             </th:block>
                         </ol>
                         <div class="carousel-inner">
-
-                            <div th:each="highlight, iter : ${highlights}">
-                                <a class="carousel-item active" th:if="${iter.index} == 0">
-                                    <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
-                                        class="d-block carousel-picture" style="width:950px;">
-                                    <div class="carousel-caption">
-                                        <h3
-                                            th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
-                                        </h3>
-                                    </div>
-                                </a>
-                                <a class="carousel-item " th:if="${iter.index} > 0">
-                                    <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
-                                        class="d-block mw-100 carousel-picture">
-                                    <div class="carousel-caption">
-                                        <h3
-                                            th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
-                                        </h3>
-                                    </div>
-                                </a>
-                            </div>
-
+                            <a th:each="highlight, iter : ${highlights}" th:href="@{'/products/' + ${highlight .id}}"
+                                th:class="${iter.index}== 0  ? ' active carousel-item':'carousel-item'">
+                                <img th:src="@{${(!highlight.ecPicturesById.isEmpty()) ? highlight.ecPicturesById[0].filePath : '/uploads/no_image.jpg'}}"
+                                    class="d-block carousel-picture">
+                                <div class="carousel-caption col-8 text category p-2">
+                                    <h3
+                                        th:text="${highlight.ecBrandByBrandId.brandTitle} + ' ' + ${highlight.model} + ' ' + ${highlight.variant}">
+                                    </h3>
+                                </div>
+                            </a>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                            data-slide="prev">
+                        <a class="carousel-control-prev" href="#pictureCarousel" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                            data-slide="next">
+                        <a class="carousel-control-next" href="#pictureCarousel" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

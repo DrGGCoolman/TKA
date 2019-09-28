@@ -32,10 +32,11 @@
 
                     <div class="form-group col-4">
                         <label for="inputPassword4">Marke</label>
-                        <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required="true">
+                        <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control">
                             <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
                             </option>
                         </select>
+                        <span th:if="${#fields.hasErrors('ecBrandByBrandId')}" th:errors="*{ecBrandByBrandId}" class="text-danger"></span>
                     </div>
 
 
