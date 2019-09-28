@@ -1067,6 +1067,16 @@ a.cardbox:hover {
 .cardbox-title {
   margin-bottom: 0.75rem;
   display: inline-block;
+  font-size: 20px;
+  color: white;
+}
+
+.cardbox-title:hover {
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  font-size: 20px;
+  color: lightgray;
+  text-decoration: none;
 }
 
 .cardbox-subtitle {
