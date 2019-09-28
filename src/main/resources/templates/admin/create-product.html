@@ -30,7 +30,7 @@
                 <div class="form-row">
 
                     <div class="form-group col-4">
-                        <label for="inputPassword4">Marke</label>
+                        <label for="inputBrand">Marke</label>
                         <select th:field="*{ecBrandByBrandId}" id="inputBrand" class="form-control" required autofocus>
                             <option value="" selected>Marke wählen..</option>
                             <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brandTitle}">
@@ -66,11 +66,10 @@
                 </div>
                 <br>
                 <h5 class="text-white">Technische Daten</h5>
-                <hr class="border-white">
                 <div class="form-row">
                     <div class="form-group col-5">
-                        <label for="inputCity">Motor</label>
-                        <input type="text" class="form-control" th:field="*{engine}" id="inputCity" placeholder="Motor">
+                        <label for="inputMotor">Motor</label>
+                        <input type="text" class="form-control" th:field="*{engine}" id="imputMotor" placeholder="Motor" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="inputCity">Antrieb</label>
@@ -82,8 +81,8 @@
                         </select>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="inputZip">Leistung</label>
-                        <input type="text" class="form-control" th:field="*{powerPs}" id="inputZip" placeholder="in PS">
+                        <label for="inputLeistung">Leistung</label>
+                        <input type="number" class="form-control" th:field="*{powerPs}" id="inputLeistung" placeholder="in PS" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -96,21 +95,21 @@
                         </select>
                     </div>
                     <div class="form-group col">
-                        <label for="inputCity">0 - 100</label>
-                        <input type="text" class="form-control" th:field="*{zeroToHundred}" id="inputCity"
-                            placeholder="in Sekunden">
+                        <label for="inputZeroHundred">0 - 100</label>
+                        <input type="number" class="form-control" th:field="*{zeroToHundred}" id="inputZeroHundred"
+                            placeholder="in Sekunden" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Baujahr</label>
-                        <input type="text" class="form-control" th:field="*{age}" id="inputZip" placeholder="2019">
+                        <label for="inputAge">Baujahr</label>
+                        <input type="number" class="form-control" th:field="*{age}" id="inputAge" placeholder="2019" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Drehmoment</label>
-                        <input type="text" class="form-control" th:field="*{nm}" id="inputZip" placeholder="in nm">
+                        <label for="inputNm">Drehmoment</label>
+                        <input type="number" class="form-control" th:field="*{nm}" id="inputNm" placeholder="in nm" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputCity">Hubraum</label>
-                        <input type="text" class="form-control" th:field="*{cubicCapacityCm3}" id="inputCity" placeholder="in cm³">
+                        <label for="inputCm3">Hubraum</label>
+                        <input type="tenumberxt" class="form-control" th:field="*{cubicCapacityCm3}" id="inputCm3" placeholder="in cm³" required>
                     </div>
                 </div>
                 <br>
@@ -118,14 +117,14 @@
                 <hr class="border-white">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="inputCity">Farbe</label>
-                        <input type="text" class="form-control" th:field="*{bodyColor}" id="inputCity"
-                            placeholder="schwarz">
+                        <label for="inputColor">Farbe</label>
+                        <input type="text" class="form-control" th:field="*{bodyColor}" id="inputColor"
+                            placeholder="schwarz" required>
                     </div>
                     <div class="form-group col">
-                        <label for="inputZip">Gewicht</label>
-                        <input type="text" class="form-control" th:field="*{weightKg}" id="inputZip"
-                            placeholder="in kg">
+                        <label for="inputWeight">Gewicht</label>
+                        <input type="number" class="form-control" th:field="*{weightKg}" id="inputWeight"
+                            placeholder="in kg" required>
                     </div>
                     <div class="form-group col">
                         <label for="inputZip">Sitze</label>
@@ -162,7 +161,7 @@
                     <div class="form-group col">
                         <label for="inputCity">Innenraumfarbe</label>
                         <input type="text" class="form-control" th:field="*{upholstery}" id="inputCity"
-                            placeholder="beige">
+                            placeholder="beige" required>
                     </div>
                     <div class="form-group col">
                         <label for="inputZip">Kraftstoff</label>
