@@ -193,14 +193,11 @@ footer {
   display: block;
   background-color: rgb(81, 82, 102, 0.5);
   color: white;
-  text-decoration: none;
-  margin-top: 50px;
 }
 
-
-.links {
-  color: white;
-  text-decoration: none;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 .links {
