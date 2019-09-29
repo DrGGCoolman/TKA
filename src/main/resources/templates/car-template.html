@@ -10,8 +10,8 @@
 
     <div class="col-9 rechter-teil">
       <div class="cardbox-body">
-        <h4 class="cardbox-title pb-2 pl-4"
-          th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></h4>
+        <a h4 class="cardbox-title pb-2 pl-4" th:href="@{${product.id}}"
+          th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}"></a>
           <span sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">|</span>
         <a th:href="@{'/products/edit/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
             Bearbeiten
