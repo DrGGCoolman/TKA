@@ -18,6 +18,7 @@
     
     <div class="container">
         <div class="row">
+            <!-- Hier wurden die selben Methoden wie bei login.html verwendet. -->
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="cardbox p-4">
                     <div class="card-body">
@@ -36,6 +37,7 @@
                                 <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
                             </div>
 
+                            <!-- Die Eingabefelder werden um reguläre Ausdrücke ergänzt, die im "imput"-Element definiert werden.-->
                             <div class="form-label-group pt-2">
                                 <label for="inputPassword">Passwort
                                     <small>(Mind.: 8 Zeichen, eine Zahl, einen Groß- und einen
@@ -59,7 +61,9 @@
         </div>
     </div>
 </div>
-    <!-- SKRIPTE-->
+
+<!-- Hier ist die Funktion, die prüft, ob das wiederholte Passwort mit dem Passwort übereinstimmt. Tut es das nicht, wird
+die Registrierung nicht fortgesetzt.-->
     <script>
         var password = document.getElementById("inputPassword")
             , confirm_password = document.getElementById("confirm_password");

@@ -21,14 +21,18 @@
 
     <br>
 
-    <!-- KATEGORIEN START-->
-
     <div class="container">
         <div class="container">
+            <!-- Hier beginnt der Abschnittt mit den vier Kategorien -->
             <form>
                 <div class="row pt-2">
+                    <!-- In dem .row-Element sind die jeweiligen ".jumbotron"-Elemente enthalten. Die ".col-3"-Elemente
+                        definieren die einheitliche Breite der Jumbotrons.
+                    Hier ist der Abschnitt für die Sport-Kategorie. Alle Eigentschaften werden in den drei anderen 
+                Kategorien identisch wiederverwendet und sind deshalb nur hier erklärt.-->
                     <a th:href="@{../products/category/?cat=Sport}" class="col-lg-3 col-md-6 p-0" id="jumbo-sport">
                         <div class="jumbotron jumbotron-sport">
+                            <!-- Die ".overlay"-Klasse ist für die auftauchende Schrift beim Hovern entwickelt worden.-->
                             <div class="overlay">
                                 <div class="row">
                                     <div class="col-8 text category p-4" id="text-sport">
@@ -48,17 +52,16 @@
                                             mittelgroße Koffer und sind perfekt für zwei Personen.
                                         </p>
                                         <br>
+                                        <!-- Über den Button gelangt man zu den Ergebnissen der jeweiligen Kategorie.-->
                                         <abutton th:href="@{../products/category/?cat=Sport}" class="btn btn-secondary">
-
-
                                             Kategorie anzeigen
-
-                                            </abutton>
+                                        </abutton>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </a>
+                    <!-- Hier beginnt die Sport +-Kategorie-->
                     <a th:href="@{../products/category/?cat=Sport%2B}" class="col-lg-3 col-md-6 p-0"
                         id="jumbo-sportplus">
                         <div class="jumbotron jumbotron-sportplus">
@@ -86,6 +89,7 @@
                             </div>
                         </div>
                     </a>
+                    <!-- Hier beginnt die SUV-Kategorie.-->
                     <a th:href="@{../products/category/?cat=SUV}" class="col-lg-3 col-md-6 p-0" id="jumbo-suv">
                         <div class="jumbotron jumbotron-suv">
                             <div class="overlay">
@@ -110,6 +114,7 @@
                             </div>
                         </div>
                     </a>
+                    <!-- Hier beginnt die Luxus-Kategorie.-->
                     <a th:href="@{../products/category/?cat=Luxus}" class="col-lg-3 col-md-6 p-0" id="jumbo-luxus">
                         <div class="jumbotron jumbotron-luxus">
                             <div class="overlay">
@@ -144,6 +149,7 @@
     <br>
     <br>
 
+    <!-- In diesem Container ist der Teaser mit den Highlights enthalten-->
     <div class="container">
         <div class="cardbox p-5">
             <div class="container">
@@ -203,9 +209,10 @@
     <br>
     <br>
 
+    <!-- In diesem Container sind die Beschreibung der Firma und die ANfahrtsbeschreibung
+        enthalten. Klassen wie ".main-ecr" und
+    ".text-uppercase" definieren die einheitliche Schrift.-->
     <div class="container">
-        <!-- <h2 class="text-light"></h2>
-        <hr> -->
         <div class="cardbox p-5">
             <div class="container">
                 <h2 class="text-light main-ecr text-uppercase">Über uns</h2>
