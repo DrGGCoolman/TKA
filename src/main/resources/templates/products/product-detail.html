@@ -20,7 +20,7 @@
 
     <br>
 
-    <div class="container">
+    <div class="container details-content">
         <div class="cardbox p-4">
             <h3 class="text-white"
                 th:text="${product.ecBrandByBrandId.brandTitle} + ' ' + ${product.model} + ' ' + ${product.variant}">
@@ -713,7 +713,7 @@
     <!-- FOOTER-->
     <br>
     <br>
-    <div class="sticky-footer">
+    <div>
         <div th:insert="~{footer :: copy}"></div>
     </div>
         
