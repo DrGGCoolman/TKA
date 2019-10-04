@@ -1,5 +1,6 @@
 <div class="cardbox mb-3 p-4" th:fragment="copy (product)">
   <div class="row no-gutters">
+    <!-- In dieser Spalte befindet sich das Bild des zugehörigen Autos.-->
     <div class="col-3">
       <a th:href="@{${product.id}}">
         <img
@@ -8,6 +9,9 @@
       </a>
     </div>
 
+    <!-- Hier sind die Informationen über das Auto, sowie für den Admin die Möglichkeiten, ein Auto zu bearbeiten 
+    oder zu löschen. Die dafür erforderlichen Buttons werden nur angezeigt, wenn man als Admin angemeldet ist.
+  Dies geschieht über das sec:authorize-Statement.  -->
     <div class="col-9 rechter-teil">
       <div class="cardbox-body">
         <a h4 class="cardbox-title pb-2 pl-4" th:href="@{${product.id}}"
@@ -20,8 +24,11 @@
         <a th:href="@{'/products/delete/' + ${product.id}}" sec:authorize="hasRole('ADMIN')" style="color: #b1afaf">
           Löschen
       </a>
+
         <div class="row-card">
           <div class="col-6 pl-4 tabelle">
+            <!-- Die Informationen zum Auto werden in Form einer im CSS gestylten Tabelle umgesetzt. Über
+            th:text gelangen die Informationen aus der Datenbank an die Oberfläche.-->
             <table class="table-car">
               <tbody>
                 <tr scope="row">
@@ -72,6 +79,7 @@
             </table>
           </div>
 
+          <!-- Hier ist der Abschnitt mit den Buttons. Klickt man auf  einen, wird der zugehörige Preis angezeigt.-->
           <div class="col-3 preis-buttons">
             <div>
               <button type="button" class="btn btn-sm btn-light" th:id="200button + ${product.id}"

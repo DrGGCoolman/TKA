@@ -17,8 +17,11 @@
     <div class="container col-11">
         <div class="row">
 
+            <!-- Hier ist die ".cardbox" mit den Filtern eingebunden.-->
             <div class="col-2 mt-4" th:href="@{/product-detail{/id}}" th:insert="~{filter :: copy(model=${carFilter})}">
             </div>
+
+            <!-- Hier sind die jeweiligen ".cardbox"-Elemente aus car-template.html eingebunden.-->
             <div class="col-10 mt-4">
                 <div th:switch="${productTypes}">
                     <div th:case="null">

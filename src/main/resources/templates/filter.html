@@ -8,10 +8,15 @@
             <div class="categories pt-4 pb-4">
                 <form method="post" th:action="@{/products/filter}" th:object="${carFilter}">
 
+                    <!-- Bei einem Filterkriterium wie "Klasse" handelt es sich immer um eine ".main-item"- Klasse
+                    dadurch wird diese anders dargestellt als die untergeordneten Elemente, (...)-->
                     <a li class="list-group-wb-item main-item" href="#klasse" data-toggle="collapse">Klasse
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="list-group-wb">
+                        <!-- (...) welche hier definiert werden. Für jede untergeordnete Liste werden die jeweiligen
+                        Filtermöglichkeiten als ".list-group-wb-item" definiert und per Thymeleaf über das
+                        th:each-Statement eingebunden. -->
                         <li href="#" id="klasse" class="collapse list-group-wb-item pl-5"
                             th:each=" cat: ${model.Categories}">
                             <input class="form-check-input" th:field="*{SelectedCategories}" type="checkbox"
@@ -21,6 +26,7 @@
                         </li>
                     </ul>
 
+                    <!--Diese Struktur wird ab hier fortgeführt:-->
                     <a li class="list-group-wb-item" href="#marke" data-toggle="collapse">Marke
                         <i class="fa fa-angle-down"></i>
                     </a>
