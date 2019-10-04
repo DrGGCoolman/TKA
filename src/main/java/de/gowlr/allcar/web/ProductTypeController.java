@@ -54,6 +54,7 @@ public class ProductTypeController {
 
     @ModelAttribute
     public void setDefaultAttributes(Model model) {
+        this.CarFilter.init();
         model.addAttribute("carFilter", CarFilter);
     }
 
@@ -151,6 +152,13 @@ public class ProductTypeController {
     @GetMapping("list")
     public String showAllProducts(Model model) {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
+        return "products/index";
+    }
+
+    @GetMapping("category")
+    public String showCategory(@RequestParam(value = "cat", required = true) String cat, Model model) {
+        
+        model.addAttribute("productTypes", ProductTypeRepository.findByEcCategoryByCategoryIdTitleIgnoreCase(cat));
         return "products/index";
     }
 
