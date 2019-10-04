@@ -11,6 +11,7 @@ import de.gowlr.allcar.repositories.*;
 
 /**
  * FilterService
+ * Filtert die Prdouctdaten mittels der im Repository definierten Abfragen und gibt eine Liste von Produktdaten zurück.
  */
 public class FilterService {
 
