@@ -223,22 +223,30 @@ html {
 .calendar_link {
 	font-size: 12px;
 	text-align: center;
-	text-decoration: none;
+  text-decoration: none;
+}
+
+.calendar_arrow {
+	font-size: 12px;
+	text-align: center;
+  text-decoration: none;
+  color: white !important;
 }
 
 .calendar_head {
 	font-size: 15px;
 	font-weight: bold;
 	text-align: center;
-	width: 25px;
+  width: 25px;
+
 }
 
 .calendar_head_month {
 	font-size: 15px;
 	font-weight: bold;
 	text-align: center;
-	width: 25px;
-	background-color: rgba(81, 82, 102);
+  width: 25px;
+
   
 }
 
