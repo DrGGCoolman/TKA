@@ -1,5 +1,6 @@
 package de.gowlr.allcar.meta;
 
+// Definiert die Antwort des Servers auf erfolgreich gespeicherter Dateien.
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +25,5 @@ public class FileResponse {
         this.size = size;
     }
 
-    // getters and setters removed for the sake of brevity
+    
 }

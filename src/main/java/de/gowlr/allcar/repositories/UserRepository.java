@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import de.gowlr.allcar.entities.EcUserEntity;
 
+// Detailierte Kommentare befinden sich im ProductTypeRepository.java
 @Repository
 public interface UserRepository extends JpaRepository<EcUserEntity, Integer> {
 

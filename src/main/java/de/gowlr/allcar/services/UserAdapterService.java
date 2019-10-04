@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import de.gowlr.allcar.entities.EcUserEntity;
 import de.gowlr.allcar.repositories.UserRepository;
 
+// Eigener UserAdapterService zum Laden des UserDetails-Objektes wird übersetzt auf das Interface UserDetailsService, 
+// welches implementiert werden muss, damit Spring-Security genutzt werden kann.
 @Service
 @Transactional
 public class UserAdapterService implements UserDetailsService {

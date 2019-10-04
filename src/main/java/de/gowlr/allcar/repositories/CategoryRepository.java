@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import de.gowlr.allcar.entities.EcCategoryEntity;
 
+// Detailierte Kommentare befinden sich im ProductTypeRepository.java
 @Repository
 public interface CategoryRepository extends JpaRepository<EcCategoryEntity, Integer> {
     List<EcCategoryEntity> findAll();

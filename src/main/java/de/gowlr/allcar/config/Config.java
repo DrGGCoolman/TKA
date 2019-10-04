@@ -15,28 +15,39 @@ import de.gowlr.allcar.services.SearchService;
 import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 
+// Konfiguriert die Authentifizierung und die Autorisierung. Stellt globale Objekte zur Verfügung (@bean).
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class Config extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationSuccessHandler authSuccHandler() {
         return new AuthSuccHandler();
     }
-
+    
+    // Konfiguriert und setzt für den jeweiligen User die erlaubten Url-Zugriffe 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
-                .antMatchers().hasRole("USER")
-                .antMatchers("/admin/**", "/products/create", "/products/edit/**", "/products/delete/**")
-                .hasRole("ADMIN").and().formLogin().failureUrl("/users/login?error=true").loginPage("/users/login")
-                .successHandler(authSuccHandler()).permitAll().and().logout().permitAll();
+        http.csrf()
+            .disable()
+        .authorizeRequests()
+            .antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
+            .antMatchers().hasRole("USER")
+            .antMatchers("/admin/**", "/products/create", "/products/edit/**", "/products/delete/**" ).hasRole("ADMIN")
+        .and()
+        .formLogin()
+            .failureUrl("/users/login?error=true")
+            .loginPage("/users/login")
+        .successHandler(authSuccHandler()).permitAll()
+        .and()
+        .logout().permitAll();
 
     }
 
     @Autowired
     UserAdapterService userDetailsService;
 
+    // Alle folgenden @Bean stellen entsprechende Objekte zur Verfügung
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -52,8 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        // Setting Service to find User in the database.
-        // And Setting PassswordEncoder
+        // Einstellung um den User in der Datenbank zu finden. Verschlüsselung des Passwortes.
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 
     }
@@ -71,11 +81,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public FilterService filterService() {
         return new FilterService();
-    }
-
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
 }
