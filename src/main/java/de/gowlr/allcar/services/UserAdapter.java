@@ -11,6 +11,10 @@ import de.gowlr.allcar.entities.EcUserEntity;
 
 public class UserAdapter implements UserDetails {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4475382548828479967L;
     private final EcUserEntity user; // adaptiertes Objekt
 
     public UserAdapter(EcUserEntity user) {

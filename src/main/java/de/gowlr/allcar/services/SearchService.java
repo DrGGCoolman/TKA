@@ -1,10 +1,7 @@
 package de.gowlr.allcar.services;
 
-import de.gowlr.allcar.web.CarFilterModel;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +9,10 @@ import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 
 /**
- * SearchService
+ * SearchService Wird mit einem Suchwort aufgerufen, welches Zerlegt wird.
+ * Anhand der Entstehenden Teilworte wird mittels des Repositories in der
+ * Datenbank nach passenden Fahrzeugen gesucht. Diese werden als Liste
+ * zurückgegeben.
  */
 public class SearchService {
     @Autowired
@@ -25,8 +25,6 @@ public class SearchService {
         if (searchfor != null && !searchfor.isEmpty()) {
 
             searchWords = searchfor.split(" ");
-
-            // TODO: speichern in DB von searchfor
 
             for (String word : searchWords) {
                 if (ProductTypeRepository.findByEcBrandByBrandIdBrandTitleContainingIgnoreCase(word) != null) {

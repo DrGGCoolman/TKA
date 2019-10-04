@@ -11,7 +11,6 @@ import de.gowlr.allcar.entities.*;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
-import java.io.Console;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -38,7 +37,7 @@ public class UserService {
             userRepository.save(new EcUserEntity(username, passwordEncoder.encode(password), role));
 
         } catch (Exception e) {
-            
+
         }
     }
 

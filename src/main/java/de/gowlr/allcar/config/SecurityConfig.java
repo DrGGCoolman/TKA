@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import de.gowlr.allcar.services.FilterService;
 import de.gowlr.allcar.services.SearchService;
-import de.gowlr.allcar.services.StorageService;
 import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 
@@ -28,9 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/index", "/home", "/webjars/**").permitAll()
-                .antMatchers().hasRole("USER").antMatchers("/admin/**", "/products/create", "/products/edit/**", "/products/delete/**" ).hasRole("ADMIN").and().formLogin()
-                .failureUrl("/users/login?error=true").loginPage("/users/login").successHandler(authSuccHandler())
-                .permitAll().and().logout().permitAll();
+                .antMatchers().hasRole("USER")
+                .antMatchers("/admin/**", "/products/create", "/products/edit/**", "/products/delete/**")
+                .hasRole("ADMIN").and().formLogin().failureUrl("/users/login?error=true").loginPage("/users/login")
+                .successHandler(authSuccHandler()).permitAll().and().logout().permitAll();
 
     }
 
@@ -58,7 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    // TODO: auslagern in eine Globale Config
     @Bean
     public CarFilterModel carFilterModel() {
         return new CarFilterModel();
