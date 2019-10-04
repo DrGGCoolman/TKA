@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class FileNotFoundException extends StorageException {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1272454118128682839L;
+
     public FileNotFoundException(String message) {
         super(message);
     }

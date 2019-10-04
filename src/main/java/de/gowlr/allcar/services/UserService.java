@@ -11,7 +11,6 @@ import de.gowlr.allcar.entities.*;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
-import java.io.Console;
 import java.util.List;
 
 // Definiert das Erstellen eines Users und die erforderlichen Parameter 
@@ -41,7 +40,7 @@ public class UserService {
             userRepository.save(new EcUserEntity(username, passwordEncoder.encode(password), role));
 
         } catch (Exception e) {
-            
+
         }
     }
 

@@ -2,7 +2,8 @@ package de.gowlr.allcar.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
-
+//Deatilierte Kommentare befinden sich in der EcProductTypeEntity.java
+//Da alle Entitäten analog zu einander aufgebaut sind, wurde auf Kommentare in jeder einzelnen verzichtet.
 @Entity
 @Table(name = "ec_search_words", schema = "public", catalog = "ec")
 public class EcSearchWordsEntity {

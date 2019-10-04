@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import de.gowlr.allcar.services.FilterService;
 import de.gowlr.allcar.services.SearchService;
-import de.gowlr.allcar.services.StorageService;
 import de.gowlr.allcar.services.UserAdapterService;
 import de.gowlr.allcar.web.CarFilterModel;
 

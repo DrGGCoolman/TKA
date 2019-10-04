@@ -13,6 +13,10 @@ import de.gowlr.allcar.entities.EcUserEntity;
 // welches implementiert werden muss, damit Spring-Security genutzt werden kann.
 public class UserAdapter implements UserDetails {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4475382548828479967L;
     private final EcUserEntity user; // adaptiertes Objekt
 
     public UserAdapter(EcUserEntity user) {

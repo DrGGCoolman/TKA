@@ -8,11 +8,6 @@ import de.gowlr.allcar.entities.*;
 import de.gowlr.allcar.repositories.*;
 import de.gowlr.allcar.services.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +23,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+//Behandelt alle Anfragen bzgl. der ProductTypes. Alle routen werden unter /products/* gruppiert.
 @Controller
 @RequestMapping("/products/")
 public class ProductTypeController {
@@ -44,8 +39,6 @@ public class ProductTypeController {
     @Autowired
     private SearchService SearchService;
     @Autowired
-    private PictureRepository PicRepository;
-    @Autowired
     private SearchwordRepository SearchwordRepository;
     @Autowired
     private BrandRepository BrandRepository;
@@ -58,6 +51,10 @@ public class ProductTypeController {
         model.addAttribute("carFilter", CarFilter);
     }
 
+    // Gibt Daten zu einem bestimmten ProductType zurück. Benötigt dazu beim Aufruf
+    // eine Id.
+    // Die Daten stammen aus der Datenbank und werden über das entsprechen
+    // Repository bezogen.
     @GetMapping("{id}")
     public String showProductDetail(@PathVariable("id") Integer id, Model model) {
         EcProductTypeEntity ProductType = ProductTypeRepository.findById(id)
@@ -66,6 +63,7 @@ public class ProductTypeController {
         return "products/product-detail";
     }
 
+    // Aufruf der Produkt-Anlegen ansicht.
     @GetMapping("create")
     public String showCreateFrom(Model model) {
         model.addAttribute("cats", CatRepository.findAll());
@@ -74,6 +72,8 @@ public class ProductTypeController {
         return "admin/create-product";
     }
 
+    // Behandelt das Anlegen eines Produktes. Validiert das Produkt-Anlegen
+    // formular.
     @PostMapping("add")
     public String addProductType(@Valid EcProductTypeEntity productType, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -83,6 +83,7 @@ public class ProductTypeController {
         return "redirect:edit/" + savedProduct.getId().toString();
     }
 
+    // Aufruf der Produkt-Beaarbeiten ansicht.
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         EcProductTypeEntity productType = ProductTypeRepository.findById(id)
@@ -94,6 +95,8 @@ public class ProductTypeController {
         return "admin/edit-product";
     }
 
+    // Behandelt das Bearbeiten eines Produktes. Validiert das Produkt-Bearbeiten
+    // formular.
     @PostMapping("update/{id}")
     public String updateProductType(@PathVariable("id") Integer id, @Valid EcProductTypeEntity productType,
             BindingResult result, Model model) {
@@ -107,6 +110,7 @@ public class ProductTypeController {
         return "redirect:/products/" + id.toString();
     }
 
+    // Behandelt das Löschen eines Produktes.
     @GetMapping("delete/{id}")
     public String deleteProductType(@PathVariable("id") int id, Model model) {
         EcProductTypeEntity productType = ProductTypeRepository.findById(id)
@@ -116,6 +120,9 @@ public class ProductTypeController {
         return "redirect:/products/list";
     }
 
+    // ruft den SearchService auf und übergibt das Suchwort.
+    // Speichert jede Suchanfrage, welche von Registrierten Nutzern getätigt wird in
+    // der Datenbank.
     @GetMapping("search")
     public String searchByKeyword(@RequestParam(value = "searchfor", required = false) String searchfor, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -134,12 +141,15 @@ public class ProductTypeController {
         return "products/index";
     }
 
+    // Ansicht der Gefilterten Inhalte
     @GetMapping("showFilter")
     public String showFilteredProducts(Model model) {
 
         return "products/index";
     }
 
+    // Ruft FilterService auf. Als Übergabeparameter dient das gefüllte
+    // CarFilterModel
     @PostMapping("filter")
     public String loginValidate(CarFilterModel carFilter, BindingResult result, Model model, RedirectAttributes red) {
 
@@ -149,15 +159,17 @@ public class ProductTypeController {
         return "redirect:showFilter";
     }
 
+    // Gibt Listenansicht der Farhzeuge zurück
     @GetMapping("list")
     public String showAllProducts(Model model) {
         model.addAttribute("productTypes", ProductTypeRepository.findAll());
         return "products/index";
     }
 
+    // Gibt Categorienansicht der Fahrzeuge zurück
     @GetMapping("category")
     public String showCategory(@RequestParam(value = "cat", required = true) String cat, Model model) {
-        
+
         model.addAttribute("productTypes", ProductTypeRepository.findByEcCategoryByCategoryIdTitleIgnoreCase(cat));
         return "products/index";
     }

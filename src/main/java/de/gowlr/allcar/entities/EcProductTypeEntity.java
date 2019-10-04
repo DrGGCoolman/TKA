@@ -37,6 +37,17 @@ public class EcProductTypeEntity {
     private EcCategoryEntity ecCategoryByCategoryId;
     private EcBrandEntity ecBrandByBrandId;
 
+    // Entitäten bilden die abstraktions Schicht zur Datenbank.
+    // Sie enthalten alle attribute aus der Datenbank und machen diese der
+    // Applikation zugänglich.
+
+    // @Id definiert diese Feld als Primärschlüssel
+    // @GeneratedValue(strategy = GenerationType.IDENTITY) besagt, dass der
+    // Schlüsselwert Datenbankseitig inkrementell gesetzt wird.
+    // Das ist vorallem bei Multi-User Anwendungen wichtig, damit es beim Speichern
+    // nicht zu Schlüselwertkonkflikten kommt.
+    // @Column definiert Datenbankseitige Eigenschaften des Feldes wie z.B. den
+    // Namen der Spalte und ob diese Nullwerte zulässt
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -298,6 +309,7 @@ public class EcProductTypeEntity {
         this.highlighted = highlighted;
     }
 
+    // Ermöglicht es Objekte des selben Typs miteinander zu vergleichen.
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -320,6 +332,8 @@ public class EcProductTypeEntity {
                 && Objects.equals(highlighted, that.highlighted);
     }
 
+    // Erzeugt einen Hashcode zum Objekt, dadurch kann perfomant auf Gleichheit
+    // geprüft werden.
     @Override
     public int hashCode() {
         return Objects.hash(id, model, variant, gearingType, age, weightKg, powerPs, engine, cubicCapacityCm3, nm,
@@ -327,6 +341,9 @@ public class EcProductTypeEntity {
                 massageSeats, displaysRear, price200, price500, price1000, blockedWhen, highlighted);
     }
 
+    // Fremdschlüsselbeziehung, bei der sich der Schlüsselwert in einer anderen
+    // Tabelle befindet. Hierdurch könenn händische Joins vermieden werden. Pictures
+    // werden hierdurch zum direkt adressierbaren Attribut von ProductType
     @OneToMany(mappedBy = "ecProductTypeByProductId", fetch = FetchType.EAGER)
     public Collection<EcPicturesEntity> getEcPicturesById() {
         return ecPicturesById;
@@ -336,6 +353,7 @@ public class EcProductTypeEntity {
         this.ecPicturesById = ecPicturesById;
     }
 
+    //Fremdschlüsselbeziehung, bei welcher der Schlüsselwert in der ProductType Tabelle liegt. Ersetzt in der Klasse die Tabellenspalte der refernzierten Id durch den konkreten Typen.
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
     public EcCategoryEntity getEcCategoryByCategoryId() {

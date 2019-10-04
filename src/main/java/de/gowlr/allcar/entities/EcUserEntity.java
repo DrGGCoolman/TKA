@@ -9,7 +9,8 @@ import de.gowlr.allcar.services.UserAdapter;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
-
+//Deatilierte Kommentare befinden sich in der EcProductTypeEntity.java
+//Da alle Entitäten analog zu einander aufgebaut sind, wurde auf Kommentare in jeder einzelnen verzichtet.
 @Entity
 @Table(name = "ec_user", schema = "public", catalog = "ec")
 public class EcUserEntity {
