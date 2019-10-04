@@ -71,8 +71,8 @@ public class CarFilterModel {
     @Autowired
     private ProductTypeRepository productTypeRepository;
 
-    @PostConstruct
-    private void init() {
+    
+    public void init() {
         this.Categories = catRepository.findAll();
         this.Brands = brandRepository.findAll();
         this.Fuels = productTypeRepository.findDistinctFuels();
@@ -81,6 +81,11 @@ public class CarFilterModel {
         this.DriverAges = productTypeRepository.findDistinctDriverAges();
         this.YearFrom = productTypeRepository.findMinYear();
         this.YearTo = productTypeRepository.findMaxYear();
+    }
+
+    public CarFilterModel(String cat) {
+        this.SelectedCategories.add(cat);
+
     }
 
 }

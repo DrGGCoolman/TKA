@@ -22,6 +22,8 @@ public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity
 
         List<EcProductTypeEntity> findByHighlighted(Boolean highlighted);
 
+        List<EcProductTypeEntity> findByEcCategoryByCategoryIdTitleIgnoreCase(String title);
+
         // _
         List<EcProductTypeEntity> findByEcCategoryByCategoryIdTitleIn(List<String> titles);
 
