@@ -9,8 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import de.gowlr.allcar.entities.EcProductTypeEntity;;
 
+// Ziel des Repositories ist es, häufig verwendete Datenbankzugriffe, die für die Persistenzspeicherung erfoderlich sind, erheblich zu reduzieren. 
+// Die Abfragen werden in der Java.Persistence API formuliert und mittels Spring-Boot in valides SQL übersetzt  
 @Repository
 public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity, Integer> {
+
+        // Allgemeine Operationen zur Datenselektion. 
 
         Optional<EcProductTypeEntity> findById(Integer id);
 
@@ -24,7 +28,9 @@ public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity
 
         List<EcProductTypeEntity> findByEcCategoryByCategoryIdTitleIgnoreCase(String title);
 
-        // _
+
+        // Bezieht Daten zum generieren unterschiedlicher Ansichten
+
         List<EcProductTypeEntity> findByEcCategoryByCategoryIdTitleIn(List<String> titles);
 
         List<EcProductTypeEntity> findByEcBrandByBrandIdBrandTitleIn(List<String> brandTitle);
@@ -45,7 +51,8 @@ public interface ProductTypeRepository extends JpaRepository<EcProductTypeEntity
 
         List<EcProductTypeEntity> findByDriveSystemIn(List<String> driveSystem);
 
-        // _
+
+        // SQL-Befehle (welche sich nicht per JPA abbilden ließen) zur Datenselektion des Filters
 
         @Query("SELECT DISTINCT fuelType FROM EcProductTypeEntity")
         List<String> findDistinctFuels();

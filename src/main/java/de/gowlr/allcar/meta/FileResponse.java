@@ -1,5 +1,6 @@
 package de.gowlr.allcar.meta;
 
+// Definiert die Antwort des Servers auf erfolgreich gespeicherter Dateien.
 public class FileResponse {
     private String name;
     private String uri;
@@ -13,5 +14,5 @@ public class FileResponse {
         this.size = size;
     }
 
-    // getters and setters removed for the sake of brevity
+    
 }

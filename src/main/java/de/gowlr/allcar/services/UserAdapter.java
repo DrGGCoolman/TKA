@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import de.gowlr.allcar.entities.EcUserEntity;
 
+// Eigene Nutzerklasse (EcUserEntity) wird übersetzt auf die Nutzerklasse des UserDetails-Interface, 
+// welches implementiert werden muss, damit Spring-Security genutzt werden kann.
 public class UserAdapter implements UserDetails {
 
     private final EcUserEntity user; // adaptiertes Objekt

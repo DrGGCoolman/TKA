@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+// Interface definiert wie der Storage-Service implementiert sein muss, um der Applikation alle notwendigen Funktionalitäten bereitzustellen.
 public interface StorageService {
 
     void init();
