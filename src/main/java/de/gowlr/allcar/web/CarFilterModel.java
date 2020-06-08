@@ -2,8 +2,6 @@ package de.gowlr.allcar.web;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.gowlr.allcar.entities.*;
@@ -14,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//Stellt das Formularmodel für den Filter bereit
 @NoArgsConstructor
 public class CarFilterModel {
 
@@ -71,8 +70,10 @@ public class CarFilterModel {
     @Autowired
     private ProductTypeRepository productTypeRepository;
 
-    @PostConstruct
-    private void init() {
+    // Initialisiert den Filter und füllt diesen mit möglichen Optionen aus der
+    // Datenbank. So muss nicht jedesmal, wenn einen neue Option hinzukommt, das
+    // Frontend angepasst werden.
+    public void init() {
         this.Categories = catRepository.findAll();
         this.Brands = brandRepository.findAll();
         this.Fuels = productTypeRepository.findDistinctFuels();

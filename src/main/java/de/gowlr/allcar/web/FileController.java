@@ -2,26 +2,19 @@ package de.gowlr.allcar.web;
 
 import de.gowlr.allcar.entities.EcPicturesEntity;
 import de.gowlr.allcar.entities.EcProductTypeEntity;
-import de.gowlr.allcar.meta.FileResponse;
 import de.gowlr.allcar.repositories.PictureRepository;
 import de.gowlr.allcar.repositories.ProductTypeRepository;
 import de.gowlr.allcar.services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
+//Behandelt Anfragen bzgl. des Dateiuploads
 @Controller
 public class FileController {
 
@@ -36,6 +29,9 @@ public class FileController {
         this.storageService = storageService;
     }
 
+    // konkrete Behandlung des POST-Requests zum Dateiupload
+    // benötigt eine Datei im Postbody und eine Id, über welche das Bild dem
+    // Fahrzeug zugeordnet wird.
     @PostMapping("/upload-file/{id}")
     public String uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("id") Integer id) {
         EcProductTypeEntity productToUpdate = productTypeRepository.findById(id)
@@ -59,6 +55,5 @@ public class FileController {
         return "redirect:/products/edit/" + id.toString();
 
     }
-
 
 }

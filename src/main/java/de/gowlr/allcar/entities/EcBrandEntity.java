@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+//Deatilierte Kommentare befinden sich in der EcProductTypeEntity.java
+//Da alle Entitäten analog zu einander aufgebaut sind, wurde auf Kommentare in jeder einzelnen verzichtet.
 @Entity
 @Table(name = "ec_brand", schema = "public", catalog = "ec")
 public class EcBrandEntity {
@@ -34,11 +36,12 @@ public class EcBrandEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         EcBrandEntity that = (EcBrandEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(brandTitle, that.brandTitle);
+        return Objects.equals(id, that.id) && Objects.equals(brandTitle, that.brandTitle);
     }
 
     @Override

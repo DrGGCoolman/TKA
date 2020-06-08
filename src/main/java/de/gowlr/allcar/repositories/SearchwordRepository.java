@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import de.gowlr.allcar.entities.EcSearchWordsEntity;
 
+// Detailierte Kommentare befinden sich im ProductTypeRepository.java
 @Repository
 public interface SearchwordRepository extends JpaRepository<EcSearchWordsEntity, Integer> {
 

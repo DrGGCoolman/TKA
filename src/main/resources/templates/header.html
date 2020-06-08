@@ -12,12 +12,15 @@
                 <!-- Linke Elemente-->
                 <ul class="nav navbar-nav mr-auto pl-2">
 
+                    <!-- Hier ist die Suchfunktion eingebunden. Das Suchfeld öffnet sich, wenn man auf 
+                    das Lupensymbol klickt, welches als Button definiert wurde.-->
                     <div class="dropdown mr-1">
                         <li class="nav-item">
                             <button class="btn" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false"
                                 id="dropdownMenuOffset" data-offset="10,20" aria-controls="nav-collapse3">
                                 <i class="fa fa-search p-0"></i>
                             </button>
+                            <!-- Hier ist die Suchleiste, die durch Klicken des Symbols auftaucht.-->
                             <div class="dropdown-menu dropdownsearch p-2"
                                 style="background-color: rgb(81, 82, 102, 0.5);" aria-labelledby="dropdownMenuOffset">
                                 <form id="search-form" role="search" th:action="@{/products/search}" method="get">
@@ -30,7 +33,7 @@
                         </li>
                     </div>
 
-                    <!--RENT-Block-->
+                    <!--Fahrzeug und Fahrzeug hinzufügen-->
                     <li class="nav-item">
                         <a class="nav-link text-white" th:href="@{/products/list}">Fahrzeuge</a>
                     </li>
@@ -45,9 +48,7 @@
             </div>
 
             <div>
-                <!-- 
-                    ÜBERSCHRIFT
-                    DIV, damit Element zentriert werden kann-->
+<!-- Die Überschrift wird in die Mitte gesetzt.--> 
                 <div class="nav-item pt-2 mx-auto ">
                     <a class="navbar-brand mx-auto" th:href="@{/index}">
                         <h2 class="main-ecr">EXCLUSIVE CAR RENTAL</h2>
@@ -59,8 +60,6 @@
             <!-- Rechte Elemente-->
             <div>
                 <ul class="nav navbar-nav" sec:authorize="anonymous">
-
-                    <!-- DROPDOWN LOGIN-->
 
                     <li class="nav-item ml-auto">
                         <a class="nav-link text-white" th:href="@{/users/register}">Registrierung</a>

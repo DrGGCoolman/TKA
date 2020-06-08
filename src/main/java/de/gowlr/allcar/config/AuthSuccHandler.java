@@ -2,24 +2,23 @@ package de.gowlr.allcar.config;
 
 import java.io.IOException;
 import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
 import de.gowlr.allcar.entities.EcUserEntity;
 
+// Behandlung von Weiterleitung nach erfolgreicher Authentifiezierung
 public class AuthSuccHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+    // wird aufgerufen, wenn eine erfolgreiche Authentifizierung stattgefunden hat
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException {
@@ -28,6 +27,7 @@ public class AuthSuccHandler implements AuthenticationSuccessHandler {
         clearAuthenticationAttributes(request);
     }
 
+    // behandelt Aufruf
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException {
 
@@ -40,6 +40,7 @@ public class AuthSuccHandler implements AuthenticationSuccessHandler {
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
+    // setzt Url für bedingte weiterleitung. Abhängig von der Nutzerrolle
     protected String determineTargetUrl(Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
@@ -67,6 +68,7 @@ public class AuthSuccHandler implements AuthenticationSuccessHandler {
         }
     }
 
+    // leert Cache
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {
@@ -75,6 +77,7 @@ public class AuthSuccHandler implements AuthenticationSuccessHandler {
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
 
+    // Getter Setter
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
     }
